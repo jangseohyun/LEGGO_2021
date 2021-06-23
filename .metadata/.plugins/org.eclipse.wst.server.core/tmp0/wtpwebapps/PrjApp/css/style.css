@@ -31,7 +31,7 @@
   --breakpoint-md: 768px;
   --breakpoint-lg: 992px;
   --breakpoint-xl: 1200px;
-  --font-family-sans-serif: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-family-sans-serif: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
 
 *,
@@ -51,7 +51,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 
 body {
   margin: 0;
-  font-family: "Noto Sans KR", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
@@ -153,7 +153,7 @@ pre,
 code,
 kbd,
 samp {
-  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-family: 'Noto Sans KR', sans-serif;
   font-size: 1em; }
 
 pre {
@@ -6633,6 +6633,7 @@ button.bg-dark:focus {
 .mb-4,
 .my-4 {
   margin-bottom: 1.5rem !important; }
+  
 
 .ml-4,
 .mx-4 {
@@ -8167,14 +8168,17 @@ h1, h2, h3, h4, h5,
 .h1, .h2, .h3, .h4, .h5 {
   line-height: 1.5;
   font-weight: 400;
-  font-family: "Lato", Arial, sans-serif;
+  font-family: 'Noto Sans KR', sans-serif;
   color: #000; }
 
 .bg-primary {
   background: #fbceb5 !important; }
 
 .ftco-section {
-  padding: 7em 0; }
+  padding: 5em 0; }
+
+.ftco2-section {
+  padding: 1em 0; }
 
 .ftco-no-pt {
   padding-top: 0; }
@@ -8200,15 +8204,7 @@ h1, h2, h3, h4, h5,
   .login-wrap .social {
     width: 100%; }
     .login-wrap .social a {
-      width: 100%;
-      display: block;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      color: #000;
-      background: #fff; }
-      .login-wrap .social a:hover {
-        background: #000;
-        color: #fff;
-        border-color: #000; }
+      width: 80%; }
 
 .form-group {
   position: relative; }
@@ -8347,9 +8343,40 @@ textarea.form-control {
         background: #fbceb5;
         color: #fff; }
 
+.btn2 {
+  cursor: pointer;
+  border-radius: 40px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 15px;
+  text-transform: uppercase; }
+  .btn2:hover, .btn2:active, .btn2:focus {
+    outline: none; }
+  .btn2.btn2-primary {
+    background: #9D95A5 !important;
+    border: 1px solid #9D95A5 !important;
+    color: #000 !important; }
+    .btn2.btn2-primary:hover {
+      border: 1px solid #9D95A5;
+      background: transparent;
+      color: #9D95A5; }
+    .btn2.btn2-primary.btn2-outline-primary {
+      border: 1px solid #9D95A5;
+      background: transparent;
+      color: #9D95A5; }
+      .btn2.btn2-primary.btn2-outline-primary:hover {
+        border: 1px solid transparent;
+        background: #9D95A5;
+        color: #fff; }
+        
 .userimg
 {
 	text-align: right !important;
 	color: #ffffff;
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+.mb-4:hover
+{
+	text-decoration: underline;
 }
