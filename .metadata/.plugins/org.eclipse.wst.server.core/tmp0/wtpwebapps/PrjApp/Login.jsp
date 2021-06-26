@@ -24,8 +24,21 @@
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/style.css">
+
+<!-- 카카오 로그인 API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js">
 	Kakao.init("a76949096713e82c75fa45bdb32ebb4c");
+</script>
+
+<!-- 구글 로그인 API -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-client_id" content="447693494839-5d859g9t2hvpdupbar05mii8a0c4ag1j.apps.googleusercontent.com">
+
+<!-- 메일 전송 -->
+<script type="text/javascript">
+function send_mail(){
+    window.open("./test_mail.jsp", "", "width=370, height=360, resizable=no, scrollbars=no, status=no");
+}
 </script>
 </head>
 <body class="img js-fullheight" style="background-image: url(images/jeju.png);">
@@ -34,7 +47,7 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
-					<h2 class="heading-section" style="font-family: 'Noto Sans KR', sans-serif;">로그인</h2>
+					<h2 class="heading-section">로그인</h2>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -63,15 +76,15 @@
 									</label>
 								</div>
 								<div class="w-50 text-md-right">
-									<a href="#" style="color: #fff; font-family: 'Noto Sans KR', sans-serif;">비밀번호 찾기</a>
+									<a href="#" style="color: #fff; font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='/PrjApp/FindPw.jsp';">비밀번호 찾기</a>
 								</div>
 							</div>
 						</form>
 						<br><p class="w-100 text-center" style="font-family: 'Noto Sans KR', sans-serif;">&mdash; SNS 계정으로 편하게 로그인 &mdash;</p>
-						<div class="social d-flex" style="text-align: center;">
-							<a><img src="images/kakao_login.png" width="50px"></a>
-							<a><img src="images/naver_login.png" width="50px" style="border-radius: 5px;"></a>
-							<a><img src="images/google_login.jpg" width="50px" style="border-radius: 5px;"></a>
+						<div class="social d-flex">
+							<div style="width: 100px;"><img src="images/kakao_login.png" width="50px"></div>
+							<div style="width: 100px;"><img src="images/naver_login.png" width="50px" style="border-radius: 5px;"></div>
+							<div class="googlelogin g-signin2" data-width="50" data-height="50" data-longtitle="true" data-onsuccess="onSignIn"></div>
 						</div>
 					</div>
 				</div>
@@ -83,6 +96,24 @@
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
+	
+	<script>
+        function onSignIn(googleUser) {
+            // Useful data for your client-side scripts:
+            var profile = googleUser.getBasicProfile();
+            console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+            console.log('Full Name: ' + profile.getName());
+            console.log('Given Name: ' + profile.getGivenName());
+            console.log('Family Name: ' + profile.getFamilyName());
+            console.log("Image URL: " + profile.getImageUrl());
+            console.log("Email: " + profile.getEmail());
+
+            // The ID token you need to pass to your backend:
+            var id_token = googleUser.getAuthResponse().id_token;
+            console.log("ID Token: " + id_token);
+        };
+    </script>
+
 
 </body>
 </html>

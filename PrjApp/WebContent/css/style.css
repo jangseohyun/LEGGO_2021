@@ -5538,7 +5538,8 @@ button.bg-dark:focus {
 .d-flex {
   display: -webkit-box !important;
   display: -ms-flexbox !important;
-  display: flex !important; }
+  display: flex !important;
+  justify-content: center; }
 
 .d-inline-flex {
   display: -webkit-inline-box !important;
@@ -8188,6 +8189,7 @@ h1, h2, h3, h4, h5,
 
 .heading-section {
   font-size: 28px;
+  font-family: 'Noto Sans KR', sans-serif;
   color: #fff; }
 
 .img {
@@ -8367,6 +8369,32 @@ textarea.form-control {
       .btn2.btn2-primary.btn2-outline-primary:hover {
         border: 1px solid transparent;
         background: #9D95A5;
+        color: #fff; }
+
+.btn3 {
+  cursor: pointer;
+  border-radius: 40px;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  font-size: 15px;
+  text-transform: uppercase; }
+  .btn3:hover, .btn3:active, .btn3:focus {
+    outline: none; }
+  .btn3.btn3-primary {
+    background: #bdccd1 !important;
+    border: 1px solid #bdccd1 !important;
+    color: #000 !important; }
+    .btn3.btn3-primary:hover {
+      border: 1px solid #bdccd1;
+      background: transparent;
+      color: #bdccd1; }
+    .btn3.btn3-primary.btn2-outline-primary {
+      border: 1px solid #bdccd1;
+      background: transparent;
+      color: #bdccd1; }
+      .btn3.btn3-primary.btn3-outline-primary:hover {
+        border: 1px solid transparent;
+        background: #bdccd1;
         color: #fff; }
         
 .userimg
