@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Login</title>
+<title>FindPw</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,17 +25,85 @@
 
 <link rel="stylesheet" href="css/style.css">
 
-<!-- 메일 전송 -->
 <script type="text/javascript">
-function send_mail(){
-    window.open("./test_mail.jsp", "", "width=370, height=360, resizable=no, scrollbars=no, status=no");
-}
+
+	<!-- 메일 전송 -->
+	function send_mail(){
+	    window.open("./test_mail.jsp", "", "width=370, height=360, resizable=no, scrollbars=no, status=no");
+	}
+
+	window.onload = function()
+	{
+		function onClick()
+		{
+		    document.querySelector('.modal_wrap').style.display ='block';
+		    document.querySelector('.black_bg').style.display ='block';
+		}   
+		
+		function offClick()
+		{
+		    document.querySelector('.modal_wrap').style.display ='none';
+		    document.querySelector('.black_bg').style.display ='none';
+		}
+
+		document.getElementById('modal_btn').addEventListener('click', onClick);
+		document.querySelector('.modal_close').addEventListener('click', offClick);
+
+	};
+
 </script>
+
+<!-- 팝업 -->
+<style type="text/css">
+
+body
+{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.modal_wrap{
+        display: none;
+        width: 500px;
+        height: 280px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        margin: -250px 0 0 -250px;
+        background:#eee;
+        z-index: 2;
+    }
+    .black_bg{
+        display: none;
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 100%;
+        background-color:rgba(0, 0,0, 0.5);
+        top:0;
+        left: 0;
+        z-index: 1;
+    }
+    .modal_close{
+        width: 26px;
+        height: 26px;
+        position: absolute;
+        top: -30px;
+        right: 0;
+    }
+    .modal_close> a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        background:url(https://img.icons8.com/metro/26/000000/close-window.png);
+        text-indent: -9999px;
+    }
+
+</style>
 
 </head>
 <body class="img js-fullheight" style="background-image: url(images/gangneung.jpg);">
 <p class="userimg">mong2unnie 님의 사진입니다.&nbsp;&nbsp;&nbsp;</p>
-<section class="ftco2-section">
+<section class="ftco1-section">
 		<div class="container" style="padding: 50px;">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
@@ -45,19 +113,29 @@ function send_mail(){
 			</div>
 			<br><br>
 			<div class="row justify-content-center">
+				<!-- 
 				<div class="col-md-6 text-center mb-5">
-					<p class="text-center" style="width: 450px; background-color: rgba( 255, 255, 255, 0.2 ); color: #ffffff; border-radius: 10px;"><br>가입하신 이메일을 입력해주세요.<br>비밀번호를 재설정할 수 있는 이메일을 보내드립니다.<br><br></p>
+					<div class="text-center" style="width: 450px; background-color: rgba( 255, 255, 255, 0.7 ); color: #000000; border-radius: 10px;">
+						<br>가입하신 이메일을 입력해주세요.<br>임시 비밀번호를 보내드립니다.<br><br>
+					</div>
 				</div>
+				 -->
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 						<form action="#" class="signin-form">
 							<div class="form-group">
-								<input type="text" class="form-control" style="background-color: rgba( 255, 255, 255, 0.2 );" placeholder="이메일"
-									required>
+								<h6 class="text-center" style="color: white">가입하신 이메일을 입력해주세요.</h6>
+								<input type="text" class="form-control" style="background-color: rgba( 255, 255, 255, 0.2 );" placeholder="이메일" required>
 							</div>
+							<br><br>
 							<div class="form-group">
-								<button type="submit"
-									class="form-control btn3 btn3-primary submit px-3" onclick="send_mail()">메일 전송</button>
+								<!-- onclick="send_mail()" -->
+								<button type="button" class="form-control btn3 btn3-primary submit px-3" id="modal_btn" onclick="send_mail()">메일 전송</button>
+								<div class="black_bg"></div>
+								<div class="modal_wrap" style="border-radius: 10px;">
+								    <div class="modal_close"><a href="#">close</a></div>
+								    <div class="text-center" style="padding: 100px; color: black; font-size: 20px;">임시 비밀번호가 발송되었습니다.<br>메일함을 확인해주세요.</div>
+								<div>
 							</div>
 						</form>
 					</div>

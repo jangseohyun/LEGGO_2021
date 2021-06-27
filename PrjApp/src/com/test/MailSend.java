@@ -31,8 +31,9 @@ public class MailSend {
         try {
             msg.setSentDate(new Date());
             
-            msg.setFrom(new InternetAddress("2021leggo@gmail.com", "LEGGO"));
-            InternetAddress to = new InternetAddress("plmaq11@gmail.com");         
+            msg.setFrom(new InternetAddress("no-reply@leggo.com", "LEGGO"));
+            InternetAddress to = new InternetAddress("noodle9407@gmail.com");  
+            
             msg.setRecipient(Message.RecipientType.TO, to);            
             msg.setSubject("안녕 이거 대박이지", "UTF-8");            
             msg.setText("겁나 신기해...", "UTF-8");            
