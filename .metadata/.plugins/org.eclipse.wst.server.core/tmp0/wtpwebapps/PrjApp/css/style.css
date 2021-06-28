@@ -133,7 +133,7 @@ sup {
   top: -.5em; }
 
 a {
-  color: #007bff;
+  color: #ffae00;
   text-decoration: none;
   background-color: transparent; }
   a:hover {
@@ -8179,7 +8179,7 @@ h1, h2, h3, h4, h5,
   padding: 5em 0; }
 
 .ftco2-section {
-  padding: 1em 0; }
+  padding: 0; }
 
 .ftco-no-pt {
   padding-top: 0; }

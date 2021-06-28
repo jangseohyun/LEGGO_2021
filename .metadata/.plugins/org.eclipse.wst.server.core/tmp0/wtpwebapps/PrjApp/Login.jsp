@@ -25,6 +25,15 @@
 
 <link rel="stylesheet" href="css/style.css">
 
+<style type="text/css">
+
+#iconchange
+{
+	border-radius: 15px !important;
+}
+
+</style>
+
 <!-- 카카오 로그인 API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js">
 	Kakao.init("a76949096713e82c75fa45bdb32ebb4c");
@@ -43,6 +52,10 @@ function send_mail(){
 </head>
 <body class="img js-fullheight" style="background-image: url(images/jeju.png);">
 <p class="userimg">Romi 님의 사진입니다.&nbsp;&nbsp;&nbsp;</p>
+<div>
+<table id="datatablesSimple">
+</table>
+</div>
 <section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -53,7 +66,7 @@ function send_mail(){
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
-						<h3 class="mb-4" style="text-align: right; font-size: 15px; font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='/PrjApp/Signin.jsp';">계정이 없으신가요?</h3>
+						<h3 class="mb-4" style="text-align: right; font-size: 15px; font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='/PrjApp/Signin.jsp';">계정이 없으신가요? 회원가입</h3>
 						<form action="#" class="signin-form">
 							<div class="form-group">
 								<input type="text" class="form-control" placeholder="이메일"
@@ -80,11 +93,11 @@ function send_mail(){
 								</div>
 							</div>
 						</form>
-						<br><p class="w-100 text-center" style="font-family: 'Noto Sans KR', sans-serif;">&mdash; SNS 계정으로 편하게 로그인 &mdash;</p>
+						<br><p class="w-100 text-center" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px;">&mdash; SNS 계정으로 편하게 로그인하기 &mdash;</p>
 						<div class="social d-flex">
 							<div style="width: 100px;"><img src="images/kakao_login.png" width="50px"></div>
 							<div style="width: 100px;"><img src="images/naver_login.png" width="50px" style="border-radius: 5px;"></div>
-							<div class="googlelogin g-signin2" data-width="50" data-height="50" data-longtitle="true" data-onsuccess="onSignIn"></div>
+							<div class="googlelogin g-signin2 iconchange" data-width="50" data-height="50" data-onsuccess="onSignIn">
 						</div>
 					</div>
 				</div>

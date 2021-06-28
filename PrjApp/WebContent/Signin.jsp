@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Login</title>
+<title>Signin</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,6 +24,22 @@
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/style.css">
+
+<style type="text/css">
+
+body
+{
+	font-family: 'Noto Sans KR', sans-serif;" 
+}
+
+a {
+  color: #ffffff;
+  text-decoration: underline;
+  background-color: transparent; }
+  a:hover {
+    color: #0088ff; }
+
+</style>
 
 </head>
 <body class="img js-fullheight" style="background-image: url(images/gyeongju.jpg);">
@@ -59,12 +75,19 @@
 									toggle="#password-field"
 									class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
+							<div class="text-center">
+								 <label style="font-size: 14px;">
+								 <input type="checkbox" id="agreecheck" style="width: 13px; height: 13px;" value="agreed">&nbsp;&nbsp;LEGGO의
+								 <a href="">이용약관</a>과&nbsp;
+								 <a href="">개인정보 취급방침</a>을 확인하고 이에 동의합니다.</label>
+							</div>
 							<div class="form-group">
+								<br>
 								<button type="submit"
 									class="form-control btn2 btn2-primary submit px-3">회원가입</button>
 							</div>
 						</form>
-						<br><br><p class="w-100 text-center">&mdash; SNS 계정으로 편하게 가입 &mdash;</p>
+						<br><p class="w-100 text-center" style="font-size: 15px;">&mdash; SNS 계정으로 편하게 가입하기 &mdash;</p>
 						<div class="social d-flex" style="text-align: center;">
 							<a><img src="images/kakao_login.png" width="50px"></a>
 							<a><img src="images/naver_login.png" width="50px" style="border-radius: 5px;"></a>
