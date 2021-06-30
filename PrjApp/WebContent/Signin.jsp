@@ -78,8 +78,8 @@ a {
 							<div class="text-center">
 								 <label style="font-size: 14px;">
 								 <input type="checkbox" id="agreecheck" style="width: 13px; height: 13px;" value="agreed">&nbsp;&nbsp;LEGGO의
-								 <a href="">이용약관</a>과&nbsp;
-								 <a href="">개인정보 취급방침</a>을 확인하고 이에 동의합니다.</label>
+								 <a href="https://www.notion.so/plmaq11/183c288a585046de87feb3c606aaa1b4">이용약관</a>과&nbsp;
+								 <a href="https://www.notion.so/plmaq11/942040484c324c34a3c838623213c271">개인정보 취급방침</a>을 확인하고 이에 동의합니다.</label>
 							</div>
 							<div class="form-group">
 								<br>

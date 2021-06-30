@@ -74,8 +74,8 @@ function send_mail(){
 							</div>
 							<div class="form-group">
 								<input id="password-field" type="password" class="form-control"
-									placeholder="비밀번호" required> <span
-									toggle="#password-field"
+									placeholder="비밀번호" required>
+									<span toggle="#password-field"
 									class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							<div class="form-group">
