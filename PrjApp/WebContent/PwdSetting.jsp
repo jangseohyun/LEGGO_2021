@@ -38,7 +38,8 @@ String cp = request.getContextPath();
 					<li class="breadcrumb-item"><a href="">내 사진</a></li>
 					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
 					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
-					<li class="breadcrumb-item"><a href="">일대일 문의</a></li>
+					<li class="breadcrumb-item"><a
+						href="/PrjApp/QnA.jsp">일대일 문의</a></li>
 				</ol>
 			</nav>
 
@@ -61,7 +62,12 @@ String cp = request.getContextPath();
 									<td><input type="password" class="form-control"></td>
 								</tr>
 								<tr>
-									<td><br><br></td>
+									<td><br></td>
+								</tr>
+								<tr>
+									<td colspan="2">									
+						<p class="text-secondary mb-1 text-center">비밀번호는 영어 대문자와 소문자, 숫자를 포함하여<br>8자 이상 15자 미만으로 입력해주세요.</p><br><br>
+						</td>
 								</tr>
 								<tr>
 									<td colspan="2">

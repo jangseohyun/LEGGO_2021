@@ -2,14 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
 <!--  All snippets are MIT license http://bootdey.com/license -->
-<title>ProfileSetting.jsp</title>
+<title>QnA.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <link
@@ -23,38 +23,6 @@ String cp = request.getContextPath();
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
 </head>
-<script type="text/javascript">
-
-	$(function()
-	{
-		$('textarea.content').keyup(function(){
-			bytesHandler(this);
-		});
-	});
-	
-	function getTextLength(str)
-	{
-		var len = 0;
-	
-		for (var i = 0; i < str.length; i++)
-		{
-			if (escape(str.charAt(i)).length == 6)
-			{
-				len++;
-			}
-			len++;
-		}
-		
-		return len;
-	}
-	
-	function bytesHandler(obj)
-	{
-		var text = $(obj).val();
-		$('p.bytes').text(getTextLength(text));
-	}
-
-</script>
 <body>
 	<div class="container">
 		<div class="main-body">
@@ -70,67 +38,60 @@ String cp = request.getContextPath();
 					<li class="breadcrumb-item"><a href="">내 사진</a></li>
 					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
 					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
-					<li class="breadcrumb-item"><a
-						href="/PrjApp/QnA.jsp">일대일 문의</a></li>
+					<li class="breadcrumb-item">일대일 문의</li>
 				</ol>
 			</nav>
 
-			<!-- 프로필 설정 -->
+			<!-- 일대일 문의 -->
 			<div class="card mb-3">
 				<div class="card-body">
-					<h4 style="display: inline-block; font-weight: bold; padding: 5px;">프로필 설정</h4>
-					<a style="display: inline-block; float: right; color: #a6a6a6; text-decoration: underline; padding: 5px;" href="/PrjApp/Quit.jsp">탈퇴하기</a>
+					<h4 style="display: inline-block; font-weight: bold; padding: 5px;">일대일 문의</h4>	
 					<div class="album py-5 bg-light">
-						<div class="container">
+						<div class="container row justify-content-center">
 							<table>
 								<tr>
-									<th>프로필 사진</th>
-									<td><img id="img__wrap" class="rounded-circle" width="170"
-										onerror=""
-										src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg" />
-										<br> <br> <input type="file" name="userProfile"
-										id="img__preview" /></td>
+									<th>문의 유형</th>
+									<td><select class="form-control" style="width: 170px;">
+											<option>선택</option>
+											<option>회원정보 문의</option>
+											<option>사용 방법 문의</option>
+											<option>서비스 개선 제안</option>
+											<option>시스템 오류 제보</option>
+											<option>불편 신고</option>
+											<option>기타 문의</option>
+										</select></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<th>별명</th>
-									<td><input type="text" class="form-control" ></td>
-								</tr>
-								<tr style="text-align: right;">
-									<td></td>
-									<td class="textlimit"><p class="bytes">0</p>/20</td>
+									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<th>비밀번호</th>
-									<td><input type="password" class="form-control"></td>
+									<th>제목</th>
+									<td><input type="email" class="form-control"></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<th>비밀번호 확인&nbsp;&nbsp;</th>
-									<td><input type="password" class="form-control"></td>
+									<th style="vertical-align: top;">문의 내용&nbsp;&nbsp;</th>
+									<td><textarea class="form-control" style="width: 500px; height: 300px;"></textarea></td>
 								</tr>
 								<tr>
-									<td>&nbsp;</td>
+									<td><br><br></td>
 								</tr>
 								<tr>
-									<th>자기소개
-									</th>
-									<td><textarea class="form-control content" style="width: 300px; height: 100px;"></textarea></td>
-								</tr>
-								<tr style="text-align: right;">
-									<td></td>
-									<td class="textlimit"><p class="bytes">0</p>/500</td>
+									<td colspan="2">
+							<div class="row justify-content-center">
+								<button type="submit" class="btn btn-primary"
+									style="width: 20%; font-family: 'Noto Sans KR', sans-serif;">제출하기</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<button type="submit" class="btn btn-secondary center submit"
+									style="width: 20%; font-family: 'Noto Sans KR', sans-serif;" onclick="location.href='QnA.jsp'">취소하기</button>
+							</div>
+									</td>
 								</tr>
 							</table>
-							<br><br>
-							<div class="row justify-content-center">
-								<button type="submit" class="btn btn-primary center submit "
-									style="width: 45%; font-family: 'Noto Sans KR', sans-serif;">수정</button>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -138,7 +99,7 @@ String cp = request.getContextPath();
 		</div>
 	</div>
 
-<style type="text/css">
+	<style type="text/css">
 body {
 	margin-top: 20px;
 	color: #1a202c;
@@ -202,19 +163,6 @@ body {
 
 .w-90 {
 	width: 90% !important;
-}
-
-.textlimit {
-	width: 65px;
-	vertical-align: bottom;
-	text-align: right;
-	color: #a6a6a6;
-	font-size: 15px;
-	display: inline-block;
-}
-
-.bytes {
-	display: inline-block;
 }
 </style>
 </body>

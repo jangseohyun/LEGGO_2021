@@ -9,7 +9,7 @@ String cp = request.getContextPath();
 <meta charset="utf-8">
 <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
 <!--  All snippets are MIT license http://bootdey.com/license -->
-<title>Profile.jsp</title>
+<title>ProfileTest.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <link
@@ -18,7 +18,7 @@ String cp = request.getContextPath();
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
@@ -30,15 +30,14 @@ String cp = request.getContextPath();
 			<!-- 상단 메뉴 -->
 			<nav aria-label="breadcrumb" class="main-breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item" aria-current="page">마이 페이지</li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내
-							일정</a></li>
+					<li class="breadcrumb-item" aria-current="page"><a
+						href="javascript:void(0)">마이 페이지</a></li>
+					<li class="breadcrumb-item"><a href="">내 일정</a></li>
 					<li class="breadcrumb-item"><a href="">내 여행기</a></li>
 					<li class="breadcrumb-item"><a href="">내 사진</a></li>
 					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
 					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
-					<li class="breadcrumb-item"><a
-						href="/PrjApp/QnA.jsp">일대일 문의</a></li>
+					<li class="breadcrumb-item"><a href="">일대일 문의</a></li>
 				</ol>
 			</nav>
 
@@ -46,52 +45,42 @@ String cp = request.getContextPath();
 				<div class="col-md-4 mb-3">
 
 					<!-- 프로필 -->
-					<div class="profile" style="position: fixed; width: 350px;">
-						<div class="card w-90">
-							<div class="card-body">
-								<br>
-								<div class="d-flex flex-column align-items-center text-center">
-									<img
-										src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
-										alt="Admin" class="rounded-circle" width="150">
-									<div class="mt-3">
-										<h4>Romi</h4>
-										<p class="text-secondary mb-1" style="font-size: 13px;">팔로잉
-											3 | 팔로워 300,000</p>
-										<br>
-										<p class="text-secondary mb-1">대충 자기소개라는 뜻</p>
-										<br>
-										<!-- <button class="btn btn-primary">팔로우</button> -->
-									</div>
+					<div class="card w-90">
+						<div class="card-body">
+							<div class="d-flex flex-column align-items-center text-center">
+								<img src="images/profile_img_sample.jpg" alt="Admin"
+									class="rounded-circle" width="150">
+								<div class="mt-3">
+									<h4>@Mongja</h4>
+									<p class="text-secondary mb-1" style="font-size: 13px;">팔로잉
+										3 | 팔로워 300,000</p>
+									<br>
+									<p class="text-secondary mb-1">대충 자기소개라는 뜻</p>
+									<br>
+									<!-- <button class="btn btn-primary">팔로우</button> -->
 								</div>
 							</div>
 						</div>
+					</div>
 
-						<!-- 프로필 버튼 -->
-						<div class="card mt-3 w-90">
-							<ul class="list-group list-group-flush">
-								<li
-									class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0">
-										<a href="/PrjApp/ProfileSetting.jsp"
-											style="color: black; text-decoration: none;"> &nbsp;<img
-											src="https://image.flaticon.com/icons/png/512/3524/3524752.png"
-											width="24" height="24">&nbsp;&nbsp;&nbsp;프로필 설정
-										</a>
-									</h6>
-								</li>
-								<li
-									class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-									<h6 class="mb-0">
-										<a href="/PrjApp/PwdSetting.jsp"
-											style="color: black; text-decoration: none;"> &nbsp;<img
-											src="https://image.flaticon.com/icons/png/512/1782/1782728.png"
-											width="24" height="24">&nbsp;&nbsp;&nbsp;비밀번호 변경
-										</a>
-									</h6>
-								</li>
-							</ul>
-						</div>
+					<!-- 프로필 버튼 -->
+					<div class="card mt-3 w-90">
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+								<h6 class="mb-0">
+									&nbsp;<img
+										src="https://image.flaticon.com/icons/png/512/3524/3524752.png"
+										width="24" height="24">&nbsp;&nbsp;&nbsp;프로필 설정
+								</h6>
+							</li>
+							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+								<h6 class="mb-0">
+									&nbsp;<img
+										src="https://image.flaticon.com/icons/png/512/1783/1783064.png"
+										height="23">&nbsp;&nbsp;&nbsp;회원 탈퇴
+								</h6>
+							</li>
+						</ul>
 					</div>
 				</div>
 
@@ -99,10 +88,9 @@ String cp = request.getContextPath();
 				<div class="col-md-8">
 					<div class="card mb-3">
 						<div class="card-body">
-							<h4 style="font-weight: bold;">일정</h4>
-							<div class="album py-5 bg-light">
+							<h4>일정</h4>
+							<div class="album py-5 bg-light" >
 								<div class="container">
-
 									<div class="row">
 										<div class="col-md-4">
 											<div class="card mb-4 box-shadow">
@@ -182,7 +170,7 @@ String cp = request.getContextPath();
 					<!-- 여행기 -->
 					<div class="card mb-3">
 						<div class="card-body">
-							<h4 style="font-weight: bold;">여행기</h4>
+							<h4>여행기</h4>
 							<div class="album py-5 bg-light">
 								<div class="container">
 
@@ -265,7 +253,7 @@ String cp = request.getContextPath();
 					<!-- 사진 -->
 					<div class="card mb-3">
 						<div class="card-body">
-							<h4 style="font-weight: bold;">사진</h4>
+							<h4>사진</h4>
 							<div class="album py-5 bg-light">
 								<div class="container">
 
@@ -345,11 +333,8 @@ String cp = request.getContextPath();
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
 
-	<style type="text/css">
+				<style type="text/css">
 body {
 	margin-top: 20px;
 	color: #1a202c;
@@ -415,5 +400,9 @@ body {
 	width: 90% !important;
 }
 </style>
+
+				<script type="text/javascript">
+					
+				</script>
 </body>
 </html>
