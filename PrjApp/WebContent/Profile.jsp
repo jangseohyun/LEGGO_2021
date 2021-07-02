@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <head>
@@ -22,15 +22,19 @@ String cp = request.getContextPath();
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
 <body>
-	<div class="container">
-		<div class="main-body">
 
-			<!-- 상단 메뉴 -->
-			<nav aria-label="breadcrumb" class="main-breadcrumb">
+<!-- 헤더 -->
+<header>
+	<div style="background-color: white;">
+		<c:import url="Header.jsp"></c:import>
+	</div>
+	
+			<nav aria-label="breadcrumb" class="main-breadcrumb"">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item" aria-current="page">마이 페이지</li>
+					<li class="breadcrumb-item" aria-current="page" style="margin-left: 15%;">마이 페이지</li>
 					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내
 							일정</a></li>
 					<li class="breadcrumb-item"><a href="">내 여행기</a></li>
@@ -41,7 +45,10 @@ String cp = request.getContextPath();
 						href="/PrjApp/QnA.jsp">일대일 문의</a></li>
 				</ol>
 			</nav>
+</header>
 
+	<div class="container">
+		<div class="main-body">
 			<div class="row gutters-sm">
 				<div class="col-md-4 mb-3">
 
@@ -413,6 +420,11 @@ body {
 
 .w-90 {
 	width: 90% !important;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
 }
 </style>
 </body>

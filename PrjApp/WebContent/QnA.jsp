@@ -56,6 +56,14 @@ String cp = request.getContextPath();
 </script>
 </head>
 <body>
+
+<!-- 헤더 -->
+<header>
+	<div style="background-color: white;">
+		<c:import url="Header.jsp"></c:import>
+	</div>
+</header>
+
 	<div class="container">
 		<div class="main-body">
 
@@ -140,6 +148,11 @@ body {
 	text-align: left;
 	background-color: #e2e8f0;
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
 }
 
 .main-body {

@@ -51,10 +51,11 @@ function send_mail(){
 </script>
 </head>
 <body class="img js-fullheight" style="background-image: url(images/jeju.png);">
+
+
 <p class="userimg">Romi 님의 사진입니다.&nbsp;&nbsp;&nbsp;</p>
 <div>
-<table id="datatablesSimple">
-</table>
+
 </div>
 <section class="ftco-section">
 		<div class="container">
@@ -101,6 +102,7 @@ function send_mail(){
 						</div>
 					</div>
 				</div>
+			</div>
 			</div>
 		</div>
 	</section>

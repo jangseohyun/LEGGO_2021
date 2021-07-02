@@ -24,6 +24,14 @@ String cp = request.getContextPath();
 	rel="stylesheet">
 </head>
 <body>
+
+<!-- 헤더 -->
+<header>
+	<div style="background-color: white;">
+		<c:import url="Header.jsp"></c:import>
+	</div>
+</header>
+
 	<div class="container">
 		<div class="main-body">
 
@@ -38,7 +46,8 @@ String cp = request.getContextPath();
 					<li class="breadcrumb-item"><a href="">내 사진</a></li>
 					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
 					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
-					<li class="breadcrumb-item"><a href="">일대일 문의</a></li>
+					<li class="breadcrumb-item"><a
+						href="/PrjApp/QnA.jsp">일대일 문의</a></li>
 				</ol>
 			</nav>
 
@@ -61,7 +70,12 @@ String cp = request.getContextPath();
 									<td><input type="password" class="form-control"></td>
 								</tr>
 								<tr>
-									<td><br><br></td>
+									<td><br></td>
+								</tr>
+								<tr>
+									<td colspan="2">									
+						<p class="text-secondary mb-1 text-center">비밀번호는 영어 대문자와 소문자, 숫자를 포함하여<br>8자 이상 15자 미만으로 입력해주세요.</p><br><br>
+						</td>
 								</tr>
 								<tr>
 									<td colspan="2">
@@ -86,6 +100,11 @@ body {
 	text-align: left;
 	background-color: #e2e8f0;
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
 }
 
 .main-body {

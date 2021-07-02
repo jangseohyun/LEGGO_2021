@@ -23,7 +23,47 @@ String cp = request.getContextPath();
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
 </head>
+<script type="text/javascript">
+
+	$(function()
+	{
+		$('textarea.content').keyup(function(){
+			bytesHandler(this);
+		});
+	});
+	
+	function getTextLength(str)
+	{
+		var len = 0;
+	
+		for (var i = 0; i < str.length; i++)
+		{
+			if (escape(str.charAt(i)).length == 6)
+			{
+				len++;
+			}
+			len++;
+		}
+		
+		return len;
+	}
+	
+	function bytesHandler(obj)
+	{
+		var text = $(obj).val();
+		$('p.bytes').text(getTextLength(text));
+	}
+
+</script>
 <body>
+
+<!-- 헤더 -->
+<header>
+	<div style="background-color: white;">
+		<c:import url="Header.jsp"></c:import>
+	</div>
+</header>
+
 	<div class="container">
 		<div class="main-body">
 
@@ -38,7 +78,8 @@ String cp = request.getContextPath();
 					<li class="breadcrumb-item"><a href="">내 사진</a></li>
 					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
 					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
-					<li class="breadcrumb-item"><a href="">일대일 문의</a></li>
+					<li class="breadcrumb-item"><a
+						href="/PrjApp/QnA.jsp">일대일 문의</a></li>
 				</ol>
 			</nav>
 
@@ -65,8 +106,9 @@ String cp = request.getContextPath();
 									<th>별명</th>
 									<td><input type="text" class="form-control" ></td>
 								</tr>
-								<tr>
-									<td>&nbsp;</td>
+								<tr style="text-align: right;">
+									<td></td>
+									<td class="textlimit"><p class="bytes">0</p>/20</td>
 								</tr>
 								<tr>
 									<th>비밀번호</th>
@@ -85,8 +127,11 @@ String cp = request.getContextPath();
 								<tr>
 									<th>자기소개
 									</th>
-									<td><textarea class="form-control" style="width: 300px; height: 100px;"></textarea></td>
-									<td style="width: 65px; vertical-align: bottom; text-align: right;"><p style="color: #a6a6a6; font-size: 15px;">500/500</p></td>
+									<td><textarea class="form-control content" style="width: 300px; height: 100px;"></textarea></td>
+								</tr>
+								<tr style="text-align: right;">
+									<td></td>
+									<td class="textlimit"><p class="bytes">0</p>/500</td>
 								</tr>
 							</table>
 							<br><br>
@@ -102,12 +147,18 @@ String cp = request.getContextPath();
 	</div>
 
 <style type="text/css">
+
 body {
 	margin-top: 20px;
 	color: #1a202c;
 	text-align: left;
 	background-color: #e2e8f0;
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
 }
 
 .main-body {
@@ -165,6 +216,19 @@ body {
 
 .w-90 {
 	width: 90% !important;
+}
+
+.textlimit {
+	width: 65px;
+	vertical-align: bottom;
+	text-align: right;
+	color: #a6a6a6;
+	font-size: 15px;
+	display: inline-block;
+}
+
+.bytes {
+	display: inline-block;
 }
 </style>
 </body>

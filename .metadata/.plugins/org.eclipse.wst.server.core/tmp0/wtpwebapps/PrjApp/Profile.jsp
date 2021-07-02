@@ -22,66 +22,83 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
 <body>
-	<div class="container">
-		<div class="main-body">
 
-			<!-- 상단 메뉴 -->
-			<nav aria-label="breadcrumb" class="main-breadcrumb">
+<!-- 헤더 -->
+<header>
+	<div style="background-color: white;">
+		<c:import url="Header.jsp"></c:import>
+	</div>
+	
+			<nav aria-label="breadcrumb" class="main-breadcrumb"">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item" aria-current="page">마이 페이지</li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내 일정</a></li>
+					<li class="breadcrumb-item" aria-current="page" style="margin-left: 15%;">마이 페이지</li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내
+							일정</a></li>
 					<li class="breadcrumb-item"><a href="">내 여행기</a></li>
 					<li class="breadcrumb-item"><a href="">내 사진</a></li>
 					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
 					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
-					<li class="breadcrumb-item"><a href="">일대일 문의</a></li>
+					<li class="breadcrumb-item"><a
+						href="/PrjApp/QnA.jsp">일대일 문의</a></li>
 				</ol>
 			</nav>
+</header>
 
+	<div class="container">
+		<div class="main-body">
 			<div class="row gutters-sm">
 				<div class="col-md-4 mb-3">
 
 					<!-- 프로필 -->
-					<div class="card w-90">
-						<div class="card-body"><br>
-							<div class="d-flex flex-column align-items-center text-center">
-								<img src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg" alt="Admin"
-									class="rounded-circle" width="150">
-								<div class="mt-3">
-									<h4>Romi</h4>
-									<p class="text-secondary mb-1" style="font-size: 13px;">팔로잉
-										3 | 팔로워 300,000</p>
-									<br>
-									<p class="text-secondary mb-1">대충 자기소개라는 뜻</p>
-									<br>
-									<!-- <button class="btn btn-primary">팔로우</button> -->
+					<div class="profile" style="position: fixed; width: 350px;">
+						<div class="card w-90">
+							<div class="card-body">
+								<br>
+								<div class="d-flex flex-column align-items-center text-center">
+									<img
+										src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
+										alt="Admin" class="rounded-circle" width="150">
+									<div class="mt-3">
+										<h4>Romi</h4>
+										<p class="text-secondary mb-1" style="font-size: 13px;">팔로잉
+											3 | 팔로워 300,000</p>
+										<br>
+										<p class="text-secondary mb-1">대충 자기소개라는 뜻</p>
+										<br>
+										<!-- <button class="btn btn-primary">팔로우</button> -->
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<!-- 프로필 버튼 -->
-					<div class="card mt-3 w-90">
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-								<h6 class="mb-0">
-									<a href="/PrjApp/ProfileSetting.jsp" style="color: black; text-decoration:none;">
-									&nbsp;<img
-										src="https://image.flaticon.com/icons/png/512/3524/3524752.png"
-										width="24" height="24">&nbsp;&nbsp;&nbsp;프로필 설정</a>
-								</h6>
-							</li>
-							<li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-								<h6 class="mb-0">
-									<a href="/PrjApp/PwdSetting.jsp" style="color: black; text-decoration:none;">
-									&nbsp;<img
-										src="https://image.flaticon.com/icons/png/512/1782/1782728.png"
-										width="24" height="24">&nbsp;&nbsp;&nbsp;비밀번호 변경</a>
-								</h6>
-							</li>
-						</ul>
+						<!-- 프로필 버튼 -->
+						<div class="card mt-3 w-90">
+							<ul class="list-group list-group-flush">
+								<li
+									class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0">
+										<a href="/PrjApp/ProfileSetting.jsp"
+											style="color: black; text-decoration: none;"> &nbsp;<img
+											src="https://image.flaticon.com/icons/png/512/3524/3524752.png"
+											width="24" height="24">&nbsp;&nbsp;&nbsp;프로필 설정
+										</a>
+									</h6>
+								</li>
+								<li
+									class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+									<h6 class="mb-0">
+										<a href="/PrjApp/PwdSetting.jsp"
+											style="color: black; text-decoration: none;"> &nbsp;<img
+											src="https://image.flaticon.com/icons/png/512/1782/1782728.png"
+											width="24" height="24">&nbsp;&nbsp;&nbsp;비밀번호 변경
+										</a>
+									</h6>
+								</li>
+							</ul>
+						</div>
 					</div>
 				</div>
 
@@ -335,8 +352,11 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
 
-				<style type="text/css">
+	<style type="text/css">
 body {
 	margin-top: 20px;
 	color: #1a202c;
@@ -401,10 +421,11 @@ body {
 .w-90 {
 	width: 90% !important;
 }
-</style>
 
-				<script type="text/javascript">
-					
-				</script>
+html, body {
+	margin: 0;
+	padding: 0;
+}
+</style>
 </body>
 </html>

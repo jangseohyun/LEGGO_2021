@@ -61,6 +61,11 @@ body
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
 .modal_wrap{
         display: none;
         width: 500px;
