@@ -9,6 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>AdminMemberPlan</title>
+<link rel="stylesheet" href="<%=cp %>/css/bootstrap.min.css">
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="<%=cp %>/js/bootstrap.min.js"></script>
 <style type="text/css">
 
 div.left 

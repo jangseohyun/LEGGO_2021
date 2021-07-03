@@ -12,9 +12,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Member - Leggo Admin</title>
+<title>Survey - Leggo Admin</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script src="http://code.jquery.com/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script type="text/javascript">
+	
+	$(function()
+	{
+		$(".content").click(function()
+		{
+			if( $("#QnA").css('display') == 'none')
+			{
+				$("#QnA").show();
+			}
+			else
+			{
+				 $("#QnA").hide();
+			}
+
+		});
+		
+	});
+	
+</script>
 </head>
 <body class="sb-nav-fixed">
 		<!-- 상단 고정 메뉴 -->
@@ -25,17 +46,13 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <!-- <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div> -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">정보변경</a></li>
+                        <li><a class="dropdown-item" href="AdminChangInfo.jsp" onClick="window.open(this.href, '', 'width=400, height=450'); return false;">정보변경</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">로그아웃</a></li>
                     </ul>
@@ -56,22 +73,22 @@
                             <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="AdminDashboard.jsp">
                                 <div class="sb-nav-link-icon"><img src="images/board.png" height="21px;"></div>대시보드
-                            </a> 
+                            </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><img src="images/member.png" height="23px;"></div>
                                 회원 관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse show" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="AdminMember.jsp">회원 목록</a>
                                     <a class="nav-link" href="AdminInquiry.jsp">일대일문의</a>
-                                    <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
+                                    <a class="nav-link" href="AdminSurvey.jsp" style="background-color: #2E9AFE; color: black;">설문조사 관리</a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="AdminPlan.jsp" style="background-color: #2E9AFE; color: black;">
-                            	<div class="sb-nav-link-icon"><img src="images/date.png" height="21px;"></div>일정 관리
+                            <a class="nav-link" href="AdminPlan.jsp">
+                            	<div class="sb-nav-link-icon"><img src="images/calender.png" height="21px;"></div>일정 관리
                             </a>
                             <a class="nav-link" href="AdminTrip.jsp">
                             	<div class="sb-nav-link-icon"><img src="images/paper.png" height="23px;"></div>여행기 관리
@@ -106,62 +123,70 @@
                 </nav>
             </div>
             
+            
             <!-- 메인페이지 -->
             <div id="layoutSidenav_content">
                 <main>
-                     <div class="container-fluid px-4">
-                     	<h1 class="mt-4">일정 관리</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Plan</li>
-                        </ol>
+	                 
+	                 <div class="container-fluid px-4">
+	                     	<h1 class="mt-4">설문조사 관리</h1>
+	                        <ol class="breadcrumb mb-4">
+	                            <li class="breadcrumb-item active">Survey</li>
+	                        </ol>
+	                 </div>
+	                    
+	                 <br>
+	                 
+	                 <div style="padding: 0px 0px 0px 93%; text-align: left;">
+                  	 	<button type="button" style="background-color: #e9eae5; height: 26pt; border: 1px;">설문지 등록</button>
                      </div>
-                     <br>
-                     <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                일정 게시판 데이터
-                            </div>
-                            <div class="card-body">
-                            	<table id="datatablesSimple"">
-                                    <thead>
-                                    	<tr>
-                                    		<th>번호</th>
-                                            <th>제목</th>
-                                            <th>작성자</th>
-                                            <th>작성일</th>
-                                            <th>조회수</th>
-                                            <th>상태</th>
-                                            <th>관리</th>
-                                    	</tr>
-                                    </thead>
-                                    <tbody>
-                                    	<tr>
-                                    		<td>11</td>
-                                            <td>제주와의 한달</td>
-                                            <td>프로 제주살이</td>
-                                            <td>2021-06-28</td>
-                                            <td>163</td>
-                                            <td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #198754; color: white;">정상</button></td>
-                                            <td>
-                                            	<a href="AdminMemberPlan.jsp" onClick="window.open(this.href, '', 'width=400, height=450'); return false;">
-                                            		<img src="images/menu.png" height="18px;">
-                                            	</a>
-                                            </td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>10</td>
-                                            <td>액티비티의 단양!</td>
-                                            <td>단양마늘JMT</td>
-                                            <td>2021-04-28</td>
-                                            <td>91</td>
-                                            <td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;">블라인드</button></td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	
-                                    </tbody>
-                                 </table>
-                            </div>
-                     </div>
+	                 <br>
+	                 <div class="card mb-4">
+	                 	<div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            설문조사 데이터
+                        </div>
+	                 	
+	                 	<div class="card-body">
+                        	<table class="table table-striped">
+                                	<tr class="content">
+                             		<td>1</td>
+                                     <td>여행선호도 설문조사</td>
+                                     <td>관리자1</td>
+                                     <td>2021-02-01</td>
+                                	</tr>
+                                	
+                                	<tr id="QnA" style="display: none;" >
+                                		<td colspan="4">
+                                			<table class="table">
+                                				<tr>
+                                					<td>질문 1. 선호하는 여행지는?</td>
+                                					<td>도시 산 바다 유적</td>
+                                				</tr>
+                                				<tr>
+                                					<td>질문 2. 여행에서 중요하게 생각하는 것은?</td>
+                                					<td>맛집 쇼핑 힐링 액티비티</td>
+                                				</tr>
+                                				<tr>
+                                					<td>질문 3. 여행은 주로 누구와 함께?</td>
+                                					<td>혼자 친구 가족</td>
+                                				</tr>
+                                				<tr>
+                                					<td colspan="4">
+															<button type="submit" class="btn btn-success btn-sm" style="background-color: #2E9AFE; border: 1px;">수정</button>
+			                                		</td>
+                                				</tr>
+                                			</table>
+                                		</td>
+                          			</tr>
+                          			
+                             </table>
+                             
+                             
+                        </div>
+	                 	
+	                 </div>
+	                    
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
@@ -177,12 +202,14 @@
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> -->
+        <!-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
+
 </body>
 </html>

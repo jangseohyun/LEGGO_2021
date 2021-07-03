@@ -18,28 +18,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 <script type="text/javascript">
 	
-	var mychart = $("#bar-chart");
-	var myBarChart = new Chart(mychart, {
-	
-		type: 'bar',
-		data: {
-			
-			lables:[
-				'월', '화', '수', '목', '금', '토', '일'
-			],
-			datasets: [
-				
-				{
-					label:'7월 첫째주',
-					data: [101, 123, 157, 151, 131, 128, 162],
-					backgroundColor: [ 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)', 'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)' ], 
-					borderColor: [ 'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)' ]
-					, borderWidth: 1
-
-				}
-			]
-		}
-	});
 	
 </script>
 </head>
@@ -58,7 +36,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">정보변경</a></li>
+                        <li><a class="dropdown-item" href="AdminChangInfo.jsp" onClick="window.open(this.href, '', 'width=400, height=450'); return false;">정보변경</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">로그아웃</a></li>
                     </ul>
@@ -90,7 +68,7 @@
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="AdminMember.jsp">회원 목록</a>
                                     <a class="nav-link" href="AdminInquiry.jsp">일대일문의</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">설문조사 관리</a>
+                                    <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="AdminPlan.jsp">
@@ -212,10 +190,7 @@
                                         <i class="fas fa-chart-area me-1"></i>
                                         접속자 통계
                                     </div>
-                                    <div class="card-body"><%-- <canvas id="myAreaChart" width="100%" height="40"></canvas> --%>
-                                    	<canvas id="bar-chart">
-                                    	</canvas>
-                                    </div>
+                                    <div class="card-body"><canvas id="#bar-chart" width="100%" height="40"></canvas></div>
                                 </div>
                             </div>
                             <div class="col-xl-6">
@@ -320,6 +295,7 @@
                 </footer>
             </div>
         </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
         <script src="js/scripts.js"></script>
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> -->
