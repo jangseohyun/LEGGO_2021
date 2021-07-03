@@ -29,7 +29,7 @@
 <body>
 
 	<header class="site-navbar js-sticky-header site-navbar-target"
-		role="banner">
+		role="banner"  style="font-size: 16px;">
 
 		<div class="container">
 			<div class="row align-items-center position-relative">
@@ -59,15 +59,12 @@
 									<li><a href="#">사진</a></li>
 								</ul></li>
 
-							<li><div class="input-group mb-3">
+							<li style="vertical-align: middle;"><div class="input-group mb-3">
 									<input type="text" class="form-control" placeholder="통합검색"
 										aria-label="searchTotal" aria-describedby="button-addon2"
 										style="width: 150px;">
-									<button class="btn btn-secondary" type="button"
+									<button class="btn btn-secondary glyphicon glyphicon-search" type="button"
 										id="button-addon2">
-										<img
-											src="https://lh3.googleusercontent.com/proxy/DZo1DZAL1_6j12r-7KNjQgdDsNS7PV7IXbsHLxUvSI9MLg7K8ctXV4psmCkfY2vg2p78lHisHbbAJz2pEmA8_GcFdhyV3BuWTSw2fWhHBWRT2TbP9xa5kMrrU3ATpVtaOJEhoqHuXgNGCQ"
-											width="18px">
 									</button>
 								</div></li>
 							<li class="has-children"><a href="#"> <img

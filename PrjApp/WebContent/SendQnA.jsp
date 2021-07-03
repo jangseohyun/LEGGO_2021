@@ -38,14 +38,12 @@
 			<!-- 상단 메뉴 -->
 			<nav aria-label="breadcrumb" class="main-breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item" aria-current="page"><a
-						href="/PrjApp/Profile.jsp">마이 페이지</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내
-							일정</a></li>
-					<li class="breadcrumb-item"><a href="">내 여행기</a></li>
-					<li class="breadcrumb-item"><a href="">내 사진</a></li>
-					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
-					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/Profile.jsp">마이 페이지</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내 일정</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyTrip.jsp">내 여행기</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyPhoto.jsp">내 사진</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyComment.jsp">내 댓글</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyScrap.jsp">스크랩북</a></li>
 					<li class="breadcrumb-item">일대일 문의</li>
 				</ol>
 			</nav>

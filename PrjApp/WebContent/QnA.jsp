@@ -23,7 +23,6 @@ String cp = request.getContextPath();
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
 <script type="text/javascript">
-
 	$(function()
 	{
 		$('.contents tr').hide();
@@ -32,37 +31,36 @@ String cp = request.getContextPath();
 		{
 			$('.contents tr').hide();
 			$('.contents').find('.title').parent().show();
-			
+
 			var tr = $('.contents tr');
 			var rindex = $(this).parent().children().index(this);
-			
+
 			$(this).children().css('color', '#2E9AFE');
-			
+
 			for (var i = rindex; i < rindex + 2; i++)
 			{
 				$(tr[i]).show();
-				$(tr[rindex+1]).css('background-color', '#fff');
+				$(tr[rindex + 1]).css('background-color', '#fff');
 			}
-			
+
 			$(tr[rindex]).click(function()
 			{
 				$(this).children().css('color', '#000');
-				$(tr[rindex+1]).hide();
+				$(tr[rindex + 1]).hide();
 			});
 		});
-		
+
 	});
-	
 </script>
 </head>
 <body>
 
-<!-- 헤더 -->
-<header>
-	<div style="background-color: white;">
-		<c:import url="Header.jsp"></c:import>
-	</div>
-</header>
+	<!-- 헤더 -->
+	<header>
+		<div style="background-color: white;">
+			<c:import url="Header.jsp"></c:import>
+		</div>
+	</header>
 
 	<div class="container">
 		<div class="main-body">
@@ -70,14 +68,17 @@ String cp = request.getContextPath();
 			<!-- 상단 메뉴 -->
 			<nav aria-label="breadcrumb" class="main-breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item" aria-current="page"><a
-						href="/PrjApp/Profile.jsp">마이 페이지</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/Profile.jsp">마이
+							페이지</a></li>
 					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내
 							일정</a></li>
-					<li class="breadcrumb-item"><a href="">내 여행기</a></li>
-					<li class="breadcrumb-item"><a href="">내 사진</a></li>
-					<li class="breadcrumb-item"><a href="">내 댓글</a></li>
-					<li class="breadcrumb-item"><a href="">스크랩북</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyTrip.jsp">내
+							여행기</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyPhoto.jsp">내
+							사진</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyComment.jsp">내
+							댓글</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/MyScrap.jsp">스크랩북</a></li>
 					<li class="breadcrumb-item">일대일 문의</li>
 				</ol>
 			</nav>
@@ -88,49 +89,54 @@ String cp = request.getContextPath();
 					<h4 style="display: inline-block; font-weight: bold; padding: 5px;">일대일
 						문의 목록</h4>
 					<div class="album py-5 bg-light">
-							<div class="row justify-content-center">
-								<button type="submit" class="btn btn-primary submit "
-									style="width: 20%; font-family: 'Noto Sans KR', sans-serif;" onClick="location.href='SendQnA.jsp'">문의하기</button>
-							</div><br><br>
+						<div class="row justify-content-center">
+							<button type="submit" class="btn btn-primary submit "
+								style="width: 20%; font-family: 'Noto Sans KR', sans-serif;"
+								onClick="location.href='SendQnA.jsp'">문의하기</button>
+						</div>
+						<br>
+						<br>
 						<div class="container row justify-content-center"
 							style="margin: auto; width: 90%;">
-							<table class="table table-hover contents" style="text-align: center; table-layout: fixed;">
+							<table class="table table-hover contents"
+								style="table-layout: fixed;">
 								<tr style="background-color: white;">
-									<th class="title" style="width: 150px;">번호</th>
-									<th style="width: 200px;">문의 유형</th>
-									<th>제목</th>
-									<th style="width: 150px;">문의 일시</th>
-									<th style="width: 150px;">처리 상태</th>
+									<th class="title" style="width: 50px;">번호</th>
+									<th style="width: 150px;">문의 유형</th>
+									<th style="width: 350px;">제목</th>
+									<th style="width: 80px;">문의 일시</th>
+									<th style="width: 80px;">처리 상태</th>
 								</tr>
 								<tr>
-									<td class="title" >2</td>
+									<td class="title">2</td>
 									<td>기타 문의</td>
 									<td class="title_select">그냥 심심해서 문의해봤어요</td>
 									<td>2021-07-01</td>
 									<td><span class="badge badge-secondary"
-										style="font-size: 15px;">미완료</span></td>
+										style="font-size: 12px;">미완료</span></td>
 								</tr>
 								<tr style="display: none;">
-									<td class="conts" ></td>
+									<td class="conts"></td>
 									<td colspan="3" style="text-align: left;"><b>문의 내용</b><br>
 										다시 생각해보니 제가 말이 심했던 것 같아 사과드립니다. 사이 좋게 지내요~~!<br>
 									<td></td>
 								</tr>
 								<tr>
-									<td class="title" >1</td>
+									<td class="title">1</td>
 									<td>시스템 오류 제보</td>
-									<td class="title_select" >이거 사이트가 만들어지다 말았는데요?</td>
+									<td class="title_select">이거 사이트가 만들어지다 말았는데요?</td>
 									<td>2021-06-28</td>
 									<td><span class="badge badge-success"
-										style="font-size: 15px;">답변완료</span></td>
+										style="font-size: 12px;">답변완료</span></td>
+
 								</tr>
 								<tr style="display: none;">
-									<td class="conts" ></td>
+									<td class="conts"></td>
 									<td colspan="3" style="text-align: left;"><b>문의 내용</b><br>
-										저기요 이거 사이트를 이용하라는 건가요 말라는 건가요? 어스토리도 아니고 사이트를 이렇게 얼레벌레
-										만드시면 어떡해요 빠른 코딩 부탁드립니다<br><br>
-										<b>답변 내용</b><br>
-										안녕하십니까 고객님. 저희 LEGGO를 이용하시는 데에 불편함을 끼쳐드려 죄송합니다. 근데 듣자듣자하니까 야 너 몇살이야 너 코딩 잘해?!</td>
+										저기요 이거 사이트를 이용하라는 건가요 말라는 건가요? 어스토리도 아니고 사이트를 이렇게 얼레벌레 만드시면
+										어떡해요 빠른 코딩 부탁드립니다<br>
+									<br> <b>답변 내용</b><br> 안녕하십니까 고객님. 저희 LEGGO를 이용하시는 데에
+										불편함을 끼쳐드려 죄송합니다. 근데 듣자듣자하니까 야 너 몇살이야 너 코딩 잘해?!</td>
 									<td></td>
 								</tr>
 							</table>
@@ -148,6 +154,14 @@ body {
 	text-align: left;
 	background-color: #e2e8f0;
 	font-family: 'Noto Sans KR', sans-serif;
+}
+
+table {
+	text-align: center;
+}
+
+table th {
+	text-align: center;
 }
 
 html, body {

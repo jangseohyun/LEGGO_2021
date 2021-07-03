@@ -2,14 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
 <!--  All snippets are MIT license http://bootdey.com/license -->
-<title>ProfileSetting.jsp</title>
+<title>Follower.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <link
@@ -22,6 +22,7 @@ String cp = request.getContextPath();
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap-theme.css">
 </head>
 <body>
 
@@ -34,9 +35,7 @@ String cp = request.getContextPath();
 
 	<div class="container">
 		<div class="main-body">
-
-			<!-- 상단 메뉴 -->
-			<nav aria-label="breadcrumb" class="main-breadcrumb">
+		<nav aria-label="breadcrumb" class="main-breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="/PrjApp/Profile.jsp">마이 페이지</a></li>
 					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내 일정</a></li>
@@ -47,42 +46,47 @@ String cp = request.getContextPath();
 					<li class="breadcrumb-item"><a href="/PrjApp/QnA.jsp">일대일 문의</a></li>
 				</ol>
 			</nav>
+			<div class="row gutters-sm">
+				<div class="col-md-4 mb-3">
 
-			<!-- 비밀번호 변경 -->
-			<div class="card mb-3">
-				<div class="card-body">
-					<h4 style="display: inline-block; font-weight: bold; padding: 5px;">비밀번호 변경</h4>	
-					<div class="album py-5 bg-light">
-						<div class="container row justify-content-center">
-							<table>
-								<tr>
-									<th>새 비밀번호</th>
-									<td><input type="password" class="form-control"></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<th>비밀번호 확인&nbsp;&nbsp;</th>
-									<td><input type="password" class="form-control"></td>
-								</tr>
-								<tr>
-									<td><br></td>
-								</tr>
-								<tr>
-									<td colspan="2">									
-						<p class="text-secondary mb-1 text-center">비밀번호는 영어 대문자와 소문자, 숫자를 포함하여<br>8자 이상 15자 미만으로 입력해주세요.</p><br><br>
-						</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div class="row justify-content-center">
-											<button type="submit" class="btn btn-primary submit "
-												style="width: 60%; font-family: 'Noto Sans KR', sans-serif;">수정</button>
-										</div>
-									</td>
-								</tr>
-							</table>
+					<!-- 프로필 -->
+					<div class="profile" style="position: fixed; width: 350px;">
+						<div class="card w-90">
+							<div class="card-body">
+								<br>
+								<div class="d-flex flex-column align-items-center text-center">
+									<img
+										src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
+										alt="Admin" class="rounded-circle" width="150">
+									<div class="mt-3">
+										<h4>Romi</h4>
+										<p class="text-secondary mb-1" style="font-size: 13px;">팔로잉
+											3 | 팔로워 300,000</p>
+										<br>
+										<p class="text-secondary mb-1" style="font-size: 15px;">대충 자기소개라는 뜻</p>
+										<br>
+										<!-- <button class="btn btn-primary">팔로우</button> -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- 팔로워 -->
+				<div class="col-md-8">
+					<div class="card mb-3">
+						<div class="card-body">
+							<h4>팔로워</h4>
+							<div class="album py-5 bg-light">
+							<div style="padding-left: 3%;">
+									<img style="display: inline-block;"
+									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
+									alt="Admin" class="rounded-circle" width="45px" height="45px">
+									<h4 style="font-size: 22px; display: inline-block;">EunJ</h4>
+							</div>	
+									
+							</div>
 						</div>
 					</div>
 				</div>
@@ -90,18 +94,15 @@ String cp = request.getContextPath();
 		</div>
 	</div>
 
-	<style type="text/css">
+
+<style type="text/css">
+
 body {
 	margin-top: 20px;
 	color: #1a202c;
 	text-align: left;
 	background-color: #e2e8f0;
 	font-family: 'Noto Sans KR', sans-serif;
-}
-
-html, body {
-	margin: 0;
-	padding: 0;
 }
 
 .main-body {
@@ -160,6 +161,17 @@ html, body {
 .w-90 {
 	width: 90% !important;
 }
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+h3, h4 {
+	font-weight: bold;
+	margin-left: 1%;
+}
+
 </style>
 </body>
 </html>
