@@ -14,14 +14,15 @@
 <meta name="author" content="" />
 <title>Member - Leggo Admin</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 </head>
 <body class="sb-nav-fixed">
+		<!-- 상단 고정 메뉴 -->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="AdminDashboard.jsp"><img src="images/leggo.png" width="130px;"></a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                 <!-- <div class="input-group">
@@ -41,12 +42,13 @@
                 </li>
             </ul>
         </nav>
+        <!-- 좌측 메뉴 -->
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                        	<a class="nav-link" href="" style="font-size: 8pt;">
+                        	<a class="nav-link" href="https://www.naver.com" target="_blank" style="font-size: 8pt;">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 사용자 페이지 열기 >>
@@ -55,16 +57,15 @@
                             <a class="nav-link" href="AdminDashboard.jsp">
                                 <div class="sb-nav-link-icon"><img src="images/board.png" height="21px;"></div>대시보드
                             </a>
-                            
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><img src="images/member.png" height="23px;"></div>
                                 회원 관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse show" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="memberlist.action">회원 목록</a>
+                                    <a class="nav-link" href="memberlist.action" style="background-color: #2E9AFE; color: black;">회원 목록</a>
                                     <a class="nav-link" href="AdminInquiry.jsp">일대일문의</a>
                                     <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
                                 </nav>
@@ -81,8 +82,8 @@
                             <a class="nav-link" href="AdminComment.jsp">
                             	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
                             </a>
-                            <a class="nav-link" href="AdminReport.jsp" style="background-color: #2E9AFE; color: black;">
-                            	<div class="sb-nav-link-icon"><img src="images/reports.png" height="23px;"></div>신고관리
+                            <a class="nav-link" href="AdminReport.jsp">
+                            	<div class="sb-nav-link-icon"><img src="images/report.png" height="23px;"></div>신고관리
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><img src="images/chart.png" height="23px;"></div>
@@ -104,121 +105,55 @@
                     </div>
                 </nav>
             </div>
+            
+            <!-- 메인페이지 -->
             <div id="layoutSidenav_content">
                 <main>
                      <div class="container-fluid px-4">
-                     	<h1 class="mt-4">신고 관리</h1>
+                     	<h1 class="mt-4">회원 관리</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Comment</li>
+                            <li class="breadcrumb-item active">Member</li>
                         </ol>
+                     </div>
+	                 <br>
+	                 <div style="padding: 0px 0px 0px 94%; text-align: left;">
+                  	 	<button type="button" style="background-color: #e9eae5; height: 26pt; border: 1px;">계정 등록</button>
                      </div>
                      <br>
                      <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                신고 데이터
+                                회원 데이터
                             </div>
                             <div class="card-body">
                             	<table id="datatablesSimple"">
                                     <thead>
                                     	<tr>
                                     		<th>번호</th>
-                                            <th>카테고리</th>
-                                            <th>신고사유</th>
-                                            <th>신고자</th>
-                                            <th>신고일</th>
-                                            <th>상태</th>
+                                            <th>아이디</th>
+                                            <th>닉네임</th>
+                                            <th>가입일</th>
+                                            <th>회원상태</th>
+                                            <th>계정등급</th>
+                                            <th>관리</th>
                                     	</tr>
                                     </thead>
                                     <tbody>
-                                    	<tr onClick="window.open('AdminMemberReport.jsp', '', 'width=570, height=260'); return false;">
-                                    		<td>11</td>
-                                            <td>[일정]</td>
-                                            <td>부적절</td>
-                                            <td>프로 제주살이</td>
-                                            <td>2021-06-28</td>
-                                            <td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button></td>
-                                    	</tr>
+                                    	<c:forEach var="member" items="${list}">
                                     	<tr>
-                                    		<td>10</td>
-                                            <td>[여행기]</td>
-                                            <td>욕설</td>
-                                            <td>단양마늘JMT</td>
-                                            <td>2021-06-28</td>
-                                            <td><button type="button" disabled="disabled" style="background: red; color: white; width: 50pt; border: 1px;">반려</button></td>
+                                    		<td>${member.num }</td>
+                                            <td>${member.mem_id }</td>
+                                            <td>${member.mem_nnm }</td>
+                                            <td>${member.mem_join_dt }</td>
+                                            <td>${member.acct_st }</td>
+                                            <td>${member.admin_cd!=null ? "관리자" : "사용자"  }</td>
+                                            <td>
+                                            	<a href="memberprofile.action?mem_id=${member.mem_cd }" onClick="window.open(this.href, '', 'width=400, height=450'); return false;">
+                                            		<img src="images/menu.png" height="18px;">
+                                            	</a>
+                                            </td>
                                     	</tr>
-                                    	<tr>
-                                    		<td>9</td>
-                                            <td>[사진]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>8</td>
-                                            <td>[여행기]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>7</td>
-                                            <td>[일정]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: red; color: white; width: 50pt; border: 1px;">반려</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>6</td>
-                                            <td>[여행기]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>5</td>
-                                            <td>[사진]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>4</td>
-                                            <td>[댓글]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>3</td>
-                                            <td>[댓글]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>2</td>
-                                            <td>[일정]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: red; color: white; width: 50pt; border: 1px;">반려</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>1</td>
-                                            <td>[여행기]</td>
-                                            <td>어쩌고</td>
-                                            <td>신고자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
+                                    	</c:forEach>
                                     </tbody>
                                  </table>
                             </div>

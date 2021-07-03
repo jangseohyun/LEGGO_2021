@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.leggo.mybatis.IMemberDAO">
+
+	<select id="list" resultType="com.leggo.mybatis.MemberDTO">
+		SELECT MEM_CD, ACCT_ST, MEM_DT_CD, MEM_ID, MEM_NNM, MEM_JOIN_DT, ADMIN_CD, QT_MEM_QUIT_DT, SUBSTR(MEM_CD, 4) AS NUM
+		FROM MEMBERVIEW
+		ORDER BY MEM_CD DESC
+	</select>
+	
+</mapper>

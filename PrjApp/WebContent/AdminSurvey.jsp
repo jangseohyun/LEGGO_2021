@@ -82,7 +82,7 @@
                             </a>
                             <div class="collapse show" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link" href="AdminMember.jsp">회원 목록</a>
+                                    <a class="nav-link" href="memberlist.action">회원 목록</a>
                                     <a class="nav-link" href="AdminInquiry.jsp">일대일문의</a>
                                     <a class="nav-link" href="AdminSurvey.jsp" style="background-color: #2E9AFE; color: black;">설문조사 관리</a>
                                 </nav>
@@ -138,7 +138,7 @@
 	                 <br>
 	                 
 	                 <div style="padding: 0px 0px 0px 93%; text-align: left;">
-                  	 	<button type="button" style="background-color: #e9eae5; height: 26pt; border: 1px;">설문지 등록</button>
+                  	 	<button type="button" onClick="window.open('AdminSurveyAdd.jsp', '', 'width=400, height=450'); return false;" style="background-color: #e9eae5; height: 26pt; border: 1px;">설문지 등록</button>
                      </div>
 	                 <br>
 	                 <div class="card mb-4">
