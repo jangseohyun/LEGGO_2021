@@ -34,6 +34,20 @@
 			<c:import url="ComHeader.jsp"></c:import>
 	</div>
 </header>
+
+	<div class="container">
+		<div class="main-body">
+			<!-- 상단 메뉴 -->
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/PrjApp/MainHome.jsp">커뮤니티 홈</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/ComTripFeed.jsp">여행기</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/ComPlanFeed.jsp">일정 구경</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/ComPhotoFeed.jsp">사진</a></li>
+				</ol>
+			</nav>
+		</div>
+	</div>
 	
 
 

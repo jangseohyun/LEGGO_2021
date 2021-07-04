@@ -34,6 +34,20 @@
 			<c:import url="ComHeader.jsp"></c:import>
 	</div>
 </header>
+
+	<div class="container">
+		<div class="main-body">
+			<!-- 상단 메뉴 -->
+			<nav>
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a href="/PrjApp/MainHome.jsp">커뮤니티 홈</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/ComTripFeed.jsp">여행기</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/ComPlanFeed.jsp">일정 구경</a></li>
+					<li class="breadcrumb-item"><a href="/PrjApp/ComPhotoFeed.jsp">사진</a></li>
+				</ol>
+			</nav>
+		</div>
+	</div>
 	
 	<!-- Page content-->
     <div class="container mt-5">
@@ -52,7 +66,7 @@
                         <!-- Post categories-->
                         <a class="badge bg-secondary text-decoration-none link-light" href="#!">스크랩</a>
                         <a class="badge bg-secondary text-decoration-none link-light" href="#!">팔로우</a>
-                        <p>맛집 | 제주도 | 2박3일 | 4인 | 1,800,000원</p>
+                        <p style="background-color: #DCDCDC">맛집 | 제주도 | 2박3일 | 4인 | 1,800,000원</p>
                     </header>
                     <!-- Preview image figure-->
                     <!-- <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure> -->
@@ -99,7 +113,7 @@
             <!-- Side widgets-->
             <div class="col-lg-4">
                 <!-- Search widget-->
-                <div class="card mb-4">
+                <!-- <div class="card mb-4">
                     <div class="card-header">Search</div>
                     <div class="card-body">
                         <div class="input-group">
@@ -107,7 +121,7 @@
                             <button class="btn btn-primary" id="button-search" type="button">Go!</button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Categories widget-->
                 <div class="card mb-4">
                     <div class="card-header">Categories</div>
