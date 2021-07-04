@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminMemberPlan</title>
+<title>AdminMemberPhoto.jsp</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp %>/js/bootstrap.min.js"></script>
@@ -102,7 +102,7 @@ ul.tabs li.current{
 		<div class="panel-default">
 		
 			<div class="panel-heading" id="title">
-				일정 상세
+				사진 게시물 상세
 			</div>
 			
 		<br>
@@ -115,8 +115,8 @@ ul.tabs li.current{
 				<th style="text-align: center;">블라인드</th>
 			</tr>
 			<tr>
-				<td style="text-align: left;">액티비티의 단양!</td>
-				<td style="text-align: center;">단양마늘JMT</td>
+				<td style="text-align: left;">프로 제주살이의 사진 게시물</td>
+				<td style="text-align: center;">프로 제주살이</td>
 				<td style="text-align: center;">2021-04-28</td>
 				<td style="text-align: center;">공개</td>
 				<td style="text-align: center;"><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">블라인드</button></td>
@@ -147,12 +147,6 @@ ul.tabs li.current{
 				<tr>
 					<td>2</td>
 					<td>2021-05-22</td>
-					<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">반려</button></td>
-					<td>관리자2</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>2021-05-02</td>
 					<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">반려</button></td>
 					<td>관리자2</td>
 				</tr>

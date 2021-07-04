@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminMemberPlan</title>
+<title>AdminMemberTrip</title>
 <link rel="stylesheet" href="<%=cp %>/css/bootstrap.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp %>/js/bootstrap.min.js"></script>
@@ -102,7 +102,7 @@ ul.tabs li.current{
 		<div class="panel-default">
 		
 			<div class="panel-heading" id="title">
-				일정 상세
+				여행기 상세
 			</div>
 			
 		<br>
@@ -147,12 +147,6 @@ ul.tabs li.current{
 				<tr>
 					<td>2</td>
 					<td>2021-05-22</td>
-					<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">반려</button></td>
-					<td>관리자2</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>2021-05-02</td>
 					<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">반려</button></td>
 					<td>관리자2</td>
 				</tr>

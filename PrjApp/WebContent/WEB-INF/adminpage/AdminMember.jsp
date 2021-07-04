@@ -25,17 +25,13 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <!-- <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div> -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">정보변경</a></li>
+                        <li><a class="dropdown-item" href="AdminChange.jsp" onClick="window.open(this.href, '', 'width=400, height=310'); return false;">정보변경</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">로그아웃</a></li>
                     </ul>
@@ -142,13 +138,13 @@
                                     	<c:forEach var="member" items="${list}">
                                     	<tr>
                                     		<td>${member.num }</td>
-                                            <td>${member.mem_id }</td>
-                                            <td>${member.mem_nnm }</td>
-                                            <td>${member.mem_join_dt }</td>
+                                            <td>${member.mem_id!=null ? member.mem_id  : "-" }</td>
+                                            <td>${member.mem_nnm!=null ? member.mem_nnm : "-" }</td>
+                                            <td>${member.mem_join_dt!=null ? member.mem_join_dt : "-" }</td>
                                             <td>${member.acct_st }</td>
                                             <td>${member.admin_cd!=null ? "관리자" : "사용자"  }</td>
                                             <td>
-                                            	<a href="memberprofile.action?mem_id=${member.mem_cd }" onClick="window.open(this.href, '', 'width=400, height=450'); return false;">
+                                            	<a href="memberprofile.action?mem_cd=${member.mem_cd }" onClick="window.open(this.href, '', 'width=400, height=640'); return false;">
                                             		<img src="images/menu.png" height="18px;">
                                             	</a>
                                             </td>

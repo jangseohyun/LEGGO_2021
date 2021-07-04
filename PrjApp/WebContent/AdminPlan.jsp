@@ -25,17 +25,13 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <!-- <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div> -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">정보변경</a></li>
+                        <li><a class="dropdown-item" href="AdminChange.jsp" onClick="window.open(this.href, '', 'width=400, height=310'); return false;">정보변경</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">로그아웃</a></li>
                     </ul>
@@ -122,7 +118,7 @@
                                 일정 게시판 데이터
                             </div>
                             <div class="card-body">
-                            	<table id="datatablesSimple"">
+                            	<table id="datatablesSimple">
                                     <thead>
                                     	<tr>
                                     		<th>번호</th>
@@ -143,7 +139,7 @@
                                             <td>163</td>
                                             <td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #198754; color: white;">정상</button></td>
                                             <td>
-                                            	<a href="AdminMemberPlan.jsp" onClick="window.open(this.href, '', 'width=400, height=450'); return false;">
+                                            	<a href="AdminMemberPlan.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
                                             		<img src="images/menu.png" height="18px;">
                                             	</a>
                                             </td>

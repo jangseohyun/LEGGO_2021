@@ -25,17 +25,13 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <!-- <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div> -->
             </form>
             <!-- Navbar-->
             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">정보변경</a></li>
+                        <li><a class="dropdown-item" href="AdminChange.jsp" onClick="window.open(this.href, '', 'width=400, height=310'); return false;">정보변경</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">로그아웃</a></li>
                     </ul>
@@ -130,6 +126,7 @@
                                             <th>작성자</th>
                                             <th>작성일</th>
                                             <th>조회수</th>
+                                            <th>상태</th>
                                             <th>관리</th>
                                     	</tr>
                                     </thead>
@@ -140,7 +137,12 @@
                                             <td>프로 제주살이</td>
                                             <td>2021-06-28</td>
                                             <td>163</td>
-                                            <td>관리</td>
+                                            <td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #198754; color: white;">정상</button></td>
+                                            <td>
+                                            	<a href="AdminMemberTrip.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
+                                            		<img src="images/menu.png" height="18px;">
+                                            	</a>
+                                            </td>
                                     	</tr>
                                     	<tr>
                                     		<td>10</td>
@@ -148,78 +150,7 @@
                                             <td>단양마늘JMT</td>
                                             <td>2021-06-28</td>
                                             <td>91</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>9</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td>263</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>8</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td>223</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>7</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td>168</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>6</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td>215</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>5</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td>333</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>4</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td>53</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>3</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td>197</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>2</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-26</td>
-                                            <td>363</td>
-                                            <td>관리</td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>1</td>
-                                            <td>제목 어쩌구</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-26</td>
-                                            <td>463</td>
+                                            <td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;">블라인드</button></td>
                                             <td>관리</td>
                                     	</tr>
                                     </tbody>
