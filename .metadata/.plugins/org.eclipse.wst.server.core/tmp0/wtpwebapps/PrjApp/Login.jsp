@@ -34,11 +34,6 @@
 
 </style>
 
-<!-- 카카오 로그인 API -->
-<script src="https://developers.kakao.com/sdk/js/kakao.min.js">
-	Kakao.init("a76949096713e82c75fa45bdb32ebb4c");
-</script>
-
 <!-- 구글 로그인 API -->
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="447693494839-5d859g9t2hvpdupbar05mii8a0c4ag1j.apps.googleusercontent.com">
@@ -96,9 +91,7 @@ function send_mail(){
 						</form>
 						<br><p class="w-100 text-center" style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px;">&mdash; SNS 계정으로 편하게 로그인하기 &mdash;</p>
 						<div class="social d-flex">
-							<div style="width: 100px;"><img src="images/kakao_login.png" width="50px"></div>
-							<div style="width: 100px;"><img src="images/naver_login.png" width="50px" style="border-radius: 5px;"></div>
-							<div class="googlelogin g-signin2 iconchange" data-width="50" data-height="50" data-onsuccess="onSignIn">
+							<div class="googlelogin g-signin2 iconchange" data-width="150" data-height="50" data-onsuccess="onSignIn">
 						</div>
 					</div>
 				</div>
@@ -129,6 +122,12 @@ function send_mail(){
         };
     </script>
 
+<style type="text/css">
 
+body {
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+</style>
 </body>
 </html>

@@ -79,7 +79,7 @@ String cp = request.getContextPath();
 						</div>
 
 						<!-- 프로필 버튼 -->
-						<div class="card mt-3 w-90">
+						<div class="card w-90">
 							<ul class="list-group list-group-flush">
 								<li
 									class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
@@ -112,7 +112,8 @@ String cp = request.getContextPath();
 				<div class="col-md-8">
 					<div class="card mb-3">
 						<div class="card-body">
-							<h4 style="font-weight: bold;"><a href="/PrjApp/MyPlan.jsp">일정</a></h4>
+							<h4 style="font-weight: bold; display: inline-block;">일정</h4>
+							<h5 style="display: inline-block; float: right;"><a href="/PrjApp/MyPlan.jsp">+ 전체보기</a></h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-3 wrapper">
@@ -142,7 +143,8 @@ String cp = request.getContextPath();
 					<!-- 여행기 -->
 					<div class="card mb-3">
 						<div class="card-body">
-							<h4 style="font-weight: bold;">여행기</h4>
+							<h4 style="font-weight: bold; display: inline-block;">여행기</h4>
+							<h5 style="display: inline-block; float: right;"><a href="/PrjApp/MyTrip.jsp">+ 전체보기</a></h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-3 wrapper">
@@ -172,7 +174,8 @@ String cp = request.getContextPath();
 					<!-- 사진 -->
 					<div class="card mb-3">
 						<div class="card-body">
-							<h4 style="font-weight: bold;">사진</h4>
+							<h4 style="font-weight: bold; display: inline-block;">사진</h4>
+							<h5 style="display: inline-block; float: right;"><a href="/PrjApp/MyPhoto.jsp">+ 전체보기</a></h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-3 wrapper">
@@ -221,10 +224,10 @@ String cp = request.getContextPath();
 			</div>
 		</div>
 	</div>
-	</div>
 
 
-	<style type="text/css">
+<style type="text/css">
+
 body {
 	margin-top: 20px;
 	color: #1a202c;
@@ -356,6 +359,11 @@ h4 {
 	opacity: 1;
 	transform: scale(1);
 	visibility: visible;
+}
+
+.aShowMore {
+	text-decoration: none !important;
+	color: inherit;
 }
 </style>
 </body>

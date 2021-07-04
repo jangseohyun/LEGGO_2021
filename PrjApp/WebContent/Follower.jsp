@@ -60,10 +60,12 @@
 										alt="Admin" class="rounded-circle" width="150">
 									<div class="mt-3">
 										<h4>Romi</h4>
-										<p class="text-secondary mb-1" style="font-size: 13px;">팔로잉
-											3 | 팔로워 300,000</p>
-										<br>
-										<p class="text-secondary mb-1" style="font-size: 15px;">대충 자기소개라는 뜻</p>
+										<a href="/PrjApp/Following.jsp" class="text-secondary"
+											style="font-size: 13px;">팔로잉 3</a> | <a
+											href="/PrjApp/Follower.jsp" class="text-secondary"
+											style="font-size: 13px;">팔로워 300,000</a> <br> <br>
+										<p class="text-secondary mb-1" style="font-size: 15px;">대충
+											자기소개라는 뜻</p>
 										<br>
 										<!-- <button class="btn btn-primary">팔로우</button> -->
 									</div>
@@ -79,13 +81,35 @@
 						<div class="card-body">
 							<h4>팔로워</h4>
 							<div class="album py-5 bg-light">
-							<div style="padding-left: 3%;">
+							<table class="table table-hover">
+							<tr><td style="border-top: none;">
+							<div style="padding: 1% 3% 1% 3%;">
 									<img style="display: inline-block;"
 									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
-									alt="Admin" class="rounded-circle" width="45px" height="45px">
-									<h4 style="font-size: 22px; display: inline-block;">EunJ</h4>
-							</div>	
-									
+									alt="Admin" class="rounded-circle" width="35px" height="35px">
+									<h4 class="follower_name">EunJ</h4>
+									<button class="btn btn-primary">팔로잉</button>
+							</div>
+							</td></tr>
+							<tr><td style="border-top: none;">
+							<div style="padding: 1% 3% 1% 3%;">
+									<img style="display: inline-block;"
+									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
+									alt="Admin" class="rounded-circle" width="35px" height="35px">
+									<h4 class="follower_name">mong2unnie</h4>
+									<button class="btn btn-primary">팔로잉</button>
+							</div>
+							</td></tr>
+							<tr><td style="border-top: none;">
+							<div style="padding: 1% 3% 1% 3%;">
+									<img style="display: inline-block;"
+									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
+									alt="Admin" class="rounded-circle" width="35px" height="35px">
+									<h4 class="follower_name">deepsea</h4>
+									<button class="btn btn-primary">팔로잉</button>
+							</div>
+							</td></tr>
+							</table>
 							</div>
 						</div>
 					</div>
@@ -170,6 +194,21 @@ html, body {
 h3, h4 {
 	font-weight: bold;
 	margin-left: 1%;
+}
+
+.follower_name {
+	display: inline-block;
+	font-size: 18px;
+}
+
+.btn {
+	display: inline-block;
+	margin-top: 3px;
+	float: right;
+}
+
+.pt-5, .py-5 {
+	padding-bottom: 1rem !important;
 }
 
 </style>

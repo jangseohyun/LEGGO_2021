@@ -8,6 +8,11 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="247.5"/>
+			<item value="opacity"/>
+			<item value="shadow"/>
+			<item value="font-weight"/>
+			<item value="badge"/>
 			<item value="#e9ecef"/>
 			<item value="breadcrumb"/>
 			<item value="has"/>
@@ -18,11 +23,6 @@
 			<item value="Noto"/>
 			<item value="a href"/>
 			<item value="ahref"/>
-			<item value="a:hover"/>
-			<item value=":hover"/>
-			<item value="input"/>
-			<item value="dataTable-input"/>
-			<item value="search"/>
 		</list>
 		<list key="replacehistory">
 		</list>

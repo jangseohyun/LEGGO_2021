@@ -66,9 +66,10 @@ String cp = request.getContextPath();
 										alt="Admin" class="rounded-circle" width="150">
 									<div class="mt-3">
 										<h4>Romi</h4>
-										<p class="text-secondary mb-1" style="font-size: 13px;">팔로잉
-											3 | 팔로워 300,000</p>
-										<br>
+										<a href="/PrjApp/Following.jsp" class="text-secondary"
+											style="font-size: 13px;">팔로잉 3</a> | <a
+											href="/PrjApp/Follower.jsp" class="text-secondary"
+											style="font-size: 13px;">팔로워 300,000</a> <br> <br>
 										<p class="text-secondary mb-1" style="font-size: 15px;">대충
 											자기소개라는 뜻</p>
 										<br>

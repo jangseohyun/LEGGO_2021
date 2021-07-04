@@ -7,23 +7,17 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link
-	href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
-	rel="stylesheet">
-
 <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-<link rel="stylesheet" href="css/owl.carousel.min.css">
-
-<!-- Bootstrap CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-
-<!-- Style -->
 <link rel="stylesheet" href="css/style_header.css">
-
-<!-- Bootstrap Theme -->
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.sticky.js"></script>
+<script src="js/main.js"></script>
+	
 <title>Header.jsp</title>
 </head>
 <body>
@@ -38,7 +32,7 @@
 				<div class="site-logo">
 					<a href="index.html" class="text-black"><span
 						class="text-primary"><img src="images/leggo_logo.png"
-							style="width: 30%; margin-left: 10%;"></span></a>
+							style="width: 150px; margin-left: 50px;"></span></a>
 				</div>
 
 				<div class="col-12">
@@ -62,9 +56,9 @@
 							<li style="vertical-align: middle;"><div class="input-group mb-3">
 									<input type="text" class="form-control" placeholder="통합검색"
 										aria-label="searchTotal" aria-describedby="button-addon2"
-										style="width: 150px;">
+										style="width: 150px; margin-top: 5px;">
 									<button class="btn btn-secondary glyphicon glyphicon-search" type="button"
-										id="button-addon2">
+										id="button-addon2" style="margin-top: 4px; float:right;">
 									</button>
 								</div></li>
 							<li class="has-children"><a href="#"> <img
@@ -89,10 +83,5 @@
 
 	</header>
 
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/jquery.sticky.js"></script>
-	<script src="js/main.js"></script>
 </body>
 </html>
