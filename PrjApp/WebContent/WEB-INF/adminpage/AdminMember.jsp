@@ -88,7 +88,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">접속자 통계</a>
+                                    <a class="nav-link" href="connectStat.action">접속자 통계</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">회원 통계</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">게시물 통계</a>
                                 </nav>
@@ -135,9 +135,11 @@
                                     	</tr>
                                     </thead>
                                     <tbody>
+                                    	<c:set var="num" value="${totCount+1 }"></c:set>
                                     	<c:forEach var="member" items="${list}">
                                     	<tr>
-                                    		<td>${member.num }</td>
+                                    		<td>${num-1 }</td>
+                                    		<c:set var="num" value="${num-1 }"></c:set>
                                             <td>${member.mem_id!=null ? member.mem_id  : "-" }</td>
                                             <td>${member.mem_nnm!=null ? member.mem_nnm : "-" }</td>
                                             <td>${member.mem_join_dt!=null ? member.mem_join_dt : "-" }</td>

@@ -23,4 +23,9 @@
 		WHERE MEM_CD = #{mem_cd}
 	</select>
 	
+	<select id="totCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM MEMBERVIEW
+	</select>
+	
 </mapper>

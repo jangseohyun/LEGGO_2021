@@ -16,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 <script type="text/javascript">
 	
 	$(function()
@@ -32,6 +33,145 @@
 			}
 
 		});
+		
+		var inwonchart = $("#inwon-chart");
+		var myChart = new Chart(inwonchart,	{
+		    type: 'doughnut',
+		    data: {
+		        labels: ['Red', 'Gray'],
+		        datasets: [{
+		            label: '# of Votes',
+		            data: [58, 180],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(204, 204, 204, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(204, 204, 204, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		     options: {
+		        scales: {
+		            y: {
+		                beginAtZero: true
+		            }
+		        }
+		    } 
+		});
+				
+		var q1chart = $("#q1-chart");
+		var myQ1Chart = new Chart(q1chart, {
+		    type: 'doughnut',
+		    data: {
+		        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+		        datasets: [{
+		            label: '# of Votes',
+		            data: [12, 19, 3, 5, 2, 3],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+		                'rgba(153, 102, 255, 1)',
+		                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		     options: {
+		        scales: {
+		            y: {
+		                beginAtZero: true
+		            }
+		        }
+		    } 
+		});
+		
+		
+		var q2chart = $("#q2-chart");
+		var myQ2Chart = new Chart(q2chart, {
+		    type: 'doughnut',
+		    data: {
+		        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+		        datasets: [{
+		            label: '# of Votes',
+		            data: [12, 19, 3, 5, 2, 3],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+		                'rgba(153, 102, 255, 1)',
+		                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		     options: {
+		        scales: {
+		            y: {
+		                beginAtZero: true
+		            }
+		        }
+		    } 
+		});
+		
+		var q3chart = $("#q3-chart");
+		var myQ3Chart = new Chart(q3chart, {
+		    type: 'doughnut',
+		    data: {
+		        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+		        datasets: [{
+		            label: '# of Votes',
+		            data: [12, 19, 3, 5, 2, 3],
+		            backgroundColor: [
+		                'rgba(255, 99, 132, 0.2)',
+		                'rgba(54, 162, 235, 0.2)',
+		                'rgba(255, 206, 86, 0.2)',
+		                'rgba(75, 192, 192, 0.2)',
+		                'rgba(153, 102, 255, 0.2)',
+		                'rgba(255, 159, 64, 0.2)'
+		            ],
+		            borderColor: [
+		                'rgba(255, 99, 132, 1)',
+		                'rgba(54, 162, 235, 1)',
+		                'rgba(255, 206, 86, 1)',
+		                'rgba(75, 192, 192, 1)',
+		                'rgba(153, 102, 255, 1)',
+		                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		     options: {
+		        scales: {
+		            y: {
+		                beginAtZero: true
+		            }
+		        }
+		    } 
+		});
+		
+
 		
 	});
 	
@@ -109,7 +249,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">접속자 통계</a>
+                                    <a class="nav-link" href="connectStat.action">접속자 통계</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">회원 통계</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">게시물 통계</a>
                                 </nav>
@@ -158,7 +298,7 @@
                                 	
                                 	<tr id="QnA" style="display: none;" >
                                 		<td colspan="4">
-                                			<table class="table">
+                                			<table class="table"s>
                                 				<tr>
                                 					<td>질문 1. 선호하는 여행지는?</td>
                                 					<td>도시 산 바다 유적</td>
@@ -177,6 +317,49 @@
 			                                		</td>
                                 				</tr>
                                 			</table>
+                                			<br>
+                                			
+                                			<div class="row">
+				                            <div class="col-xl-6">
+				                                <div class="card mb-4">
+				                                    <div class="card-header">
+				                                        <i class="fas fa-chart-area me-1"></i>
+				                                         응답자 수
+				                                    </div>
+				                                    <div class="card-body"><canvas id="inwon-chart" width="100%" height="40"></canvas></div>
+				                                </div>
+				                            </div>
+				                            <div class="col-xl-6">
+				                                <div class="card mb-4">
+				                                    <div class="card-header">
+				                                        <i class="fas fa-chart-bar me-1"></i>
+				                                        질문1
+				                                    </div>
+				                                    <div class="card-body"><canvas id="q1-chart" width="100%" height="40"></canvas></div>
+				                                </div>
+				                            </div>
+				                     		</div>
+				                     		
+				                     		<div class="row">
+				                            <div class="col-xl-6">
+				                                <div class="card mb-4">
+				                                    <div class="card-header">
+				                                        <i class="fas fa-chart-area me-1"></i>
+				                                         질문2
+				                                    </div>
+				                                    <div class="card-body"><canvas id="q2-chart" width="100%" height="40"></canvas></div>
+				                                </div>
+				                            </div>
+				                            <div class="col-xl-6">
+				                                <div class="card mb-4">
+				                                    <div class="card-header">
+				                                        <i class="fas fa-chart-bar me-1"></i>
+				                                        질문3
+				                                    </div>
+				                                    <div class="card-body"><canvas id="q3-chart" width="100%" height="40"></canvas></div>
+				                                </div>
+				                            </div>
+				                     		</div>
                                 		</td>
                           			</tr>
                           			

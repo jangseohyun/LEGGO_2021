@@ -12,11 +12,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Dashboard - Leggo Admin</title>
+<title>MemberStatistics - Leggo Admin</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
 <script src="http://code.jquery.com/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.css"/>
+<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.25/datatables.min.js"></script>
 <script type="text/javascript">
 	
 		$(function()
@@ -114,13 +116,25 @@
 			        }
 			    }
 			});
+			
+			
+			$('#datatables').dataTable( {
+		        lengthMenu : [5, 10, 15, 20, 25],
+				pageLength : 10,
+				language: {
+						lengthMenu : "_MENU_ entries per page",
+		                searchPlaceholder: "Search...",
+		                search: "_INPUT_"
+		        },
+		        order: [ [ 0, "desc" ] ]
+			
+		    } );
 		});
 	
 </script>
 </head>
 <body class="sb-nav-fixed">
-		<!-- 상단 고정 메뉴 -->
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+       <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="AdminDashboard.jsp"><img src="images/leggo.png" width="130px;"></a>
             <!-- Sidebar Toggle-->
@@ -140,7 +154,6 @@
                 </li>
             </ul>
         </nav>
-        <!-- 좌측 메뉴 -->
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -152,9 +165,10 @@
                                 사용자 페이지 열기 >>
                             </a>
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="AdminDashboard.jsp" style="background-color: #2E9AFE; color: black;">
-                                <div class="sb-nav-link-icon"><img src="images/dashboard.png" height="21px;"></div>대시보드
+                            <a class="nav-link" href="AdminDashboard.jsp">
+                                <div class="sb-nav-link-icon"><img src="images/board.png" height="21px;"></div>대시보드
                             </a>
+                            
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><img src="images/member.png" height="23px;"></div>
@@ -188,10 +202,10 @@
                                 통계 관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse show" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="connectStat.action">접속자 통계</a>
-                                    <a class="nav-link" href="AdminMemberStatistics.jsp">회원 통계</a>
+                                    <a class="nav-link" href="AdminMemberStatistics.jsp" style="background-color: #2E9AFE; color: black;">회원 통계</a>
                                     <a class="nav-link" href="AdminPostStatistics.jsp">게시물 통계</a>
                                 </nav>
                             </div>
@@ -204,88 +218,23 @@
                 </nav>
             </div>
             
-            
             <!-- 메인페이지 -->
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">대시보드</h1>
+                     <div class="container-fluid px-4">
+                     	<h1 class="mt-4">회원 통계</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Member Statistics</li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">회원</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="memberlist.action">10</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">일정</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminPlan.jsp">35</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">여행기</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminTrip.jsp">43</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">사진</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminPhoto.jsp">72</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                        	<div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">댓글</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminComment.jsp">132</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">일대일문의</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminInquiry.jsp">12</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">신고</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminReport.jsp">5</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
+                     </div>
+                 
+                     <br>
+                   	 <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        접속자 통계
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                         신규 회원(가입방식) 통계
                                     </div>
                                     <div class="card-body"><canvas id="bar-chart" width="100%" height="40"></canvas></div>
                                 </div>
@@ -293,90 +242,126 @@
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        신규 게시물 통계
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        신규 회원 통계
                                     </div>
                                     <div class="card-body"><canvas id="line-chart" width="100%" height="40"></canvas></div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
+                     </div>
+                     <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                신규 회원 데이터
+                            </div>
+                            <div class="card-body">
+                            	<table id="datatablesSimple" style="text-align: center;">
+                                    <thead>
+                                    	<tr>
+                                    		<th rowspan="2" style="text-align: center; vertical-align: middle;">번호</th>
+                                            <th rowspan="2" style="text-align: center; vertical-align: middle;"">가입자 수</th>
+                                            <th rowspan="2" style="text-align: center; vertical-align: middle;"">가입일</th>
+                                            <th colspan="4" style="text-align: center; vertical-align: middle;"">가입방식</th>
+                                    	</tr>
+                                    	<tr>
+                                    		<th style="text-align: center;">LEGGO</th>
+                                    		<th style="text-align: center;">NAVER</th>
+                                    		<th style="text-align: center;">KAKAO</th>
+                                    		<th style="text-align: center;">GOOGLE</th>
+                                    	</tr>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                    		<td>2</td>
+                                            <td>8</td>
+                                            <td>2021-07-05</td>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                    	</tr>
+                                    	<tr>
+                                    		<td>1</td>
+                                            <td>1</td>
+                                            <td>2021-07-04</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>1</td>
+                                            <td>0</td>
+                                    	</tr> 
+                                    </tbody>
+                                 </table>
+                            </div>
+                     </div>
+                     
+                     <br>
+                     <div class="row">
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <i class="fas fa-table me-1"></i>
-                                        일대일문의 현황
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                         탈퇴 회원(사유) 통계
                                     </div>
-                                    <div class="card-body">
-                                    	<table style="width : 100%; text-align: right;">
-                                    		<tr>
-                                    			<th><a href="AdminInquiry.jsp" style="color: black; text-decoration: none;">더보기 >></a></th>
-                                    		</tr>
-                                    	</table>
-	                                    <table style="width : 100%;">
-	                                		<tr>
-	                                			<th style="widows: 15% ">카테고리</th>
-	                                			<th style="width: 75%;">제목</th>
-	                                			<th style="widows: 10%">상태</th>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[일정]</td>
-	                                			<td>문의드립니다.</td>
-	                                			<td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[일정]</td>
-	                                			<td>문의드립니다.</td>
-	                                			<td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[사진]</td>
-	                                			<td>문의입니다.</td>
-	                                			<td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button> </td>
-	                                		</tr>
-	                                	</table>
-                                    </div>
+                                    <div class="card-body"><canvas id="bar-chart" width="100%" height="40"></canvas></div>
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="card mb-4">
                                     <div class="card-header">
-                                        <i class="fas fa-table me-1"></i>
-                                        신고 현황
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        탈퇴 회원 통계
                                     </div>
-                                    <div class="card-body">
-                                    	<table style="width : 100%; text-align: right;">
-                                    		<tr>
-                                    			<th><a href="AdminReport.jsp" style="color: black; text-decoration: none;">더보기 >></a></th>
-                                    		</tr>
-                                    	</table>
-                                    	<table style="width : 100%;">
-	                                		<tr>
-	                                			<th style="widows: 15% ">카테고리</th>
-	                                			<th style="width: 75%;">사유</th>
-	                                			<th style="widows: 10%">상태</th>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[일정]</td>
-	                                			<td>부적절</td>
-	                                			<td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[여행기]</td>
-	                                			<td>욕설</td>
-	                                			<td><button type="button" disabled="disabled" style="background: red; color: white; width: 50pt; border: 1px;">반려</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[사진]</td>
-	                                			<td>어쩌고</td>
-	                                			<td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button> </td>
-	                                		</tr>
-	                                	</table>
-                                    </div>
+                                    <div class="card-body"><canvas id="line-chart" width="100%" height="40"></canvas></div>
                                 </div>
                             </div>
-                        </div>
-                       </div>
+                     </div>
+                     <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                탈퇴회원 데이터
+                            </div>
+                            <div class="card-body">
+                            	<table id="datatables" style="border: 0.5px solid #EAEAEA; text-align: center;">
+                                    <thead>
+                                    	<tr>
+                                    		<th rowspan="2" style="border: 1px solid #EAEAEA; font-size: 14px;">번호</th>
+                                            <th rowspan="2" style="border: 1px solid #EAEAEA; font-size: 14px;">탈퇴회원 수</th>
+                                            <th rowspan="2" style="border: 1px solid #EAEAEA; font-size: 14px;">탈퇴일</th>
+                                            <th colspan="5" style="border: 1px solid #EAEAEA; font-size: 14px;">탈퇴사유</th>
+                                    	</tr>
+                                    	<tr>
+                                    		<th style="border: 1px solid #EAEAEA; font-size: 14px;">이용빈도 낮음</th>
+                                    		<th style="border: 1px solid #EAEAEA; font-size: 14px;">재가입</th>
+                                    		<th style="border: 1px solid #EAEAEA; font-size: 14px;">콘텐츠 부족</th>
+                                    		<th style="border: 1px solid #EAEAEA; font-size: 14px;">개인정보 보호</th>
+                                    		<th style="border: 1px solid #EAEAEA; font-size: 14px;">기타</th>
+                                    	</tr>
+                                    </thead>
+                                    <tbody>
+                                    	<tr>
+                                    		<td style="border: 1px solid #EAEAEA; font-size: 14px;">2</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">2021-07-05</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                    	</tr>
+                                    	<tr>
+                                    		<td style="border: 1px solid #EAEAEA; font-size: 14px;">1</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">1</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">2021-07-04</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">1</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                            <td style="border: 1px solid #EAEAEA; font-size: 14px;">0</td>
+                                    	</tr>
+                                    </tbody>
+                                 </table>
+                            </div>
+                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
@@ -392,12 +377,8 @@
                 </footer>
             </div>
         </div>
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> -->
-        <!-- <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
 </body>

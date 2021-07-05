@@ -88,7 +88,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">접속자 통계</a>
+                                    <a class="nav-link" href="connectStat.action">접속자 통계</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">회원 통계</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">게시물 통계</a>
                                 </nav>

@@ -13,4 +13,6 @@ public interface IMemberDAO
 	// 회원 상세 페이지 회원 리스트
 	public MemberDTO memberProfile(MemberDTO m);
 	
+	// 총 회원 수
+	public int totCount();
 }

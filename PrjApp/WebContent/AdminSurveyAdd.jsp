@@ -106,7 +106,7 @@
 					
 					<div class="form-group">
 						<label for="question3">
-							질문2 :
+							질문3 :
 						</label>
 						<input type="text" class="form-control">
 					</div>
