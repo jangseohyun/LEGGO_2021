@@ -62,14 +62,13 @@
 
 							<li class="has-children"><a href="#about-section"
 								class="nav-link">커뮤니티</a>
-								<ul class="dropdown1 arrow-top">
+								<ul class="dropdown arrow-top">
 									<li><a href="/PrjApp/MainHome.jsp" class="nav-link">커뮤니티 홈</a></li>
 									<li><a href="/PrjApp/ComTripFeed.jsp" class="nav-link">여행기</a></li>
 									<li><a href="/PrjApp/ComPlanFeed.jsp" class="nav-link">일정 구경</a></li>
 									<li><a href="/PrjApp/ComPhotoFeed.jsp">사진</a></li>
-								</ul>
-							</li>
-						
+								</ul></li>
+							<li><a href="/PrjApp/Spot.jsp" class="nav-link">장소</a></li>
 
 							<li><div class="input-group mb-3">
 									<input type="text" class="form-control" placeholder="통합검색"
@@ -82,21 +81,13 @@
 											width="18px">
 									</button>
 								</div></li>
-							<!-- 
 							<li class="has-children"><a href="#"> <img
 									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
 									alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
 								<ul class="dropdown">
 									<li><a href="/PrjApp/Profile.jsp">마이페이지</a></li>
 									<li><a href="#">로그아웃</a></li>
-								</ul>
-							</li> 
-							-->
-							<li class="has-children">
-							<button style="color: white; width: 90px; height: 40px; font-size: 15px; border-radius: 5px; background-color: #65CBFF; padding: 0.1em 1.5em;">로그인</button>
-							<li class="has-children">
-							<button style="color: white; width: 100px; height: 40px; font-size: 14px; border-radius: 5px; background-color: #33BAFF; padding: 0.1em 1.5em;">회원가입</button>
-							</li>
+								</ul></li>
 						</ul>
 					</nav>
 

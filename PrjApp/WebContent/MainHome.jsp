@@ -169,10 +169,10 @@
 
 								<!-- Box -->
 									<section class="box feature">
-										<a href="#" class="image featured"><img src="images/jeju.jpg" alt="" /></a>
+										<a href="#" class="image featured"><img src="images/jeju.jpg" onclick="location.href='/PrjApp/ComTrip.jsp';"></a>
 										<div class="inner">
 											<header>
-												<h2><br>맑은 바다 어딘지 궁금하면 클릭</h2>
+												<h2 onclick="location.href='/PrjApp/ComTrip.jsp';"><br>맑은 바다 어딘지 궁금하면 클릭</h2>
 												<p>스크랩 1,212 조회수 10,433</p>
 												<p><img src="images\user.PNG">Romi</p>
 											</header>

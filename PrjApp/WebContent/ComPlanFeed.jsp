@@ -25,6 +25,44 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 <link rel="stylesheet" href="assets/css/main.css" />
+
+<style type="text/css">
+	.dropbtn {
+  background-color: Silver;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: black;}
+</style>
+
 </head>
 <body>
 
@@ -46,9 +84,88 @@
 					<li class="breadcrumb-item"><a href="/PrjApp/ComPhotoFeed.jsp">사진</a></li>
 				</ol>
 			</nav>
+			
+			<!-- 필터링 -->
+			<div class="dropdown">
+                 <button class="dropbtn" style="width: 70px; height: 35px; font-size: 11px; padding: 0.0em 1.5em;">정렬▼</button>
+                 <div class="dropdown-content">
+                   <a href="#">인기순</a>
+                   <a href="#">최신순</a>
+                 </div>
+            </div>
+            <div class="dropdown">
+                 <button class="dropbtn" style="width: 70px; height: 35px; font-size: 11px; padding: 0.0em 1.5em;">테마▼</button>
+                 <div class="dropdown-content">
+                   <a href="#"></a>
+                   <a href="#"></a>
+                 </div>
+            </div>
+            <div class="dropdown">
+                 <button class="dropbtn" style="width: 70px; height: 35px; font-size: 11px; padding: 0.0em 1.5em;">도시▼</button>
+                 <div class="dropdown-content">
+                   <a href="#">서울</a>
+                   <a href="#">제주</a>
+                   <a href="#">부산</a>
+                   <a href="#">강릉</a>
+                   <a href="#">속초</a>
+                   <a href="#">여수</a>
+                   <a href="#">순천</a>
+                   <a href="#">전주</a>
+                 </div>
+            </div>
+            <div class="dropdown">
+                 <button class="dropbtn" style="width: 70px; height: 35px; font-size: 11px; padding: 0.0em 1.5em;">기간▼</button>
+                 <div class="dropdown-content">
+                   <a href="#">당일치기</a>
+                   <a href="#">1박 2일</a>
+                   <a href="#">2박 3일</a>
+                   <a href="#">3박 4일</a>
+                   <a href="#">4박 5일</a>
+                   <a href="#">5박 6일</a>
+                   <a href="#">6박 7일</a>
+                   <a href="#">7박 8일</a>
+                   <a href="#">8박 9일</a>
+                   <a href="#">9박 10일</a>
+                 </div>
+            </div>
+            <div class="dropdown">
+                 <button class="dropbtn" style="width: 70px; height: 35px; font-size: 11px; padding: 0.0em 1.5em;">인원▼</button>
+                 <div class="dropdown-content">
+                   <a href="#">1명</a>
+                   <a href="#">2명</a>
+                   <a href="#">3명</a>
+                   <a href="#">4명</a>
+                   <a href="#">5명</a>
+                   <a href="#">6명</a>
+                 </div>
+            </div>
+            <div class="dropdown">
+                 <button class="dropbtn" style="width: 70px; height: 35px; font-size: 11px; padding: 0.0em 1.5em;">예산▼</button>
+                 <div class="dropdown-content">
+                   <a href="#">0원 ~ 100,000원</a>
+                   <a href="#">100,000원 ~ 200,000원</a>
+                   <a href="#">200,000원 ~ 300,000원</a>
+                   <a href="#">300,000원 ~ 400,000원</a>
+                   <a href="#">400,000원 ~ 500,000원</a>
+                   <a href="#">500,000원 ~ 600,000원</a>
+                   <a href="#">600,000원 ~ 700,000원</a>
+                   <a href="#">700,000원 ~ 800,000원</a>
+                   <a href="#">800,000원 ~ 900,000원</a>
+                   <a href="#">900,000원 ~ 1,000,000원</a>
+                   <a href="#">1,000,000원 이상</a>
+                 </div>
+            </div>
+            
+            <!-- 전체 글 수 -->
+			<table>
+				<tr>
+					<td>전체 글 5,290</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	
+	<!-- 일정구경 리스트 -->
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">

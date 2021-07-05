@@ -25,6 +25,54 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-theme.css">
 <link rel="stylesheet" href="assets/css/main.css" />
+
+<style type="text/css">
+
+.dropbtn {
+	  background-color: Silver;
+	  color: white;
+	  padding: 16px;
+	  font-size: 16px;
+	  border: none;
+	}
+
+	.dropdown {
+	  position: relative;
+	  display: inline-block;
+	}
+
+	.dropdown-content {
+	  display: none;
+	  position: absolute;
+	  background-color: #f1f1f1;
+	  min-width: 160px;
+	  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	  z-index: 1;
+	}
+
+	.dropdown-content a {
+	  color: black;
+	  padding: 12px 16px;
+	  text-decoration: none;
+	  display: block;
+	}
+
+	.dropdown-content a:hover {background-color: #ddd;}
+
+	.dropdown:hover .dropdown-content {display: block;}
+
+	.dropdown:hover .dropbtn {background-color: black;}
+
+</style>
+
+<script type="text/javascript">
+const GetList = function(currentPage)
+{
+	console.log("inGetList"+currentPage);
+}
+
+
+</script>
 </head>
 <body>
 
@@ -46,9 +94,27 @@
 					<li class="breadcrumb-item"><a href="/PrjApp/ComPhotoFeed.jsp">사진</a></li>
 				</ol>
 			</nav>
+			
+			<!-- 필터링 -->
+			<div class="dropdown">
+                 <button class="dropbtn" style="width: 70px; height: 35px; font-size: 11px; padding: 0.0em 1.5em;">정렬▼</button>
+                 <div class="dropdown-content">
+                   <a href="#">인기순</a>
+                   <a href="#">최신순</a>
+                 </div>
+            </div>
+            
+            <!-- 전체 글 수 -->
+			<table>
+				<tr>
+					<td>전체 글 5,290</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	
+	
+	<!-- 사진 게시글 리스트 -->
 	<div id="features-wrapper">
 		<div class="container">
 			<div class="row">

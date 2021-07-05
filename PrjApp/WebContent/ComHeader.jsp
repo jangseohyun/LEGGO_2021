@@ -53,13 +53,14 @@
 
 							<li class="has-children"><a href="#about-section"
 								class="nav-link">커뮤니티</a>
-								<ul class="dropdown arrow-top">
+								<ul class="dropdown1 arrow-top">
 									<li><a href="/PrjApp/MainHome.jsp" class="nav-link">커뮤니티 홈</a></li>
 									<li><a href="/PrjApp/ComTripFeed.jsp" class="nav-link">여행기</a></li>
 									<li><a href="/PrjApp/ComPlanFeed.jsp" class="nav-link">일정 구경</a></li>
 									<li><a href="/PrjApp/ComPhotoFeed.jsp">사진</a></li>
-								</ul></li>
-							<li><a href="/PrjApp/Spot.jsp" class="nav-link">장소</a></li>
+								</ul>
+							</li>
+						
 
 							<li><div class="input-group mb-3">
 									<input type="text" class="form-control" placeholder="통합검색"
@@ -68,12 +69,12 @@
 									<button class="btn btn-secondary" type="button"
 										id="button-addon2">
 										<img
-											src="https://lh3.googleusercontent.com/proxy/DZo1DZAL1_6j12r-7KNjQgdDsNS7PV7IXbsHLxUvSI9MLg7K8ctXV4psmCkfY2vg2p78lHisHbbAJz2pEmA8_GcFdhyV3BuWTSw2fWhHBWRT2TbP9xa5kMrrU3ATpVtaOJEhoqHuXgNGCQ"
+											src="https://image.flaticon.com/icons/png/512/71/71403.png"
 											width="18px">
 									</button>
 								</div></li>
-							<li class="has-children"><button style="font-size: 20px;">글쓰기</button>
-								<ul class="dropdown">
+							<li class="has-children"><button style="font-size: 15px; width: 90px; height: 40px; padding: 0.1em 1.5em;">글쓰기</button>
+								<ul class="dropdown1">
 									<li><a href="#">여행기 글쓰기</a></li>
 									<li><a href="#">사진 글쓰기</a></li>
 								</ul>
@@ -81,10 +82,11 @@
 							<li class="has-children"><a href="#"> <img
 									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
 									alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
-								<ul class="dropdown">
+								<ul class="dropdown1">
 									<li><a href="/PrjApp/Profile.jsp">마이페이지</a></li>
 									<li><a href="#">로그아웃</a></li>
-								</ul></li>
+								</ul>
+							</li>
 						</ul>
 					</nav>
 
