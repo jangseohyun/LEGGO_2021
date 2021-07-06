@@ -2,9 +2,19 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
 <mapper namespace="com.leggo.login.IMemberLoginDAO">
 
+	<select id="MemAcctCck" parameterType="com.leggo.login.MemberLoginDTO" resultType="java.lang.String">
+		SELECT A.ACCT_ST
+		FROM ACCOUNT_STATUS A
+		WHERE A.ACCT_ST_CD
+		   = (SELECT M.ACCT_ST_CD
+		      FROM MEMBER M
+		      WHERE M.MEM_CD = (SELECT MD.MEM_CD
+		                        FROM MEMBER_DATA MD
+		                        WHERE MD.MEM_ID = #{mem_id}))
+	</select>
+	
 	<select id="Login" resultType="com.leggo.login.MemberLoginDTO">
 		SELECT V.MEM_ID AS MEM_ID, D.MEM_PW AS MEM_PW, V.MEM_NNM AS MEM_NNM
 		     , V.MEM_IMG AS MEM_IMG, V.ACCT_ST AS ACCT_ST, V.ADMIN_CD AS ADMIN_CD
@@ -14,4 +24,17 @@
 		  AND D.MEM_PW = CRYPTPACK.ENCRYPT(#{mem_pw},#{mem_pw})
 	</select>
 	
+	<update id="AutoLoginUpdate">
+		UPDATE COOKIETEST
+		SET SESSION_ID = #{session_id},
+		    LIMIT_TIME = #{limit_date}
+		WHERE MEM_CD = (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id})
+	</update>
+	
+	<select id="AutoLogin" parameterType="com.leggo.login.MemberLoginDTO" resultType="java.lang.String">
+		SELECT MD.MEM_ID
+		FROM MEMBER_DATA MD
+		WHERE MD.MEM_CD = (SELECT MEM_CD FROM COOKIETEST WHERE SESSION_ID = #{session_id}
+	</select>
+
 </mapper>

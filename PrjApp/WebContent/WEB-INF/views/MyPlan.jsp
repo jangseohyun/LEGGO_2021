@@ -50,6 +50,12 @@ String cp = request.getContextPath();
 						});
 			});
 </script>
+
+<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
+<% if (session.getAttribute("mem_id") == null) { %>
+      <script>location.href = "loginpage.action"; </script>
+<% }%>
+
 </head>
 <body>
 

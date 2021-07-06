@@ -4,6 +4,23 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
+<%-- 
+<%
+    // 로그인 유지작업 
+    Cookie[] cookies = request.getCookies();
+    if(cookies != null ){
+        for(Cookie cookie : cookies){
+            if(cookie.getName().equals("id")){
+                /* 실행흐름이 서버에 있을 경우 서버코드로써 강제이동
+                       서버에서 클라이언트()에게 특정페이지로 이동하는 정보만 응답으로 준다.
+                   java코드로 페이지 이동 -> sendRedirect("url");
+                */
+                response.sendRedirect(메인페이지);
+            }
+        }
+    }
+%>
+ --%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,6 +41,9 @@
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/style.css">
+
+<!-- toastr css 라이브러리 -->
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
 <style type="text/css">
 #iconchange {
@@ -47,24 +67,20 @@
 </script>
  -->
 </head>
+<input type="hidden" value="${param.alert_message }" id="alert_message">
+<input type="hidden" value="${param.error_message }" id="error_message">
+<input type="hidden" value="${param.success_message }" id="success_message">
 <body class="img js-fullheight"
 	style="background-image: url(images/jeju.png);">
 	<p class="userimg">Romi 님의 사진입니다.&nbsp;&nbsp;&nbsp;</p>
-	<div aria-live="polite" aria-atomic="true"
-		class="d-flex justify-content-center align-items-center w-100">
-		
-		<!-- 알림 토스트 -->
-		<div class="toast" role="alert" aria-live="assertive"
-			aria-atomic="true">
-			<div class="toast-body">${message }</div>
-		</div>
-	</div>
+
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">로그인</h2>
 				</div>
+
 			</div>
 			<div class="row justify-content-center">
 				<div aria-live="polite" aria-atomic="true"
@@ -96,7 +112,7 @@
 									<div class="w-50">
 										<label class="checkbox-wrap checkbox-primary"
 											style="font-family: 'Noto Sans KR', sans-serif;">자동
-											로그인<input type="checkbox" checked> <span
+											로그인<input type="checkbox" id="login_cck" name="login_cck" checked="checked"> <span
 											class="checkmark"></span>
 										</label>
 									</div>
@@ -126,6 +142,49 @@
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
+	<!-- toastr js 라이브러리 -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script type="text/javascript">
+	
+		// url에서 파라미터 삭제
+		history.replaceState({}, null, location.pathname);
+	
+		$(document).ready(function()
+		{
+			if ($("#alert_message").val() != "")
+			{
+				toastr.options.closeButton = true;
+				toastr.options.progressBar = true;
+				toastr.warning($("#alert_message").val(),
+				{
+					timeOut : 3000
+				});
+			}
+			
+			if ($("#error_message").val() != "")
+			{
+				toastr.options.closeButton = true;
+				toastr.options.progressBar = true;
+				toastr.error($("#error_message").val(),
+				{
+					timeOut : 3000
+				});
+			}
+			
+			if ($("#success_message").val() != "")
+			{
+				toastr.options.closeButton = true;
+				toastr.options.progressBar = true;
+				toastr.success($("#success_message").val(),
+				{
+					timeOut : 3000
+				});
+			}
+
+		});
+	</script>
+
 
 	<script>
 		function onSignIn(googleUser)
@@ -145,7 +204,7 @@
 		};
 	</script>
 
-	<style type="text/css">
+<style type="text/css">
 body {
 	font-family: 'Noto Sans KR', sans-serif;
 }

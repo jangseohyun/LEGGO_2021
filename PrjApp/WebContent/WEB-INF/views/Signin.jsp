@@ -7,7 +7,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<title>Signin</title>
+<title>Signin.jsp</title>
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,6 +24,9 @@
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <link rel="stylesheet" href="css/style.css">
+
+<!-- toastr css 라이브러리 -->
+<!-- <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" /> -->
 
 <style type="text/css">
 
@@ -42,6 +45,7 @@ a {
 </style>
 
 </head>
+<%-- <input type="hidden" value="${param.message }" id="message"> --%>
 <body class="img js-fullheight" style="background-image: url(images/gyeongju.jpg);">
 <p class="userimg">eun j 님의 사진입니다.&nbsp;&nbsp;&nbsp;</p>
 <section class="ftco2-section">
@@ -103,7 +107,32 @@ a {
 	<script src="js/popper.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/main.js"></script>
+	<!-- toastr js 라이브러리 -->
+	<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
+	
+	<!-- 
+	<script>
+		$(document).ready(function()
+		{
+			if ($("#message").val() != "")
+			{
+				toastr.options.closeButton = true;
+				toastr.options.progressBar = true;
+				toastr.success($("#message").val(),
+				{
+					timeOut : 3000
+				});
+			}
+		});
+	</script>
+	 -->
+	 
+	<script type="text/javascript">
 
+		// url에서 파라미터 삭제
+		history.replaceState({}, null, location.pathname);
+
+	</script>
 
 <style type="text/css">
 

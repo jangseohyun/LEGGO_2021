@@ -1,14 +1,21 @@
+<%@page import="com.leggo.profile.ProfileDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
+%>
+<%
+	ProfileDTO profile = (ProfileDTO)request.getAttribute("profile");
+	String mem_img = profile.getMem_img();
+	String mem_nnm = profile.getMem_nnm();
+	String mem_intro = profile.getMem_intro();
+	String fol_ing_cnt = profile.getFol_ing_cnt();
+	String fol_ed_cnt = profile.getFol_ed_cnt();
 %>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
-<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-<!--  All snippets are MIT license http://bootdey.com/license -->
 <title>Profile.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -23,6 +30,12 @@ String cp = request.getContextPath();
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
+<% if (session.getAttribute("mem_id") == null) { %>
+      <script>location.href = "loginpage.action"; </script>
+<% }%>
+
 </head>
 <body>
 
@@ -53,7 +66,6 @@ String cp = request.getContextPath();
 			</nav>
 			<div class="row gutters-sm">
 				<div class="col-md-4 mb-3">
-
 					<!-- 프로필 -->
 					<div class="profile" style="position: fixed; width: 350px;">
 						<div class="card w-90">
@@ -61,16 +73,15 @@ String cp = request.getContextPath();
 								<br>
 								<div class="d-flex flex-column align-items-center text-center">
 									<img
-										src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
+										src="<%=mem_img %>"
 										alt="Admin" class="rounded-circle" width="150">
 									<div class="mt-3">
-										<h4>Romi</h4>
+										<h3><%=mem_nnm %></h3>
 										<a href="/PrjApp/Following.jsp" class="text-secondary"
-											style="font-size: 13px;">팔로잉 3</a> | <a
+											style="font-size: 13px;">팔로잉 <%=fol_ing_cnt %></a> | <a
 											href="/PrjApp/Follower.jsp" class="text-secondary"
-											style="font-size: 13px;">팔로워 300,000</a> <br> <br>
-										<p class="text-secondary mb-1" style="font-size: 15px;">대충
-											자기소개라는 뜻</p>
+											style="font-size: 13px;">팔로워 <%=fol_ed_cnt %></a> <br> <br>
+										<p class="text-secondary mb-1" style="font-size: 15px;"><%=mem_intro %></p>
 										<br>
 										<!-- <button class="btn btn-primary">팔로우</button> -->
 									</div>
@@ -298,7 +309,7 @@ html, body {
 	padding: 0;
 }
 
-h4 {
+h3 {
 	font-weight: bold;
 	margin-left: 1%;
 }

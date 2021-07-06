@@ -2,7 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
+%>
+<%
+	request.getSession(false);
 %>
 <!DOCTYPE html>
 <head>
@@ -23,6 +26,12 @@ String cp = request.getContextPath();
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
 <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
+<% if (session.getAttribute("mem_id") == null) { %>
+      <script>location.href = "loginpage.action"; </script>
+<% }%>
+
 </head>
 <body>
 

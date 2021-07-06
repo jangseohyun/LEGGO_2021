@@ -4,13 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<%
-	// 세션값 가져오기
-	if (session.getAttribute("loginId") != null)
-	{
-		out.print((String)session.getAttribute("loginId"));
-	};
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,13 +12,9 @@
 </head>
 <body>
 
-<h4>여기는 관리자 페이지</h4>
+<h4>여기는 로그아웃 이후 도착한 곳</h4>
 
 <div>
-	<span>${login.mem_nnm}</span><br>
-	<span>${login.mem_id}</span><br>
-	<span>${login.mem_pw}</span><br>
-	<span>${login.admin_cd}</span><br>
 </div>
 
 <div>

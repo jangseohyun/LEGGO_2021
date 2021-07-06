@@ -1,10 +1,15 @@
 package com.leggo.login;
 
+import java.util.Date;
+
 public class MemberLoginDTO
 {
-	private String mem_cd, acct_st;		//-- 회원 코드, 회원 상태
-	private String mem_dt_cd, mem_id, mem_pw, mem_nnm, mem_img, mem_join_dt;	//--회원 개인정보 코드, 아이디, 비밀번호, 닉네임, 프로필 사진, 회원가입일	
-	private String qt_mem_quit_dt, admin_cd, join_mtd, num;	//--회원 탈퇴일, 관리자 코드, 가입 방식
+	private String mem_cd, acct_st;		//--회원 코드, 회원 상태
+	private String mem_id, mem_pw;		//--아이디, 비밀번호, 닉네임
+	private String admin_cd;			//--관리자 코드
+	private String login_cck;			//--자동로그인 체크 여부
+	private String session_id;			//--세션 아이디
+	private Date limit_date;			//--쿠키 지속 기간
 	
 	public String getMem_cd()
 	{
@@ -22,14 +27,6 @@ public class MemberLoginDTO
 	{
 		this.acct_st = acct_st;
 	}
-	public String getMem_dt_cd()
-	{
-		return mem_dt_cd;
-	}
-	public void setMem_dt_cd(String mem_dt_cd)
-	{
-		this.mem_dt_cd = mem_dt_cd;
-	}
 	public String getMem_id()
 	{
 		return mem_id;
@@ -46,38 +43,6 @@ public class MemberLoginDTO
 	{
 		this.mem_pw = mem_pw;
 	}
-	public String getMem_nnm()
-	{
-		return mem_nnm;
-	}
-	public void setMem_nnm(String mem_nnm)
-	{
-		this.mem_nnm = mem_nnm;
-	}
-	public String getMem_img()
-	{
-		return mem_img;
-	}
-	public void setMem_img(String mem_img)
-	{
-		this.mem_img = mem_img;
-	}
-	public String getMem_join_dt()
-	{
-		return mem_join_dt;
-	}
-	public void setMem_join_dt(String mem_join_dt)
-	{
-		this.mem_join_dt = mem_join_dt;
-	}
-	public String getQt_mem_quit_dt()
-	{
-		return qt_mem_quit_dt;
-	}
-	public void setQt_mem_quit_dt(String qt_mem_quit_dt)
-	{
-		this.qt_mem_quit_dt = qt_mem_quit_dt;
-	}
 	public String getAdmin_cd()
 	{
 		return admin_cd;
@@ -86,21 +51,28 @@ public class MemberLoginDTO
 	{
 		this.admin_cd = admin_cd;
 	}
-	public String getJoin_mtd()
+	public String getLogin_cck()
 	{
-		return join_mtd;
+		return login_cck;
 	}
-	public void setJoin_mtd(String join_mtd)
+	public void setLogin_cck(String login_cck)
 	{
-		this.join_mtd = join_mtd;
+		this.login_cck = login_cck;
 	}
-	public String getNum()
+	public String getSession_id()
 	{
-		return num;
+		return session_id;
 	}
-	public void setNum(String num)
+	public void setSession_id(String session_id)
 	{
-		this.num = num;
+		this.session_id = session_id;
 	}
-	
+	public Date getLimit_date()
+	{
+		return limit_date;
+	}
+	public void setLimit_date(Date limit_date)
+	{
+		this.limit_date = limit_date;
+	}
 }
