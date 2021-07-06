@@ -3,7 +3,7 @@ package com.leggo.mybatis;
 public class VisitantDTO
 {
 	// 주요 속성 구성
-	private String vi_cd, vi_ip, vi_dt, day, count;
+	private String vi_cd, vi_ip, vi_dt, count;
 	
 	// getter / setter 
 	public String getVi_cd()
@@ -29,14 +29,6 @@ public class VisitantDTO
 	public void setVi_dt(String vi_dt)
 	{
 		this.vi_dt = vi_dt;
-	}
-	public String getDay()
-	{
-		return day;
-	}
-	public void setDay(String day)
-	{
-		this.day = day;
 	}
 	public String getCount()
 	{

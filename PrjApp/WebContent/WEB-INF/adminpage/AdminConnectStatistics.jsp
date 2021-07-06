@@ -60,9 +60,11 @@
 			         	display: false
 			         },
 			        scales: {
-			            y: {
-			                beginAtZero: true	
-			            }
+			        	yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
 			        }
 			    } 
 			});
@@ -101,34 +103,15 @@
 			        }]
 			    },
 			    options: {
-			        responsive: true,
-			        tooltips: {
-			            mode: 'index',
-			            intersect: false,
-			        },
-			        hover: {
-			            mode: 'nearest',
-			            intersect: true
-			        },
-			        legend: {
-			         	display: false
-			         },
+			    	 legend: {
+				         	display: false
+				         },
 			        scales: {
-			            xAxes: [{
-			                display: true,
-			                scaleLabel: {
-			                    display: true
-			                }
-			            }],
-			            yAxes: [{
-			                display: true,
-			                ticks: {
-			                    suggestedMin: 0,
-			                },
-			                scaleLabel: {
-			                    display: true
-			                }
-			            }]
+			        	yAxes: [{
+							ticks: {
+								beginAtZero: true
+							}
+						}]
 			        }
 			    }
 			});
@@ -141,7 +124,7 @@
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="AdminDashboard.jsp"><img src="images/leggo.png" width="130px;"></a>
             <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             </form>
@@ -207,9 +190,9 @@
                             </a>
                             <div class="collapse show" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="connectStat.action" style="background-color: #2E9AFE; color: black;">접속자 통계</a>
-                                    <a class="nav-link" href="AdminMemberStatistics.jsp">회원 통계</a>
-                                    <a class="nav-link" href="AdminPostStatistics.jsp">게시물 통계</a>
+                                    <a class="nav-link" href="connectStats.action" style="background-color: #2E9AFE; color: black;">접속자 통계</a>
+                                    <a class="nav-link" href="memberStats.action">회원 통계</a>
+                                    <a class="nav-link" href="postStats.action">게시물 통계</a>
                                 </nav>
                             </div>
                         </div>
@@ -255,7 +238,7 @@
                                         <c:set var="i" value="0"></c:set>
                                         <c:forEach var="time" items="${timeList }">
                                         	<input type="hidden" value="${time.count }" id="suList${i+1 }">
-                                        	<input type="hidden" value="${time.day }" id="timeList${i+1 }">
+                                        	<input type="hidden" value="${time.vi_dt }" id="timeList${i+1 }">
                                         	<c:set var="i" value="${i+1 }"></c:set>
                                         </c:forEach>
                                     </div>
@@ -269,7 +252,7 @@
                                 접속 수 데이터
                             </div>
                             <div class="card-body">
-                            	<table id="datatablesSimple"">
+                            	<table id="datatablesSimple">
                                     <thead>
                                     	<tr>
                                     		<th>번호</th>

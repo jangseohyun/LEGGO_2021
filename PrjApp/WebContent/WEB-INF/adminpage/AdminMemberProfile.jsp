@@ -134,11 +134,6 @@ ul.tabs li.current{
 				}
 				else if( $(this).html()=="차단" )
 				{
-					$(this).html("탈퇴");
-					$(this).css("background-color", "#6c757d");
-				}
-				else
-				{
 					$(this).html("정상");
 					$(this).css("background-color", "#198754");
 				}
@@ -169,7 +164,7 @@ ul.tabs li.current{
 <body>
 
 
-
+<br>
 <div>
 	<p style="text-align: center;"><img src="${memberProfile.mem_img==null ? 'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg' : memberProfile.mem_img}" style="width: 170px; border-radius: 50%;"></p>
 </div>
@@ -178,8 +173,8 @@ ul.tabs li.current{
 	<p style="text-align: center;">${memberProfile.mem_id }</p>
 	<p style="text-align: center;">${memberProfile.mem_nnm==null ? "탈퇴회원" :  memberProfile.mem_nnm}</p>
 	<p style="text-align: center;">
-		<button type="button" id="grade" ${memberProfile.admin_cd!=null ? "style=\"background-color: #dc3545;\"" : "style=\"background-color: #2E9AFE;\"" }>${memberProfile.admin_cd!=null ? "관리자" : "사용자" }</button>
-		<button type="button" id="state" ${memberProfile.acct_st== "정상" ? "style=\"background-color: #198754;\"" : memberProfile.acct_st== "탈퇴"? "style=\"background-color: #6c757d;\"" : "style=\"background-color: #dc3545;\"" }>${memberProfile.acct_st }</button>
+		<button type="button" id="grade" ${memberProfile.admin_cd!=null ? "style=\"background-color: #dc3545;\"" : "style=\"background-color: #2E9AFE;\"" } ${memberProfile.acct_st== "탈퇴" ? "disabled=\"disabled\"" : ""}>${memberProfile.admin_cd!=null ? "관리자" : "사용자" }</button>
+		<button type="button" id="state" ${memberProfile.acct_st== "정상" ? "style=\"background-color: #198754;\"" : memberProfile.acct_st== "탈퇴"? "style=\"background-color: #6c757d;\"" : "style=\"background-color: #dc3545;\"" } ${memberProfile.acct_st== "탈퇴" ? "disabled=\"disabled\"" : ""}>${memberProfile.acct_st }</button>
 	</p>
 	<hr>
 </div>
@@ -285,8 +280,13 @@ ul.tabs li.current{
 	<br>
 	<div>
 		<p style="text-align: center;">
-		<button type="button" class="btn" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" >수정</button>
-		<button type="button"  class="btn" id="closebtn" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">취소</button>
+		<c:if test="${memberProfile.acct_st eq '탈퇴' }">
+			<button type="button"  class="btn" id="closebtn" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">닫기</button>
+		</c:if>
+		<c:if test="${memberProfile.acct_st ne '탈퇴' }">
+			<button type="button" class="btn" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" >수정</button>
+			<button type="button"  class="btn" id="closebtn" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">취소</button>
+		</c:if>
 		</p>
 	</div>
 </div>

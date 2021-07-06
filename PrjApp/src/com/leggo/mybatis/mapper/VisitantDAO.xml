@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="dayList" resultType="com.leggo.mybatis.VisitantDTO">
-		SELECT A.DAY AS DAY, NVL(B.COUNT, 0) AS COUNT
+		SELECT A.DAY AS VI_DT, NVL(B.COUNT, 0) AS COUNT
 		FROM 
 		(
 			SELECT TO_CHAR(SYSDATE-LEVEL+1, 'YYYY-MM-DD') DAY
@@ -35,7 +35,7 @@
 	</select>
 	
 	<select id="timeList" resultType="com.leggo.mybatis.VisitantDTO">
-		SELECT A.DAY AS DAY, NVL(B.COUNT, 0) AS COUNT
+		SELECT A.DAY AS VI_DT, NVL(B.COUNT, 0) AS COUNT
 		FROM 
 		(
 			SELECT TO_CHAR(SYSDATE+(-LEVEL+1)/24, 'YYYY-MM-DD HH24') DAY

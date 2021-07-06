@@ -190,9 +190,9 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="connectStat.action">접속자 통계</a>
-                                    <a class="nav-link" href="AdminMemberStatistics.jsp">회원 통계</a>
-                                    <a class="nav-link" href="AdminPostStatistics.jsp">게시물 통계</a>
+                                    <a class="nav-link" href="connectStats.action">접속자 통계</a>
+                                    <a class="nav-link" href="memberStats.action">회원 통계</a>
+                                    <a class="nav-link" href="postStats.action">게시물 통계</a>
                                 </nav>
                             </div>
                         </div>

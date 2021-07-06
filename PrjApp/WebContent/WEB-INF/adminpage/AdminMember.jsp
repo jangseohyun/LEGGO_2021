@@ -88,9 +88,9 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="connectStat.action">접속자 통계</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">회원 통계</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">게시물 통계</a>
+                                    <a class="nav-link" href="connectStats.action">접속자 통계</a>
+                                    <a class="nav-link" href="memberStats.action">회원 통계</a>
+                                    <a class="nav-link" href="postStats.action">게시물 통계</a>
                                 </nav>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                                             <td>${member.acct_st }</td>
                                             <td>${member.admin_cd!=null ? "관리자" : "사용자"  }</td>
                                             <td>
-                                            	<a href="memberprofile.action?mem_cd=${member.mem_cd }" onClick="window.open(this.href, '', 'width=400, height=640'); return false;">
+                                            	<a href="memberprofile.action?mem_cd=${member.mem_cd }" onClick="window.open(this.href, '', 'width=400, height=660'); return false;">
                                             		<img src="images/menu.png" height="18px;">
                                             	</a>
                                             </td>
