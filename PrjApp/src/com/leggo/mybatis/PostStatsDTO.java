@@ -3,7 +3,7 @@ package com.leggo.mybatis;
 public class PostStatsDTO
 {
 	//-- 주요 속성 구성
-	private String dt;					//-- 작성일
+	private String dt;							//-- 작성일
 	private int plan, trip, photo, count;		//-- 일정게시물수, 여행기게시물수, 사진게시물수
 	
 	// getter / setter 

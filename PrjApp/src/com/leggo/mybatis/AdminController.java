@@ -21,10 +21,11 @@ public class AdminController
 	{
 		String result = null;
 		
-		IVisitantDAO vi = sqlSession.getMapper(IVisitantDAO.class);
-		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
-		IPostStatsDAO ps = sqlSession.getMapper(IPostStatsDAO.class);
-		IReportDAO pe = sqlSession.getMapper(IReportDAO.class);
+		IVisitantDAO vi = sqlSession.getMapper(IVisitantDAO.class);				//-- 접속자
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);				//-- 회원
+		IPostStatsDAO ps = sqlSession.getMapper(IPostStatsDAO.class);			//-- 게시물
+		IReportDAO pe = sqlSession.getMapper(IReportDAO.class);					//-- 신고
+		ICommentDAO com = sqlSession.getMapper(ICommentDAO.class);
 		
 		// 메인 페이지 접근 시 접속자 COUNT (사용자 페이지로 이동 필요) -------------------------------------- 
 		VisitantDTO v = new VisitantDTO();
@@ -34,7 +35,8 @@ public class AdminController
 		// -------------------------------------- 메인 페이지 접근 시 접속자 COUNT (사용자 페이지로 이동 필요)
 		
 		model.addAttribute("joinCount", mem.joinCount());		//-- 신규 회원 
-		model.addAttribute("reportCount", pe.count());			//-- 신고 
+		model.addAttribute("reportCount", pe.count());			//-- 신규 신고 
+		model.addAttribute("comCount", com.count());			//-- 신규 댓글
 		
 		model.addAttribute("postCount", ps.postCount());		//-- 당일 게시물 수 (그래프)
 		model.addAttribute("timeList", vi.timeList());			//-- 당일 시간별 접속자 수 (그래프)
@@ -74,6 +76,39 @@ public class AdminController
 		
 		return result;
 	}
+	
+	// 사진 관리 페이지 
+	@RequestMapping(value = "/photo.action", method = RequestMethod.GET)
+	public String photo(Model model)
+	{
+		String result = null;
+		
+		IPhotoDAO dao = sqlSession.getMapper(IPhotoDAO.class);
+		
+		model.addAttribute("list", dao.list());
+		model.addAttribute("count", dao.count());
+		
+		result = "/WEB-INF/adminpage/AdminPhoto.jsp";
+		
+		return result;
+	}
+	
+	// 신고 관리 페이지
+	@RequestMapping(value = "/comment.action", method = RequestMethod.GET)
+	public String comment(Model model)
+	{
+		String result = null;
+		
+		ICommentDAO dao = sqlSession.getMapper(ICommentDAO.class);
+		
+		model.addAttribute("list", dao.list());							//-- 댓글 리스트 
+		model.addAttribute("totCount", dao.totCount());					//-- 댓글 총 수
+		
+		result = "/WEB-INF/adminpage/AdminComment.jsp";
+		
+		return result;
+	}
+	
 	
 	// 신고 관리 페이지
 	@RequestMapping(value = "/report.action", method = RequestMethod.GET)

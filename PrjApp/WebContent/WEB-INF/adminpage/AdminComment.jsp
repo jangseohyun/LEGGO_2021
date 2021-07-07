@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -12,97 +13,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>PostStatistics - Leggo Admin</title>
+<title>Member - Leggo Admin</title>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
-<script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-<script type="text/javascript">
-	
-		$(function()
-		{
-			var planSu = $("#plan").val();
-			var tripSu = $("#trip").val();
-			var photoSu = $("#photo").val(); 
-			
-			var mychart = $("#bar-chart");
-			var myBarChart = new Chart(mychart, {
-			    type: 'bar',
-			    data: {
-			        labels: ['일정 글', '여행기 글', '사진 글'],
-			        datasets: [{
-			            label: '# of Post',
-			            data: [planSu, tripSu, photoSu],
-			            backgroundColor: [
-			                'rgba(54, 162, 235, 0.2)',
-			                'rgba(75, 192, 192, 0.2)',
-			                'rgba(153, 102, 255, 0.2)'
-			            ],
-			            borderColor: [
-			                'rgba(54, 162, 235, 1)',
-			                'rgba(75, 192, 192, 1)',
-			                'rgba(153, 102, 255, 1)'
-			            ],
-			            borderWidth: 1
-			        }]
-			    },
-			    options: {
-			    	 legend: {
-				         	display: false
-				         },
-			        scales: {
-			        	yAxes: [{
-							ticks: {
-								beginAtZero: true
-							}
-						}]
-			        }
-			    }
-			});
-			
-			var postDaySu1 = $("#postDayList1").val();	//-- 6일전
-			var postDaySu2 = $("#postDayList2").val();	//-- 5일전
-			var postDaySu3 = $("#postDayList3").val();	//-- 4일전
-			var postDaySu4 = $("#postDayList4").val();	//-- 3일전
-			var postDaySu5 = $("#postDayList5").val();	//-- 2일전
-			var postDaySu6 = $("#postDayList6").val();	//-- 1일전
-			var postDaySu7 = $("#postDayList7").val();	//-- 오늘
-			
-			var mychart2 = $("#line-chart");
-			var myLineChart = new Chart(mychart2, {
-			    type: 'line',
-			    data: {
-			        labels: ['6일 전', '5일 전', '4일 전', '3일 전', '2일 전', '1일 전', '오늘'],
-			        datasets: [{
-			            label: 'of Post su',
-			            data: [
-			            	postDaySu1, postDaySu2, postDaySu3, postDaySu4, postDaySu5, postDaySu6, postDaySu7
-			            ],
-			            borderColor: "rgba(255, 201, 14, 1)",
-			            backgroundColor: "rgba(255, 201, 14, 0.4)",
-			            fill: true,
-			            lineTension: 0
-			        }]
-			    },
-			    options: {
-			    	 legend: {
-				         	display: false
-				         },
-			        scales: {
-			        	yAxes: [{
-							ticks: {
-								beginAtZero: true
-							}
-						}]
-			        }
-			    }
-			});
-		});
-	
-</script>
 </head>
 <body class="sb-nav-fixed">
-       <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="admin.action"><img src="images/leggo.png" width="130px;"></a>
             <!-- Sidebar Toggle-->
@@ -138,7 +54,7 @@
                             </a>
                             
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                           <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><img src="images/member.png" height="23px;"></div>
                                 회원 관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -159,8 +75,8 @@
                             <a class="nav-link" href="photo.action">
                             	<div class="sb-nav-link-icon"><img src="images/photo.png" height="23px;"></div>사진 관리
                             </a>
-                            <a class="nav-link" href="comment.action">
-                            	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
+                            <a class="nav-link" href="comment.action" style="background-color: #2E9AFE; color: black;">
+                            	<div class="sb-nav-link-icon"><img src="images/speech-bubble.png" height="23px;"></div>댓글 관리
                             </a>
                             <a class="nav-link" href="report.action">
                             	<div class="sb-nav-link-icon"><img src="images/report.png" height="23px;"></div>신고관리
@@ -170,11 +86,11 @@
                                 통계 관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse show" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="connectStats.action">접속자 통계</a>
                                     <a class="nav-link" href="memberStats.action">회원 통계</a>
-                                    <a class="nav-link" href="postStats.action" style="background-color: #2E9AFE; color: black;">게시물 통계</a>
+                                    <a class="nav-link" href="postStats.action">게시물 통계</a>
                                 </nav>
                             </div>
                         </div>
@@ -185,79 +101,50 @@
                     </div>
                 </nav>
             </div>
-            
-            <!-- 메인페이지 -->
             <div id="layoutSidenav_content">
                 <main>
-                     <div class="container-fluid px-4">
-                     	<h1 class="mt-4">게시물 통계</h1>
+                      <div class="container-fluid px-4">
+                     	<h1 class="mt-4">댓글 관리</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Post Statistics</li>
+                            <li class="breadcrumb-item active">Comment</li>
                         </ol>
                      </div>
-                 
                      <br>
-                   	 <div class="row">
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                         당일 게시물 통계
-                                         <input type="hidden" value="${postCount.plan }" id="plan">
-                                         <input type="hidden" value="${postCount.trip }" id="trip">
-                                         <input type="hidden" value="${postCount.photo }" id="photo">
-                                    </div>
-                                    <div class="card-body"><canvas id="bar-chart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-area me-1"></i>
-                                        일별 게시물 통계
-                                        <c:set var="i" value="1"></c:set>
-                                        <c:forEach var="postSu" items="${postDayCount }">
-	                                        <input type="hidden" value="${postSu.count }" id="postDayList${i }">
-	                                        <c:set var="i" value="${i+1 }"></c:set>
-                                        </c:forEach>
-                                    </div>
-                                    <div class="card-body"><canvas id="line-chart" width="100%" height="40"></canvas></div>
-                                </div>
-                            </div>
-                     </div>
                      <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                게시물 수 데이터
+                                댓글 데이터
                             </div>
                             <div class="card-body">
-                            	<table id="datatablesSimple" style="text-align: center;">
+                            	<table id="datatablesSimple">
                                     <thead>
                                     	<tr>
-                                    		<th rowspan="2" style="text-align: center; vertical-align: middle;">번호</th>
-                                            <th rowspan="2" style="text-align: center; vertical-align: middle;">신규게시물 수</th>
-                                            <th rowspan="2" style="text-align: center; vertical-align: middle;">작성일</th>
-                                            <th colspan="3" style="text-align: center; vertical-align: middle;">게시판</th>
-                                    	</tr>
-                                    	<tr>
-                                    		<th style="text-align: center;">일정</th>
-                                    		<th style="text-align: center;">여행기</th>
-                                    		<th style="text-align: center;">사진글</th>
+                                    		<th>번호</th>
+                                            <th>카테고리</th>
+                                            <th>내용</th>
+                                            <th>작성자</th>
+                                            <th>작성일</th>
                                     	</tr>
                                     </thead>
                                     <tbody>
-                                    	<c:set var="i" value="14"></c:set>
-                                    	<c:forEach var="post" items="${totCount }">
-                                    	<tr>
-                                    		<td>${i }</td>
-                                    		<c:set var="i" value="${i-1 }"></c:set>
-                                            <td>${post.plan + post.trip + post.photo }</td>
-                                            <td>${post.dt }</td>
-                                            <td>${post.plan }</td>
-                                            <td>${post.trip }</td>
-                                            <td>${post.photo }</td>
-                                    	</tr>
-                                    	</c:forEach>
+                                    	<c:if test="${empty list }">
+                                    		<tr>
+                                    			<td colspan="5" style="text-align: center; font-weight: bold;">댓글 내역이 없습니다.</td>
+                                    		</tr>
+                                    	</c:if>
+                                    	<c:if test="${not empty list }">
+                                    		<c:set var="tot" value="${totCount }"></c:set>
+                                    		<c:forEach var="comment" items="${list }">
+                                    			<tr onClick="window.open('.jsp', '', 'width=570, height=260'); return false;">
+		                                    		<td>${tot }</td>
+		                                    		<c:set var="tot" value="${tot-1 }"></c:set>
+		                                            <td>${fn:substring(comment.cd,0,2)=="PL" ? "[일정]" : fn:substring(report.cd,0,2)=="TR" ? "[여행기]" : "[사진]" }</td>
+		                                            <td>${comment.cont }</td>
+		                                            <td>${comment.mem_nnm }</td>
+		                                            <td>${comment.dt }</td>
+                                    			</tr>
+                                    		</c:forEach>
+                                    	</c:if>	
                                     </tbody>
                                  </table>
                             </div>
@@ -279,6 +166,9 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
         <script src="js/datatables-simple-demo.js"></script>
 </body>

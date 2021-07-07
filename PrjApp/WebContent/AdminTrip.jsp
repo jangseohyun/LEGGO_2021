@@ -72,10 +72,10 @@
                             <a class="nav-link" href="AdminTrip.jsp" style="background-color: #2E9AFE; color: black;">
                             	<div class="sb-nav-link-icon"><img src="images/document.png" height="23px;"></div>여행기 관리
                             </a>
-                            <a class="nav-link" href="AdminPhoto.jsp">
+                            <a class="nav-link" href="photo.action">
                             	<div class="sb-nav-link-icon"><img src="images/photo.png" height="23px;"></div>사진 관리
                             </a>
-                            <a class="nav-link" href="AdminComment.jsp">
+                            <a class="nav-link" href="comment.action">
                             	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
                             </a>
                             <a class="nav-link" href="report.action">

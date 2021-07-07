@@ -168,10 +168,10 @@
                             <a class="nav-link" href="AdminTrip.jsp">
                             	<div class="sb-nav-link-icon"><img src="images/paper.png" height="23px;"></div>여행기 관리
                             </a>
-                            <a class="nav-link" href="AdminPhoto.jsp">
+                            <a class="nav-link" href="photo.action">
                             	<div class="sb-nav-link-icon"><img src="images/photo.png" height="23px;"></div>사진 관리
                             </a>
-                            <a class="nav-link" href="AdminComment.jsp">
+                            <a class="nav-link" href="comment.action">
                             	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
                             </a>
                             <a class="nav-link" href="report.action">
@@ -250,7 +250,7 @@
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">신규 댓글</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminComment.jsp">132</a>
+                                        <a class="small text-white stretched-link" href="AdminComment.jsp">${comCount }</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

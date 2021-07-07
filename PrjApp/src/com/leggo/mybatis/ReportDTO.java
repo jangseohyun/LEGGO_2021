@@ -2,7 +2,7 @@ package com.leggo.mybatis;
 
 public class ReportDTO
 {
-	String rpt_cd, rsn, mem_nnm, dt, st;		//-- 코드, 사유, 회원코드, 신고일, 상태
+	private String rpt_cd, rsn, mem_nnm, dt, st;		//-- 코드, 사유, 회원코드, 신고일, 상태
 
 	public String getRpt_cd()
 	{
