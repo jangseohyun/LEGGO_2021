@@ -1,5 +1,7 @@
 package com.leggo.login;
 
+import java.util.Map;
+
 public interface IMemberLoginDAO
 {
 	// 로그인
@@ -9,8 +11,11 @@ public interface IMemberLoginDAO
 	public String MemAcctCck(String mem_id);
 	
 	// 자동로그인 등록
-	public void AutoLoginUpdate(MemberLoginDTO dto);
+	public void AutoLoginUpdate(MemberAutoLoginDTO dto);
 	
 	// 자동로그인 확인
-	public String AutoLogin(String sessionId);
+	public Map<String, Object> AutoLoginCck(String session_id);
+	
+	// 자동로그인 삭제
+	public void AutoLoginDel(String session_id);
 }

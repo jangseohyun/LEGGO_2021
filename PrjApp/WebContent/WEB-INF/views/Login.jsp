@@ -112,7 +112,7 @@
 									<div class="w-50">
 										<label class="checkbox-wrap checkbox-primary"
 											style="font-family: 'Noto Sans KR', sans-serif;">자동
-											로그인<input type="checkbox" id="login_cck" name="login_cck" checked="checked"> <span
+											로그인<input type="checkbox" id="login_cck" name="login_cck"> <span
 											class="checkmark"></span>
 										</label>
 									</div>

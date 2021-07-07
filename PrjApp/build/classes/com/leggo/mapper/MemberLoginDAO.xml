@@ -24,17 +24,21 @@
 		  AND D.MEM_PW = CRYPTPACK.ENCRYPT(#{mem_pw},#{mem_pw})
 	</select>
 	
-	<update id="AutoLoginUpdate">
-		UPDATE COOKIETEST
-		SET SESSION_ID = #{session_id},
-		    LIMIT_TIME = #{limit_date}
-		WHERE MEM_CD = (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id})
-	</update>
+	<insert id="AutoLoginUpdate">
+		INSERT INTO COOKIETEST(SESSION_ID, LIMIT_TIME, MEM_CD)
+		VALUES(#{session_id}, #{limit_date}, (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id}))
+	</insert>
 	
-	<select id="AutoLogin" parameterType="com.leggo.login.MemberLoginDTO" resultType="java.lang.String">
-		SELECT MD.MEM_ID
-		FROM MEMBER_DATA MD
-		WHERE MD.MEM_CD = (SELECT MEM_CD FROM COOKIETEST WHERE SESSION_ID = #{session_id}
+	<select id="AutoLoginCck" parameterType="HashMap">
+		SELECT *
+		FROM COOKIETEST
+		WHERE SESSION_ID = #{session_id}
 	</select>
+	
+	<delete id="AutoLoginDel">
+		DELETE
+		FROM COOKIETEST
+		WHERE SESSION_ID = #{session_id}
+	</delete>
 
 </mapper>

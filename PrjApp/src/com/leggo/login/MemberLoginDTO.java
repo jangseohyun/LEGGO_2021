@@ -8,8 +8,6 @@ public class MemberLoginDTO
 	private String mem_id, mem_pw;		//--아이디, 비밀번호, 닉네임
 	private String admin_cd;			//--관리자 코드
 	private String login_cck;			//--자동로그인 체크 여부
-	private String session_id;			//--세션 아이디
-	private Date limit_date;			//--쿠키 지속 기간
 	
 	public String getMem_cd()
 	{
@@ -58,21 +56,5 @@ public class MemberLoginDTO
 	public void setLogin_cck(String login_cck)
 	{
 		this.login_cck = login_cck;
-	}
-	public String getSession_id()
-	{
-		return session_id;
-	}
-	public void setSession_id(String session_id)
-	{
-		this.session_id = session_id;
-	}
-	public Date getLimit_date()
-	{
-		return limit_date;
-	}
-	public void setLimit_date(Date limit_date)
-	{
-		this.limit_date = limit_date;
 	}
 }
