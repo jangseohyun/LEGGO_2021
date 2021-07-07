@@ -202,7 +202,7 @@
 <body class="sb-nav-fixed">
        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="AdminDashboard.jsp"><img src="images/leggo.png" width="130px;"></a>
+            <a class="navbar-brand ps-3" href="admin.action"><img src="images/leggo.png" width="130px;"></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -231,7 +231,7 @@
                                 사용자 페이지 열기 >>
                             </a>
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="AdminDashboard.jsp">
+                            <a class="nav-link" href="admin.action">
                                 <div class="sb-nav-link-icon"><img src="images/board.png" height="21px;"></div>대시보드
                             </a>
                             
@@ -260,7 +260,7 @@
                             <a class="nav-link" href="AdminComment.jsp">
                             	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
                             </a>
-                            <a class="nav-link" href="AdminReport.jsp">
+                            <a class="nav-link" href="report.action">
                             	<div class="sb-nav-link-icon"><img src="images/report.png" height="23px;"></div>신고관리
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">

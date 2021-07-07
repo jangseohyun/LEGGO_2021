@@ -3,6 +3,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
+	
+	String ip = request.getRemoteAddr();
 %>
 <!DOCTYPE html>
 <html>
@@ -59,5 +61,7 @@
 <div style="width: 400px; height: 400px;">
 <canvas id="bar-chart"></canvas>
 </div>
+
+<div><%=ip %></div>
 </body>
 </html>

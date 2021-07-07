@@ -20,7 +20,7 @@
 		<!-- 상단 고정 메뉴 -->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="AdminDashboard.jsp"><img src="images/leggo.png" width="130px;"></a>
+            <a class="navbar-brand ps-3" href="admin.action"><img src="images/leggo.png" width="130px;"></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -50,7 +50,7 @@
                                 사용자 페이지 열기 >>
                             </a>
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="AdminDashboard.jsp">
+                            <a class="nav-link" href="admin.action">
                                 <div class="sb-nav-link-icon"><img src="images/board.png" height="21px;"></div>대시보드
                             </a> 
                             <div class="sb-sidenav-menu-heading">Interface</div>
@@ -78,7 +78,7 @@
                             <a class="nav-link" href="AdminComment.jsp">
                             	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
                             </a>
-                            <a class="nav-link" href="AdminReport.jsp">
+                            <a class="nav-link" href="report.action">
                             	<div class="sb-nav-link-icon"><img src="images/report.png" height="23px;"></div>신고관리
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -90,7 +90,7 @@
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="connectStats.action">접속자 통계</a>
                                     <a class="nav-link" href="memberStats.action">회원 통계</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">게시물 통계</a>
+                                    <a class="nav-link" href="postStats.action">게시물 통계</a>
                                 </nav>
                             </div>
                         </div>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.leggo.mybatis.IReportDAO">
+
+	<select id="list" resultType="com.leggo.mybatis.ReportDTO">
+		SELECT RPT_CD, MEM_NNM, RSN, DT, ST
+		FROM 
+		(
+			SELECT PR.PL_RPT_CD AS RPT_CD, MD.MEM_NNM AS MEM_NNM, RR.RPT_RSN AS RSN, PR.PL_RPT_DT AS DT, RS.RPT_ST_CONT AS ST
+			FROM PLAN_REPORT PR LEFT JOIN REPORT_STATUS RS
+			        ON PR.RPT_ST_CD = RS.RPT_ST_CD
+			            LEFT JOIN REPORT_REASON RR
+			                ON PR.RPT_RSN_CD = RR.RPT_RSN_CD
+			                    LEFT JOIN MEMBER_DATA MD
+			                        ON PR.MEM_CD = MD.MEM_CD
+		) UNION ALL
+		(
+			SELECT TR.TR_RPT_CD AS RPT_CD, MD.MEM_NNM AS MEM_NNM, RR.RPT_RSN AS RSN, TR.TR_RPT_DT AS DT, RS.RPT_ST_CONT AS ST 
+			FROM TRIP_REPORT TR LEFT JOIN REPORT_STATUS RS
+			        ON TR.RPT_ST_CD = RS.RPT_ST_CD
+			            LEFT JOIN REPORT_REASON RR
+			                ON TR.RPT_RSN_CD = RR.RPT_RSN_CD
+			                    LEFT JOIN MEMBER_DATA MD
+			                        ON TR.MEM_CD = MD.MEM_CD
+		) UNION ALL
+		(
+			SELECT HR.PPR_CD AS RPT_CD, MD.MEM_NNM AS MEM_NNM, RR.RPT_RSN AS RSN, HR.PPR_DT AS DT, RS.RPT_ST_CONT AS ST
+			FROM PHOTO_POST_REPORT HR LEFT JOIN REPORT_STATUS RS
+			            ON HR.RPT_ST_CD = RS.RPT_ST_CD
+			                LEFT JOIN REPORT_REASON RR
+			                    ON HR.RPT_RSN_CD = RR.RPT_RSN_CD
+			                        LEFT JOIN MEMBER_DATA MD
+			                            ON HR.MEM_CD = MD.MEM_CD
+		)
+		ORDER BY DT DESC
+	</select>
+	
+	<select id="totCount" resultType="java.lang.Integer">
+		SELECT SUM(A.COUNT + B.COUNT + C.COUNT) AS COUNT
+		FROM 
+		(
+			SELECT COUNT(*) AS COUNT
+			FROM PLAN_REPORT
+		) A
+		, (
+			SELECT COUNT(*) AS COUNT
+			FROM TRIP_REPORT
+		) B
+		, (
+			SELECT COUNT(*) AS COUNT
+			FROM PHOTO_POST_REPORT
+		) C
+	</select>
+	
+	<select id="count" resultType="java.lang.Integer">
+		SELECT SUM(A.COUNT + B.COUNT + C.COUNT) AS COUNT
+		FROM 
+		(
+			SELECT COUNT(*) AS COUNT
+			FROM PLAN_REPORT
+			WHERE TO_CHAR(PL_RPT_DT, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+		) A
+		, (
+			SELECT COUNT(*) AS COUNT
+			FROM TRIP_REPORT
+			WHERE TO_CHAR(TR_RPT_DT, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+		) B
+		, (
+			SELECT COUNT(*) AS COUNT
+			FROM PHOTO_POST_REPORT
+			WHERE TO_CHAR(PPR_DT, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+		) C
+	</select>
+	
+</mapper>

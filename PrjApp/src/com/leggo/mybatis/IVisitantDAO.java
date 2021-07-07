@@ -15,4 +15,7 @@ public interface IVisitantDAO
 	
 	// 현재 시간 부터 7시간 전 접속자 수
 	public ArrayList<VisitantDTO> timeList();
+	
+	// 접속자 추가 
+	public int add(VisitantDTO v);
 }

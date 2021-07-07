@@ -52,4 +52,9 @@
 		ORDER BY A.DAY
 	</select>
 	
+	<insert id="add">
+		INSERT INTO VISITANT(VI_CD, VI_IP)
+		VALUES('VI' || TESTSEQ.NEXTVAL, #{vi_ip})
+	</insert>
+	
 </mapper>

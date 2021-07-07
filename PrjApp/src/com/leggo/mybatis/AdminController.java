@@ -1,5 +1,7 @@
 package com.leggo.mybatis;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,38 @@ public class AdminController
 	@Autowired
 	private SqlSession sqlSession;
 	
+	// 대시보드 페이지 
+	@RequestMapping(value = "/admin.action", method = RequestMethod.GET)
+	public String adminDashboard(Model model, HttpServletRequest request)
+	{
+		String result = null;
+		
+		IVisitantDAO vi = sqlSession.getMapper(IVisitantDAO.class);
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		IPostStatsDAO ps = sqlSession.getMapper(IPostStatsDAO.class);
+		IReportDAO pe = sqlSession.getMapper(IReportDAO.class);
+		
+		// 메인 페이지 접근 시 접속자 COUNT (사용자 페이지로 이동 필요) -------------------------------------- 
+		VisitantDTO v = new VisitantDTO();
+		v.setVi_ip(request.getRemoteAddr());
+		
+		vi.add(v);
+		// -------------------------------------- 메인 페이지 접근 시 접속자 COUNT (사용자 페이지로 이동 필요)
+		
+		model.addAttribute("joinCount", mem.joinCount());		//-- 신규 회원 
+		model.addAttribute("reportCount", pe.count());			//-- 신고 
+		
+		model.addAttribute("postCount", ps.postCount());		//-- 당일 게시물 수 (그래프)
+		model.addAttribute("timeList", vi.timeList());			//-- 당일 시간별 접속자 수 (그래프)
+		
+		result = "/WEB-INF/adminpage/AdminDashboard.jsp";
+		
+		return result;
+	}
+	
 	// 회원 목록 페이지 
 	@RequestMapping(value = "/memberlist.action", method = RequestMethod.GET)
-	public String MemberList(Model model)
+	public String member(Model model)
 	{
 		String result = null;
 		
@@ -44,9 +75,25 @@ public class AdminController
 		return result;
 	}
 	
-	// 접속자 통계 
+	// 신고 관리 페이지
+	@RequestMapping(value = "/report.action", method = RequestMethod.GET)
+	public String report(Model model)
+	{
+		String result = null;
+		
+		IReportDAO dao = sqlSession.getMapper(IReportDAO.class);
+		
+		model.addAttribute("list", dao.list());							//-- 신고 리스트 
+		model.addAttribute("totCount", dao.totCount());					//-- 신고 총 수
+		
+		result = "/WEB-INF/adminpage/AdminReport.jsp";
+		
+		return result;
+	}
+	
+	// 접속자 통계 페이지
 	@RequestMapping(value = "/connectStats.action", method = RequestMethod.GET)
-	public String VisitantList(Model model)
+	public String connectStats(Model model)
 	{
 		String result = null;
 		
@@ -54,17 +101,17 @@ public class AdminController
 		
 		model.addAttribute("list", dao.list());							//-- 접속자 리스트
 		model.addAttribute("totCount", dao.totCount());					//-- 접속자 로그 총 수량
-		model.addAttribute("dayList", dao.dayList());					//-- 일별 접속자 수
-		model.addAttribute("timeList", dao.timeList());					//-- 당일 시간별 접속자 수
+		model.addAttribute("dayList", dao.dayList());					//-- 일별 접속자 수 (그래프)
+		model.addAttribute("timeList", dao.timeList());					//-- 당일 시간별 접속자 수 (그래프)
 		
 		result = "/WEB-INF/adminpage/AdminConnectStatistics.jsp";
 		
 		return result;
 	}
 	
-	// 회원 통계
+	// 회원 통계 페이지
 	@RequestMapping(value = "/memberStats.action", method = RequestMethod.GET)
-	public String joinList(Model model)
+	public String memberStats(Model model)
 	{
 		String result = null;
 		
@@ -85,19 +132,22 @@ public class AdminController
 		return result;
 	}
 	
-	// 게시물 통계
+	// 게시물 통계 페이지
 	@RequestMapping(value = "/postStats.action", method = RequestMethod.GET)
-	public String postCount(Model model)
+	public String postStats(Model model)
 	{
 		String result = null;
 		
 		IPostStatsDAO dao = sqlSession.getMapper(IPostStatsDAO.class);
 		
-		model.addAttribute("postCount", dao.postCount());
-		model.addAttribute("postDayCount", dao.postDayCount());
+		model.addAttribute("postCount", dao.postCount());					//-- 당일 게시물 통계(그래프)
+		model.addAttribute("postDayCount", dao.postDayCount());				//-- 일자별 게시물 수(그래프)
+		model.addAttribute("totCount", dao.totCount());						//-- 총 게시물 수
 		
 		result = "/WEB-INF/adminpage/AdminPostStatistics.jsp";
 		
 		return result;
 	}
+	
+	
 }

@@ -122,7 +122,7 @@
 <body class="sb-nav-fixed">
        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="AdminDashboard.jsp"><img src="images/leggo.png" width="130px;"></a>
+            <a class="navbar-brand ps-3" href="admin.action"><img src="images/leggo.png" width="130px;"></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -151,7 +151,7 @@
                                 사용자 페이지 열기 >>
                             </a>
                             <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="AdminDashboard.jsp">
+                            <a class="nav-link" href="admin.action">
                                 <div class="sb-nav-link-icon"><img src="images/board.png" height="21px;"></div>대시보드
                             </a>
                             
@@ -180,7 +180,7 @@
                             <a class="nav-link" href="AdminComment.jsp">
                             	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
                             </a>
-                            <a class="nav-link" href="AdminReport.jsp">
+                            <a class="nav-link" href="report.action">
                             	<div class="sb-nav-link-icon"><img src="images/report.png" height="23px;"></div>신고관리
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -234,7 +234,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header">
                                         <i class="fas fa-chart-area me-1"></i>
-                                        시간별 게시물 통계
+                                        시간별 접속자 통계
                                         <c:set var="i" value="0"></c:set>
                                         <c:forEach var="time" items="${timeList }">
                                         	<input type="hidden" value="${time.count }" id="suList${i+1 }">
@@ -252,12 +252,12 @@
                                 접속 수 데이터
                             </div>
                             <div class="card-body">
-                            	<table id="datatablesSimple">
+                            	<table id="datatablesSimple" style="text-align: center;">
                                     <thead>
                                     	<tr>
-                                    		<th>번호</th>
-                                            <th>접속자 IP</th>
-                                            <th>접속일</th>
+                                    		<th style="text-align: center;">번호</th>
+                                            <th style="text-align: center;">접속자 IP</th>
+                                            <th style="text-align: center;">접속일</th>
                                     	</tr>
                                     </thead>
                                     <tbody>
