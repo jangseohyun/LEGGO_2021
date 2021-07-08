@@ -14,7 +14,7 @@ public interface IMemberLoginDAO
 	public void AutoLoginUpdate(MemberAutoLoginDTO dto);
 	
 	// 자동로그인 확인
-	public Map<String, Object> AutoLoginCck(String session_id);
+	public MemberAutoLoginDTO AutoLoginCck(String session_id);
 	
 	// 자동로그인 삭제
 	public void AutoLoginDel(String session_id);

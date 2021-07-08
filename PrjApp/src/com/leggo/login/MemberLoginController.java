@@ -1,6 +1,8 @@
 package com.leggo.login;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.CookieGenerator;
 import org.springframework.web.util.WebUtils;
 
 @Controller
@@ -51,12 +54,14 @@ public class MemberLoginController
 	    
 		// DB에서 회원 상태를 받아옴
 		String MemAcctCck = dao.MemAcctCck(Logindto.getMem_id());
+		System.out.println("로그인 컨트롤러 0");
 		
 		try
 		{
 			if (MemAcctCck.equals("정상"))
 			{
 				MemberLoginDTO login = dao.Login(Logindto);
+				System.out.println("로그인 컨트롤러 1");
 					
 				// 정상 로그인
 				if (login != null)
@@ -64,6 +69,7 @@ public class MemberLoginController
 					// 세션에 저장
 					session.setAttribute("mem_id", login.getMem_id());
 					
+					// 자동 로그인 체크 안 했을 경우
 					if (Logindto.getLogin_cck() == null)
 					{
 						// 일반 회원일 경우
@@ -76,8 +82,10 @@ public class MemberLoginController
 					// 자동 로그인 체크했을 경우
 					else if(Logindto.getLogin_cck().equals("on"))
 					{
+						System.out.println("로그인 컨트롤러 2");
 						// 로그인 세션을 쿠키에 저장
 						Cookie loginCookie = new Cookie("loginCookie", session.getId());
+						System.out.println("세션 아이디: "+session.getId());
 						
 						// 기본 uri 경로 페이지로 저장
 						loginCookie.setPath("/*.action");
@@ -96,10 +104,17 @@ public class MemberLoginController
 						Autodto.setSession_id(session.getId());
 						Autodto.setMem_id(login.getMem_id());
 						
+						System.out.println(Autodto.getMem_id());
+						System.out.println(Autodto.getSession_id());
+						System.out.println(Autodto.getLimit_time());
+						
 						// 자동로그인 세션 정보 DB에 저장
 						dao.AutoLoginUpdate(Autodto);
 						
-						response.addCookie(loginCookie);
+						CookieGenerator cg = new CookieGenerator();
+
+						cg.setCookieName("loginCookie");
+						cg.addCookie(response, loginCookie.getValue());
 						
 						result = "profilepage.action";
 					}
@@ -132,10 +147,13 @@ public class MemberLoginController
 	
 	// 로그아웃
 	@RequestMapping(value = "/logout.action", method = RequestMethod.GET)
-	public String Logout(HttpServletRequest request, HttpServletResponse response, ModelMap model)
+	public String Logout(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session)
 	{
 		// loginCookie라는 이름의 쿠키 가져오기
 		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+		
+		// 카카오 로그아웃
+		String kakao_access_token = (String)session.getAttribute("kakao_access_token");
 		
 		// 쿠키가 존재할 경우
 		if (loginCookie != null)
@@ -144,13 +162,21 @@ public class MemberLoginController
 			
 			// 쿠키 유효시간 초기화 후 로컬 전송 → 0초 지나 자동 삭제
 			loginCookie.setMaxAge(0);
-			response.addCookie(loginCookie);
+			
+			CookieGenerator cg = new CookieGenerator();
 
+			cg.setCookieName("loginCookie");
+			cg.addCookie(response, null);
+			
 			// DB에서 자동로그인 세션 삭제
 			dao.AutoLoginDel(loginCookie.getValue());
 		}
 		
-		HttpSession session = request.getSession();
+		// 카카오 액세스 토큰이 존재할 경우
+		if (kakao_access_token != null)
+		{
+		}
+		
 		session.invalidate();
         
         model.addAttribute("success_message", "로그아웃되었습니다.");

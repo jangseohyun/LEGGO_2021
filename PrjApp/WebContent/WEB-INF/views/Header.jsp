@@ -66,8 +66,8 @@
 									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
 									alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
 								<ul class="dropdown">
-									<li><a href="profilepage.action">마이페이지</a></li>
-									<li><a href="logout.action">로그아웃</a></li>
+									<li><a href="profilepageauto.action">마이페이지</a></li>
+									<li><a href="javascript:kakaoLogout()">로그아웃</a></li>
 								</ul></li>
 						</ul>
 					</nav>
@@ -84,5 +84,21 @@
 
 	</header>
 
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+    function kakaoLogout() {
+    	
+    	Kakao.init("a76949096713e82c75fa45bdb32ebb4c");
+    	
+        if (!Kakao.Auth.getAccessToken()) {
+            return;
+        }
+        Kakao.Auth.logout(function() {
+        	alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
+        });
+        
+        location.href = "logout.action";
+    }
+</script>
 </body>
 </html>

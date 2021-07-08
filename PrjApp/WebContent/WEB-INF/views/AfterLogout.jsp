@@ -1,3 +1,4 @@
+<%@page import="com.leggo.login.MemberLoginDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -12,14 +13,11 @@
 </head>
 <body>
 
-<h4>여기는 로그아웃 이후 도착한 곳</h4>
+	<h4>여기는 그냥...페이지</h4>
 
-<div>
-</div>
-
-<div>
-	<a href="./login.action?command=Logout">로그아웃</a>
-</div>
+	<div>
+		<a href="loginpage.action">로그인페이지로</a>
+	</div>
 
 </body>
 </html>

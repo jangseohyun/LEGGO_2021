@@ -30,8 +30,12 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/*.action"/>
-			<beans:bean class="com.leggo.login.AutoLoginInterceptor"/>
+			<mapping path="/loginpage.action"/>
+			<beans:bean class="com.leggo.interceptor.AutoLoginInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/profilepage.action"/>
+			<beans:bean class="com.leggo.interceptor.LoginInterceptor"/>
 		</interceptor>
 	</interceptors>
 

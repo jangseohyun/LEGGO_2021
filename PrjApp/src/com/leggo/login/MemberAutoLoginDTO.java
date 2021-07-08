@@ -5,7 +5,7 @@ import java.util.Date;
 public class MemberAutoLoginDTO
 {
 	private String session_id;	//--세션 아이디
-	private Date limit_date;	//--쿠키 지속 시간
+	private Date limit_time;	//--쿠키 지속 시간
 	private String mem_id;		//--회원 아이디
 	
 	public String getSession_id()
@@ -16,13 +16,13 @@ public class MemberAutoLoginDTO
 	{
 		this.session_id = session_id;
 	}
-	public Date getLimit_date()
+	public Date getLimit_time()
 	{
-		return limit_date;
+		return limit_time;
 	}
-	public void setLimit_date(Date limit_date)
+	public void setLimit_date(Date limit_time)
 	{
-		this.limit_date = limit_date;
+		this.limit_time = limit_time;
 	}
 	public String getMem_id()
 	{

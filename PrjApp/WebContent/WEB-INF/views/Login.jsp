@@ -4,23 +4,6 @@
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
 %>
-<%-- 
-<%
-    // 로그인 유지작업 
-    Cookie[] cookies = request.getCookies();
-    if(cookies != null ){
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("id")){
-                /* 실행흐름이 서버에 있을 경우 서버코드로써 강제이동
-                       서버에서 클라이언트()에게 특정페이지로 이동하는 정보만 응답으로 준다.
-                   java코드로 페이지 이동 -> sendRedirect("url");
-                */
-                response.sendRedirect(메인페이지);
-            }
-        }
-    }
-%>
- --%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -56,6 +39,9 @@
 <meta name="google-signin-client_id"
 	content="447693494839-5d859g9t2hvpdupbar05mii8a0c4ag1j.apps.googleusercontent.com">
 
+<!-- 카카오 로그인 API -->
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+
 <!-- 메일 전송 -->
 <!-- 
 <script type="text/javascript">
@@ -66,6 +52,28 @@
 	}
 </script>
  -->
+
+<script>
+	function onSignIn(googleUser)
+	{
+		// Useful data for your client-side scripts:
+		var profile = googleUser.getBasicProfile();
+		console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+		console.log('Full Name: ' + profile.getName());
+		console.log("Image URL: " + profile.getImageUrl());
+		console.log("Email: " + profile.getEmail());
+
+		// The ID token you need to pass to your backend:
+		var id_token = googleUser.getAuthResponse().id_token;
+		console.log("ID Token: " + id_token);
+		
+		var xhr = new XMLHttpRequest();
+		xhr.open('POST', '/login.action');
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+		xhr.send('idtoken=' + id_token);
+	};
+</script>
+
 </head>
 <input type="hidden" value="${param.alert_message }" id="alert_message">
 <input type="hidden" value="${param.error_message }" id="error_message">
@@ -127,9 +135,14 @@
 							<p class="w-100 text-center"
 								style="font-family: 'Noto Sans KR', sans-serif; font-size: 15px;">&mdash;
 								SNS 계정으로 편하게 로그인하기 &mdash;</p>
-							<div class="social d-flex">
+							<div class="social d-flex text-center">
+								<!-- 구글 로그인 -->
+								<!--
 								<div class="googlelogin g-signin2 iconchange" data-width="150"
-									data-height="50" data-onsuccess="onSignIn"></div>
+								data-height="50" data-onsuccess="onSignIn"></div>
+								-->
+								<!-- 카카오 로그인 -->
+								<a href="javascript:kakaoLogin();"><img src="https://developers.kakao.com/tool/resource/static/img/button/login/full/ko/kakao_login_medium_narrow.png"></a>
 							</div>
 						</div>
 					</div>
@@ -185,24 +198,36 @@
 		});
 	</script>
 
+<script type='text/javascript'>
+ 
+	window.Kakao.init("a76949096713e82c75fa45bdb32ebb4c");
+	var kakao_id = "";
+ 
+	// 카카오 로그인 버튼 생성
+	function kakaoLogin()
+	{
+		window.Kakao.Auth.login({
+			scope: 'profile_nickname, profile_image, account_email',
+			success: function(authObj){
+				window.Kakao.API.request({
+					url: '/v2/user/me',
+					success: res => {
+						var kakao_account = res.kakao_account;
+						var access_token = Kakao.Auth.getAccessToken();
+						$("#kakao_id").attr("value",kakao_account.email);
+						$("#kakao_access_token").attr("value",access_token);
+						$("#kakao_form").submit();
+					}
+				});
+			}
+		});
+	}
 
-	<script>
-		function onSignIn(googleUser)
-		{
-			// Useful data for your client-side scripts:
-			var profile = googleUser.getBasicProfile();
-			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-			console.log('Full Name: ' + profile.getName());
-			console.log('Given Name: ' + profile.getGivenName());
-			console.log('Family Name: ' + profile.getFamilyName());
-			console.log("Image URL: " + profile.getImageUrl());
-			console.log("Email: " + profile.getEmail());
-
-			// The ID token you need to pass to your backend:
-			var id_token = googleUser.getAuthResponse().id_token;
-			console.log("ID Token: " + id_token);
-		};
-	</script>
+</script>
+<form action="profilepagekakao.action" id="kakao_form" method="GET">
+	<input type="hidden" id="kakao_id" name="kakao_id" value="">
+	<input type="hidden" id="kakao_access_token" name="kakao_access_token" value="">
+</form>
 
 <style type="text/css">
 body {

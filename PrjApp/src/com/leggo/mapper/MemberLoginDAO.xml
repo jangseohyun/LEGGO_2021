@@ -26,10 +26,10 @@
 	
 	<insert id="AutoLoginUpdate">
 		INSERT INTO COOKIETEST(SESSION_ID, LIMIT_TIME, MEM_CD)
-		VALUES(#{session_id}, #{limit_date}, (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id}))
+		VALUES(#{session_id}, #{limit_time}, (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id}))
 	</insert>
 	
-	<select id="AutoLoginCck" parameterType="HashMap">
+	<select id="AutoLoginCck" resultType="com.leggo.login.MemberAutoLoginDTO">
 		SELECT *
 		FROM COOKIETEST
 		WHERE SESSION_ID = #{session_id}
