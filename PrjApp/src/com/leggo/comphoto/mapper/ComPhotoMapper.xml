@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--  -->
+<mapper>
+
+<!-- 로그인 전 사진 피드 리스트 -->
+<select id="photo_list" resultType="com.leggo.comphoto.ComPhotoDTO">
+    SELECT PP_CD, MEM_CD, PP_NM, PP_LAT, PP_LONG, PP_CONT, PP_HITS, PP_DT, OPEN_CD
+	FROM PHOTO_POST
+</select>
+<!-- 게시물 개수 가져오기 -->
+<select id ="photo_count" parameterType="com.leggo.comphoto.ComPhotoDTO" resultType="int">
+	SELECT COUNT(*) AS COUNT
+	FROM PHOTO_POST;
+</select>
+
+
+<!-- 로그인 후 사진자랑 리스트 -->
+<!-- <select id="photo_list_login" parameterType="com.leggo.comphoto.ComPhotoDTO" resultType="com.leggo.comphoto.ComPhotoDTO">
+    select b.no, subject, content, writer, date_format(wdate,'%Y-%m-%d') wdate, hit, location, media, reply, heart, h.hno, f.fno, u.profile
+    from p_board b left outer join p_heart h
+    on #{nick} = h.userid and b.no = h.bno
+    left outer join p_favorite f
+    on #{nick} = f.userid and b.no = f.bno
+    left outer join user u
+    on b.writer = u.nick 
+    order by b.no desc
+    limit #{startRowNum}, #{rowCount}
+</select> -->
+
+
+</mapper>
