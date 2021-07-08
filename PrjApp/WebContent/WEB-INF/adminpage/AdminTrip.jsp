@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -14,10 +13,22 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Member - Leggo Admin</title>
+<style type="text/css">
+	
+	.state
+	{
+		border: 1px; 
+		width: 70px; 
+		height: 25px; 
+		color: white;
+	}
+	
+</style>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
+		<!-- 상단 고정 메뉴 -->
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
             <a class="navbar-brand ps-3" href="admin.action"><img src="images/leggo.png" width="130px;"></a>
@@ -38,6 +49,7 @@
                 </li>
             </ul>
         </nav>
+        <!-- 좌측 메뉴 -->
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
@@ -52,9 +64,8 @@
                             <a class="nav-link" href="admin.action">
                                 <div class="sb-nav-link-icon"><img src="images/board.png" height="21px;"></div>대시보드
                             </a>
-                            
                             <div class="sb-sidenav-menu-heading">Interface</div>
-                           <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><img src="images/member.png" height="23px;"></div>
                                 회원 관리
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -69,14 +80,14 @@
                             <a class="nav-link" href="plan.action">
                             	<div class="sb-nav-link-icon"><img src="images/calender.png" height="21px;"></div>일정 관리
                             </a>
-                            <a class="nav-link" href="trip.action">
-                            	<div class="sb-nav-link-icon"><img src="images/paper.png" height="23px;"></div>여행기 관리
+                            <a class="nav-link" href="trip.action" style="background-color: #2E9AFE; color: black;">
+                            	<div class="sb-nav-link-icon"><img src="images/document.png" height="23px;"></div>여행기 관리
                             </a>
                             <a class="nav-link" href="photo.action">
                             	<div class="sb-nav-link-icon"><img src="images/photo.png" height="23px;"></div>사진 관리
                             </a>
-                            <a class="nav-link" href="comment.action" style="background-color: #2E9AFE; color: black;">
-                            	<div class="sb-nav-link-icon"><img src="images/speech-bubble.png" height="23px;"></div>댓글 관리
+                            <a class="nav-link" href="comment.action">
+                            	<div class="sb-nav-link-icon"><img src="images/comment.png" height="23px;"></div>댓글 관리
                             </a>
                             <a class="nav-link" href="report.action">
                             	<div class="sb-nav-link-icon"><img src="images/report.png" height="23px;"></div>신고관리
@@ -101,50 +112,75 @@
                     </div>
                 </nav>
             </div>
+            
+            <!-- 메인페이지 -->
             <div id="layoutSidenav_content">
                 <main>
-                      <div class="container-fluid px-4">
-                     	<h1 class="mt-4">댓글 관리</h1>
+                	<div class="container-fluid px-4">
+                     	<h1 class="mt-4">여행기 관리</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Comment</li>
+                            <li class="breadcrumb-item active">Trip</li>
                         </ol>
                      </div>
                      <br>
                      <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                댓글 데이터
+                                여행기 게시판 데이터
                             </div>
                             <div class="card-body">
                             	<table id="datatablesSimple">
                                     <thead>
                                     	<tr>
                                     		<th>번호</th>
-                                            <th>카테고리</th>
-                                            <th>내용</th>
+                                            <th>제목</th>
                                             <th>작성자</th>
                                             <th>작성일</th>
+                                            <th>조회수</th>
+                                            <th>상태</th>
+                                            <th>관리</th>
                                     	</tr>
                                     </thead>
                                     <tbody>
                                     	<c:if test="${empty list }">
                                     		<tr>
-                                    			<td colspan="5" style="text-align: center; font-weight: bold;">댓글 내역이 없습니다.</td>
+                                    			<td colspan="7" style="text-align: center; font-weight: bold;">여행기 글 내역이 없습니다.</td>
                                     		</tr>
                                     	</c:if>
                                     	<c:if test="${not empty list }">
-                                    		<c:set var="tot" value="${totCount }"></c:set>
-                                    		<c:forEach var="comment" items="${list }">
-                                    			<tr onClick="window.open('.jsp', '', 'width=570, height=260'); return false;">
-		                                    		<td>${tot }</td>
-		                                    		<c:set var="tot" value="${tot-1 }"></c:set>
-		                                            <td>${fn:substring(comment.cd,0,2)=="PL" ? "[일정]" : fn:substring(report.cd,0,2)=="TR" ? "[여행기]" : "[사진]" }</td>
-		                                            <td>${comment.cont }</td>
-		                                            <td>${comment.mem_nnm }</td>
-		                                            <td>${comment.dt }</td>
+                                    		<c:set var="su" value="${count }"></c:set>
+                                    		<c:forEach var="trip" items="${list }">
+                                    			<tr>
+		                                    		<td>${su }</td>
+		                                    		<c:set var="su" value="${su-1 }"></c:set>
+		                                            <td>${trip.tr_tt }</td>
+		                                            <td>${trip.mem_nnm }</td>
+		                                            <td>${trip.tr_dt }</td>
+		                                            <td>${trip.tr_hits }</td>
+		                                            <td><button type="button" disabled="disabled" class="state"  
+		                                            ${trip.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }
+		                                            >${trip.blind }</button></td>
+		                                            <td>
+		                                            	<a href="AdminMemberTrip.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
+		                                            		<img src="images/menu.png" height="18px;">
+		                                            	</a>
+		                                            </td>
                                     			</tr>
                                     		</c:forEach>
-                                    	</c:if>	
+                                    	</c:if>
+                                    	<!-- <tr>
+                                    		<td>11</td>
+                                            <td>제주와의 한달</td>
+                                            <td>프로 제주살이</td>
+                                            <td>2021-06-28</td>
+                                            <td>163</td>
+                                            <td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #198754; color: white;">정상</button></td>
+                                            <td>
+                                            	<a href="AdminMemberTrip.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
+                                            		<img src="images/menu.png" height="18px;">
+                                            	</a>
+                                            </td>
+                                    	</tr> -->
                                     </tbody>
                                  </table>
                             </div>

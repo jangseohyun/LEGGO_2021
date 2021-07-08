@@ -8,7 +8,7 @@
 	<select id="list" resultType="com.leggo.mybatis.VisitantDTO">
 		SELECT VI_DT,  VI_IP
 		FROM VISITANT
-		ORDER BY VI_CD DESC
+		ORDER BY VI_DT DESC
 	</select>
 	
 	<select id="totCount" resultType="java.lang.Integer">
@@ -54,7 +54,7 @@
 	
 	<insert id="add">
 		INSERT INTO VISITANT(VI_CD, VI_IP)
-		VALUES('VI' || TESTSEQ.NEXTVAL, #{vi_ip})
+		VALUES('VI' || VISITANTSEQ.NEXTVAL, #{vi_ip})
 	</insert>
 	
 </mapper>

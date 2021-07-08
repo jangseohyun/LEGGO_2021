@@ -227,10 +227,10 @@
                                     <a class="nav-link" href="AdminSurvey.jsp" style="background-color: #2E9AFE; color: black;">설문조사 관리</a>
                                 </nav>
                             </div>
-                            <a class="nav-link" href="AdminPlan.jsp">
+                            <a class="nav-link" href="plan.action">
                             	<div class="sb-nav-link-icon"><img src="images/calender.png" height="21px;"></div>일정 관리
                             </a>
-                            <a class="nav-link" href="AdminTrip.jsp">
+                            <a class="nav-link" href="trip.action">
                             	<div class="sb-nav-link-icon"><img src="images/paper.png" height="23px;"></div>여행기 관리
                             </a>
                             <a class="nav-link" href="photo.action">

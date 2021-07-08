@@ -77,6 +77,57 @@ public class AdminController
 		return result;
 	}
 	
+	// 일대일문의 관리 페이지 
+	@RequestMapping(value = "/inquiry.action", method = RequestMethod.GET)
+	public String memberQuestion(Model model)
+	{
+		String result = null;
+		
+		IMemberQuestionDAO dao = sqlSession.getMapper(IMemberQuestionDAO.class);
+		
+		model.addAttribute("list", dao.list());
+		model.addAttribute("count", dao.count());
+		
+		result = "/WEB-INF/adminpage/AdminInquiry.jsp";
+		
+		return result;
+	}
+	
+	
+	// 일정 관리 페이지 
+	@RequestMapping(value = "/plan.action", method = RequestMethod.GET)
+	public String plan(Model model)
+	{
+		String result = null;
+		
+		IPlanDAO dao = sqlSession.getMapper(IPlanDAO.class);
+		
+		model.addAttribute("list", dao.list());
+		model.addAttribute("count", dao.count());
+		
+		result = "/WEB-INF/adminpage/AdminPlan.jsp";
+		
+		return result;
+	}
+	
+	
+	// 여행기 관리 페이지 
+	@RequestMapping(value = "/trip.action", method = RequestMethod.GET)
+	public String trip(Model model)
+	{
+		String result = null;
+		
+		ITripDAO dao = sqlSession.getMapper(ITripDAO.class);
+		
+		model.addAttribute("list", dao.list());
+		model.addAttribute("count", dao.count());
+		
+		result = "/WEB-INF/adminpage/AdminTrip.jsp";
+		
+		return result;
+	}
+	
+	
 	// 사진 관리 페이지 
 	@RequestMapping(value = "/photo.action", method = RequestMethod.GET)
 	public String photo(Model model)
@@ -93,7 +144,7 @@ public class AdminController
 		return result;
 	}
 	
-	// 신고 관리 페이지
+	// 댓글 관리 페이지
 	@RequestMapping(value = "/comment.action", method = RequestMethod.GET)
 	public String comment(Model model)
 	{
