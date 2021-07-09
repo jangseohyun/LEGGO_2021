@@ -9,7 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>AdminMemberReport.jsp</title>
+<link rel="stylesheet" href="<%=cp %>/css/bootstrap.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript" src="<%=cp %>/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 	$(function()
@@ -31,7 +33,7 @@
 
 <br>
 <div>
-	<table style="width: 100%; text-align: center;">
+	<table style="width: 100%; text-align: center;" class="table">
 		<tr>
 			<th style="text-align: left;">제목</th>
 			<th>작성자</th>
@@ -44,7 +46,7 @@
 			<td>단양마늘JMT</td>
 			<td>2021-04-28</td>
 			<td>공개</td>
-			<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;">블라인드</button></td>
+			<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">블라인드</button></td>
 		</tr>
 	</table>
 	
@@ -52,7 +54,7 @@
 </div>
 
 <div style="background-color: #e6e6e4; width: 100%">
-	<table style="width: 100%">
+	<table style="width: 100%" class="table">
 		<tr>
 			<th>신고자</th>
 			<th>신고사유</th>
@@ -63,7 +65,7 @@
 			<th>저기요.이게최선?</th>
 			<th>정보가 부정확함</th>
 			<th>2021-06-30 18:32:28</th>
-			<th><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">미처리</button></th>
+			<th><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;" disabled="disabled">미처리</button></th>
 		</tr>
 	</table>
 </div>

@@ -161,7 +161,7 @@
 		                                            ${plan.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }
 		                                            >${paln.blind }</button></td>
 		                                            <td>
-		                                            	<a href="AdminMemberPlan.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
+		                                            	<a href="memberplan.action?pl_cd=${plan.pl_cd }" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
 		                                            		<img src="images/menu.png" height="18px;">
 		                                            	</a>
 		                                            </td>

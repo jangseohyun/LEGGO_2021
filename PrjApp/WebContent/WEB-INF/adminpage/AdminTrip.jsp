@@ -161,7 +161,7 @@
 		                                            	<button type="button" disabled="disabled" class="state" ${trip.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }>${trip.blind }</button>
 		                                            </td>
 		                                            <td>
-		                                            	<a href="AdminMemberTrip.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
+		                                            	<a href="membertrip.action?tr_cd=${trip.tr_cd }" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
 		                                            		<img src="images/menu.png" height="18px;">
 		                                            	</a>
 		                                            </td>

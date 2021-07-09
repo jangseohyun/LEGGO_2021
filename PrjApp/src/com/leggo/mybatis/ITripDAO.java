@@ -13,4 +13,10 @@ public interface ITripDAO
 	// 여행기 상세 페이지
 	public TripDTO tripPost(TripDTO t);
 	
+	// 여행기 상세 - 신고 리스트 
+	public ArrayList<TripDTO> rptList(TripDTO t);
+	
+	// 여행기 상세 - 신고 수 
+	public int rptCount(TripDTO t);
+	
 }

@@ -142,6 +142,23 @@ public class AdminController
 		return result;
 	}
 	
+	// 일정 관리 상세 페이지
+	@RequestMapping(value = "/memberplan.action", method = RequestMethod.GET)
+	public String memberPlan(Model model, PlanDTO p)
+	{
+		String result = null;
+		
+		IPlanDAO dao = sqlSession.getMapper(IPlanDAO.class);
+		
+		model.addAttribute("post", dao.planPost(p));
+		model.addAttribute("rptCount", dao.rptCount(p));
+		model.addAttribute("rptList", dao.rptList(p));
+		
+		result = "/WEB-INF/adminpage/AdminMemberPlan.jsp";
+		
+		return result;
+	}
+	
 	
 	// 여행기 관리 페이지 
 	@RequestMapping(value = "/trip.action", method = RequestMethod.GET)
@@ -159,6 +176,23 @@ public class AdminController
 		return result;
 	}
 	
+	// 여행기 관리 상세 페이지
+	@RequestMapping(value = "/membertrip.action", method = RequestMethod.GET)
+	public String memberTrip(Model model, TripDTO t)
+	{
+		String result = null;
+		
+		ITripDAO dao = sqlSession.getMapper(ITripDAO.class);
+		
+		model.addAttribute("post", dao.tripPost(t));
+		model.addAttribute("rptList", dao.rptList(t));
+		model.addAttribute("rptCount", dao.rptCount(t));
+		
+		result = "/WEB-INF/adminpage/AdminMemberTrip.jsp";
+		
+		return result;
+	}
+
 	
 	// 사진 관리 페이지 
 	@RequestMapping(value = "/photo.action", method = RequestMethod.GET)
@@ -172,6 +206,23 @@ public class AdminController
 		model.addAttribute("count", dao.count());
 		
 		result = "/WEB-INF/adminpage/AdminPhoto.jsp";
+		
+		return result;
+	}
+	
+	// 여행기 관리 상세 페이지
+	@RequestMapping(value = "/memberphoto.action", method = RequestMethod.GET)
+	public String memberPhoto(Model model, PhotoDTO p)
+	{
+		String result = null;
+		
+		IPhotoDAO dao = sqlSession.getMapper(IPhotoDAO.class);
+		
+		model.addAttribute("post", dao.photoPost(p));
+		model.addAttribute("rptList", dao.rptList(p));
+		model.addAttribute("rptCount", dao.rptCount(p));
+		
+		result = "/WEB-INF/adminpage/AdminMemberPhoto.jsp";
 		
 		return result;
 	}

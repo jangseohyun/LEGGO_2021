@@ -13,4 +13,8 @@ public interface IPlanDAO
 	// 일정 상세 페이지
 	public PlanDTO planPost(PlanDTO p);
 	
+	// 일정 신고 리스트 - 상세
+	public ArrayList<PlanDTO> rptList(PlanDTO p);
+	
+	public int rptCount(PlanDTO p);
 }

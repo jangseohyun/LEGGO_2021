@@ -3,7 +3,7 @@ package com.leggo.mybatis;
 public class CommentDTO
 {
 	// 주요 속성 구성
-	private String cd, mem_nnm, cont, dt, post_cd;
+	private String cd, mem_nnm, cont, dt, post_cd, cmt_dt;
 	
 	//-- getter / setter 구성
 	public String getCd()
@@ -55,6 +55,14 @@ public class CommentDTO
 	{
 		this.post_cd = post_cd;
 	}
-	
-	
+
+	public String getCmt_dt()
+	{
+		return cmt_dt;
+	}
+
+	public void setCmt_dt(String cmt_dt)
+	{
+		this.cmt_dt = cmt_dt;
+	}
 }

@@ -8,13 +8,13 @@
 	<select id="list" resultType="com.leggo.mybatis.MemberDTO">
 		SELECT MEM_CD, ACCT_ST, MEM_ID, MEM_NNM, TO_CHAR(MEM_JOIN_DT, 'YYYY-MM-DD') AS MEM_JOIN_DT, ADMIN_CD, SUBSTR(MEM_CD, 4) AS NUM
 		FROM MEMBERVIEW
-		ORDER BY MEM_CD DESC
+		ORDER BY NUM DESC
 	</select>
 	
 	<select id="joinCount" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS COUNT
 		FROM MEMBER_DATA
-		WHERE MEM_JOIN_DT = SYSDATE
+		WHERE TO_CHAR(MEM_JOIN_DT, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 	</select>
 	
 	<select id="memberProfile" resultType="com.leggo.mybatis.MemberDTO">
