@@ -12,7 +12,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Member - Leggo Admin</title>
+<title>Inquiry - Leggo Admin</title>
+<style type="text/css">
+
+	.state
+	{
+		color: white; 
+		width: 50pt; 
+		border: 1px;
+	}
+	
+</style>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
@@ -62,7 +72,7 @@
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="memberlist.action">회원 목록</a>
                                     <a class="nav-link" href="inquiry.action" style="background-color: #2E9AFE; color: black;">일대일문의</a>
-                                    <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
+                                    <a class="nav-link" href="survey.action">설문조사 관리</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="plan.action">
@@ -130,6 +140,28 @@
                                     	</tr>
                                     </thead>
                                     <tbody>
+                                    	<c:if test="${empty list }">
+                                    		<tr>
+                                    			<td colspan="6" style="text-align: center; font-weight: bold;">일대일문의 내역이 없습니다.</td>
+                                    		</tr>
+                                    	</c:if>
+                                    	<c:set var="su" value="${count }"></c:set>
+                                    	<c:if test="${not empty list }">
+                                    		<c:forEach var="inquiry" items="${list }">
+                                    			<tr onClick="window.open('AdminAnswer.jsp', '', 'width=400, height=450'); return false;">
+		                                    		<td>${su }</td>
+		                                    		<c:set var="su" value="${su-1 }"></c:set>
+		                                            <td>[${inquiry.ctg_nm }]</td>
+		                                            <td>${inquiry.mem_qst_tt }</td>
+		                                            <td>${inquiry.mem_nnm }</td>
+		                                            <td>${inquiry.dt }</td>
+		                                            <td>
+		                                            	<button type="button" disabled="disabled" class="state" ${inquiry.state=="미답변" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #2E9AFE;\"" }>${inquiry.state }</button>
+		                                            </td>
+                                    			</tr>
+                                    		</c:forEach>
+                                    	</c:if>
+                                    	<!-- 
                                     	<tr onClick="window.open('AdminAnswer.jsp', '', 'width=400, height=450'); return false;">
                                     		<td>11</td>
                                             <td>[일정]</td>
@@ -137,15 +169,8 @@
                                             <td>프로 제주살이</td>
                                             <td>2021-06-28</td>
                                             <td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button></td>
-                                    	</tr>
-                                    	<tr>
-                                    		<td>9</td>
-                                            <td>[사진]</td>
-                                            <td>문의입니다.</td>
-                                            <td>작성자 저쩌구</td>
-                                            <td>2021-06-27</td>
-                                            <td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button></td>
-                                    	</tr>
+                                    	</tr> 
+                                    	-->
                                     	
                                     </tbody>
                                  </table>

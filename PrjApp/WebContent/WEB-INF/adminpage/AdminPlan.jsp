@@ -73,8 +73,8 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="memberlist.action">회원 목록</a>
-                                    <a class="nav-link" href="AdminInquiry.jsp">일대일문의</a>
-                                    <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
+                                    <a class="nav-link" href="inquiry.action">일대일문의</a>
+                                    <a class="nav-link" href="survey.action">설문조사 관리</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="plan.action" style="background-color: #2E9AFE; color: black;">

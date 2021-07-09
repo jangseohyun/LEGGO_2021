@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -15,6 +16,16 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>Dashboard - Leggo Admin</title>
+<style type="text/css">
+
+	.state
+	{
+		color: white; 
+		width: 50pt; 
+		border: 1px;
+	}
+	
+</style>
 <link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
@@ -159,7 +170,7 @@
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="memberlist.action">회원 목록</a>
                                     <a class="nav-link" href="inquiry.action">일대일문의</a>
-                                    <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
+                                    <a class="nav-link" href="survey.action">설문조사 관리</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="plan.action">
@@ -221,7 +232,7 @@
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">신규 일정 글</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminPlan.jsp">${postCount.plan }</a>
+                                        <a class="small text-white stretched-link" href="plan.action">${postCount.plan }</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -230,7 +241,7 @@
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">신규 여행기 글</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminTrip.jsp">${postCount.trip }</a>
+                                        <a class="small text-white stretched-link" href="trip.action">${postCount.trip }</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -239,7 +250,7 @@
                                 <div class="card bg-danger text-white mb-4">
                                     <div class="card-body">신규 사진 글</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminPhoto.jsp">${postCount.photo }</a>
+                                        <a class="small text-white stretched-link" href="photo.action">${postCount.photo }</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -250,7 +261,7 @@
                                 <div class="card bg-primary text-white mb-4">
                                     <div class="card-body">신규 댓글</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminComment.jsp">${comCount }</a>
+                                        <a class="small text-white stretched-link" href="comment.action">${comCount }</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -259,7 +270,7 @@
                                 <div class="card bg-warning text-white mb-4">
                                     <div class="card-body">신규 일대일문의</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminInquiry.jsp">12</a>
+                                        <a class="small text-white stretched-link" href="inquiry.action">${mqCount }</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -268,7 +279,7 @@
                                 <div class="card bg-success text-white mb-4">
                                     <div class="card-body">신규 신고</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="AdminReport.jsp">${reportCount }</a>
+                                        <a class="small text-white stretched-link" href="report.action">${reportCount }</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -313,7 +324,9 @@
                                     <div class="card-body">
                                     	<table style="width : 100%; text-align: right;">
                                     		<tr>
-                                    			<th><a href="AdminInquiry.jsp" style="color: black; text-decoration: none;">더보기 >></a></th>
+                                    			<c:if test="${not empty inqList }">
+                                    			<th><a href="inquiry.action" style="color: black; text-decoration: none;">더보기 >></a></th>
+                                    			</c:if>
                                     		</tr>
                                     	</table>
 	                                    <table style="width : 100%;">
@@ -322,21 +335,21 @@
 	                                			<th style="width: 75%;">제목</th>
 	                                			<th style="widows: 10%">상태</th>
 	                                		</tr>
-	                                		<tr>
-	                                			<td>[일정]</td>
-	                                			<td>문의드립니다.</td>
+	                                		<c:if test="${empty inqList }">
+	                                    		<tr>
+	                                    			<td colspan="3" style="text-align: center; font-weight: bold;">일대일문의 내역이 없습니다.</td>
+	                                    		</tr>
+                                    		</c:if>
+	                                		<c:forEach var="inquiry" items="${inqList }" begin="1" end="3" step="1">
+	                                			<tr>
+	                                			<td>[${inquiry.ctg_nm }]</td>
+	                                			<td>${inquiry.mem_qst_tt }</td>
+                                				<td>
+	                                            	<button type="button" disabled="disabled" class="state" ${inquiry.state=="미답변" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #2E9AFE;\"" }>${inquiry.state }</button>
+	                                            </td>
 	                                			<td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[일정]</td>
-	                                			<td>문의드립니다.</td>
-	                                			<td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[사진]</td>
-	                                			<td>문의입니다.</td>
-	                                			<td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button> </td>
-	                                		</tr>
+	                                			</tr>
+	                                		</c:forEach>
 	                                	</table>
                                     </div>
                                 </div>
@@ -350,7 +363,9 @@
                                     <div class="card-body">
                                     	<table style="width : 100%; text-align: right;">
                                     		<tr>
-                                    			<th><a href="AdminReport.jsp" style="color: black; text-decoration: none;">더보기 >></a></th>
+                                    			<c:if test="${not empty repList }">
+                                    			<th><a href="report.action" style="color: black; text-decoration: none;">더보기 >></a></th>
+                                    			</c:if>
                                     		</tr>
                                     	</table>
                                     	<table style="width : 100%;">
@@ -359,21 +374,18 @@
 	                                			<th style="width: 75%;">사유</th>
 	                                			<th style="widows: 10%">상태</th>
 	                                		</tr>
-	                                		<tr>
-	                                			<td>[일정]</td>
-	                                			<td>부적절</td>
-	                                			<td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[여행기]</td>
-	                                			<td>욕설</td>
-	                                			<td><button type="button" disabled="disabled" style="background: red; color: white; width: 50pt; border: 1px;">반려</button> </td>
-	                                		</tr>
-	                                		<tr>
-	                                			<td>[사진]</td>
-	                                			<td>어쩌고</td>
-	                                			<td><button type="button" disabled="disabled" style="background: #2E9AFE; color: white; width: 50pt; border: 1px;">완료</button> </td>
-	                                		</tr>
+	                                		<c:if test="${empty repList }">
+	                                    		<tr>
+	                                    			<td colspan="3" style="text-align: center; font-weight: bold;">신고 내역이 없습니다.</td>
+	                                    		</tr>
+                                    		</c:if>
+                                    		<c:forEach var="report" items="${repList }" begin="1" end="3" step="1">
+                                    			<tr>
+		                                			<td>${fn:substring(report.cd,0,2)=="PL" ? "[일정]" : fn:substring(report.cd,0,2)=="TR" ? "[여행기]" : "[사진]" }</td>
+		                                			<td>${report.rsn }</td>
+		                                			<td><button type="button" disabled="disabled" class="state"  ${report.st=="완료" ? "style=\"background-color: #2E9AFE;\"" : report.st=="반려" ? "style=\"background-color: #dc3545;\"" : "style=\"background-color: #6c757d;\"" }>${report.st }</button></td>
+	                                			</tr>
+                                    		</c:forEach>
 	                                	</table>
                                     </div>
                                 </div>

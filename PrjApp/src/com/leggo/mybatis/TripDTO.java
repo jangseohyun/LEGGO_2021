@@ -3,12 +3,22 @@ package com.leggo.mybatis;
 public class TripDTO
 {
 	//-- 주요 속성 구성
-	private String tr_cd, mem_nnm, tr_dt, tr_hits, blind;
+	private String tr_cd, mem_nnm, tr_dt, tr_hits, blind, tr_tt;
 	
 	//-- getter / setter 구성
 	public String getTr_cd()
 	{
 		return tr_cd;
+	}
+
+	public String getTr_tt()
+	{
+		return tr_tt;
+	}
+
+	public void setTr_tt(String tr_tt)
+	{
+		this.tr_tt = tr_tt;
 	}
 
 	public void setTr_cd(String tr_cd)

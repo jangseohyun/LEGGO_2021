@@ -73,8 +73,8 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="memberlist.action">회원 목록</a>
-                                    <a class="nav-link" href="AdminInquiry.jsp">일대일문의</a>
-                                    <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
+                                    <a class="nav-link" href="inquiry.action">일대일문의</a>
+                                    <a class="nav-link" href="survey.action">설문조사 관리</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="plan.action">
@@ -147,8 +147,8 @@
                                     			<td colspan="7" style="text-align: center; font-weight: bold;">여행기 글 내역이 없습니다.</td>
                                     		</tr>
                                     	</c:if>
+                                    	<c:set var="su" value="${count }"></c:set>
                                     	<c:if test="${not empty list }">
-                                    		<c:set var="su" value="${count }"></c:set>
                                     		<c:forEach var="trip" items="${list }">
                                     			<tr>
 		                                    		<td>${su }</td>
@@ -157,9 +157,9 @@
 		                                            <td>${trip.mem_nnm }</td>
 		                                            <td>${trip.tr_dt }</td>
 		                                            <td>${trip.tr_hits }</td>
-		                                            <td><button type="button" disabled="disabled" class="state"  
-		                                            ${trip.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }
-		                                            >${trip.blind }</button></td>
+		                                            <td>
+		                                            	<button type="button" disabled="disabled" class="state" ${trip.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }>${trip.blind }</button>
+		                                            </td>
 		                                            <td>
 		                                            	<a href="AdminMemberTrip.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
 		                                            		<img src="images/menu.png" height="18px;">
@@ -168,19 +168,7 @@
                                     			</tr>
                                     		</c:forEach>
                                     	</c:if>
-                                    	<!-- <tr>
-                                    		<td>11</td>
-                                            <td>제주와의 한달</td>
-                                            <td>프로 제주살이</td>
-                                            <td>2021-06-28</td>
-                                            <td>163</td>
-                                            <td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #198754; color: white;">정상</button></td>
-                                            <td>
-                                            	<a href="AdminMemberTrip.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
-                                            		<img src="images/menu.png" height="18px;">
-                                            	</a>
-                                            </td>
-                                    	</tr> -->
+                                    	
                                     </tbody>
                                  </table>
                             </div>

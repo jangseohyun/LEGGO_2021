@@ -1,5 +1,6 @@
 package com.leggo.mybatis;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -25,7 +26,8 @@ public class AdminController
 		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);				//-- 회원
 		IPostStatsDAO ps = sqlSession.getMapper(IPostStatsDAO.class);			//-- 게시물
 		IReportDAO pe = sqlSession.getMapper(IReportDAO.class);					//-- 신고
-		ICommentDAO com = sqlSession.getMapper(ICommentDAO.class);
+		ICommentDAO com = sqlSession.getMapper(ICommentDAO.class);				//-- 댓글
+		IMemberQuestionDAO mq = sqlSession.getMapper(IMemberQuestionDAO.class);	//-- 일대일문의
 		
 		// 메인 페이지 접근 시 접속자 COUNT (사용자 페이지로 이동 필요) -------------------------------------- 
 		VisitantDTO v = new VisitantDTO();
@@ -37,9 +39,13 @@ public class AdminController
 		model.addAttribute("joinCount", mem.joinCount());		//-- 신규 회원 
 		model.addAttribute("reportCount", pe.count());			//-- 신규 신고 
 		model.addAttribute("comCount", com.count());			//-- 신규 댓글
+		model.addAttribute("mqCount", mq.dayCount());			//-- 신규 일대일문의 
 		
 		model.addAttribute("postCount", ps.postCount());		//-- 당일 게시물 수 (그래프)
 		model.addAttribute("timeList", vi.timeList());			//-- 당일 시간별 접속자 수 (그래프)
+		
+		model.addAttribute("inqList", mq.list());
+		model.addAttribute("repList", pe.list());
 		
 		result = "/WEB-INF/adminpage/AdminDashboard.jsp";
 		
@@ -89,6 +95,32 @@ public class AdminController
 		model.addAttribute("count", dao.count());
 		
 		result = "/WEB-INF/adminpage/AdminInquiry.jsp";
+		
+		return result;
+	}
+	
+	// 설문조사 관리 페이지 
+	@RequestMapping(value = "/survey.action", method = RequestMethod.GET)
+	public String survey(Model model)
+	{
+		String result = null;
+		
+		IMemberDAO mem = sqlSession.getMapper(IMemberDAO.class);
+		IJoinQuestionDAO jq = sqlSession.getMapper(IJoinQuestionDAO.class);
+		IJoinQuestionOptionDAO jqo = sqlSession.getMapper(IJoinQuestionOptionDAO.class);
+		
+		model.addAttribute("totCount", mem.totCount());
+		
+		model.addAttribute("jq_list", jq.list());
+		model.addAttribute("jq_count", jq.count());
+		
+		model.addAttribute("jqo_list", jqo.list());
+		model.addAttribute("answer1", jqo.answer1());
+		model.addAttribute("answer2", jqo.answer2());
+		model.addAttribute("answer3", jqo.answer3());
+		
+		
+		result = "/WEB-INF/adminpage/AdminSurvey.jsp";
 		
 		return result;
 	}
@@ -197,7 +229,7 @@ public class AdminController
 	
 	// 회원 통계 페이지
 	@RequestMapping(value = "/memberStats.action", method = RequestMethod.GET)
-	public String memberStats(Model model)
+	public String memberStats(Model model) 
 	{
 		String result = null;
 		

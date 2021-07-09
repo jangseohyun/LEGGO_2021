@@ -72,8 +72,8 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                     <a class="nav-link" href="memberlist.action">회원 목록</a>
-                                    <a class="nav-link" href="AdminInquiry.jsp">일대일문의</a>
-                                    <a class="nav-link" href="AdminSurvey.jsp">설문조사 관리</a>
+                                    <a class="nav-link" href="inquiry.action">일대일문의</a>
+                                    <a class="nav-link" href="survey.action">설문조사 관리</a>
                                 </nav>
                             </div>
                             <a class="nav-link" href="plan.action">
@@ -153,7 +153,7 @@
 		                                            <td>${report.rsn }</td>
 		                                            <td>${report.mem_nnm }</td>
 		                                            <td>${report.dt }</td>
-		                                            <td><button type="button" ${report.st=="미완료" ? "disabled=\"disabled\"" : ""} class="state"  ${report.st=="완료" ? "style=\"background-color: #2E9AFE;\"" : report.st=="반려" ? "style=\"background-color: #dc3545;\"" : "style=\"background-color: #6c757d;\"" }>${report.st }</button></td>
+		                                            <td><button type="button" disabled="disabled" class="state"  ${report.st=="완료" ? "style=\"background-color: #2E9AFE;\"" : report.st=="반려" ? "style=\"background-color: #dc3545;\"" : "style=\"background-color: #6c757d;\"" }>${report.st }</button></td>
                                     			</tr>
                                     		</c:forEach>
                                     	</c:if>

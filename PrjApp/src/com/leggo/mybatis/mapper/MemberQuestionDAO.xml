@@ -3,9 +3,9 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-<mapper namespace="com.leggo.mybatis.ITripDAO">
+<mapper namespace="com.leggo.mybatis.IMemberQuestionDAO">
 
-	<select id="list" resultType="com.leggo.mybatis.TripDTO">
+	<select id="list" resultType="com.leggo.mybatis.MemberQuestionDTO">
 		SELECT CTG_NM, MEM_QST_CD, MEM_NNM, MEM_QST_TT, MEM_QST_DT, TO_CHAR(MEM_QST_DT, 'YYYY-MM-DD') AS DT, CASE WHEN ADMIN_ANS_CD IS NULL THEN '미답변'
                                                                                                     ELSE '답변' END STATE
 		FROM MEMQUESTIONVIEW
@@ -15,6 +15,12 @@
 	<select id="count" resultType="java.lang.Integer">
 		SELECT COUNT(*) AS COUNT
 		FROM MEMQUESTIONVIEW
+	</select>
+	
+	<select id="dayCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM MEMQUESTIONVIEW
+		WHERE TO_CHAR(MEM_QST_DT, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 	</select>
 	
 </mapper>
