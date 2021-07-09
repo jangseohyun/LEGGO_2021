@@ -35,10 +35,12 @@
 </style>
 
 <!-- 구글 로그인 API -->
+<!-- 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id"
 	content="447693494839-5d859g9t2hvpdupbar05mii8a0c4ag1j.apps.googleusercontent.com">
-
+ -->
+ 
 <!-- 카카오 로그인 API -->
 <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 
@@ -52,7 +54,7 @@
 	}
 </script>
  -->
-
+<!-- 
 <script>
 	function onSignIn(googleUser)
 	{
@@ -73,7 +75,7 @@
 		xhr.send('idtoken=' + id_token);
 	};
 </script>
-
+ -->
 </head>
 <input type="hidden" value="${param.alert_message }" id="alert_message">
 <input type="hidden" value="${param.error_message }" id="error_message">
@@ -94,7 +96,7 @@
 				<div aria-live="polite" aria-atomic="true"
 					class="d-flex justify-content-center align-items-center w-100">
 					<div class="col-md-6 col-lg-4">
-						<div class="login-wrap p-0">
+						<div class="login-wrap p-0" id="LoginDiv">
 							<h3 class="mb-4"
 								style="text-align: right; font-size: 15px; font-family: 'Noto Sans KR', sans-serif;"
 								onclick="location.href='signinpage.action';">계정이 없으신가요?

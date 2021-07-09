@@ -90,14 +90,18 @@
     	
     	Kakao.init("a76949096713e82c75fa45bdb32ebb4c");
     	
-        if (!Kakao.Auth.getAccessToken()) {
-            return;
+        if (!Kakao.Auth.getAccessToken())
+        {
+        	location.href = "logout.action";
         }
-        Kakao.Auth.logout(function() {
-        	alert('logout ok\naccess token -> ' + Kakao.Auth.getAccessToken())
-        });
-        
-        location.href = "logout.action";
+        else
+        {
+	        Kakao.Auth.logout(function() {
+	        	//alert('logout ok, access token -> ' + Kakao.Auth.getAccessToken())
+	        });
+	        
+	        location.href = "logout.action";
+        }
     }
 </script>
 </body>

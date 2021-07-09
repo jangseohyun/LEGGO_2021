@@ -42,20 +42,20 @@
 	</header>
 
 	<div class="container">
-		<div class="main-body">
+		<div class="main-body" id="profilemenuDiv">
 			<nav aria-label="breadcrumb" class="main-breadcrumb">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item">마이 페이지</li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내
+					<li class="breadcrumb-item"><a href="myplanpage.action">내
 							일정</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyTrip.jsp">내
+					<li class="breadcrumb-item"><a href="mytrippage.action">내
 							여행기</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPhoto.jsp">내
+					<li class="breadcrumb-item"><a href="myphotopage.action">내
 							사진</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyComment.jsp">내
+					<li class="breadcrumb-item"><a href="mycommentpage.action">내
 							댓글</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyScrap.jsp">스크랩북</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/QnA.jsp">일대일
+					<li class="breadcrumb-item"><a href="myscrappage.action">스크랩북</a></li>
+					<li class="breadcrumb-item"><a href="qnapage.action">일대일
 							문의</a></li>
 				</ol>
 			</nav>
@@ -64,7 +64,7 @@
 					<!-- 프로필 -->
 					<div class="profile" style="position: fixed; width: 350px;">
 						<div class="card w-90">
-							<div class="card-body">
+							<div class="card-body" id="memberProfileDiv">
 								<br>
 								<div class="d-flex flex-column align-items-center text-center">
 									<img
@@ -72,9 +72,9 @@
 										alt="Admin" class="rounded-circle" width="150">
 									<div class="mt-3">
 										<h3><%=mem_nnm %></h3>
-										<a href="/PrjApp/Following.jsp" class="text-secondary"
+										<a href="followingpage.action" class="text-secondary"
 											style="font-size: 13px;">팔로잉 <%=fol_ing_cnt %></a> | <a
-											href="/PrjApp/Follower.jsp" class="text-secondary"
+											href="followerpage.action" class="text-secondary"
 											style="font-size: 13px;">팔로워 <%=fol_ed_cnt %></a> <br> <br>
 										<p class="text-secondary mb-1" style="font-size: 15px;"><%=mem_intro %></p>
 										<br>
@@ -85,12 +85,12 @@
 						</div>
 
 						<!-- 프로필 버튼 -->
-						<div class="card w-90">
+						<div class="card w-90" div="profileButtonDiv">
 							<ul class="list-group list-group-flush">
 								<li
 									class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<h6 class="mb-0">
-										<a href="/PrjApp/ProfileSetting.jsp"
+										<a href="profilesettingpage.action"
 											style="color: black; font-size: 14px; text-decoration: none;">
 											&nbsp;&nbsp;<img
 											src="https://image.flaticon.com/icons/png/512/3524/3524752.png"
@@ -101,7 +101,7 @@
 								<li
 									class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
 									<h6 class="mb-0">
-										<a href="/PrjApp/PwdSetting.jsp"
+										<a href="pwdsettingpage.action"
 											style="color: black; font-size: 14px; text-decoration: none;">
 											&nbsp;<img
 											src="https://image.flaticon.com/icons/png/512/1782/1782728.png"
@@ -116,10 +116,10 @@
 
 				<!-- 일정 -->
 				<div class="col-md-8">
-					<div class="card mb-3">
+					<div class="card mb-3" id="memberPlanDiv">
 						<div class="card-body">
 							<h4 style="font-weight: bold; display: inline-block;">일정</h4>
-							<h5 style="display: inline-block; float: right;"><a href="/PrjApp/MyPlan.jsp">+ 전체보기</a></h5>
+							<h5 style="display: inline-block; float: right;"><a href="myplanpage.action">+ 전체보기</a></h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-3 wrapper">
@@ -147,10 +147,10 @@
 					</div>
 
 					<!-- 여행기 -->
-					<div class="card mb-3">
+					<div class="card mb-3" id="memberTripDiv">
 						<div class="card-body">
 							<h4 style="font-weight: bold; display: inline-block;">여행기</h4>
-							<h5 style="display: inline-block; float: right;"><a href="/PrjApp/MyTrip.jsp">+ 전체보기</a></h5>
+							<h5 style="display: inline-block; float: right;"><a href="mytrippage.action">+ 전체보기</a></h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-3 wrapper">
@@ -178,10 +178,10 @@
 					</div>
 
 					<!-- 사진 -->
-					<div class="card mb-3">
+					<div class="card mb-3" id="memberPhotoDiv">
 						<div class="card-body">
 							<h4 style="font-weight: bold; display: inline-block;">사진</h4>
-							<h5 style="display: inline-block; float: right;"><a href="/PrjApp/MyPhoto.jsp">+ 전체보기</a></h5>
+							<h5 style="display: inline-block; float: right;"><a href="myphotopage.action">+ 전체보기</a></h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-3 wrapper">

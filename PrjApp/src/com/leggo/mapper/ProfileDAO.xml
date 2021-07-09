@@ -18,4 +18,28 @@
 		WHERE D.MEM_ID = #{mem_id}
 	</select>
 	
+	<select id="ProfileSetting" resultType="com.leggo.profile.ProfileDTO">
+		SELECT MEM_IMG, MEM_NNM, MEM_INTRO
+		FROM MEMBER_DATA
+		WHERE MEM_ID = #{mem_id}
+	</select>
+	
+	<update id="ProfileSettingImg">
+		UPDATE MEMBER_DATA
+		SET MEM_IMG = #{mem_img}
+		WHERE MEM_ID = #{mem_id};
+	</update>
+	
+	<update id="ProfileSettingNnm">
+		UPDATE MEMBER_DATA
+		SET MEM_NNM = #{mem_nnm}
+		WHERE MEM_ID = #{mem_id};
+	</update>
+	
+	<update id="ProfileSettingIntro">
+		UPDATE MEMBER_DATA
+		SET MEM_INTRO = #{mem_intro}
+		WHERE MEM_ID = #{mem_id};
+	</update>
+	
 </mapper>

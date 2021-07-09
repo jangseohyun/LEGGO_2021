@@ -57,7 +57,7 @@ a {
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap p-0">
+					<div class="login-wrap p-0" id="signinDiv">
 						<form action="signin.action" role="form" class="signin-form">
 							<div class="form-group">
 								<input id="mem_id" name="mem_id" type="text" class="form-control" placeholder="이메일"

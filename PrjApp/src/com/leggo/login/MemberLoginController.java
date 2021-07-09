@@ -149,11 +149,10 @@ public class MemberLoginController
 	@RequestMapping(value = "/logout.action", method = RequestMethod.GET)
 	public String Logout(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session)
 	{
+		System.out.println("로그아웃 실행");
+		
 		// loginCookie라는 이름의 쿠키 가져오기
 		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-		
-		// 카카오 로그아웃
-		String kakao_access_token = (String)session.getAttribute("kakao_access_token");
 		
 		// 쿠키가 존재할 경우
 		if (loginCookie != null)
@@ -170,12 +169,16 @@ public class MemberLoginController
 			
 			// DB에서 자동로그인 세션 삭제
 			dao.AutoLoginDel(loginCookie.getValue());
+			
+			System.out.println("로그인 쿠키 제거");
 		}
 		
-		// 카카오 액세스 토큰이 존재할 경우
-		if (kakao_access_token != null)
-		{
-		}
+		// 카카오 쿠키 제거
+		CookieGenerator cg = new CookieGenerator();
+		cg.setCookieName("TIARA");
+		cg.addCookie(response, null);
+		
+		System.out.println("액세스 토큰: "+(String)session.getAttribute("access_token"));
 		
 		session.invalidate();
         

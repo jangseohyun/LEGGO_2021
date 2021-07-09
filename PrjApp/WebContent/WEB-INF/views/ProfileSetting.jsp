@@ -27,8 +27,12 @@ String cp = request.getContextPath();
 
 	$(function()
 	{
-		$('textarea.content').keyup(function(){
-			bytesHandler(this);
+		$('#mem_nnm').keyup(function(){
+			NnmbytesHandler(this);
+		});
+		
+		$('#mem_intro').keyup(function(){
+			IntrobytesHandler(this);
 		});
 	});
 	
@@ -48,18 +52,19 @@ String cp = request.getContextPath();
 		return len;
 	}
 	
-	function bytesHandler(obj)
+	function NnmbytesHandler(obj)
 	{
 		var text = $(obj).val();
-		$('p.bytes').text(getTextLength(text));
+		$('p.nnmbytes').text(getTextLength(text));
+	}
+
+	function IntrobytesHandler(obj)
+	{
+		var text = $(obj).val();
+		$('p.introbytes').text(getTextLength(text));
 	}
 
 </script>
-
-<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
-<% if (session.getAttribute("mem_id") == null) { %>
-      <script>location.href = "loginpage.action"; </script>
-<% }%>
 
 <body>
 
@@ -71,86 +76,78 @@ String cp = request.getContextPath();
 	</header>
 
 	<div class="container">
-		<div class="main-body">
+		<div class="main-body" id="profilemenuDiv">
 
 			<!-- 상단 메뉴 -->
 			<nav aria-label="breadcrumb" class="main-breadcrumb">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="/PrjApp/Profile.jsp">마이
+					<li class="breadcrumb-item"><a href="profilepageauto.action">마이
 							페이지</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPlan.jsp">내
+					<li class="breadcrumb-item"><a href="myplanpage.action">내
 							일정</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyTrip.jsp">내
+					<li class="breadcrumb-item"><a href="mytrippage.action">내
 							여행기</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPhoto.jsp">내
+					<li class="breadcrumb-item"><a href="myphotopage.action">내
 							사진</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyComment.jsp">내
+					<li class="breadcrumb-item"><a href="mycommentpage.action">내
 							댓글</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyScrap.jsp">스크랩북</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/QnA.jsp">일대일
+					<li class="breadcrumb-item"><a href="myscrappage.action">스크랩북</a></li>
+					<li class="breadcrumb-item"><a href="qnapage.action">일대일
 							문의</a></li>
 				</ol>
 			</nav>
 
 			<!-- 프로필 설정 -->
-			<div class="card mb-3">
+			<div class="card mb-3" id="profilesettingDiv">
 				<div class="card-body">
 					<h4 style="display: inline-block; font-weight: bold; padding: 5px;">프로필
 						설정</h4>
 					<a
 						style="display: inline-block; float: right; color: #a6a6a6; text-decoration: underline; padding: 5px;"
-						href="/PrjApp/Quit.jsp">탈퇴하기</a>
+						href="quitpage.action">탈퇴하기</a>
 					<div class="album py-5 bg-light">
 						<div class="container">
-							<table>
-								<tr>
-									<th>프로필 사진</th>
-									<td><img id="img__wrap" class="rounded-circle" width="170"
-										onerror=""
-										src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg" />
-										<br> <br> <input type="file" name="userProfile"
-										id="img__preview" /></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<th>별명</th>
-									<td><input type="text" class="form-control"></td>
-								</tr>
-								<tr style="text-align: right;">
-									<td></td>
-									<td class="textlimit"><p class="bytes">0</p>/20</td>
-								</tr>
-								<tr>
-									<th>비밀번호</th>
-									<td><input type="password" class="form-control"></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<th>비밀번호 확인&nbsp;&nbsp;</th>
-									<td><input type="password" class="form-control"></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<th>자기소개</th>
-									<td><textarea class="form-control content"
-											style="width: 300px; height: 100px;"></textarea></td>
-								</tr>
-								<tr style="text-align: right;">
-									<td></td>
-									<td class="textlimit"><p class="bytes">0</p>/500</td>
-								</tr>
-							</table>
+						<form action="profilesettingsubmit.action" method="POST">
+								<table>
+									<tr>
+										<th>프로필 사진</th>
+										<td><img id="img__wrap" class="rounded-circle"
+											width="170" onerror=""
+											src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg" />
+											<br>
+										<br> <input type="file" name="userProfile" id="mem_img"
+											name="mem_img" /></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>별명</th>
+										<td><input type="text" class="form-control" id="mem_nnm"
+											name="mem_nnm"></td>
+									</tr>
+									<tr style="text-align: right;">
+										<td></td>
+										<td class="textlimit" style="display: inline-block"><p class="nnmbytes" style="display: inline-block">0</p>/20</td>
+									</tr>
+									<tr>
+										<th>자기소개</th>
+										<td><textarea class="form-control content"
+												style="width: 300px; height: 100px;" id="mem_intro"
+												name="mem_intro"></textarea></td>
+									</tr>
+									<tr style="text-align: right;">
+										<td></td>
+										<td class="textlimit" style="display: inline-block"><p class="introbytes" style="display: inline-block">0</p>/500</td>
+									</tr>
+								</table>
+							</form>
 							<br>
 							<br>
 							<div class="row justify-content-center">
 								<button type="submit" class="btn btn-primary center submit "
-									style="width: 45%; font-family: 'Noto Sans KR', sans-serif;">수정</button>
+									style="width: 45%; font-family: 'Noto Sans KR', sans-serif;"
+									onclick="location.href='profilesetting.action'">수정</button>
 							</div>
 						</div>
 					</div>
@@ -159,7 +156,7 @@ String cp = request.getContextPath();
 		</div>
 	</div>
 
-	<style type="text/css">
+<style type="text/css">
 body {
 	margin-top: 20px;
 	color: #1a202c;
@@ -241,6 +238,11 @@ html, body {
 
 .bytes {
 	display: inline-block;
+}
+
+th {
+	width: 120px;
+	text-align: center;
 }
 </style>
 </body>

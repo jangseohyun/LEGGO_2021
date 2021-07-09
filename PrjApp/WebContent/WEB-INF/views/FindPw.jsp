@@ -132,7 +132,7 @@ html, body {
 				</div>
 				 -->
 				<div class="col-md-6 col-lg-4">
-					<div class="login-wrap p-0">
+					<div class="login-wrap p-0" id="findPwDiv">
 						<form action="#" class="signin-form">
 							<div class="form-group">
 								<h6 class="text-center" style="color: white">가입하신 이메일을

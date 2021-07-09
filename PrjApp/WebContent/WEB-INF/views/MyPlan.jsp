@@ -70,25 +70,26 @@ String cp = request.getContextPath();
 		<div class="main-body">
 
 			<!-- 상단 메뉴 -->
-			<nav aria-label="breadcrumb" class="main-breadcrumb">
+			<nav aria-label="breadcrumb" class="main-breadcrumb" id="profilemenuDiv">
 				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a href="/PrjApp/Profile.jsp">마이
+					<li class="breadcrumb-item"><a href="profilepageauto.action">마이
 							페이지</a></li>
-					<li class="breadcrumb-item">내 일정</li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyTrip.jsp">내
+					<li class="breadcrumb-item">내
+							일정</li>
+					<li class="breadcrumb-item"><a href="mytrippage.action">내
 							여행기</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyPhoto.jsp">내
+					<li class="breadcrumb-item"><a href="myphotopage.action">내
 							사진</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyComment.jsp">내
+					<li class="breadcrumb-item"><a href="mycommentpage.action">내
 							댓글</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/MyScrap.jsp">스크랩북</a></li>
-					<li class="breadcrumb-item"><a href="/PrjApp/QnA.jsp">일대일
+					<li class="breadcrumb-item"><a href="myscrappage.action">스크랩북</a></li>
+					<li class="breadcrumb-item"><a href="qnapage.action">일대일
 							문의</a></li>
 				</ol>
 			</nav>
 			<!-- 일정 -->
 			<div class="card mb-3">
-				<div class="card-body">
+				<div class="card-body" id="myplanDiv">
 					<h4 style="font-weight: bold; display: inline-block; padding: 5px;">내
 						일정</h4>
 
