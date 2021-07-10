@@ -30,13 +30,14 @@ public class MemberSigninController
 		String result = null;
 		
 		IMemberSigninDAO dao = sqlSession.getMapper(IMemberSigninDAO.class);
-		dao.Signin(dto);
+		dao.SigninMember();
+		dao.SigninMemberData(dto);
 		
-		/*
-		model.addAttribute("message", "인증메일이 발송되었습니다.");
+		model.addAttribute("success_message", "인증메일이 발송되었습니다.");
 		
-		MailSend ms = new MailSend(); ms.MailSend(dto.getMem_id());
-		*/
+		// 인증메일 발송
+		MailSend ms = new MailSend();
+		ms.MailSend(dto.getMem_id());
 		
 		result = "redirect:loginpage.action";
 		

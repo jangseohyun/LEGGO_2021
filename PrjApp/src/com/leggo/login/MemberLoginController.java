@@ -1,5 +1,6 @@
 package com.leggo.login;
 
+import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +34,19 @@ public class MemberLoginController
 		HttpSession session = request.getSession();
 		String AutologinMemberId = (String)session.getAttribute("AutologinMemberId");
 		
+		// 이메일 인증 체크
+		String SigninAuth = request.getParameter("success_message");
+		String mem_id = request.getParameter("mem_id");
+		
+		// 이메일 인증 완료
+		if (SigninAuth != null && mem_id != null)
+		{
+			IMemberLoginDAO dao = sqlSession.getMapper(IMemberLoginDAO.class);
+			
+			// DB에서 회원가입 인증여부 '완료'로 업데이트
+			dao.SigninAuthUpdate(mem_id);
+		}
+		
 		if (AutologinMemberId != null)
 		{
 			session.setAttribute("mem_id", AutologinMemberId);
@@ -54,69 +68,82 @@ public class MemberLoginController
 	    
 		// DB에서 회원 상태를 받아옴
 		String MemAcctCck = dao.MemAcctCck(Logindto.getMem_id());
-		System.out.println("로그인 컨트롤러 0");
+		
+		// DB에서 회원가입 이메일 인증여부를 받아옴
+		String SigninAuthCck = dao.SigninAuthCck(Logindto.getMem_id());
 		
 		try
 		{
 			if (MemAcctCck.equals("정상"))
 			{
 				MemberLoginDTO login = dao.Login(Logindto);
-				System.out.println("로그인 컨트롤러 1");
 					
 				// 정상 로그인
 				if (login != null)
 				{
-					// 세션에 저장
-					session.setAttribute("mem_id", login.getMem_id());
-					
-					// 자동 로그인 체크 안 했을 경우
-					if (Logindto.getLogin_cck() == null)
+					// 이메일 인증이 완료되지 않았을 경우
+					if (SigninAuthCck.equals("미완료"))
 					{
-						// 일반 회원일 경우
-						if (login.getAdmin_cd() == null)
-							result = "profilepage.action";
-						// 관리자일 경우
-						else
-							result = "/WEB-INF/views/AfterLoginAdmin.jsp";
+						String alert_message = "이메일 인증이 완료되지 않았습니다.";
+						
+						// alert_message 인코딩
+						String encodedParam = URLEncoder.encode(alert_message, "UTF-8");
+						result = "redirect:loginpage.action?alert_message="+encodedParam;
 					}
-					// 자동 로그인 체크했을 경우
-					else if(Logindto.getLogin_cck().equals("on"))
+					else
 					{
-						System.out.println("로그인 컨트롤러 2");
-						// 로그인 세션을 쿠키에 저장
-						Cookie loginCookie = new Cookie("loginCookie", session.getId());
-						System.out.println("세션 아이디: "+session.getId());
-						
-						// 기본 uri 경로 페이지로 저장
-						loginCookie.setPath("/*.action");
-						
-						// 3개월 동안 저장
-						long limitTime = 60 * 60 * 24 * 90;
-						loginCookie.setMaxAge((int)limitTime);
-						
-						// 현재시간 + limit_time(밀리초 단위로 변환)
-						long expireDate = System.currentTimeMillis()+(limitTime*1000);
-						
-						// 저장 시간 일 단위로 변환
-						Date limitDate = new Date(expireDate);
-						
-						Autodto.setLimit_date(limitDate);
-						Autodto.setSession_id(session.getId());
-						Autodto.setMem_id(login.getMem_id());
-						
-						System.out.println(Autodto.getMem_id());
-						System.out.println(Autodto.getSession_id());
-						System.out.println(Autodto.getLimit_time());
-						
-						// 자동로그인 세션 정보 DB에 저장
-						dao.AutoLoginUpdate(Autodto);
-						
-						CookieGenerator cg = new CookieGenerator();
+						// 세션에 저장
+						session.setAttribute("mem_id", login.getMem_id());
 
-						cg.setCookieName("loginCookie");
-						cg.addCookie(response, loginCookie.getValue());
-						
-						result = "profilepage.action";
+						// 자동 로그인 체크 안 했을 경우
+						if (Logindto.getLogin_cck() == null)
+						{
+							// 일반 회원일 경우
+							if (login.getAdmin_cd() == null)
+								result = "profilepage.action";
+							// 관리자일 경우
+							else
+								result = "/WEB-INF/views/AfterLoginAdmin.jsp";
+						}
+						// 자동 로그인 체크했을 경우
+						else if(Logindto.getLogin_cck().equals("on"))
+						{
+							System.out.println("로그인 컨트롤러 2");
+							// 로그인 세션을 쿠키에 저장
+							Cookie loginCookie = new Cookie("loginCookie", session.getId());
+							System.out.println("세션 아이디: "+session.getId());
+							
+							// 기본 uri 경로 페이지로 저장
+							loginCookie.setPath("/*.action");
+							
+							// 3개월 동안 저장
+							long limitTime = 60 * 60 * 24 * 90;
+							loginCookie.setMaxAge((int)limitTime);
+							
+							// 현재시간 + limit_time(밀리초 단위로 변환)
+							long expireDate = System.currentTimeMillis()+(limitTime*1000);
+							
+							// 저장 시간 일 단위로 변환
+							Date limitDate = new Date(expireDate);
+							
+							Autodto.setLimit_date(limitDate);
+							Autodto.setSession_id(session.getId());
+							Autodto.setMem_id(login.getMem_id());
+							
+							System.out.println(Autodto.getMem_id());
+							System.out.println(Autodto.getSession_id());
+							System.out.println(Autodto.getLimit_time());
+							
+							// 자동로그인 세션 정보 DB에 저장
+							dao.AutoLoginUpdate(Autodto);
+							
+							CookieGenerator cg = new CookieGenerator();
+
+							cg.setCookieName("loginCookie");
+							cg.addCookie(response, loginCookie.getValue());
+							
+							result = "profilepage.action";
+						}
 					}
 				}
 				// 아이디는 있는데 로그인 실패할 경우
@@ -142,7 +169,6 @@ public class MemberLoginController
 		}
 		
 		return result;
-		
 	}
 	
 	// 로그아웃

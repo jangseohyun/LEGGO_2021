@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import org.springframework.web.util.WebUtils;
@@ -27,9 +28,13 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception
 	{
-		HttpSession session = request.getSession();
+		System.out.println("로그인 인터셉터 실행");
 		
-		if (session.getAttribute("mem_id") == null)
+		HttpSession session = request.getSession();
+		String mem_id = (String)session.getAttribute("mem_id");
+		
+		// session에 mem_id가 없을 경우(로그인된 상태가 아닐 경우) 로그인 페이지로 보내기
+		if (mem_id == null)
 		{
 			response.setContentType("text/html; charset=utf-8");
 			PrintWriter out = response.getWriter();
@@ -40,7 +45,29 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 			
 			return false;
 		}
-		
-		return true;
+		else
+		{
+			IMemberLoginDAO dao = sqlSession.getMapper(IMemberLoginDAO.class);
+			String SigninAuth = dao.SigninAuthCck(mem_id);
+			
+			// 입력한 아이디가 회원가입 인증이 되지 않았을 경우 → 아직 로그인 불가능
+			if (SigninAuth.equals("필요"))
+			{
+				System.out.println("회원가입 인증 필요");
+				
+				response.setContentType("text/html; charset=utf-8");
+				PrintWriter out = response.getWriter();
+				String element = "<script>location.href=\"loginpage.action?error_message=이메일 인증이 완료되지 않았습니다.\";</script>";
+				out.println(element);
+				out.flush();
+				out.close();
+				
+				return false;
+			}
+
+			System.out.println("로그인 인터셉터 통과");
+			
+			return true;
+		}
 	}
 }

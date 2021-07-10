@@ -72,8 +72,8 @@ public class AutoLoginInterceptor extends HandlerInterceptorAdapter
 				}	
 			}
 		}
-		
-		System.out.println("통과");
+
+		System.out.println("자동로그인 인터셉터 통과");
 		
 		return true;
 	}

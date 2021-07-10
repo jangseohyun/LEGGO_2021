@@ -38,7 +38,7 @@ public class MailSend {
             
             msg.setRecipient(Message.RecipientType.TO, to);            
             msg.setSubject("테스트 중", "UTF-8");            
-            msg.setText("테스트 중입니다.", "UTF-8");            
+            msg.setContent("<a href=\"http://localhost:8090/PrjApp/loginpage.action?mem_id="+mem_id+"&success_message=이메일 인증이 완료되었습니다.\" style=\"font-size: 20px;\">이메일 인증</a>","text/html; charset=UTF-8");          
             
             Transport.send(msg);
             

@@ -99,7 +99,7 @@ String cp = request.getContextPath();
 						<div class="row justify-content-center">
 							<button type="submit" class="btn btn-primary submit "
 								style="width: 20%; font-family: 'Noto Sans KR', sans-serif;"
-								onClick="location.href='SendQnA.jsp'">문의하기</button>
+								onClick="location.href='sendqna.action'">문의하기</button>
 						</div>
 						<br> <br>
 						<div class="container row justify-content-center"

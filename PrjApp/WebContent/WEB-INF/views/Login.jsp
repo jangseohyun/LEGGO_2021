@@ -90,7 +90,6 @@
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">로그인</h2>
 				</div>
-
 			</div>
 			<div class="row justify-content-center">
 				<div aria-live="polite" aria-atomic="true"
