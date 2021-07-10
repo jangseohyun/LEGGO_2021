@@ -12,4 +12,13 @@ public interface IReportDAO
 	
 	// 당일 신고 건 수 
 	public int count();
+	
+	// 신고 상세 페이지 
+	public ReportDTO rptList(ReportDTO r);
+	
+	// 게시물 코드 가져오기
+	public String postCheck(ReportDTO r);
+	
+	// 게시물 정보 가져오기
+	public ReportDTO postList(String post_cd);
 }

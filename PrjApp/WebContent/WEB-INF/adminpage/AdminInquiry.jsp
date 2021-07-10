@@ -125,7 +125,7 @@
                      <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                댓글 데이터
+                                일대일문의 데이터
                             </div>
                             <div class="card-body">
                             	<table id="datatablesSimple"">
@@ -148,7 +148,7 @@
                                     	<c:set var="su" value="${count }"></c:set>
                                     	<c:if test="${not empty list }">
                                     		<c:forEach var="inquiry" items="${list }">
-                                    			<tr onClick="window.open('AdminAnswer.jsp', '', 'width=400, height=450'); return false;">
+                                    			<tr onClick="window.open('inquiryanwer.action?mem_qst_cd=${inquiry.mem_qst_cd}', '', 'width=400, height=450'); return false;">
 		                                    		<td>${su }</td>
 		                                    		<c:set var="su" value="${su-1 }"></c:set>
 		                                            <td>[${inquiry.ctg_nm }]</td>

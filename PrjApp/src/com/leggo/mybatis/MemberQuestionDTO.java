@@ -3,7 +3,7 @@ package com.leggo.mybatis;
 public class MemberQuestionDTO
 {
 	//-- 주요 속성 구성
-	private String ctg_nm, mem_qst_cd, mem_nnm, mem_qst_tt, mem_qst_dt, dt, state;
+	private String ctg_nm, mem_qst_cd, mem_nnm, mem_qst_tt, mem_qst_dt, dt, state, mem_qst_cont;
 
 	//-- getter / setter 
 	public String getCtg_nm()
@@ -74,6 +74,16 @@ public class MemberQuestionDTO
 	public void setState(String state)
 	{
 		this.state = state;
+	}
+
+	public String getMem_qst_cont()
+	{
+		return mem_qst_cont;
+	}
+
+	public void setMem_qst_cont(String mem_qst_cont)
+	{
+		this.mem_qst_cont = mem_qst_cont;
 	}
 	
 	

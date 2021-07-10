@@ -154,7 +154,7 @@
 		                                    		<td>${su }</td>
 		                                    		<c:set var="su" value="${su-1 }"></c:set>
 		                                            <td>${trip.tr_tt }</td>
-		                                            <td>${trip.mem_nnm }</td>
+		                                            <td>${trip.mem_nnm==null ? "탈퇴회원" : trip.mem_nnm }</td>
 		                                            <td>${trip.tr_dt }</td>
 		                                            <td>${trip.tr_hits }</td>
 		                                            <td>

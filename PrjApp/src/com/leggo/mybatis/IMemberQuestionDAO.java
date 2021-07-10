@@ -11,9 +11,10 @@ public interface IMemberQuestionDAO
 	public int count();
 	
 	// 일대일문의 상세 페이지
-	public MemberQuestionDTO tripPost(MemberQuestionDTO q);
+	public MemberQuestionDTO inquiryPost(MemberQuestionDTO q);
 	
 	// 금일 일대일문의 수
 	public int dayCount();
+	
 	
 }

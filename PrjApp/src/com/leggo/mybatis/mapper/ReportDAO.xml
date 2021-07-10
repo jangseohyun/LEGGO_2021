@@ -75,4 +75,30 @@
 		) C
 	</select>
 	
+	<select id="rptList" resultType="com.leggo.mybatis.ReportDTO">
+		SELECT MEM_NNM, RSN, ST, DTT, POST_CD, RPT_CD
+		FROM POSTREPORTVIEW
+		WHERE RPT_CD = #{rpt_cd}
+	</select>
+	
+	<select id="postCheck" resultType="java.lang.String">
+		SELECT POST_CD
+		FROM POSTREPORTVIEW
+		WHERE RPT_CD = #{rpt_cd}
+	</select>
+	
+	<select id="postList" resultType="com.leggo.mybatis.ReportDTO">
+		SELECT MEM_NNM, TT, DT, OPEN_ST, DTT, BLIND
+		FROM 
+		(
+		SELECT MEM_NNM, TT, TO_CHAR(DT, 'YYYY-MM-DD') AS DT, OPEN_ST, DT AS DTT, CASE WHEN  RPT_ST_CONT IN('완료', '미완료', '처리중') THEN '블라인드'
+		                                                                         ELSE '정상'
+		                                                                         END BLIND
+		FROM POSTVIEW
+		WHERE POST_CD = #{post_cd}
+		ORDER BY DTT DESC
+		)
+		WHERE ROWNUM = 1
+	</select>
+	
 </mapper>

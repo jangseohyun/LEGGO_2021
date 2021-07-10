@@ -2,7 +2,8 @@ package com.leggo.mybatis;
 
 public class ReportDTO
 {
-	private String rpt_cd, rsn, mem_nnm, dt, st, dtt;		//-- 코드, 사유, 회원코드, 신고일, 상태, 신고일(시간같이)
+	private String rpt_cd, rsn, mem_nnm, dt, st, dtt, post_cd;		//-- 코드, 사유, 회원코드, 신고일, 상태, 신고일(시간같이)
+	private String tt, open_st, blind;
 
 	public String getRpt_cd()
 	{
@@ -63,4 +64,47 @@ public class ReportDTO
 	{
 		this.dtt = dtt;
 	}
+
+	public String getPost_cd()
+	{
+		return post_cd;
+	}
+
+	public void setPost_cd(String post_cd)
+	{
+		this.post_cd = post_cd;
+	}
+
+	public String getTt()
+	{
+		return tt;
+	}
+
+	public void setTt(String tt)
+	{
+		this.tt = tt;
+	}
+
+	public String getOpen_st()
+	{
+		return open_st;
+	}
+
+	public void setOpen_st(String open_st)
+	{
+		this.open_st = open_st;
+	}
+
+	public String getBlind()
+	{
+		return blind;
+	}
+
+	public void setBlind(String blind)
+	{
+		this.blind = blind;
+	}
+	
+	
+	
 }

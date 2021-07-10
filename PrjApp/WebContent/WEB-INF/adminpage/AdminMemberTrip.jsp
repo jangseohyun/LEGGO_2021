@@ -126,7 +126,7 @@ ul.tabs li.current{
 			</tr>
 			<tr>
 				<td style="text-align: left;">${post.tr_tt }</td>
-				<td style="text-align: center;">${post.mem_nnm }</td>
+				<td style="text-align: center;">${post.mem_nnm==null ? "탈퇴회원" : post.mem_nnm }</td>
 				<td style="text-align: center;">${post.tr_dt }</td>
 				<td style="text-align: center;">${post.open_st }</td>
 				<td style="text-align: center;"><button type="button" class="state" ${post.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" } disabled="disabled">${post.blind }</button></td>

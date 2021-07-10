@@ -23,4 +23,11 @@
 		WHERE TO_CHAR(MEM_QST_DT, 'YYYY-MM-DD') = TO_CHAR(SYSDATE, 'YYYY-MM-DD')
 	</select>
 	
+	<select id="inquiryPost" resultType="com.leggo.mybatis.MemberQuestionDTO">
+		SELECT CTG_NM, MEM_QST_CD, MEM_NNM, MEM_QST_TT, MEM_QST_DT, mem_qst_cont, CASE WHEN ADMIN_ANS_CD IS NULL THEN '미답변'
+                                                                                                    ELSE '답변' END STATE
+		FROM MEMQUESTIONVIEW
+		WHERE MEM_QST_CD = #{mem_qst_cd}
+	</select>
+	
 </mapper>

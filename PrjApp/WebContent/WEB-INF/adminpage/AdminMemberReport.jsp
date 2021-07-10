@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ProcessReport - Leggo Admin</title>
+<title>AdminMemberReport.jsp</title>
 <style type="text/css">
 
 .state
@@ -27,24 +27,6 @@
 
 	$(function()
 	{
-		$("#blind").click(function()
-		{
-			
-			if( $(this).html()=="정상" )
-			{
-				$(this).html("블라인드");
-				$(this).css("background-color", "#dc3545");
-				$(this).css("color", "white");
-			}
-			else if( $(this).html()=="블라인드" || $(this).html()=="클릭" )
-			{
-				$(this).html("정상");
-				$(this).css("background-color", "#198754");
-				$(this).css("color", "white");
-			}
-			
-		});
-		
 		$("#closebtn").click(function()
 		{
 			window.close();  	
@@ -52,10 +34,11 @@
 		
 		$("#processbtn").click(function()
 		{
+			window.open("processreport.action?rpt_cd=${rptList.rpt_cd}", "", "width=520, height=400");
 			window.close();  
 		});
-		
 	});
+	
 </script>
 </head>
 <body>
@@ -91,41 +74,26 @@
 			</div>
 			
 			<div style="background-color: #e6e6e4; width: 100%">
-				<table style="width: 100%; text-align: center;" class="table">
+				<table style="width: 100%" class="table">
 					<tr>
 						<th style="text-align: center;">신고자</th>
 						<th style="text-align: center;">신고사유</th>
 						<th style="text-align: center;">신고일</th>
 						<th style="text-align: center;">처리상태</th>
 					</tr>
-					<tr onClick="window.open('https://www.naver.com'); return false;">
+					<tr>
 						<th style="text-align: center;">${rptList.mem_nnm }</th>
 						<th style="text-align: center;">${rptList.rsn }</th>
 						<th style="text-align: center;">${rptList.dtt }</th>
-						<th style="text-align: center;"><button type="button" class="state" ${rptList.st=="처리중" ? "style=\"background-color: #6c757d;\"" :  rptList.st=="완료" ? "style=\"background-color: #2E9AFE;\"" :  "style=\"background-color: #dc3545;\"" } disabled="disabled">${rptList.st }</button></th>
+						<th style="text-align: center;"><button type="button" class="state" style="background-color: #dc3545;" disabled="disabled">${rptList.st }</button></th>
 					</tr>
 				</table>
 			</div>
-			
-			<br>
-			<div>
-				<table class="table">
-					<tr>
-						<td style="text-align: center;">처리 선택</td>
-						<td style="text-align: center;"><button id="blind" class="btn" style="width: 85px;">클릭</button> </td>
-					</tr>
-				</table>
-			</div>
-			<div style="width: 100%;">
-				<div style="font-weight: bold;">관리자1</div>
-				<textarea style="width:100%; height:100px;" >ex) 2021-07.01 관리자1 : 어쩌구 사유로 블라인드 반려</textarea>
-			</div>
-			
 			<br>
 			<div>
 				<p style="text-align: center;">
-				<button type="button" class="btn" id="processbtn" style="background-color: #2E9AFE; color: white;" >처리완료</button>
-				<button type="button"  class="btn" id="closebtn" style="background-color: #6c757d; color: white;">닫기</button>
+				<button type="button" class="btn" id="processbtn" style="border: 1px; width: 70px; height: 25px; background-color: #2E9AFE; color: white;" >처리</button>
+				<button type="button"  class="btn" id="closebtn" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">닫기</button>
 				</p>
 			</div>
 		

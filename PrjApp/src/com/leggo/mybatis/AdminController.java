@@ -99,6 +99,23 @@ public class AdminController
 		return result;
 	}
 	
+	// 일대일문의 답변 페이지 
+	@RequestMapping(value = "/inquiryanwer.action", method = RequestMethod.GET)
+	public String inquiryAnwer(Model model, MemberQuestionDTO q)
+	{
+		String result = null;
+		
+		IMemberQuestionDAO dao = sqlSession.getMapper(IMemberQuestionDAO.class);
+		IAdminAnswerDAO adao = sqlSession.getMapper(IAdminAnswerDAO.class);
+		
+		model.addAttribute("question", dao.inquiryPost(q));
+		model.addAttribute("answer", adao.list(q));
+		
+		result = "/WEB-INF/adminpage/AdminAnswer.jsp";
+		
+		return result;
+	}
+	
 	// 설문조사 관리 페이지 
 	@RequestMapping(value = "/survey.action", method = RequestMethod.GET)
 	public String survey(Model model)
@@ -256,6 +273,44 @@ public class AdminController
 		model.addAttribute("totCount", dao.totCount());					//-- 신고 총 수
 		
 		result = "/WEB-INF/adminpage/AdminReport.jsp";
+		
+		return result;
+	}
+	
+	// 신고 관리 상세 페이지
+	@RequestMapping(value = "/memberreport.action", method = RequestMethod.GET)
+	public String memberReport(Model model, ReportDTO r)
+	{
+		String result = null;
+		
+		IReportDAO dao = sqlSession.getMapper(IReportDAO.class);
+		
+		model.addAttribute("rptList", dao.rptList(r));					//-- 신고 상세 리스트 
+		
+		String post_cd = dao.postCheck(r);								//-- 게시물 코드 가져오기 
+		
+		model.addAttribute("postList", dao.postList(post_cd));			//-- 게시물 정보 가져오기 
+		
+		result = "/WEB-INF/adminpage/AdminMemberReport.jsp";
+		
+		return result;
+	}
+	
+	// 신고 관리 상세 페이지
+	@RequestMapping(value = "/processReport.action", method = RequestMethod.GET)
+	public String processReport(Model model, ReportDTO r)
+	{
+		String result = null;
+		
+		IReportDAO dao = sqlSession.getMapper(IReportDAO.class);
+		
+		model.addAttribute("rptList", dao.rptList(r));					//-- 신고 상세 리스트 
+		
+		String post_cd = dao.postCheck(r);								//-- 게시물 코드 가져오기 
+		
+		model.addAttribute("postList", dao.postList(post_cd));			//-- 게시물 정보 가져오기 
+		
+		result = "/WEB-INF/adminpage/AdminProcessReport.jsp";
 		
 		return result;
 	}
