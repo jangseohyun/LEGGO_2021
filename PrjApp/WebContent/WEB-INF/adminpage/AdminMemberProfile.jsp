@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String cp = request.getContextPath();
@@ -97,6 +98,14 @@ ul.tabs li.current{
 .table th, .table td
 {
 	text-align: center;
+}
+
+.state
+{
+	border: 1px; 
+	width: 70px; 
+	height: 25px; 
+	color: white;
 }
 
 </style>
@@ -201,28 +210,37 @@ ul.tabs li.current{
 				<th style="text-align: left;">제목</th>
 				<th>작성일</th>
 				<th>공개</th>
-				<th>신고수</th>
 				<th>상태</th>
 				<th>관리</th>
 			</tr>
-			<tr>
-				<td>[일정]</td>
-				<td style="text-align: left;">제주 한달</td>
-				<td>2021-06-30</td>
-				<td>공개</td>
-				<td>0</td>
-				<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #198754; color: white;">정상</button></td>
-				<td><a href=".jsp" onClick="window.open(this.href, '', 'width=400, height=450'); return false;"><img src="images/menu.png" height="18px;"></a></td>
-			</tr>
-			<tr>
-				<td>[여행기]</td>
-				<td style="text-align: left;">호캉스 후기</td>
-				<td>2021-06-27</td>
-				<td>공개</td>
-				<td>1</td>
-				<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;">차단</button></td>
-				<td><a href=".jsp" onClick="window.open(this.href, '', 'width=400, height=450'); return false;"><img src="images/menu.png" height="18px;"></a></td>
-			</tr>
+			<c:if test="${empty postList }">
+                 <tr>
+                 	<td colspan="6" style="text-align: center; font-weight: bold;">작성 글 내역이 없습니다.</td>
+                 </tr>
+            </c:if>
+			<c:if test="${not empty postList }">
+			<c:forEach var="post" items="${postList }">
+				<tr>
+					<td>${fn:substring(post.post_cd,0,2)=="PL" ? "[일정]" : fn:substring(post.post_cd,0,2)=="TR" ? "[여행기]" : "[사진]" }</td>
+					<td style="text-align: left;">${post.tt }</td>
+					<td>${post.dt }</td>
+					<td>${post.open_st }</td>
+					<td><button type="button" disabled="disabled" class="state" ${post.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }>${post.blind }</button></td>
+					<c:set var="code" value="${fn:substring(post.post_cd,0,2) }"></c:set>
+					<td>
+						<c:if test="${code==\"PL\" }">
+							<a href="memberplan.action?pl_cd=${post.post_cd }" onClick="window.open(this.href, '', 'width=400, height=450'); return false;"><img src="images/menu.png" height="18px;"></a>
+						</c:if>
+						<c:if test="${code==\"TR\" }">
+							<a href="membertrip.action?tr_cd=${post.post_cd }" onClick="window.open(this.href, '', 'width=400, height=450'); return false;"><img src="images/menu.png" height="18px;"></a>
+						</c:if>
+						<c:if test="${code==\"PP\" }">
+							<a href="memberphoto.action??tr_cd=${post.post_cd }" onClick="window.open(this.href, '', 'width=400, height=450'); return false;"><img src="images/menu.png" height="18px;"></a>
+						</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+			</c:if>
 		</table>
 		
 	</div>
@@ -231,14 +249,12 @@ ul.tabs li.current{
 			<tr>
 				<th>신고</th>
 				<th>오신고</th>
-				<th>피신고</th>
 				<th>총 합</th>
 			</tr>
 			<tr>
-				<td>15</td>
-				<td>9</td>
-				<td>1</td>
-				<td>25</td>
+				<td>${rptTotCount-oRptCount }</td>
+				<td>${oRptCount }</td>
+				<td>${rptTotCount }</td>
 			</tr>
 		</table>
 		<br>
@@ -249,24 +265,26 @@ ul.tabs li.current{
 				<th>신고일</th>
 				<th>상태</th>
 			</tr>
-			<tr>
-				<td>[여행기]</td>
-				<td style="text-align: left;">호텔의 모든 것</td>
-				<td>2021-06-30</td>
-				<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;">오신고</button></td>
-			</tr>
-			<tr>
-				<td>[일정]</td>
-				<td style="text-align: left;">어쩌고</td>
-				<td>2021-06-30</td>
-				<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">신고</button></td>
-			</tr>
-			<tr>
-				<td>[일정]</td>
-				<td style="text-align: left;">제주 한달</td>
-				<td>2021-06-30</td>
-				<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">피신고</button></td>
-			</tr>
+			
+			<c:if test="${empty memRptList }">
+	            <tr>
+	                <td colspan="6" style="text-align: center; font-weight: bold;">신고 내역이 없습니다.</td>
+	            </tr>
+            </c:if>
+            
+            <c:if test="${not empty memRptList }">
+           		<c:set var="tot" value="${rptTotCount }"></c:set>
+               	<c:forEach var="report" items="${memRptList }">
+                   	<tr onClick="window.open('AdminMemberReport.jsp', '', 'width=570, height=260'); return false;">
+                       	<td>${tot }</td>
+                           <c:set var="tot" value="${tot-1 }"></c:set>
+                           <td>${fn:substring(report.post_cd,0,2)=="PL" ? "[일정]" : fn:substring(report.post_cd,0,2)=="TR" ? "[여행기]" : "[사진]" }</td>
+                           <td>${report.tt }</td>
+                           <td>${report.dt }</td>
+                           <td><button type="button" disabled="disabled" class="state"  ${report.st=="완료" ? "style=\"background-color: #2E9AFE;\"" : report.st=="반려" ? "style=\"background-color: #dc3545;\"" : "style=\"background-color: #6c757d;\"" }>${report.st }</button></td>
+                       </tr>
+                </c:forEach>
+            </c:if>
 		</table>
 	</div>
 	
@@ -274,7 +292,7 @@ ul.tabs li.current{
 	
 	<div style="width: 100%;">
 		<div style="font-weight: bold;">비고</div>
-		<textarea style="width:100%; height:100px;">ex) 2021-02-01 ADMIN : 관리자 임명</textarea>
+		<textarea style="width:100%; height:100px;"></textarea>
 	</div>
 	
 	<br>

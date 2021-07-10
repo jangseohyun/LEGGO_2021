@@ -21,4 +21,16 @@ public interface IReportDAO
 	
 	// 게시물 정보 가져오기
 	public ReportDTO postList(String post_cd);
+	
+	// 게시물 리스트 가져오기 (회원 상세 페이지)
+	public ArrayList<ReportDTO> postAllList(MemberDTO m);
+	
+	// 회원 신고 총합
+	public int rptTotCount(MemberDTO m);
+	
+	// 회원 오신고 수
+	public int oRptCount(MemberDTO m);
+	
+	// 회원 신고 내역
+	public ArrayList<ReportDTO> memRptList(MemberDTO m);
 }

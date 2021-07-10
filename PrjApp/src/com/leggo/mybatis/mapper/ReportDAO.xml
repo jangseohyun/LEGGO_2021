@@ -101,4 +101,32 @@
 		WHERE ROWNUM = 1
 	</select>
 	
+	<select id="postAllList" resultType="com.leggo.mybatis.ReportDTO">
+		SELECT POST_CD, MEM_NNM, TT, TO_CHAR(DT, 'YYYY-MM-DD') AS DT, OPEN_ST, DT AS DTT, MEM_CD, CASE WHEN  RPT_ST_CONT IN('완료', '미완료', '처리중') THEN '블라인드'
+                                                                                ELSE '정상'
+                                                                                END BLIND
+		FROM POSTVIEW
+		WHERE MEM_CD = #{mem_cd}
+		ORDER BY DTT DESC
+	</select>
+	
+	<select id="rptTotCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM POSTREPORTVIEW
+		WHERE MEM_CD = #{mem_cd}
+	</select>
+	
+	<select id="oRptCount" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM POSTREPORTVIEW
+		WHERE ST = '반려' AND MEM_CD = #{mem_cd}
+	</select>
+	
+	<select id="memRptList" resultType="com.leggo.mybatis.ReportDTO">
+		SELECT PR.RPT_CD, PR.MEM_CD, PR.ST, P.TT
+		FROM POSTREPORTVIEW PR LEFT JOIN POSTVIEW P
+		        ON PR.POST_CD = P.POST_CD
+		WHERE PR.MEM_CD = #{mem_cd}
+	</select>
+	
 </mapper>

@@ -159,7 +159,7 @@
 		                                            ${photo.rpt_st_cont==null ? "style=\"background-color: #198754;\"" : photo.rpt_st_cont=="반려" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }
 		                                            >${photo.rpt_st_cont==null ? "정상" : photo.rpt_st_cont=="반려" ? "정상" : "블라인드" }</button></td>
 		                                            <td>
-		                                            	<a href="AdminMemberPhoto.jsp" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
+		                                            	<a href="memberphoto.action?${photo.pp_cd }" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
 		                                            		<img src="images/menu.png" height="18px;">
 		                                            	</a>
 		                                            </td>

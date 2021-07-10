@@ -75,8 +75,16 @@ public class AdminController
 		String result = null;
 		
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
+		IReportDAO re = sqlSession.getMapper(IReportDAO.class);
 		
 		model.addAttribute("memberProfile", dao.memberProfile(m));		//-- 회원 상세 프로필 정보
+		
+		model.addAttribute("postList", re.postAllList(m));				//-- 회원 작성 게시물
+		
+		model.addAttribute("rptTotCount", re.rptTotCount(m));
+		model.addAttribute("oRptCount", re.oRptCount(m));
+		
+		model.addAttribute("memRptList", re.memRptList(m));
 		
 		result = "/WEB-INF/adminpage/AdminMemberProfile.jsp";
 		
@@ -227,7 +235,7 @@ public class AdminController
 		return result;
 	}
 	
-	// 여행기 관리 상세 페이지
+	// 사진 관리 상세 페이지
 	@RequestMapping(value = "/memberphoto.action", method = RequestMethod.GET)
 	public String memberPhoto(Model model, PhotoDTO p)
 	{

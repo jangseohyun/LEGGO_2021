@@ -146,7 +146,7 @@
                                             <td>${member.acct_st }</td>
                                             <td>${member.admin_cd!=null ? "관리자" : "사용자"  }</td>
                                             <td>
-                                            	<a href="memberprofile.action?mem_cd=${member.mem_cd }" onClick="window.open(this.href, '', 'width=400, height=660'); return false;">
+                                            	<a href="memberprofile.action?mem_cd=${member.mem_cd }" onClick="window.open(this.href, '', 'width=540, height=660'); return false;">
                                             		<img src="images/menu.png" height="18px;">
                                             	</a>
                                             </td>
