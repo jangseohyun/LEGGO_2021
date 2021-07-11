@@ -18,7 +18,7 @@
 	</select>
 	
 	<select id="memberProfile" resultType="com.leggo.mybatis.MemberDTO">
-		SELECT ACCT_ST, MEM_ID, MEM_NNM, MEM_JOIN_DT, ADMIN_CD,  QT_MEM_QUIT_DT, JOIN_MTD, MEM_DT_CD, MEM_IMG
+		SELECT ACCT_ST, MEM_ID, MEM_NNM, MEM_JOIN_DT, ADMIN_CD,  QT_MEM_QUIT_DT, JOIN_MTD, MEM_DT_CD, MEM_IMG, MEM_CD
 		FROM MEMBERVIEW
 		WHERE MEM_CD = #{mem_cd}
 	</select>
@@ -28,20 +28,20 @@
 		FROM MEMBERVIEW
 	</select>
 	
-	<select id="adminCheck" resultType="java.lang.Integer">
+	<select id="adminCheck" resultType="com.leggo.mybatis.MemberDTO">
 		SELECT COUNT(*) AS COUNT
 		FROM ADMIN 
 		WHERE MEM_CD = #{mem_cd}
 	</select>
 	
-	<select id="memberUpdate" resultType="java.lang.Integer">
+	<insert id="memberUpdate">
 		INSERT INTO ADMIN(ADMIN_CD, MEM_CD)
 		VALUES( 'ADMIN' || ADMINSEQ.NEXTVAL, #{mem_cd})
-	</select>
+	</insert>
 	
-	<select id="memberDelete" resultType="java.lang.Integer">
+	<delete id="memberDelete">
 		DELETE FROM ADMIN
 		WHERE MEM_CD = #{mem_cd}
-	</select>
+	</delete>
 	
 </mapper>

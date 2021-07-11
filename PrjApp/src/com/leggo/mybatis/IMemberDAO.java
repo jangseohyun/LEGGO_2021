@@ -20,5 +20,5 @@ public interface IMemberDAO
 	
 	public int memberDelete(MemberDTO m);
 	
-	public int adminCheck(MemberDTO m);
+	public MemberDTO adminCheck(MemberDTO m);
 }

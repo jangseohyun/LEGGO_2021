@@ -23,7 +23,7 @@
 	}
 	
 </style>
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jes/styles.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
@@ -161,16 +161,6 @@
                                     			</tr>
                                     		</c:forEach>
                                     	</c:if>
-                                    	<!-- 
-                                    	<tr onClick="window.open('AdminAnswer.jsp', '', 'width=400, height=450'); return false;">
-                                    		<td>11</td>
-                                            <td>[일정]</td>
-                                            <td>문의드립니다.</td>
-                                            <td>프로 제주살이</td>
-                                            <td>2021-06-28</td>
-                                            <td><button type="button" disabled="disabled" style="background: gray; color: white; width: 50pt; border: 1px;">미처리</button></td>
-                                    	</tr> 
-                                    	-->
                                     	
                                     </tbody>
                                  </table>
@@ -192,11 +182,8 @@
             </div>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="<%=cp%>/js/jes/scripts.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        <script src="<%=cp%>/js/jes/datatables-simple-demo.js"></script>
 </body>
 </html>

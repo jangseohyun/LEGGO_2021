@@ -5,6 +5,7 @@ public class MemberDTO
 	private String mem_cd, acct_st;			//-- 회원코드, 회원상태
 	private String mem_dt_cd, mem_id, mem_pw, mem_nnm, mem_img, mem_join_dt;	
 	private String qt_mem_quit_dt, admin_cd, join_mtd;
+	private int count;
 	
 	// getter / setter 구성
 	public String getMem_cd()
@@ -94,6 +95,14 @@ public class MemberDTO
 	public void setJoin_mtd(String join_mtd)
 	{
 		this.join_mtd = join_mtd;
+	}
+	public int getCount()
+	{
+		return count;
+	}
+	public void setCount(int count)
+	{
+		this.count = count;
 	}
 	
 }

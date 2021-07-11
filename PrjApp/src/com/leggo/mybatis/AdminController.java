@@ -1,7 +1,6 @@
 package com.leggo.mybatis;
 
 
-import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -101,21 +100,22 @@ public class AdminController
 		IMemberDAO dao = sqlSession.getMapper(IMemberDAO.class);
 		
 		
-		
-		if (dao.adminCheck(m) == 0)		//-- 선택된 회원이 사용자 
+		if ( (dao.adminCheck(m)).getCount() == 0)		//-- 선택된 회원이 사용자 
 		{
 			if (rank.equals("1"))	//-- 관리자로 변경하고자한다면 ADMIN 테이블 추가 
 			{
 				dao.memberUpdate(m);
 			}
 		}
-		else if (dao.adminCheck(m) > 0)		//-- 선택된 회원이 관리자
+		else if ( (dao.adminCheck(m)).getCount() == 1)		//-- 선택된 회원이 관리자
 		{
 			if (rank.equals("0"))	//-- 사용자로 변경하고자한다면 ADMIN 테이블 삭제
 			{
 				dao.memberDelete(m);
 			}
 		}
+		
+		//System.out.println(m.getMem_cd());
 		
 		model.addAttribute("mesagge", "수정");
 		

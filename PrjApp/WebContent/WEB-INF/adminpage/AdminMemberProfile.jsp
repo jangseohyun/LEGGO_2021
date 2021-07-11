@@ -109,9 +109,9 @@ ul.tabs li.current{
 }
 
 </style>
-<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="<%=cp%>/css/jes/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=cp%>/js/jes/bootstrap.min.js"></script>
 <script type="text/javascript">
 	
 	$(function()
@@ -200,7 +200,7 @@ ul.tabs li.current{
 	<hr>
 	<input type="hidden" id="rank" name="rank">
 	<input type="hidden" id="memState" name="memState">
-	<input type="hidden" id="mem_id" name="mem_cd" value="${memberProfile.mem_id }">
+	<input type="hidden" id="mem_cd" name="mem_cd" value="${memberProfile.mem_cd }">
 </div>
 
 <div class="container">
