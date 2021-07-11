@@ -103,7 +103,7 @@ public class MemberLoginController
 								result = "profilepage.action";
 							// 관리자일 경우
 							else
-								result = "/WEB-INF/views/AfterLoginAdmin.jsp";
+								result = "admin.action";
 						}
 						// 자동 로그인 체크했을 경우
 						else if(Logindto.getLogin_cck().equals("on"))
