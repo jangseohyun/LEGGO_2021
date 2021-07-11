@@ -19,9 +19,9 @@
 	}
 	
 </style>
-<link rel="stylesheet" href="<%=cp %>/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=cp %>/css/jes/bootstrap.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="<%=cp %>/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=cp %>/js/jes/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 	$(function()

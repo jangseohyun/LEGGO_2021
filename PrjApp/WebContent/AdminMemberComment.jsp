@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AdminMemberPlan - LEGGO Admin</title>
+<title>AdminMemberPhoto.jsp</title>
 <link rel="stylesheet" href="<%=cp %>/css/jes/bootstrap.min.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="<%=cp %>/js/jes/bootstrap.min.js"></script>
@@ -77,18 +77,10 @@ ul.tabs li.current{
 	text-align: center;
 }
 
-.state
-{
-	border: 1px; 
-	width: 70px; 
-	height: 25px; 
-	color: white;
-}
-
 </style>
-<link rel="stylesheet" href="<%=cp%>/css/jes/bootstrap.css">
+<link rel="stylesheet" href="<%=cp %>/css/jes/bootstrap.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
-<script type="text/javascript" src="<%=cp%>/js/jes/bootstrap.min.js"></script>
+<script type="text/javascript" src="<%=cp %>/js/jes/bootstrap.min.js"></script>
 <script type="text/javascript">
 
 	$(function()
@@ -110,24 +102,22 @@ ul.tabs li.current{
 		<div class="panel-default">
 		
 			<div class="panel-heading" id="title">
-				일정 상세
+				댓글 상세
 			</div>
 			
 		<br>
 		<table class="table">
 			<tr>
-				<th style="text-align: left;">제목</th>
+				<th style="text-align: left;">내용</th>
 				<th style="text-align: center;">작성자</th>
 				<th style="text-align: center;">작성일</th>
-				<th style="text-align: center;">공개여부</th>
 				<th style="text-align: center;">블라인드</th>
 			</tr>
 			<tr>
-				<td style="text-align: left;">${post.pl_tt }</td>
-				<td style="text-align: center;">${post.mem_nnm }</td>
-				<td style="text-align: center;">${post.pl_dt }</td>
-				<td style="text-align: center;">${post.open_st }</td>
-				<td style="text-align: center;"><button type="button" class="state" ${post.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" } disabled="disabled">${post.blind }</button></td>
+				<td style="text-align: left;">너무 예뻐요</td>
+				<td style="text-align: center;">프로 제주살이</td>
+				<td style="text-align: center;">2021-04-28</td>
+				<td style="text-align: center;"><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">블라인드</button></td>
 			</tr>
 		</table>
 		
@@ -146,23 +136,18 @@ ul.tabs li.current{
 					<th style="text-align: center;">상태</th>
 					<th style="text-align: center;">처리자</th>
 				</tr>
-				<c:if test="${rptCount eq 0 }">
-					<tr>
-						<td colspan="4" style="text-align: center; font-weight: bold;">신고 내역이 없습니다.</td>
-					</tr>
-				</c:if>
-				<c:if test="${rptCount ne 0 }">
-				<c:set var="i" value="${rptCount }"></c:set>
-				<c:forEach var="rpt" items="rptList">
-				<tr onClick="window.open('memberreport.action?pl_rpt_cd=${rpt.pl_rpt_cd}', '', 'width=570, height=260'); return false;">
-					<td>${i }</td>
-					<c:set var="i" value="${i-1 }"></c:set>
-					<td>${rpt.dt }</td>
-					<td><button type="button" class="state" disabled="disabled" ${rpt.rpt_st_cont=="완료" ? "style=\"background-color: #2E9AFE;\"" : rpt.rpt_st_cont=="반려" ? "style=\"background-color: #dc3545;\"" : "style=\"background-color: #6c757d;\"" }>${rpt.rpt_st_cont }</button></td>
-					<td>${rpt.mem_nnm==null ? "-" : "rpt.mem_nnm" }</td>
+				<tr>
+					<td>1</td>
+					<td><a href="AdminMemberPlan.jsp" style="color: black; text-decoration: none;" onClick="window.open(this.href, '', 'width=400, height=450'); return false;">2021-06-30</a></td>
+					<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;" disabled="disabled">미처리</button></td>
+					<td>-</td>
 				</tr>
-				</c:forEach>
-				</c:if>
+				<tr>
+					<td>2</td>
+					<td>2021-05-22</td>
+					<td><button type="button" id="blind" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" disabled="disabled">반려</button></td>
+					<td>관리자2</td>
+				</tr>
 			</table>
 		</div>
 		

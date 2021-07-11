@@ -100,10 +100,10 @@ public class MemberLoginController
 						{
 							// 일반 회원일 경우
 							if (login.getAdmin_cd() == null)
-								result = "profilepage.action";
+								result = "redirect:profilepageauto.action";
 							// 관리자일 경우
 							else
-								result = "admin.action";
+								result = "redirect:admin.action";
 						}
 						// 자동 로그인 체크했을 경우
 						else if(Logindto.getLogin_cck().equals("on"))
@@ -142,7 +142,7 @@ public class MemberLoginController
 							cg.setCookieName("loginCookie");
 							cg.addCookie(response, loginCookie.getValue());
 							
-							result = "profilepage.action";
+							result = "redirect:profilepage.action";
 						}
 					}
 				}

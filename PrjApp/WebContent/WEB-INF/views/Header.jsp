@@ -30,7 +30,7 @@
 
 
 				<div class="site-logo">
-					<a href="index.html" class="text-black"><span
+					<a href="mainhome.action" class="text-black"><span
 						class="text-primary"><img src="images/leggo_logo.png"
 							style="width: 150px; margin-left: 50px;"></span></a>
 				</div>
@@ -40,17 +40,17 @@
 
 						<ul
 							class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-							<li><a href="#home-section" class="nav-link">홈</a></li>
+							<li><a href="mainhome.action" class="nav-link">홈</a></li>
 							<li><a href="#services-section" class="nav-link">일정짜기</a></li>
 
 
 							<li class="has-children"><a href="#about-section"
 								class="nav-link">커뮤니티</a>
 								<ul class="dropdown arrow-top">
-									<li><a href="#team-section" class="nav-link">커뮤니티 홈</a></li>
-									<li><a href="#pricing-section" class="nav-link">여행기</a></li>
-									<li><a href="#faq-section" class="nav-link">일정 구경</a></li>
-									<li><a href="#">사진</a></li>
+									<li><a href="mainhome.action" class="nav-link">커뮤니티 홈</a></li>
+									<li><a href="comtripfeed.action" class="nav-link">여행기</a></li>
+									<li><a href="complanfeed.action" class="nav-link">일정 구경</a></li>
+									<li><a href="comphotofeed.action">사진</a></li>
 								</ul></li>
 
 							<li style="vertical-align: middle;"><div

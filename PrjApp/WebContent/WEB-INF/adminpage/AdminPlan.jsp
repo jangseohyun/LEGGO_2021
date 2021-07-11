@@ -44,7 +44,7 @@
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="AdminChange.jsp" onClick="window.open(this.href, '', 'width=400, height=310'); return false;">정보변경</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">로그아웃</a></li>
+                        <li><a class="dropdown-item" href="logout.action">로그아웃</a></li>
                     </ul>
                 </li>
             </ul>
@@ -153,13 +153,12 @@
                                     			<tr>
 		                                    		<td>${su }</td>
 		                                    		<c:set var="su" value="${su-1 }"></c:set>
-		                                            <td>${plan.tr_tt }</td>
+		                                            <td>${plan.pl_tt }</td>
 		                                            <td>${plan.mem_nnm }</td>
 		                                            <td>${plan.dt }</td>
-		                                            <td>${plan.tr_hits }</td>
+		                                            <td>${plan.pl_hits }</td>
 		                                            <td><button type="button" disabled="disabled" class="state"  
-		                                            ${plan.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }
-		                                            >${paln.blind }</button></td>
+		                                            ${plan.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }>${plan.blind }</button></td>
 		                                            <td>
 		                                            	<a href="memberplan.action?pl_cd=${plan.pl_cd }" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
 		                                            		<img src="images/menu.png" height="18px;">

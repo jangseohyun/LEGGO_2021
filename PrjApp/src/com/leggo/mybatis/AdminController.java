@@ -17,7 +17,7 @@ public class AdminController
 	private SqlSession sqlSession;
 	
 	// 대시보드 페이지 
-	@RequestMapping(value = "/admin.action", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin.action", method = RequestMethod.GET)
 	public String adminDashboard(Model model, HttpServletRequest request)
 	{
 		String result = null;
