@@ -56,7 +56,7 @@
 	</select>
 	
 	<select id="totCount" resultType="com.leggo.mybatis.PostStatsDTO">
-		SELECT A.DAY AS DT, NVL(B.COUNT, 0) AS PALN, NVL(C.COUNT, 0) AS TRIP, NVL(D.COUNT, 0) AS PHOTO
+		SELECT A.DAY AS DT, NVL(B.COUNT, 0) AS PLAN, NVL(C.COUNT, 0) AS TRIP, NVL(D.COUNT, 0) AS PHOTO
 		FROM 
 		(
 			SELECT TO_CHAR(SYSDATE-LEVEL+1, 'YYYY-MM-DD') DAY

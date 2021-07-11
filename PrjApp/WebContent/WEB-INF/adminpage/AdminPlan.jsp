@@ -153,13 +153,12 @@
                                     			<tr>
 		                                    		<td>${su }</td>
 		                                    		<c:set var="su" value="${su-1 }"></c:set>
-		                                            <td>${plan.tr_tt }</td>
+		                                            <td>${plan.pl_tt }</td>
 		                                            <td>${plan.mem_nnm }</td>
 		                                            <td>${plan.dt }</td>
-		                                            <td>${plan.tr_hits }</td>
+		                                            <td>${plan.pl_hits }</td>
 		                                            <td><button type="button" disabled="disabled" class="state"  
-		                                            ${plan.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }
-		                                            >${paln.blind }</button></td>
+		                                            ${plan.blind=="정상" ? "style=\"background-color: #198754;\"" : "style=\"background-color: #dc3545;\"" }>${plan.blind }</button></td>
 		                                            <td>
 		                                            	<a href="memberplan.action?pl_cd=${plan.pl_cd }" onClick="window.open(this.href, '', 'width=550, height=400'); return false;">
 		                                            		<img src="images/menu.png" height="18px;">

@@ -31,7 +31,7 @@
 	<!-- ⑤ 매퍼파일 작성 후 마저 등록해서 완성 → mapperLocations -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="localDataSource"></property>
-		<property name="mapperLocations" value="classpath:com/leggo/mybatis/mapper/*.xml"></property>
+		<property name="mapperLocations" value="classpath:com/leggo/mapper/*.xml"></property>
 	</bean>
 	
 	<!-- ⑥ sqlSession 등록 과정에서 생겨나는 추가 코드 -->
