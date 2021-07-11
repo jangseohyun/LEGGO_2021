@@ -22,7 +22,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/bootstrap-theme.css">
+<link rel="stylesheet" href="css/jsh/bootstrap-theme.css">
 
 <!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
 <% if (session.getAttribute("mem_id") == null) { %>

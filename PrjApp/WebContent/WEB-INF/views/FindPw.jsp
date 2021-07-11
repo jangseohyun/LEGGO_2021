@@ -23,7 +23,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jsh/style.css">
 
 <script type="text/javascript">
 
@@ -165,10 +165,10 @@ html, body {
 		</div>
 	</section>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/jsh/jquery.min.js"></script>
+	<script src="js/jsh/popper.js"></script>
+	<script src="js/jsh/bootstrap.min.js"></script>
+	<script src="js/jsh/main.js"></script>
 
 </body>
 </html>

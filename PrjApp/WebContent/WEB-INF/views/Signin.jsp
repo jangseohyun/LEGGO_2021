@@ -21,7 +21,7 @@
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/jsh/style.css">
 
 <!-- toastr css 라이브러리 -->
 <!-- <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" /> -->
@@ -101,10 +101,10 @@ a {
 		</div>
 	</section>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
+	<script src="js/jsh/jquery.min.js"></script>
+	<script src="js/jsh/popper.js"></script>
+	<script src="js/jsh/bootstrap.min.js"></script>
+	<script src="js/jsh/main.js"></script>
 	<!-- toastr js 라이브러리 -->
 	<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
 	

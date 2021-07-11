@@ -29,7 +29,7 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" href="css/bootstrap-theme.css">
+<link rel="stylesheet" href="css/jsh/bootstrap-theme.css">
 
 </head>
 <body>

@@ -22,7 +22,7 @@ String cp = request.getContextPath();
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="<%=cp%>/css/styles.css">
+<link rel="stylesheet" type="text/css" href="<%=cp%>/css/jsh/styles.css">
 <script type="text/javascript">
 	$(document).ready(function()
 	{
