@@ -124,11 +124,14 @@ ul.tabs li.current{
 				{
 					$(this).html("사용자");
 					$(this).css("background-color", "#2E9AFE");
+					$("#rank").val("0");
+					
 				}
 				else
 				{
 					$(this).html("관리자");
 					$(this).css("background-color", "#dc3545");
+					$("#rank").val("1");
 				}
 				
 			});
@@ -140,11 +143,13 @@ ul.tabs li.current{
 				{
 					$(this).html("차단");
 					$(this).css("background-color", "#dc3545" );
+					$("#memState").val("0");
 				}
 				else if( $(this).html()=="차단" )
 				{
 					$(this).html("정상");
 					$(this).css("background-color", "#198754");
+					$("#memState").val("1");
 				}
 				
 			});
@@ -159,6 +164,12 @@ ul.tabs li.current{
 				$("#"+tab_id).addClass('current');
 			});
 			
+			$("#updateBtn").click(function()
+			{
+				$("#formId").attr("action", "memberprofileUpdate.action");
+				
+				$("#formId").submit();
+			});
 			
 			$("#closebtn").click(function()
 			{
@@ -172,7 +183,8 @@ ul.tabs li.current{
 </head>
 <body>
 
-
+<div>
+<form action="" method="post" id="formId">
 <br>
 <div>
 	<p style="text-align: center;"><img src="${memberProfile.mem_img==null ? 'https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg' : memberProfile.mem_img}" style="width: 170px; border-radius: 50%;"></p>
@@ -186,6 +198,9 @@ ul.tabs li.current{
 		<button type="button" id="state" ${memberProfile.acct_st== "정상" ? "style=\"background-color: #198754;\"" : memberProfile.acct_st== "탈퇴"? "style=\"background-color: #6c757d;\"" : "style=\"background-color: #dc3545;\"" } ${memberProfile.acct_st== "탈퇴" ? "disabled=\"disabled\"" : ""}>${memberProfile.acct_st }</button>
 	</p>
 	<hr>
+	<input type="hidden" id="rank" name="rank">
+	<input type="hidden" id="memState" name="memState">
+	<input type="hidden" id="mem_id" name="mem_cd" value="${memberProfile.mem_id }">
 </div>
 
 <div class="container">
@@ -302,11 +317,13 @@ ul.tabs li.current{
 			<button type="button"  class="btn" id="closebtn" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">닫기</button>
 		</c:if>
 		<c:if test="${memberProfile.acct_st ne '탈퇴' }">
-			<button type="button" class="btn" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" >수정</button>
+			<button type="button" class="btn" id="updateBtn" style="border: 1px; width: 70px; height: 25px; background-color: #dc3545; color: white;" >수정</button>
 			<button type="button"  class="btn" id="closebtn" style="border: 1px; width: 70px; height: 25px; background-color: #6c757d; color: white;">취소</button>
 		</c:if>
 		</p>
 	</div>
+</div>
+</form>
 </div>
 
 

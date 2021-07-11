@@ -28,4 +28,20 @@
 		FROM MEMBERVIEW
 	</select>
 	
+	<select id="adminCheck" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM ADMIN 
+		WHERE MEM_CD = #{mem_cd}
+	</select>
+	
+	<select id="memberUpdate" resultType="java.lang.Integer">
+		INSERT INTO ADMIN(ADMIN_CD, MEM_CD)
+		VALUES( 'ADMIN' || ADMINSEQ.NEXTVAL, #{mem_cd})
+	</select>
+	
+	<select id="memberDelete" resultType="java.lang.Integer">
+		DELETE FROM ADMIN
+		WHERE MEM_CD = #{mem_cd}
+	</select>
+	
 </mapper>

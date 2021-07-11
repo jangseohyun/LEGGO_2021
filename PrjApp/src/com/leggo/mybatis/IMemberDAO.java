@@ -15,4 +15,10 @@ public interface IMemberDAO
 	
 	// 총 회원 수
 	public int totCount();
+	
+	public int memberUpdate(MemberDTO m);
+	
+	public int memberDelete(MemberDTO m);
+	
+	public int adminCheck(MemberDTO m);
 }
