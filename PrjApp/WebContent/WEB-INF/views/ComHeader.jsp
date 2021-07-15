@@ -48,7 +48,7 @@
 						<ul
 							class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
 							<li><a href="mainhome.action" class="nav-link">홈</a></li>
-							<li><a href="#services-section" class="nav-link">일정짜기</a></li>
+							<li><a href="startplan.action" class="nav-link">일정짜기</a></li>
 
 
 							<li class="has-children"><a href="#about-section"
@@ -83,8 +83,8 @@
 									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
 									alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
 								<ul class="dropdown1">
-									<li><a href="/PrjApp/Profile.jsp">마이페이지</a></li>
-									<li><a href="#">로그아웃</a></li>
+									<li><a href="profilepageauto.action">마이페이지</a></li>
+									<li><a href="logout.action">로그아웃</a></li>
 								</ul>
 							</li>
 						</ul>

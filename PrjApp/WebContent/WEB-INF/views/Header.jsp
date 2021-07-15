@@ -41,7 +41,7 @@
 						<ul
 							class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
 							<li><a href="mainhome.action" class="nav-link">홈</a></li>
-							<li><a href="#services-section" class="nav-link">일정짜기</a></li>
+							<li><a href="startplan.action" class="nav-link">일정짜기</a></li>
 
 
 							<li class="has-children"><a href="#about-section"

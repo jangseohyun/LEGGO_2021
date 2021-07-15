@@ -18,7 +18,7 @@
 	{
 		$("#closebtn").click(function()
 		{
-
+			opener.parent.location.reload();
 			window.close();  	
 
 		});

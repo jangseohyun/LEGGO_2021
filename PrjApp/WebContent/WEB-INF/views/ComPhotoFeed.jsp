@@ -112,7 +112,7 @@
 					<!-- Box -->
 						<section class="box feature">
 							<p><img src="images\user.PNG">Romi</p>
-							<a href="#" class="image featured"><img src="images/photo1.jpg" onclick="location.href='/PrjApp/ComPhoto.jsp';"></a>
+							<a href="comphoto.action" class="image featured"><img src="images/photo1.jpg"></a>
 							<div class="inner">
 								<header>
 									<!-- <h2><br>맑은 바다 어딘지 궁금하면 클릭</h2> -->

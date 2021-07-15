@@ -88,13 +88,13 @@ a {
 								<button type="submit"
 									class="form-control btn2 btn2-primary submit px-3">회원가입</button>
 							</div>
-						</form>
+						</form><!-- 
 						<br><p class="w-100 text-center" style="font-size: 15px;">&mdash; SNS 계정으로 편하게 가입하기 &mdash;</p>
 						<div class="social d-flex" style="text-align: center;">
 							<a><img src="images/kakao_login.png" width="50px"></a>
 							<a><img src="images/naver_login.png" width="50px" style="border-radius: 5px;"></a>
 							<a><img src="images/google_login.jpg" width="50px" style="border-radius: 5px;"></a>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

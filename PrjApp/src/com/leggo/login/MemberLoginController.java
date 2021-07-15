@@ -142,7 +142,7 @@ public class MemberLoginController
 							cg.setCookieName("loginCookie");
 							cg.addCookie(response, loginCookie.getValue());
 							
-							result = "redirect:profilepage.action";
+							result = "redirect:profilepageauto.action";
 						}
 					}
 				}

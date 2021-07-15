@@ -52,7 +52,7 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                        	<a class="nav-link" href="" style="font-size: 8pt;">
+                        	<a class="nav-link" href="mainhome.action" target="_blank" style="font-size: 8pt;">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 사용자 페이지 열기 >>

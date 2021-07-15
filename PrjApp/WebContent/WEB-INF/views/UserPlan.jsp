@@ -60,140 +60,150 @@
 
 	<!-- 페이지를 좌우 분할할 section -->
 	<section class="banner style1">
-		<!-- 좌측 페이지 div -->
-		<div class="content" style="overflow: scroll;">
-
-			<!-- 일정설명이 이뤄질 div 시작 -->
-			<div class="panel">
-			
-				<div class="panelTop">
-
-				<!-- 일정설명에서 날짜 시작-->
-					<div id="top">
-						<input type="text" class="planTop_left" name="PL_STRT_DT" id="sDate" style="width: 10vw" value="시작일 입력"> 
-						<input type="text" class="planTop_right" name="PL_END_DT" id="eDate" style="width: 10vw" value="종료일 입력">
-					</div>
-					
-				</div>
-				<!-- 일정설명에서 날짜 종료-->
-				
-				<!-- 일정설명에서 제목 시작 -->
-				<div class="panelBtm">
-				
-					<div id="planTitle">
-						<input type="text" name="PL_TT"  id="planTitleB" 
-							value="떠나요 넷이서 모든걸 훌훌 버리고">
-						<input type="text" name="PL_STT" id="planTitleS"
-							value="제주도 푸른 밤 두 별 아래~ 이제는 더 이상 얽매이지 않을 거에요~">
-					</div>
-				<!-- 일정설명에서 제목 종료 -->
-				
-				<!-- 일정설명에서 프로필 시작 -->
-					<div id="planImg">
-						<img></img>
-					</div> 
-				<!-- 일정설명에서 프로필 종료 -->
-				
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					<br>
-					
-			<!-- 일정 예산 인원 시작 -->					
-					<div class="quantity planBtm_right btm">
- 						<input type="number" name="PL_PPL" min="1" max="20" step="1" value="1">
-					</div>
-			<!-- 일정 예산 인원 종료 -->
-					
-				</div>
-
-			</div>
-			<!-- 일정설명이 이뤄질 div 종료 -->
-
-			<div class="slide">
-			
-				<div class="pull-me"></div>
-				<div id="btnPlusD" ><button onclick="add()" id="btn-cancel" class="btn btns" style="float:right !important;">add date</button></div>
-
-			</div>
-
-			<!-- 날짜 추가 되는 영역 시작 -->
-			
-			<div id="sortable" class="sortable">
-			
-			
-			</div>
-			<!--  날짜 추가 되는 영역 종료 -->
-
-			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">추가할 날짜 선택</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
+	
+		<!-- start left -->
+		<form action="mainhome.action" >
+			<div class="content" style="overflow: scroll;">
+	
+				<!-- 일정설명이 이뤄질 div 시작 -->
+				<div class="panel">
+	
+					<div class="panelTop">
+	
+						<!-- 일정설명에서 날짜 시작-->
+						<div id="top">
+							<input type="text" class="planTop_left" name="PL_STRT_DT"
+								id="sDate" style="width: 10vw" value="시작일 입력"> <input
+								type="text" class="planTop_right" name="PL_END_DT" id="eDate"
+								style="width: 10vw" value="종료일 입력">
 						</div>
-						<div class="modal-body">
-							<div id="modal_date">
-								<!-- 현재 일정에 추가되어있는 날짜 루프문 -->
+	
+					</div>
+					<!-- 일정설명에서 날짜 종료-->
+	
+					<!-- 일정설명에서 제목 시작 -->
+					<div class="panelBtm">
+	
+						<div id="planTitle">
+							<input type="text" name="PL_TT" id="planTitleB"
+								value="떠나요 넷이서 모든걸 훌훌 버리고"> <input type="text"
+								name="PL_STT" id="planTitleS"
+								value="제주도 푸른 밤 두 별 아래~ 이제는 더 이상 얽매이지 않을 거에요~">
+						</div>
+						<!-- 일정설명에서 제목 종료 -->
+	
+						<!-- 일정설명에서 프로필 시작 -->
+<!-- 						<div id="planImg">
+							<img></img>
+						</div> -->
+						<!-- 일정설명에서 프로필 종료 -->
+	
+						<br> <br> <br> <br> <br> <br>
+	
+						<!-- 일정 예산 인원 시작 -->
+						<div class="quantity planBtm_right btm">
+							<input type="number" name="PL_PPL" min="1" max="20" step="1"
+								value="1">
+						</div>
+						<!-- 일정 예산 인원 종료 -->
+	
+					</div>
+	
+				</div>
+				<!-- 일정설명이 이뤄질 div 종료 -->
+	
+				<div class="slide">
+	
+					<div class="pull-me"></div>
+					<div id="btnPlusD">
+						<button type="button" onclick="add()" id="btn-cancel" class="btn btns"
+							style="float: right !important;">add date</button>
+					</div>
+	
+				</div>
+	
+				<!-- 날짜 추가 되는 영역 시작 -->
+	
+				<div id="sortable" class="sortable"></div>
+				<!--  날짜 추가 되는 영역 종료 -->
+	
+				<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+					aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">추가할 날짜 선택</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div id="modal_date">
+									<!-- 현재 일정에 추가되어있는 날짜 루프문 -->
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">닫기</button>
+								<button type="button" class="btn btn-primary" onclick="selDate()">장소
+									저장</button>
+								<!-- 장소명이 들어갈 히든 태그 -->
+								<input type="hidden" id="hdnName" value="">
+								<!-- 							<input type="hidden" id="hdnLOC_NM" value="">
+									<input type="hidden" id="hdnCITY_CD" value=""> -->
+								<input type="hidden" id="hdnLatLng" value="">
 							</div>
 						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-							<button type="button" class="btn btn-primary" onclick="selDate()" >장소 저장</button>
-							<!-- 장소명이 들어갈 히든 태그 -->
-							<input type="hidden" id="hdnName" value="">
-<!-- 							<input type="hidden" id="hdnLOC_NM" value="">
-							<input type="hidden" id="hdnCITY_CD" value=""> -->
-							<input type="hidden" id="hdnLatLng" value="">
-						</div>
 					</div>
 				</div>
-			</div>
-			
-			<div id="save" >
-				<button type="button" class="btn btns" data-toggle="modal" data-target="#example2Modal" style="outline:none !important;">Save</button>
-			</div>
-			<!-- save 버튼 클릭시 활성화될 모달창 --> 
-			<div class="modal fade" id="example2Modal" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">공개 여부 선택</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<!-- 일정 공개여부 시작 -->
-							<div id="modal_bOpen">
-								공개 <input type="radio" name="OPEN_CD" value="1" style="width:20px;height:20px;border:1px;"> &nbsp;
-								비공개<input type="radio" name="OPEN_CD" value="0" style="width:20px;height:20px;border:1px;">
+	
+
+				<!-- save 버튼 클릭시 활성화될 모달창 -->
+				<div class="modal fade" id="example2Modal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title" id="exampleModalLabel">공개 여부 선택</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
 							</div>
-							<!-- 일정 공개여부 시작 -->
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal" style="outline:none !important;">취소</button>
-							<button type="button" class="btn btn-primary" onclick="savePlan()" style="outline:none !important;">저장</button>
+							<div class="modal-body">
+								<!-- 일정 공개여부 시작 -->
+								<div id="modal_bOpen">
+									공개 <input type="radio" name="OPEN_CD" value="1"
+										style="width: 20px; height: 20px; border: 1px;"> &nbsp;
+									비공개<input type="radio" name="OPEN_CD" value="0"
+										style="width: 20px; height: 20px; border: 1px;">
+								</div>
+								<!-- 일정 공개여부 시작 -->
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal" style="outline: none !important;">취소</button>
+								<button type="submit" class="btn btn-primary"
+									onclick="savePlan()" style="outline: none !important;">저장</button>
+							</div>
 						</div>
 					</div>
 				</div>
+	
+	
 			</div>
+							<div id="save">
+					<button type="button" class="btn btns" data-toggle="modal"
+						data-target="#example2Modal" style="outline: none !important;">Save</button>
+				</div>
+		</form>
+		<!-- end left -->
 
-
-		</div>
-
-		<!-- 우측 페이지 div -->
+		<!-- start right -->
 		<div class="image">
 			<div class="map_wrap">
-			
+
 				<div id="map"
 					style="width: 100%; height: 100%; position: relative; overflow: hidden;">
 				</div>
@@ -202,7 +212,8 @@
 					<div class="option">
 						<div>
 							<form onsubmit="searchPlaces(); return false;">
-								키워드 : <input type="text" value="<%=keyword %>" id="keyword" size="15">
+								키워드 : <input type="text" value="<%=keyword%>" id="keyword"
+									size="15">
 								<button type="submit">검색하기</button>
 							</form>
 						</div>
@@ -215,6 +226,7 @@
 				</div>
 			</div>
 		</div>
+		<!-- end right -->
 
 	</section>
 
@@ -247,8 +259,25 @@
 
 <script>
 
+	//-----------------------------------마커간 선그리기
+	var distanceOverlay; // 선의 거리정보를 표시할 커스텀오버레이 입니다 
+	var dots = {}; // 선이 그려지고 있을때 클릭할 때마다 클릭 지점과 거리를 표시하는 커스텀 오버레이 배열입니다.
+	var positions = [];
+    var linePath;
+    var lineLine = new daum.maps.Polyline();
+    var distance;
+	//-----------------------------------ajax 데이터 넘기기 배열
+
+	var LocNmArr = [];
+	var cCityArr = [];
+	var LatArr = [];
+	var LngArr = [];
+	var LocDesArr = [];
+	var tLocEndArr = [];
+
+	
+	//-----------------------------------일정, 지도 자바스크립트 시작
 	var locLng; 
-	//---------------
 	var overlay;
 	
 	var markers = [];
@@ -410,41 +439,6 @@
 							}
 						});
 	});
-
-	// 날짜 데이터 비교 메소드
-	// 제이쿼리 오름차순 메소드 sort(function(a,b)(.....return  a-b));
-/* 	function listSort()
-	{
-		//
-		$('.sortable div').sort(function(a, b)
-		{
-			console.log(a)
-			console.log(b)
-			var a = new Date(a.dataset.date)
-			var b = new Date(b.dataset.date)
-
-			return a - b
-
-		}).appendTo('.sortable')
-
-	} */
-
-	// 일정 추가 ------- 수정 필요
-	//<!-- 고장없이 잘 돌아가고 있는 천방지축 얼렁뚱땅 일정 추가 시작 -->
-
-/* 	function addPlace()
-	{
-
-		$('#dialog').dialog()
-		//$("div[data-date='" + date.getFullYear()+"-"+leadZero((date.getMonth() + 1), 2)+"-"+date.getDate() + "']")
-
-		//.append(html); 선택된 요소의 마지막에 새로운 요소나 콘텐츠에 추가한다. appendTo()와 동작이 같다.
-		//즉 아래는 아이디가 sortable인 요소의 마지막에 html요소나 콘텐츠를 추가하는 것! 
-
-	} */
-
-	//<!-- 고장없이 잘 돌아가고 있는 천방지축 얼렁뚱땅 일정 추가 종료 -->
-	//혜진 일정 추가 시작
 
 	//날짜 Div추가
 	function addDiv(dateMax)
@@ -888,24 +882,53 @@
 		var hdnName = $("#hdnName").attr('value');
 		//장소의 도시명과 장소 이름
 		var arrCN = hdnName.split("<br>");
-		alert("도시명: "+arrCN[0]);
-		alert("장소이름: "+arrCN[1]);
+		//alert("도시명: "+arrCN[0]);
+		//alert("장소이름: "+arrCN[1]);
 		
 		//해당 장소의 경도 위도 받아오기 
 		var hdnLatLng = $("#hdnLatLng").attr('value');
 		
 		var arrLL = hdnLatLng.split("/");
-		alert("경도명: "+arrLL[0]);
-		alert("위도명: "+arrLL[1]);
+		//alert("경도명: "+arrLL[0]);
+		//alert("위도명: "+arrLL[1]);
+		
+		
 
 		$('#sortable div[data-date="'+selDate+'"]').append('<div data-index-number="'+markIdx+'" class="container-fluid" ><div class="row"'+' value="'+hdnName+'"'+'><div class="addPlace col-xs-4 col-sm-4 col-md-4" style="letter-spacing: 1px;">'+hdnName+"<br><input name = 'LOC_END_TIME' type='time' min='' max='' class='"+ymd+"'>"+'</div><div class="col-xs-7 col-sm-7 col-md-7"><textarea id="LOC_DESC" name="LOC_DESC" rows="4" cols="90" value=""></textarea></div ><div class="fa fa-window-close col-xs-1 col-sm-1 col-md-1" aria-hidden="true" style="display:inline-block; border:none;" onclick="removePlace('+markIdx+')"></div></div></div>');
 		$('#sortable div[data-date="'+selDate+'"]').append('<div name="LOC_LAT" value="'+arrLL[0]+'"><div name="LOC_LONG" value="'+arrLL[1]+'"></div></div>');
 		$('#sortable div[data-date="'+selDate+'"]').append('<div name="CITY_CD" value="'+arrCN[0]+'"><div name="LOC_NM" value="'+arrCN[1]+'"></div></div>');
 
 		locLng = $('div[class=row]').length;
+		
+		//
+		positions[markIdx-1] = {
+				title : arrCN[1],
+				latlng :  new daum.maps.LatLng(arrLL[0],arrLL[1])
+		};
+		
+		for (var i = 0; i < positions.length; i++) {
+	        if (i != 0) {
+	            linePath = [ positions[i - 1].latlng, positions[i].latlng ] //라인을 그리려면 두 점이 있어야하니깐 두 점을 지정했습니다
+	        }
+	        ;
+	        lineLine.setPath(linePath); // 선을 그릴 라인을 세팅합니다
+	 
+	        var drawLine = new daum.maps.Polyline({
+	            map : map, // 선을 표시할 지도입니다 
+	            path : linePath,
+	            strokeWeight : 3, // 선의 두께입니다 
+	            strokeColor : '#db4040', // 선의 색깔입니다
+	            strokeOpacity : 1, // 선의 불투명도입니다 0에서 1 사이값이며 0에 가까울수록 투명합니다
+	            strokeStyle : 'solid' // 선의 스타일입니다
+	        });
+	 
+	        distance = Math.round(lineLine.getLength());
+	        displayCircleDot(positions[i].latlng, distance);
+	         
+	    }
 			
 		//DB 작업용 추가된 장소 name화 시작------------------------------------------------------------------------------
-		/*
+		
 		if( locLng > 0 )
 		{
 			
@@ -1010,13 +1033,27 @@
 		    }
 		    
 			
-		}*/
+		}
 		
 		//DB 작업용 추가된 장소 name화 종료------------------------------------------------------------------------------
 			
-			
-			
-			
+	    function displayCircleDot(position, distance) {
+	        if (distance > 0) {
+	            // 클릭한 지점까지의 그려진 선의 총 거리를 표시할 커스텀 오버레이를 생성합니다
+	            var distanceOverlay = new daum.maps.CustomOverlay(
+	                    {
+	                        content : '<div class="dotOverlay">거리 <span class="number">'
+	                                + distance + '</span>m</div>',
+	                        position : position,
+	                        yAnchor : 1,
+	                        zIndex : 2
+	                    });
+	 
+	            // 지도에 표시합니다
+	            distanceOverlay.setMap(map);
+	        }
+	    }			
+
 		
 		var imageSrc = 'images/marker.png', // 마커이미지의 주소입니다    
 		    imageSize = new kakao.maps.Size(44, 49), // 마커이미지의 크기입니다
@@ -1053,11 +1090,9 @@
 		markerSel[markIdx].setMap(map); 
 		
 		//지도에 선을 표시합니다
-		//polyline.setMap(map); 
-		
-	
-	
+		position.setMap(map); 
 	}
+	
 	
 	function savePlan(){
 		
@@ -1067,7 +1102,7 @@
 			//명예 변수 시퀀스 추가된 장소코드 총 8개
 		
 			//전역으로 설정하면 중복값이 계속해서 들어가므로 지역설정해서 계속 리프레쉬되도록 해야함
-			var LocNmArr = [];
+			//var LocNmArr = [];
 		    $("div[name='LOC_NM']").each(function(i) {
 		    	//LocNmArr.push($(this).val());
 		    	LocNmArr.push($(this).attr('value'));
@@ -1083,7 +1118,7 @@
 		    //console.log(LocNmArr);
 					
 		    //마이바티스 측에서 도시명으로 INSERT되고 SQL쪽에서는 도시명을 도시코드로 바꿔야함
-			var cCityArr = [];
+			//var cCityArr = [];
 		    $("div[name='CITY_CD']").each(function(i, item) {
 		    	//cCityArr.push($(this).val());
 		    	cCityArr.push($(this).attr('value'));
@@ -1099,7 +1134,7 @@
 		    
 		    //console.log(cCityArr);
 		    
-			var LatArr = [];
+			//var LatArr = [];
 			
 		    $("div[name='LOC_LAT']").each(function(i) {
 		    	//LatArr.push($(this).val());
@@ -1114,7 +1149,7 @@
 		    }		    
 		    
 		    
-			var LngArr = [];
+			//var LngArr = [];
 			
 		    $("div[name='LOC_LONG']").each(function(i) {
 		    	//LngArr.push($(this).val());
@@ -1128,7 +1163,7 @@
 		      console.log("위도끝");
 		    }
 		    
-			var LocDesArr = [];
+			//var LocDesArr = [];
 			
 		    $("textarea[name='LOC_DESC']").each(function(i, item) {
 		    	//LocDes.push($(this).val());
@@ -1165,7 +1200,7 @@
 		      console.log("도착시간끝");
 		    }
 		    
-			var bOpenArr = [];
+/* 			var bOpenArr = [];
 		    $("input[name='OPEN_CD']:checked").each(function(i, item) {
 
 		    	bOpenArr.push($(item).val());
@@ -1176,14 +1211,15 @@
 		    {
 		      console.log(i+" 번째 공개여부: "+bOpenArr[i]);
 		      console.log("공개여부 확인 종료");
-		    }
+		    } */
+		    console.log("공개여부 확인 시작");
+		    var bOpenArr = $("input[name='OPEN_CD']:checked").val();
+		    console.log("공개여부 확인 종료"+bOpenArr);
 		    
-			var nHumArr = [];
-		    $("input[name='PL_PPL']").each(function(i, item) {
+		    console.log("인원 확인 시작");
+			var nHumArr = $("input[name='PL_PPL']").val();
+			console.log("인원 확인 종료"+nHumArr);
 
-		    	nHumArr.push($(item).val());
-		    	
-		    });	
 		    
 		    console.log("여행인원 확인 시작");
 		    for (var i in nHumArr)
@@ -1202,7 +1238,34 @@
 		    console.log("여행대제목: "+pTT);
 		    
 		    var pSTT = $("input[name='PL_STT']").val();
-		    console.log("여행소제목: "+pSTT);		    
+		    console.log("여행소제목: "+pSTT);	
+		    
+			//-----------------------------------컨트롤러로 배열 값 넘기기 시작
+			/*
+			$.ajax({
+				method			: 'POST',
+				url				: 'insertplan.action',
+				tranditional	: true,
+				data			: {
+					'LOC_NM' : LocNmArr,
+					'CITY_CD' : cCityArr,
+					'LOC_LAT' : LatArr,
+					'LOC_LONG' : LngArr,
+					'LOC_DESC' : LocDesArr,
+					'LOC_END_TIME' : tLocEndArr
+
+				},
+				success			: function(data){
+					alert("성공");
+				},
+				error			: function(request, status, error){
+					alert("실패");
+				}
+				
+			});
+			*/
+			
+			//-----------------------------------컨트롤러로 배열 값 넘기기 종료
 			
 		}
 		
@@ -1235,8 +1298,10 @@
 		
 		numOvelay[idx].setMap(null);
 		
-		
 		$('div[data-index-number="'+idx+'" ]').remove();
+		
+		//positions.slice(idx-1, 1);
+		//polyline.setMap(null);
 		
  	}
 	
