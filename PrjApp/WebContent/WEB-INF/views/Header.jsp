@@ -1,8 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<% 
+	session = request.getSession();
+	String mem_img = (String)session.getAttribute("mem_img");
+%>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<!-- Required meta tags -->
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -41,7 +45,7 @@
 						<ul
 							class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
 							<li><a href="mainhome.action" class="nav-link">홈</a></li>
-							<li><a href="startplan.action" class="nav-link">일정짜기</a></li>
+							<li><a href="#services-section" class="nav-link">일정짜기</a></li>
 
 
 							<li class="has-children"><a href="#about-section"
@@ -58,12 +62,12 @@
 									<input type="text" class="form-control" placeholder="통합검색"
 										aria-label="searchTotal" aria-describedby="button-addon2"
 										style="width: 150px; margin-top: 5px;">
-									<button class="btn btn-secondary glyphicon glyphicon-search"
+									<button class="btn btn-secondary"
 										type="button" id="button-addon2"
-										style="margin-top: 4px; float: right;"></button>
+										style="margin-top: 4px; float: right;">검색</button>
 								</div></li>
 							<li class="has-children"><a href="#"> <img
-									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
+									src="<%=mem_img %>"
 									alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
 								<ul class="dropdown">
 									<li><a href="profilepageauto.action">마이페이지</a></li>

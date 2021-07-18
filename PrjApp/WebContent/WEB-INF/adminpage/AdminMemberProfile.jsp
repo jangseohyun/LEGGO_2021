@@ -173,6 +173,7 @@ ul.tabs li.current{
 			
 			$("#closebtn").click(function()
 			{
+
 				window.close();  	
 
 			});

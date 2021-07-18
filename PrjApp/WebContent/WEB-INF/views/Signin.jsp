@@ -24,7 +24,9 @@
 <link rel="stylesheet" href="css/jsh/style.css">
 
 <!-- toastr css 라이브러리 -->
-<!-- <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" /> -->
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <style type="text/css">
 
@@ -42,8 +44,96 @@ a {
 
 </style>
 
+<script type="text/javascript">
+
+   function Login()
+   {
+             //아이디 입력 문자수를 4~12자로 제한하는 조건문
+             if (document.getElementById("mem_id").value.length < 4 || document.getElementById("mem_id").value.length > 12)
+             {
+             	  	$("#message").attr("value","아이디는 4~12자 이내로 입력해야 합니다.");
+
+             	  	document.getElementById("mem_id").select();
+              		return;
+             }
+
+            //입력된 문자의 길이만큼 루프를 돌면서 검사 
+
+            for (i=0; i<document.getElementById("mem_id").length; i++)
+            {
+                   var ch = document.getElementById("mem_id").charAt(i);//문자를 반환(정수형), 범위 검사 가능
+
+                   //입력된 문자를 검사
+
+                   if ( ( ch < "a" || ch > "z") && (ch < "A" || ch > "Z") && (ch < "0" || ch > "9" ) )
+                   {
+                	   	$("#message").attr("value","아이디는 영문 소문자로만 입력 가능 합니다!");
+                	   	document.getElementById("mem_id").select();
+                    	return;
+                   }
+            }
+
+            //입력된 첫번째 문자가 숫자인지 검사하는 조건문
+
+            if (!isNaN(document.getElementById("mem_id").value.substr(0,1)))
+
+            {
+            	 $("#message").attr("value","아이디는 숫자로 시작할 수 없습니다.");
+            	 document.getElementById("mem_id").select();
+                 return;
+            }
+
+            if (document.getElementById("mem_pw").length < 4 || document.getElementById("mem_pw").length > 12)
+            {
+            	$("#message").attr("value","비밀번호는 4~12자 이내로 입력해야 합니다.");
+            	document.getElementById("mem_pw").select();
+                return;
+            }
+
+//   $("#signin-form").submit();
+   }
+   
+	function check()
+	{
+		var mem_id = document.getElementById("mem_id").value;
+		var mem_nnm = document.getElementById("mem_nnm").value;
+		var mem_pw = document.getElementById("mem_pw").value;
+		var mem_pw_ck = document.getElementById("mem_pw_ck").value;
+		var agreecheck = document.getElementById("agreecheck").value;
+		
+		
+		$.ajax({
+			url : 'Login.jsp',
+			type : 'get',
+			success : function(data) {
+				if (data == 1) {
+						// 1 : 아이디가 중복되는 문구
+						$("#id_check").text("사용중인 아이디입니다 :p");
+						$("#id_check").css("color", "red");
+						$("#reg_submit").attr("disabled", true);
+					}
+				}, error : function() {
+						console.log("실패");
+				}
+			});
+		
+		ajax.send("");
+	}
+	
+	function toast(message)
+	{
+		toastr.options.closeButton = true;
+		toastr.options.progressBar = true;
+		toastr.alert(message,
+		{
+			timeOut : 3000
+		});
+	}
+
+</script>
+
 </head>
-<%-- <input type="hidden" value="${param.message }" id="message"> --%>
+<input type="hidden" value="" id="message">
 <body class="img js-fullheight" style="background-image: url(images/gyeongju.jpg);">
 <p class="userimg">eun j 님의 사진입니다.&nbsp;&nbsp;&nbsp;</p>
 <section class="ftco2-section">
@@ -56,14 +146,16 @@ a {
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0" id="signinDiv">
-						<form action="signin.action" role="form" class="signin-form">
+						<form action="signin.action" role="form" class="signin-form" id="signin-form">
 							<div class="form-group">
 								<input id="mem_id" name="mem_id" type="text" class="form-control" placeholder="이메일"
 									required>
+								<span id="result"></span>
 							</div>
 							<div class="form-group">
 								<input id="mem_nnm" name="mem_nnm" type="text" class="form-control" placeholder="별명"
 									required>
+								<
 							</div>
 							<div class="form-group">
 								<input id="mem_pw" name="mem_pw" type="password" class="form-control"
@@ -72,7 +164,7 @@ a {
 									class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control"
+								<input id="mem_pw_ck" name="mem_pw_ck" type="password" class="form-control"
 									placeholder="비밀번호 확인" required> <span
 									toggle="#password-field"
 									class="fa fa-fw fa-eye field-icon toggle-password"></span>
@@ -85,16 +177,10 @@ a {
 							</div>
 							<div class="form-group">
 								<br>
-								<button type="submit"
-									class="form-control btn2 btn2-primary submit px-3">회원가입</button>
+								<button type="button" onclick="check()"
+									class="form-control btn2 btn2-primary px-3">회원가입</button>
 							</div>
-						</form><!-- 
-						<br><p class="w-100 text-center" style="font-size: 15px;">&mdash; SNS 계정으로 편하게 가입하기 &mdash;</p>
-						<div class="social d-flex" style="text-align: center;">
-							<a><img src="images/kakao_login.png" width="50px"></a>
-							<a><img src="images/naver_login.png" width="50px" style="border-radius: 5px;"></a>
-							<a><img src="images/google_login.jpg" width="50px" style="border-radius: 5px;"></a>
-						</div> -->
+						</form>
 					</div>
 				</div>
 			</div>
@@ -105,10 +191,10 @@ a {
 	<script src="js/jsh/popper.js"></script>
 	<script src="js/jsh/bootstrap.min.js"></script>
 	<script src="js/jsh/main.js"></script>
+	<script type="text/javascript" src="js/jsh/ajax.js"></script>
 	<!-- toastr js 라이브러리 -->
-	<!-- <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script> -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 	
-	<!-- 
 	<script>
 		$(document).ready(function()
 		{
@@ -116,14 +202,13 @@ a {
 			{
 				toastr.options.closeButton = true;
 				toastr.options.progressBar = true;
-				toastr.success($("#message").val(),
+				toastr.alert($("#message").val(),
 				{
 					timeOut : 3000
 				});
 			}
 		});
 	</script>
-	 -->
 	 
 	<script type="text/javascript">
 

@@ -35,10 +35,11 @@ public class MemberLoginController
 		String AutologinMemberId = (String)session.getAttribute("AutologinMemberId");
 		
 		// 이메일 인증 체크
-		String SigninAuth = request.getParameter("success_message");
+		//String SigninAuth = request.getParameter("success_message");
 		String mem_id = request.getParameter("mem_id");
 		
 		// 이메일 인증 완료
+		/*
 		if (SigninAuth != null && mem_id != null)
 		{
 			IMemberLoginDAO dao = sqlSession.getMapper(IMemberLoginDAO.class);
@@ -46,6 +47,7 @@ public class MemberLoginController
 			// DB에서 회원가입 인증여부 '완료'로 업데이트
 			dao.SigninAuthUpdate(mem_id);
 		}
+		*/
 		
 		if (AutologinMemberId != null)
 		{
@@ -70,7 +72,7 @@ public class MemberLoginController
 		String MemAcctCck = dao.MemAcctCck(Logindto.getMem_id());
 		
 		// DB에서 회원가입 이메일 인증여부를 받아옴
-		String SigninAuthCck = dao.SigninAuthCck(Logindto.getMem_id());
+		//String SigninAuthCck = dao.SigninAuthCck(Logindto.getMem_id());
 		
 		try
 		{
@@ -82,7 +84,7 @@ public class MemberLoginController
 				if (login != null)
 				{
 					// 이메일 인증이 완료되지 않았을 경우
-					if (SigninAuthCck.equals("미완료"))
+					if (MemAcctCck.equals("미완료"))	//--SigninAuthCck.equals("미완료")
 					{
 						String alert_message = "이메일 인증이 완료되지 않았습니다.";
 						
@@ -92,9 +94,13 @@ public class MemberLoginController
 					}
 					else
 					{
+						// 프로필 사진 받아오기
+						String mem_img = dao.getMemImg(login.getMem_id());
+						
 						// 세션에 저장
 						session.setAttribute("mem_id", login.getMem_id());
-
+						session.setAttribute("mem_img", mem_img);
+						
 						// 자동 로그인 체크 안 했을 경우
 						if (Logindto.getLogin_cck() == null)
 						{
@@ -142,7 +148,7 @@ public class MemberLoginController
 							cg.setCookieName("loginCookie");
 							cg.addCookie(response, loginCookie.getValue());
 							
-							result = "redirect:profilepageauto.action";
+							result = "redirect:profilepage.action";
 						}
 					}
 				}

@@ -57,7 +57,7 @@
 						<ul
 							class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
 							<li><a href="mainhome.action" class="nav-link">홈</a></li>
-							<li><a href="startplan.action" class="nav-link">일정짜기</a></li>
+							<li><a href="#services-section" class="nav-link">일정짜기</a></li>
 
 
 							<li class="has-children"><a href="#about-section"
@@ -93,9 +93,9 @@
 							</li> 
 							-->
 							<li class="has-children">
-							<button style="color: white; width: 90px; height: 40px; font-size: 15px; border-radius: 5px; background-color: #65CBFF; padding: 0.1em 1.5em;" onclick="location.href='loginpage.action'">로그인</button>
+							<button style="color: white; width: 90px; height: 40px; font-size: 15px; border-radius: 5px; background-color: #65CBFF; padding: 0.1em 1.5em;">로그인</button>
 							<li class="has-children">
-							<button style="color: white; width: 100px; height: 40px; font-size: 14px; border-radius: 5px; background-color: #33BAFF; padding: 0.1em 1.5em;" onclick="location.href='signinpage.action'">회원가입</button>
+							<button style="color: white; width: 100px; height: 40px; font-size: 14px; border-radius: 5px; background-color: #33BAFF; padding: 0.1em 1.5em;">회원가입</button>
 							</li>
 						</ul>
 					</nav>
