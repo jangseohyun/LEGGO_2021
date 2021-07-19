@@ -9,11 +9,14 @@ public interface IProfileDAO
 	public ProfileDTO ProfileSetting(String mem_id);
 	
 	// 프로필 수정(프로필 이미지)
-	public void ProfileSettingImg(String mem_id, String mem_img);
+	public void ProfileSettingImg(ProfileDTO dto);
 
 	// 프로필 수정(별명)
-	public void ProfileSettingNnm(String mem_id, String mem_nnm);
+	public void ProfileSettingNnm(ProfileDTO dto);
+	
+	// 존재하는 별명인지 확인
+	public int MemNnmCck(ProfileDTO dto);
 
 	// 프로필 수정(자기소개)
-	public void ProfileSettingIntro(String mem_id, String mem_intro);
+	public void ProfileSettingIntro(ProfileDTO dto);
 }

@@ -74,7 +74,7 @@
 								<c:when test="${mem_img != null }">
 									<li class="has-children">
 										<a href="profilepageauto.action"> <img
-											src="<%=mem_img %>"
+											src="<%=mem_img %>" style="object-fit: cover;"
 											alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
 										<ul class="dropdown">
 											<li><a href="profilepageauto.action">마이페이지</a></li>

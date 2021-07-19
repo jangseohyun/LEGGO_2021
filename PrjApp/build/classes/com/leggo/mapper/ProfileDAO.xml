@@ -27,19 +27,25 @@
 	<update id="ProfileSettingImg">
 		UPDATE MEMBER_DATA
 		SET MEM_IMG = #{mem_img}
-		WHERE MEM_ID = #{mem_id};
+		WHERE MEM_ID = #{mem_id}
 	</update>
 	
 	<update id="ProfileSettingNnm">
 		UPDATE MEMBER_DATA
 		SET MEM_NNM = #{mem_nnm}
-		WHERE MEM_ID = #{mem_id};
+		WHERE MEM_ID = #{mem_id}
 	</update>
+	
+	<select id="MemNnmCck" resultType="java.lang.Integer">
+		SELECT COUNT(*) AS COUNT
+		FROM MEMBER_DATA
+		WHERE MEM_NNM = #{mem_nnm} AND MEM_ID != #{mem_id}
+	</select>
 	
 	<update id="ProfileSettingIntro">
 		UPDATE MEMBER_DATA
 		SET MEM_INTRO = #{mem_intro}
-		WHERE MEM_ID = #{mem_id};
+		WHERE MEM_ID = #{mem_id}
 	</update>
 	
 </mapper>

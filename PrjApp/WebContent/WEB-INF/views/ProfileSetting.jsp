@@ -1,14 +1,18 @@
+<%@page import="com.leggo.profile.ProfileDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
+	
+	ProfileDTO profile = (ProfileDTO)request.getAttribute("profile");
+	String mem_img = profile.getMem_img();
+	String mem_nnm = profile.getMem_nnm();
+	String mem_intro = profile.getMem_intro();
 %>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
-<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-<!--  All snippets are MIT license http://bootdey.com/license -->
 <title>ProfileSetting.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -22,6 +26,10 @@ String cp = request.getContextPath();
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
+	
+<!-- toastr css 라이브러리 -->
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+	
 </head>
 <script type="text/javascript">
 
@@ -44,7 +52,8 @@ String cp = request.getContextPath();
 		{
 			if (escape(str.charAt(i)).length == 6)
 			{
-				len++;
+				// 오라클 DB에서 한글 한 글자를 3byte로 인식하기 때문에 +=2로 설정
+				len+=2;
 			}
 			len++;
 		}
@@ -67,6 +76,7 @@ String cp = request.getContextPath();
 </script>
 
 <body>
+<input type="hidden" value="${param.alert_message }" id="alert_message">
 
 	<!-- 헤더 -->
 	<header>
@@ -107,16 +117,16 @@ String cp = request.getContextPath();
 						href="quitpage.action">탈퇴하기</a>
 					<div class="album py-5 bg-light">
 						<div class="container">
-						<form action="profilesettingsubmit.action" method="POST">
+						<form action="profilesetting.action" method="POST">
 								<table>
 									<tr>
 										<th>프로필 사진</th>
-										<td><img id="img__wrap" class="rounded-circle"
-											width="170" onerror=""
-											src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg" />
+										<td class="mem_thumb_img"><img id="img__wrap" class="rounded-circle"
+											width="170" height="170" style="object-fit: cover;"
+											src="<%=mem_img %>" />
 											<br>
-										<br> <input type="file" name="userProfile" id="mem_img"
-											name="mem_img" /></td>
+										<br> <input type="file" id="mem_img"
+											name="mem_img" value="<%=mem_img %>"/></td>
 									</tr>
 									<tr>
 										<td>&nbsp;</td>
@@ -124,37 +134,78 @@ String cp = request.getContextPath();
 									<tr>
 										<th>별명</th>
 										<td><input type="text" class="form-control" id="mem_nnm"
-											name="mem_nnm"></td>
+											name="mem_nnm" value="<%=mem_nnm %>"></td>
 									</tr>
 									<tr style="text-align: right;">
 										<td></td>
-										<td class="textlimit" style="display: inline-block"><p class="nnmbytes" style="display: inline-block">0</p>/20</td>
+										<td class="textlimit" style="display: inline-block"><p class="nnmbytes" style="display: inline-block">
+										<%=mem_nnm.getBytes().length %></p>/20</td>
 									</tr>
 									<tr>
 										<th>자기소개</th>
 										<td><textarea class="form-control content"
 												style="width: 300px; height: 100px;" id="mem_intro"
-												name="mem_intro"></textarea></td>
+												name="mem_intro"><%=mem_intro %></textarea></td>
 									</tr>
 									<tr style="text-align: right;">
 										<td></td>
-										<td class="textlimit" style="display: inline-block"><p class="introbytes" style="display: inline-block">0</p>/500</td>
+										<td class="textlimit" style="display: inline-block"><p class="introbytes" style="display: inline-block">
+										<%= mem_intro.getBytes().length %></p>/100</td>
 									</tr>
 								</table>
+								<br>
+								<br>
+								<div class="row justify-content-center">
+									<button type="submit" class="btn btn-primary center submit "
+										style="width: 45%; font-family: 'Noto Sans KR', sans-serif;">수정</button>
+								</div>
 							</form>
-							<br>
-							<br>
-							<div class="row justify-content-center">
-								<button type="submit" class="btn btn-primary center submit "
-									style="width: 45%; font-family: 'Noto Sans KR', sans-serif;"
-									onclick="location.href='profilesetting.action'">수정</button>
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<!-- toastr js 라이브러리 -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script type="text/javascript">
+	
+		// url에서 파라미터 삭제
+		history.replaceState({}, null, location.pathname);
+	
+		$(document).ready(function()
+		{
+			if ($("#alert_message").val() != "")
+			{
+				toastr.options.closeButton = true;
+				toastr.options.progressBar = true;
+				toastr.warning($("#alert_message").val(),
+				{
+					timeOut : 3000
+				});
+			}
+		});
+		
+		// 변경할 프로필 사진 미리보기
+		$("#mem_img").change(function(){
+			
+			// input 태그에 파일이 있는 경우
+			if (this.files && this.files[0]){
+				
+				// FileReader 인스턴스 생성
+				var reader = new FileReader;
+				
+				// 이미지 로드가 된 경우
+				reader.onload = e => {
+					$(".mem_thumb_img img").attr("src",e.target.result);
+					console.log("변경한 이미지: "+e.target.result);
+				}
+				reader.readAsDataURL(this.files[0]);
+			}
+		});
+	</script>
 
 <style type="text/css">
 body {

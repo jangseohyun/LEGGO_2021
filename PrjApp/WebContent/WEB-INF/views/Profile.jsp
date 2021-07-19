@@ -37,6 +37,7 @@
 </head>
 <body>
 <input type="hidden" value="${param.alert_message }" id="alert_message">
+<input type="hidden" value="${param.success_message }" id="success_message">
 
 	<!-- 헤더 -->
 	<header>
@@ -72,8 +73,8 @@
 								<br>
 								<div class="d-flex flex-column align-items-center text-center">
 									<img
-										src="<%=mem_img %>"
-										alt="Admin" class="rounded-circle" width="150">
+										src="<%=mem_img %>" style="object-fit: cover;"
+										alt="Admin" class="rounded-circle" width="150" height="150">
 									<div class="mt-3">
 										<h3><%=mem_nnm %></h3>
 										<a href="followingpage.action" class="text-secondary"
@@ -254,7 +255,16 @@
 					timeOut : 3000
 				});
 			}
-
+			
+			if ($("#success_message").val() != "")
+			{
+				toastr.options.closeButton = true;
+				toastr.options.progressBar = true;
+				toastr.success($("#success_message").val(),
+				{
+					timeOut : 3000
+				});
+			}
 		});
 	</script>
 

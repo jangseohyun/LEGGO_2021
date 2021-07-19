@@ -26,29 +26,49 @@ public class ProfileSettingController
 	
 	// 프로필 설정 페이지
 	@RequestMapping(value = "/profilesettingpage.action", method = RequestMethod.GET)
-	public String ProfileSettingPage()
+	public String ProfileSettingPage( ModelMap model, HttpSession session)
 	{
+		IProfileDAO dao = sqlSession.getMapper(IProfileDAO.class);
+		String mem_id = (String)session.getAttribute("mem_id");
+		
+		ProfileDTO profile = dao.ProfileSetting(mem_id);
+		
+		model.addAttribute("profile", profile);
+		
 		return "/WEB-INF/views/ProfileSetting.jsp";
 	}
 	
-	// 프로필 설정 페이지(프로필 사진)
-	@RequestMapping(value = "/profilesetting.action", method = RequestMethod.GET)
-	public String ProfileSetting(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session)
+	// 프로필 수정
+	@RequestMapping(value = "/profilesetting.action", method = RequestMethod.POST)
+	public String ProfileSetting(HttpServletRequest request, HttpServletResponse response, ModelMap model, ProfileDTO dto, HttpSession session)
 	{
 		IProfileDAO dao = sqlSession.getMapper(IProfileDAO.class);
 		
 		String mem_id = (String)session.getAttribute("mem_id");
 		
-		ProfileDTO dto = dao.ProfileSetting(mem_id);
+		dto.setMem_id(mem_id);
 		
 		if (dto.getMem_img() != null)
-			dao.ProfileSettingImg(mem_id,dto.getMem_img());
+			dao.ProfileSettingImg(dto);
 		
 		if (dto.getMem_nnm() != null)
-			dao.ProfileSettingNnm(mem_id,dto.getMem_nnm());
+		{
+			int count = dao.MemNnmCck(dto);
+			
+			if (count == 0)
+				dao.ProfileSettingNnm(dto);
+			else
+			{
+				model.addAttribute("alert_message","이미 존재하는 별명입니다.");
+				
+				return "redirect:profilesettingpage.action";
+			}
+		}
 		
 		if (dto.getMem_intro() != null)
-			dao.ProfileSettingIntro(mem_id,dto.getMem_intro());
+			dao.ProfileSettingIntro(dto);
+		
+		model.addAttribute("success_message", "프로필이 수정되었습니다.");
 			
 		return "redirect:profilepageauto.action";
 	}
