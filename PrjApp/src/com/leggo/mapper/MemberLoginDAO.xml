@@ -52,5 +52,11 @@
 		SET SIGNIN_AUTH='완료'
 		WHERE MEM_ID=#{mem_id}
 	</update>
+	
+	<select id="getMemImg" resultType="java.lang.String">
+		SELECT MEM_IMG
+		FROM MEMBER_DATA
+		WHERE MEM_ID = #{mem_id}
+	</select>
 
 </mapper>

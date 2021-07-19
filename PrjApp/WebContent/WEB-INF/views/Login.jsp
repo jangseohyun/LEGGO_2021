@@ -82,7 +82,9 @@
 <input type="hidden" value="${param.success_message }" id="success_message">
 <body class="img js-fullheight"
 	style="background-image: url(images/jeju.png);">
-	<p class="userimg">Romi 님의 사진입니다.&nbsp;&nbsp;&nbsp;</p>
+	
+	<a href="mainhome.action" style="display: inline-block; margin-left: 5px;">홈페이지로 이동</a>
+	<p class="userimg" style="display: inline-block; float: right; margin-right: 10px;">Romi 님의 사진입니다.</p>
 
 	<section class="ftco-section">
 		<div class="container">

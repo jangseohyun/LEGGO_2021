@@ -110,7 +110,7 @@
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 											<button type="submit" class="btn btn-secondary center submit"
 												style="width: 20%; font-family: 'Noto Sans KR', sans-serif;"
-												onclick="location.href='QnA.jsp'">취소하기</button>
+												onclick="location.href='qnapage.action'">취소하기</button>
 										</div>
 									</td>
 								</tr>
@@ -192,6 +192,11 @@ html, body {
 .w-90 {
 	width: 90% !important;
 }
+
+th {
+	width: 80px;
+}
+
 </style>
 </body>
 </html>

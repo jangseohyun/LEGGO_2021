@@ -22,4 +22,5 @@ public class QnaController
 	{
 		return "/WEB-INF/views/QnA.jsp";
 	}
+
 }

@@ -1,8 +1,13 @@
 <%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<% 
+	session = request.getSession();
+	String mem_img = (String)session.getAttribute("mem_img");
+%>
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<!-- Required meta tags -->
+
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,7 +35,7 @@
 
 
 				<div class="site-logo">
-					<a href="index.html" class="text-black"><span
+					<a href="mainhome.action" class="text-black"><span
 						class="text-primary"><img src="images/leggo_logo.png"
 							style="width: 150px; margin-left: 50px;"></span></a>
 				</div>
@@ -40,17 +45,17 @@
 
 						<ul
 							class="site-menu main-menu js-clone-nav ml-auto d-none d-lg-block">
-							<li><a href="#home-section" class="nav-link">홈</a></li>
-							<li><a href="#services-section" class="nav-link">일정짜기</a></li>
+							<li><a href="mainhome.action" class="nav-link">홈</a></li>
+							<li><a href="startplan.action" class="nav-link">일정짜기</a></li>
 
 
 							<li class="has-children"><a href="#about-section"
 								class="nav-link">커뮤니티</a>
 								<ul class="dropdown arrow-top">
-									<li><a href="#team-section" class="nav-link">커뮤니티 홈</a></li>
-									<li><a href="#pricing-section" class="nav-link">여행기</a></li>
-									<li><a href="#faq-section" class="nav-link">일정 구경</a></li>
-									<li><a href="#">사진</a></li>
+									<li><a href="mainhome.action" class="nav-link">커뮤니티 홈</a></li>
+									<li><a href="comtripfeed.action" class="nav-link">여행기</a></li>
+									<li><a href="complanfeed.action" class="nav-link">일정 구경</a></li>
+									<li><a href="comphotofeed.action">사진</a></li>
 								</ul></li>
 
 							<li style="vertical-align: middle;"><div
@@ -58,17 +63,35 @@
 									<input type="text" class="form-control" placeholder="통합검색"
 										aria-label="searchTotal" aria-describedby="button-addon2"
 										style="width: 150px; margin-top: 5px;">
-									<button class="btn btn-secondary glyphicon glyphicon-search"
+									<button class="btn btn-secondary"
 										type="button" id="button-addon2"
-										style="margin-top: 4px; float: right;"></button>
+										style="margin-top: 4px; float: right;">검색</button>
 								</div></li>
-							<li class="has-children"><a href="#"> <img
-									src="https://i2.wp.com/novocom.top/image/aWNvbYXJ5Li1saWJyYXJ5LmNvbQ==/images/no-profile-picture-icon/no-profile-picture-icon-15.jpg"
-									alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
-								<ul class="dropdown">
-									<li><a href="profilepageauto.action">마이페이지</a></li>
-									<li><a href="javascript:kakaoLogout()">로그아웃</a></li>
-								</ul></li>
+								
+							<c:set var="mem_img" value="<%=mem_img %>" />
+							<c:choose>
+								<%--로그인된 경우에만 프로필 사진, 토글 활성화 --%>
+								<c:when test="${mem_img != null }">
+									<li class="has-children">
+										<a href="profilepageauto.action"> <img
+											src="<%=mem_img %>"
+											alt="Admin" class="rounded-circle" width="38px" height="38px"></a>
+										<ul class="dropdown">
+											<li><a href="profilepageauto.action">마이페이지</a></li>
+											<li><a href="javascript:kakaoLogout()">로그아웃</a></li>
+										</ul>
+									</li>
+								</c:when>
+								<%-- 로그인되지 않은 경우 로그인 버튼 활성화 --%>
+								<c:otherwise>
+									<li class="has-children">
+										<button class="btn btn-primary"
+										type="button" id="button-addon2"
+										style="margin-top: 10px; float: right;"
+										onclick="location.href='loginpage.action'">로그인</button>
+									</li>
+								</c:otherwise>
+							</c:choose>
 						</ul>
 					</nav>
 

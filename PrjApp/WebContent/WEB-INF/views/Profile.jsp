@@ -31,8 +31,12 @@
 	rel="stylesheet">
 <link rel="stylesheet" href="css/jsh/bootstrap-theme.css">
 
+<!-- toastr css 라이브러리 -->
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
 </head>
 <body>
+<input type="hidden" value="${param.alert_message }" id="alert_message">
 
 	<!-- 헤더 -->
 	<header>
@@ -231,6 +235,28 @@
 		</div>
 	</div>
 
+	<!-- toastr js 라이브러리 -->
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+	<script type="text/javascript">
+	
+		// url에서 파라미터 삭제
+		history.replaceState({}, null, location.pathname);
+	
+		$(document).ready(function()
+		{
+			if ($("#alert_message").val() != "")
+			{
+				toastr.options.closeButton = true;
+				toastr.options.progressBar = true;
+				toastr.warning($("#alert_message").val(),
+				{
+					timeOut : 3000
+				});
+			}
+
+		});
+	</script>
 
 <style type="text/css">
 
