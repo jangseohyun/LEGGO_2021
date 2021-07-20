@@ -24,6 +24,14 @@
 		  AND D.MEM_PW = CRYPTPACK.ENCRYPT(#{mem_pw},#{mem_pw})
 	</select>
 	
+	<select id="KakaoLogin" resultType="com.leggo.login.MemberLoginDTO">
+		SELECT V.MEM_ID AS MEM_ID, D.MEM_PW AS MEM_PW, V.MEM_NNM AS MEM_NNM
+		     , V.MEM_IMG AS MEM_IMG, V.ACCT_ST AS ACCT_ST, V.ADMIN_CD AS ADMIN_CD
+		FROM MEMBERVIEW V, MEMBER_DATA D
+		WHERE V.MEM_ID = D.MEM_ID
+		  AND D.MEM_ID = #{kakao_id}
+	</select>
+	
 	<insert id="AutoLoginUpdate">
 		INSERT INTO COOKIETEST(SESSION_ID, LIMIT_TIME, MEM_CD)
 		VALUES(#{session_id}, #{limit_time}, (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id}))

@@ -6,6 +6,9 @@ public interface IMemberLoginDAO
 {
 	// 로그인
 	public MemberLoginDTO Login(MemberLoginDTO dto);
+
+	// 카카오 로그인
+	public MemberLoginDTO KakaoLogin(MemberLoginDTO dto);
 	
 	// 회원상태 확인(정상, 차단)
 	public String MemAcctCck(String mem_id);

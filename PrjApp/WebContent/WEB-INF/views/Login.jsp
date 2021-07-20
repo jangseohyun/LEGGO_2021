@@ -227,7 +227,7 @@
 	}
 
 </script>
-<form action="profilepagekakao.action" id="kakao_form" method="GET">
+<form action="loginkakao.action" id="kakao_form" method="GET">
 	<input type="hidden" id="kakao_id" name="kakao_id" value="">
 	<input type="hidden" id="kakao_access_token" name="kakao_access_token" value="">
 </form>

@@ -117,7 +117,7 @@
 						href="quitpage.action">탈퇴하기</a>
 					<div class="album py-5 bg-light">
 						<div class="container">
-						<form action="profilesetting.action" method="POST">
+						<form action="profilesetting.action" method="POST" enctype="multipart/form-data">
 								<table>
 									<tr>
 										<th>프로필 사진</th>
@@ -200,7 +200,7 @@
 				// 이미지 로드가 된 경우
 				reader.onload = e => {
 					$(".mem_thumb_img img").attr("src",e.target.result);
-					console.log("변경한 이미지: "+e.target.result);
+					//alert("변경한 이미지: "+e.target.result);
 				}
 				reader.readAsDataURL(this.files[0]);
 			}

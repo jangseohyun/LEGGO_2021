@@ -9,6 +9,7 @@ public class MemberLoginDTO
 	private String admin_cd;			//--관리자 코드
 	private String login_cck;			//--자동로그인 체크 여부
 	private String signin_auth;			//--회원가입 인증필요 여부
+	private String kakao_id;			//--카카오 아이디
 	
 	public String getMem_cd()
 	{
@@ -65,5 +66,13 @@ public class MemberLoginDTO
 	public void setSignin_auth(String signin_auth)
 	{
 		this.signin_auth = signin_auth;
+	}
+	public String getKakao_id()
+	{
+		return kakao_id;
+	}
+	public void setKakao_id(String kakao_id)
+	{
+		this.kakao_id = kakao_id;
 	}
 }

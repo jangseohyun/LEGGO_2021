@@ -177,6 +177,65 @@ public class MemberLoginController
 		return result;
 	}
 	
+
+	// 카카오 로그인 처리
+	@RequestMapping(value = "/loginkakao.action", method = RequestMethod.GET)
+	public String LoginKakao(HttpServletRequest request, HttpServletResponse response, ModelMap model, MemberLoginDTO Logindto, MemberAutoLoginDTO Autodto)
+	{
+		HttpSession session = request.getSession();
+		String result = null;
+		
+		IMemberLoginDAO dao = sqlSession.getMapper(IMemberLoginDAO.class);
+		
+		System.out.println("카카오 아이디: "+Logindto.getKakao_id());
+	    
+		// DB에서 회원 상태를 받아옴
+		String MemAcctCck = dao.MemAcctCck(Logindto.getKakao_id());
+		
+		// DB에서 회원가입 이메일 인증여부를 받아옴
+		//String SigninAuthCck = dao.SigninAuthCck(Logindto.getMem_id());
+		
+		try
+		{
+			if (MemAcctCck.equals("정상"))
+			{
+				System.out.println("MemAcctCck 정상");
+				MemberLoginDTO login = dao.KakaoLogin(Logindto);
+					
+				// 정상 로그인
+				if (login != null)
+				{
+					System.out.println("로그인 정상");
+					
+					// 프로필 사진 받아오기
+					String mem_img = dao.getMemImg(login.getMem_id());
+					
+					System.out.println("프로필 사진: "+mem_img);
+					
+					// 세션에 저장
+					session.setAttribute("mem_id", login.getMem_id());
+					session.setAttribute("mem_img", mem_img);
+					
+					result = "redirect:profilepageauto.action";		
+				}
+			}
+			else if (MemAcctCck.equals("차단"))
+			{
+				model.addAttribute("error_message", "차단된 계정으로는 로그인하실 수 없습니다.");
+				
+				result = "redirect:loginpage.action";
+			}
+		}
+		catch (Exception e)	// NullPointerException
+		{
+			model.addAttribute("error_message", "가입되지 않은 계정이거나 이미 탈퇴한 계정입니다.");
+			
+			result = "redirect:loginpage.action";
+		}
+		
+		return result;
+	}
+	
 	// 로그아웃
 	@RequestMapping(value = "/logout.action", method = RequestMethod.GET)
 	public String Logout(HttpServletRequest request, HttpServletResponse response, ModelMap model, HttpSession session)

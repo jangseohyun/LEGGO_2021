@@ -55,8 +55,14 @@ public class ProfileSettingController
 		{
 			int count = dao.MemNnmCck(dto);
 			
+			System.out.println("별명 중복 여부: "+count);
+			
 			if (count == 0)
+			{
 				dao.ProfileSettingNnm(dto);
+				
+				return "redirect:profilesettingpage.action";
+			}
 			else
 			{
 				model.addAttribute("alert_message","이미 존재하는 별명입니다.");

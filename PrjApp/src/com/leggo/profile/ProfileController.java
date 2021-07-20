@@ -83,7 +83,7 @@ public class ProfileController
 		
 		// 세션에 넣기
 		session.setAttribute("mem_id", profile.getMem_id());
-		session.setAttribute("kakao_access_token", profile.getMem_id());
+		session.setAttribute("access_token", profile.getMem_id());
 		
 		// ProfileDTO Profile.jsp로 넘겨주기
 		model.addAttribute("profile", profile);
