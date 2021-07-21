@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.leggo.mytrip.MyTripDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,20 +7,7 @@
 	String cp = request.getContextPath();
 %>
 <%
-	MyTripDTO mytrip = (MyTripDTO)request.getAttribute("mytrip");
-	
-	String tr_tt = null;
-	String tr_thum_url = null;
-	String tr_hits = null;
-	String tr_dt = null;
-
-	if (mytrip != null)
-	{
-		tr_tt = mytrip.getTr_tt();
-		tr_thum_url = mytrip.getTr_thum_url();
-		tr_hits = mytrip.getTr_hits();
-		tr_dt = mytrip.getTr_dt();
-	}
+	ArrayList<MyTripDTO> mytriplist = (ArrayList)request.getAttribute("mytriplist");
 %>
 <!DOCTYPE html>
 <head>
@@ -65,17 +53,6 @@
 						});
 			});
 </script>
-
-<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
-<%
-	if (session.getAttribute("mem_id") == null) {
-%>
-<script>
-	location.href = "loginpage.action";
-</script>
-<%
-	}
-%>
 
 </head>
 <body>
@@ -126,18 +103,19 @@
 					<div class="album py-5 bg-light">
 						<div class="container">
 							<div class="row">
-							<c:set var="mytrip" value="<%=mytrip %>" />
+							<c:set var="mytriplist" value="<%=mytriplist %>" />
 							<c:choose>
-								<c:when test="${mytrip != null }">
+								<c:when test="${mytriplist != null }">
+								<c:forEach var="mytrip" items="<%=mytriplist %>">
 									<div style="width: 30%; padding: 10px; margin-left:8px;">
 											<div class="card mb-4 box-shadow">
 												<img class="card-img-top"
-													src="<%=tr_thum_url %>"
+													src="${mytrip.tr_thum_url}"
 													alt="Thumbnail [100%x225]"
 													style="height: 100%; width: 100%; display: block;"
 													data-holder-rendered="true">
 												<div class="card-body">
-													<p class="card-text" style="margin-left: 10px;"><%=tr_tt %></p>
+													<p class="card-text" style="margin-left: 10px;">${mytrip.tr_tt}</p>
 													<div
 														class="d-flex justify-content-between align-items-center">
 														<div class="btn-group">
@@ -146,11 +124,12 @@
 															<button type="button"
 																class="btn btn-sm btn-outline-secondary">Edit</button>
 														</div>
-														<small class="text-muted"><%=tr_dt %></small>
+														<small class="text-muted">${mytrip.tr_dt}</small>
 													</div>
 												</div>
 											</div>
 										</div>
+									</c:forEach>
 									</c:when>
 									<c:otherwise>
 										<p style="margin-left: 20px;">작성한 게시글이 없습니다.</p>

@@ -1,5 +1,8 @@
 package com.leggo.profile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.leggo.login.IMemberLoginDAO;
 import com.leggo.login.MemberLoginDTO;
+import com.leggo.mytrip.IMyTripDAO;
+import com.leggo.mytrip.MyTripDTO;
 
 @Controller
 public class ProfileController
@@ -47,17 +52,24 @@ public class ProfileController
 		String mem_id = (String)session.getAttribute("mem_id");
 		
 		ProfileDTO profile = null;
+		List<MyTripDTO> mytriplist = null;
 		
 		IProfileDAO dao = sqlSession.getMapper(IProfileDAO.class);
+		IMyTripDAO MyTripdao = sqlSession.getMapper(IMyTripDAO.class);
 		
 		// dao에 mem_id 넘겨주고 ProfileDTO 받기
 		if (mem_id != null)
 		{
+			// 프로필 정보
 			profile = dao.ProfileSelect(mem_id);
+			
+			// 작성한 여행기 목록
+			mytriplist = new ArrayList<MyTripDTO>();
+			mytriplist.add(MyTripdao.MyTripSelect(mem_id));
 		}
 		
-		// ProfileDTO Profile.jsp로 넘겨주기
 		model.addAttribute("profile", profile);
+		model.addAttribute("mytriplist",mytriplist);
 		
 		return "/WEB-INF/views/Profile.jsp";
 	}

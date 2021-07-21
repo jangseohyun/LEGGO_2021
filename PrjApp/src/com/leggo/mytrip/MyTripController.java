@@ -1,5 +1,8 @@
 package com.leggo.mytrip;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.leggo.mail.MailSend;
+import com.leggo.myphoto.MyPhotoDTO;
 import com.leggo.profile.IProfileDAO;
 import com.leggo.profile.ProfileDTO;
 
@@ -31,10 +35,16 @@ public class MyTripController
 		IMyTripDAO dao = sqlSession.getMapper(IMyTripDAO.class);
 		
 		// dao에 mem_id 넘겨주고 MyTripDTO 받기
-		MyTripDTO mytrip = dao.MyTripSelect(mem_id);
+		List<MyTripDTO> mytriplist = null;
+		
+		if (dao.MyTripSelect(mem_id) != null)
+		{
+			mytriplist = new ArrayList<MyTripDTO>();
+			mytriplist.add(dao.MyTripSelect(mem_id));			
+		}
 		
 		// MyTripDTO MyTrip.jsp로 넘겨주기
-		model.addAttribute("mytrip", mytrip);
+		model.addAttribute("mytriplist", mytriplist);
 		
 		return "/WEB-INF/views/MyTrip.jsp";
 	}

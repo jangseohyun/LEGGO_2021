@@ -48,8 +48,16 @@ public class ProfileSettingController
 		
 		dto.setMem_id(mem_id);
 		
-		if (dto.getMem_img() != null)
+		/*
+		System.out.println("mem_img:"+dto.getMem_img()+"끝");
+		System.out.println(dto.getMem_img() != null || !dto.getMem_img().equals(""));
+		
+		if (dto.getMem_img() != null || !dto.getMem_img().equals(""))
+		{
+			System.out.println("프로필 사진 변경 완료");
 			dao.ProfileSettingImg(dto);
+		}
+		*/
 		
 		if (dto.getMem_nnm() != null)
 		{
@@ -60,8 +68,7 @@ public class ProfileSettingController
 			if (count == 0)
 			{
 				dao.ProfileSettingNnm(dto);
-				
-				return "redirect:profilesettingpage.action";
+				System.out.println("별명 수정 완료");
 			}
 			else
 			{
@@ -72,7 +79,10 @@ public class ProfileSettingController
 		}
 		
 		if (dto.getMem_intro() != null)
+		{
 			dao.ProfileSettingIntro(dto);
+			System.out.println("자기소개 수정 완료");
+		}
 		
 		model.addAttribute("success_message", "프로필이 수정되었습니다.");
 			

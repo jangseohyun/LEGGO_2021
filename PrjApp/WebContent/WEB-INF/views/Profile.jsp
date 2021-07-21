@@ -1,3 +1,7 @@
+<%@page import="com.leggo.myphoto.MyPhotoDTO"%>
+<%@page import="com.leggo.myplan.MyPlanDTO"%>
+<%@page import="com.leggo.mytrip.MyTripDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.leggo.profile.ProfileDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,12 +10,17 @@
 	String cp = request.getContextPath();
 %>
 <%
-	ProfileDTO profile = (ProfileDTO)request.getAttribute("profile");
+	ProfileDTO profile = (ProfileDTO) request.getAttribute("profile");
 	String mem_img = profile.getMem_img();
 	String mem_nnm = profile.getMem_nnm();
 	String mem_intro = profile.getMem_intro();
 	String fol_ing_cnt = profile.getFol_ing_cnt();
 	String fol_ed_cnt = profile.getFol_ed_cnt();
+%>
+<%
+	ArrayList<MyPlanDTO> myplanlist = (ArrayList)request.getAttribute("myplanlist");
+	ArrayList<MyTripDTO> mytriplist = (ArrayList)request.getAttribute("mytriplist");
+	ArrayList<MyPhotoDTO> myphotolist = (ArrayList)request.getAttribute("myphotolist");
 %>
 <!DOCTYPE html>
 <head>
@@ -32,12 +41,14 @@
 <link rel="stylesheet" href="css/jsh/bootstrap-theme.css">
 
 <!-- toastr css 라이브러리 -->
-<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+<link rel="stylesheet" type="text/css"
+	href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
 </head>
 <body>
-<input type="hidden" value="${param.alert_message }" id="alert_message">
-<input type="hidden" value="${param.success_message }" id="success_message">
+	<input type="hidden" value="${param.alert_message }" id="alert_message">
+	<input type="hidden" value="${param.success_message }"
+		id="success_message">
 
 	<!-- 헤더 -->
 	<header>
@@ -72,16 +83,15 @@
 							<div class="card-body" id="memberProfileDiv">
 								<br>
 								<div class="d-flex flex-column align-items-center text-center">
-									<img
-										src="<%=mem_img %>" style="object-fit: cover;"
-										alt="Admin" class="rounded-circle" width="150" height="150">
+									<img src="<%=mem_img%>" style="object-fit: cover;" alt="Admin"
+										class="rounded-circle" width="150" height="150">
 									<div class="mt-3">
-										<h3><%=mem_nnm %></h3>
+										<h3><%=mem_nnm%></h3>
 										<a href="followingpage.action" class="text-secondary"
-											style="font-size: 13px;">팔로잉 <%=fol_ing_cnt %></a> | <a
+											style="font-size: 13px;">팔로잉 <%=fol_ing_cnt%></a> | <a
 											href="followerpage.action" class="text-secondary"
-											style="font-size: 13px;">팔로워 <%=fol_ed_cnt %></a> <br> <br>
-										<p class="text-secondary mb-1" style="font-size: 15px;"><%=mem_intro %></p>
+											style="font-size: 13px;">팔로워 <%=fol_ed_cnt%></a> <br> <br>
+										<p class="text-secondary mb-1" style="font-size: 15px;"><%=mem_intro%></p>
 										<br>
 										<!-- <button class="btn btn-primary">팔로우</button> -->
 									</div>
@@ -124,27 +134,36 @@
 					<div class="card mb-3" id="memberPlanDiv">
 						<div class="card-body">
 							<h4 style="font-weight: bold; display: inline-block;">일정</h4>
-							<h5 style="display: inline-block; float: right;"><a href="myplanpage.action">+ 전체보기</a></h5>
+							<h5 style="display: inline-block; float: right;">
+								<a href="myplanpage.action">+ 전체보기</a>
+							</h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
-									<div class="col-md-3 wrapper">
-										<div class="card box-shadow frame">
-											<div class="img-wrapper">
-												<img class="card-img-top"
-													data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-													alt="Thumbnail [100%x225]"
-													style="height: 100%; width: 100%; display: block;"
-													src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45abe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45abe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-													data-holder-rendered="true">
-												<div class="darkness">
-													<div class="btn-summary">
-														<span draggable="false">대충 제목<br>대충
-															내용어쩌구저쩌구몽이는귀엽다...더보기
-														</span>
+									<div class="col-md-2">
+										<c:set var="myplanlist" value="<%=myplanlist%>" />
+										<c:choose>
+											<c:when test="${myplanlist != null }">
+												<c:forEach var="myplan" items="<%=myplanlist%>">
+													<div class="card box-shadow frame">
+														<div class="img-wrapper">
+															<img class="card-img-top" alt="Thumbnail [100%x225]"
+																style="height: 100%; width: 100%; display: block; object-fit: cover;"
+																src="${myplan.pl_img}" data-holder-rendered="true">
+															<div class="darkness">
+																<div class="btn-summary">
+																	<span draggable="false">${myplan.pl_tt}<br>
+																	<br> 대충 내용어쩌구저쩌구몽이는귀엽다...더보기
+																	</span>
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
-										</div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<p>작성한 게시글이 없습니다.</p>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
@@ -155,27 +174,36 @@
 					<div class="card mb-3" id="memberTripDiv">
 						<div class="card-body">
 							<h4 style="font-weight: bold; display: inline-block;">여행기</h4>
-							<h5 style="display: inline-block; float: right;"><a href="mytrippage.action">+ 전체보기</a></h5>
+							<h5 style="display: inline-block; float: right;">
+								<a href="mytrippage.action">+ 전체보기</a>
+							</h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
-									<div class="col-md-3 wrapper">
-										<div class="card box-shadow frame">
-											<div class="img-wrapper">
-												<img class="card-img-top"
-													data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-													alt="Thumbnail [100%x225]"
-													style="height: 100%; width: 100%; display: block;"
-													src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45abe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45abe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-													data-holder-rendered="true">
-												<div class="darkness">
-													<div class="btn-summary">
-														<span draggable="false">대충 제목<br>대충
-															내용어쩌구저쩌구몽이는귀엽다...더보기
-														</span>
+									<div class="col-md-2">
+										<c:set var="mytriplist" value="<%=mytriplist%>" />
+										<c:choose>
+											<c:when test="${mytriplist != null }">
+												<c:forEach var="mytrip" items="<%=mytriplist%>">
+													<div class="card box-shadow frame">
+														<div class="img-wrapper">
+															<img class="card-img-top" alt="Thumbnail [100%x225]"
+																style="height: 100%; width: 100%; display: block; object-fit: cover;"
+																src="${mytrip.tr_thum_url}" data-holder-rendered="true">
+															<div class="darkness">
+																<div class="btn-summary">
+																	<span draggable="false">${mytrip.tr_tt}<br>
+																	<br> 대충 내용어쩌구저쩌구몽이는귀엽다...더보기
+																	</span>
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
-										</div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<p>작성한 게시글이 없습니다.</p>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
@@ -186,46 +214,35 @@
 					<div class="card mb-3" id="memberPhotoDiv">
 						<div class="card-body">
 							<h4 style="font-weight: bold; display: inline-block;">사진</h4>
-							<h5 style="display: inline-block; float: right;"><a href="myphotopage.action">+ 전체보기</a></h5>
+							<h5 style="display: inline-block; float: right;">
+								<a href="myphotopage.action">+ 전체보기</a>
+							</h5>
 							<div class="album py-5 bg-light">
 								<div class="container">
-									<div class="col-md-3 wrapper">
-										<div class="card box-shadow frame" style="float: left;">
-											<div class="img-wrapper">
-												<img class="card-img-top"
-													data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-													alt="Thumbnail [100%x225]"
-													style="height: 100%; width: 100%; display: block;"
-													src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45abe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45abe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-													data-holder-rendered="true">
-												<div class="darkness">
-													<div class="btn-summary">
-														<span draggable="false">대충 제목<br>대충
-															내용어쩌구저쩌구몽이는귀엽다...더보기
-														</span>
+									<div class="col-md-2">
+										<c:set var="myphotolist" value="<%=myphotolist%>" />
+										<c:choose>
+											<c:when test="${myphotolist != null }">
+												<c:forEach var="myphoto" items="<%=myphotolist%>">
+													<div class="card box-shadow frame">
+														<div class="img-wrapper">
+															<img class="card-img-top" alt="Thumbnail [100%x225]"
+																style="height: 100%; width: 100%; display: block; object-fit: cover;"
+																src="${myphoto.pht_url}" data-holder-rendered="true">
+															<div class="darkness">
+																<div class="btn-summary">
+																	<span draggable="false">대충 내용어쩌구저쩌구몽이는귀엽다...더보기
+																	</span>
+																</div>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-md-3 wrapper">
-										<div class="card box-shadow frame" style="float: left;">
-											<div class="img-wrapper">
-												<img class="card-img-top"
-													data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-													alt="Thumbnail [100%x225]"
-													style="height: 100%; width: 100%; display: block;"
-													src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45abe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45abe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-													data-holder-rendered="true">
-												<div class="darkness">
-													<div class="btn-summary">
-														<span draggable="false">대충 제목<br>대충
-															내용어쩌구저쩌구몽이는귀엽다...더보기
-														</span>
-													</div>
-												</div>
-											</div>
-										</div>
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<p>작성한 게시글이 없습니다.</p>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
@@ -237,13 +254,14 @@
 	</div>
 
 	<!-- toastr js 라이브러리 -->
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script type="text/javascript"
+		src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 	<script type="text/javascript">
-	
 		// url에서 파라미터 삭제
-		history.replaceState({}, null, location.pathname);
-	
+		history.replaceState(
+		{}, null, location.pathname);
+
 		$(document).ready(function()
 		{
 			if ($("#alert_message").val() != "")
@@ -255,7 +273,7 @@
 					timeOut : 3000
 				});
 			}
-			
+
 			if ($("#success_message").val() != "")
 			{
 				toastr.options.closeButton = true;
@@ -268,8 +286,7 @@
 		});
 	</script>
 
-<style type="text/css">
-
+	<style type="text/css">
 body {
 	margin-top: 20px;
 	color: #1a202c;

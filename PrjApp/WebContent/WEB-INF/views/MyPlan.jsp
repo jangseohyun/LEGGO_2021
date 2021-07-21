@@ -1,14 +1,17 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.leggo.myplan.MyPlanDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 String cp = request.getContextPath();
 %>
+<%
+	ArrayList<MyPlanDTO> myplanlist = (ArrayList) request.getAttribute("myplanlist");
+%>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
-<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-<!--  All snippets are MIT license http://bootdey.com/license -->
 <title>MyPlan.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -51,11 +54,6 @@ String cp = request.getContextPath();
 			});
 </script>
 
-<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
-<% if (session.getAttribute("mem_id") == null) { %>
-      <script>location.href = "loginpage.action"; </script>
-<% }%>
-
 </head>
 <body>
 
@@ -70,12 +68,12 @@ String cp = request.getContextPath();
 		<div class="main-body">
 
 			<!-- 상단 메뉴 -->
-			<nav aria-label="breadcrumb" class="main-breadcrumb" id="profilemenuDiv">
+			<nav aria-label="breadcrumb" class="main-breadcrumb"
+				id="profilemenuDiv">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="profilepageauto.action">마이
 							페이지</a></li>
-					<li class="breadcrumb-item">내
-							일정</li>
+					<li class="breadcrumb-item">내 일정</li>
 					<li class="breadcrumb-item"><a href="mytrippage.action">내
 							여행기</a></li>
 					<li class="breadcrumb-item"><a href="myphotopage.action">내
@@ -104,98 +102,37 @@ String cp = request.getContextPath();
 					<div class="album py-5 bg-light">
 						<div class="container">
 							<div class="row">
-								<div style="width: 30%; padding: 10px; margin-left:8px;">
-									<div class="card mb-4 box-shadow">
-										<img class="card-img-top"
-											data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-											alt="Thumbnail [100%x225]"
-											style="height: 100%; width: 100%; display: block;"
-											src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45abe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45abe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-											data-holder-rendered="true">
-										<div class="card-body">
-											<p class="card-text"></p>
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="btn-group">
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">View</button>
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">Edit</button>
+								<c:set var="myplanlist" value="<%=myplanlist%>" />
+								<c:choose>
+									<c:when test="${myplanlist != null }">
+										<c:forEach var="myplan" items="<%=myplanlist%>">
+											<div style="width: 30%; padding: 10px; margin-left: 8px;">
+												<div class="card mb-4 box-shadow">
+													<img class="card-img-top" src="${myplan.pl_img}"
+														alt="Thumbnail [100%x225]"
+														style="height: 100%; width: 100%; display: block;"
+														data-holder-rendered="true">
+													<div class="card-body">
+														<p class="card-text" style="margin-left: 10px;">${myplan.pl_tt}</p>
+														<div
+															class="d-flex justify-content-between align-items-center">
+															<div class="btn-group">
+																<button type="button"
+																	class="btn btn-sm btn-outline-secondary">View</button>
+																<button type="button"
+																	class="btn btn-sm btn-outline-secondary">Edit</button>
+															</div>
+															<small class="text-muted">${myplan.pl_dt}</small>
+														</div>
+													</div>
 												</div>
-												<small class="text-muted">9 mins</small>
 											</div>
-										</div>
-									</div>
-								</div>
-								<div style="width: 30%; padding: 10px; margin-left:8px;">
-									<div class="card mb-4 box-shadow">
-										<img class="card-img-top"
-											data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-											alt="Thumbnail [100%x225]"
-											src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45ac1%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45ac1%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-											data-holder-rendered="true"
-											style="height: 100%; width: 100%; display: block;">
-										<div class="card-body">
-											<p class="card-text"></p>
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="btn-group">
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">View</button>
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">Edit</button>
-												</div>
-												<small class="text-muted">9 mins</small>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div style="width: 30%; padding: 10px; margin-left:8px;">
-									<div class="card mb-4 box-shadow">
-										<img class="card-img-top"
-											data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-											alt="Thumbnail [100%x225]"
-											style="height: 100%; width: 100%; display: block;"
-											src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45abe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45abe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-											data-holder-rendered="true">
-										<div class="card-body">
-											<p class="card-text"></p>
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="btn-group">
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">View</button>
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">Edit</button>
-												</div>
-												<small class="text-muted">9 mins</small>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div style="width: 30%; padding: 10px; margin-left:8px;">
-									<div class="card mb-4 box-shadow">
-										<img class="card-img-top"
-											data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
-											alt="Thumbnail [100%x225]"
-											style="height: 100%; width: 100%; display: block;"
-											src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_17a52b45abe%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_17a52b45abe%22%3E%3Crect%20width%3D%22348%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.7109375%22%20y%3D%22120.65%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
-											data-holder-rendered="true">
-										<div class="card-body">
-											<p class="card-text"></p>
-											<div
-												class="d-flex justify-content-between align-items-center">
-												<div class="btn-group">
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">View</button>
-													<button type="button"
-														class="btn btn-sm btn-outline-secondary">Edit</button>
-												</div>
-												<small class="text-muted">9 mins</small>
-											</div>
-										</div>
-									</div>
-								</div>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<p style="margin-left: 20px;">작성한 게시글이 없습니다.</p>
+									</c:otherwise>
+								</c:choose>
 							</div>
 						</div>
 					</div>

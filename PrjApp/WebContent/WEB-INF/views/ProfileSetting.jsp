@@ -117,7 +117,7 @@
 						href="quitpage.action">탈퇴하기</a>
 					<div class="album py-5 bg-light">
 						<div class="container">
-						<form action="profilesetting.action" method="POST" enctype="multipart/form-data">
+						<form action="profilesetting.action" method="POST">
 								<table>
 									<tr>
 										<th>프로필 사진</th>

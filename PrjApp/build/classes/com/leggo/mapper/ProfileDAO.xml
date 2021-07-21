@@ -23,13 +23,13 @@
 		FROM MEMBER_DATA
 		WHERE MEM_ID = #{mem_id}
 	</select>
-	
+	<!-- 
 	<update id="ProfileSettingImg">
 		UPDATE MEMBER_DATA
 		SET MEM_IMG = #{mem_img}
 		WHERE MEM_ID = #{mem_id}
 	</update>
-	
+	 -->
 	<update id="ProfileSettingNnm">
 		UPDATE MEMBER_DATA
 		SET MEM_NNM = #{mem_nnm}
