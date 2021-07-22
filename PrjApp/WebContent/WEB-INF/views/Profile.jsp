@@ -1,3 +1,4 @@
+<%@page import="java.util.Iterator"%>
 <%@page import="com.leggo.myphoto.MyPhotoDTO"%>
 <%@page import="com.leggo.myplan.MyPlanDTO"%>
 <%@page import="com.leggo.mytrip.MyTripDTO"%>
@@ -21,6 +22,10 @@
 	ArrayList<MyPlanDTO> myplanlist = (ArrayList)request.getAttribute("myplanlist");
 	ArrayList<MyTripDTO> mytriplist = (ArrayList)request.getAttribute("mytriplist");
 	ArrayList<MyPhotoDTO> myphotolist = (ArrayList)request.getAttribute("myphotolist");
+	
+	Iterator myplanIt = myplanlist.iterator();
+	Iterator mytripIt = mytriplist.iterator();
+	Iterator myphotoIt = myphotolist.iterator();
 %>
 <!DOCTYPE html>
 <head>
@@ -140,9 +145,9 @@
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-2">
-										<c:set var="myplanlist" value="<%=myplanlist%>" />
+										<c:set var="myplanIt" value="<%=myplanIt%>" />
 										<c:choose>
-											<c:when test="${myplanlist != null }">
+											<c:when test="<%=myplanIt.next() != null %>">
 												<c:forEach var="myplan" items="<%=myplanlist%>">
 													<div class="card box-shadow frame">
 														<div class="img-wrapper">
@@ -180,9 +185,9 @@
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-2">
-										<c:set var="mytriplist" value="<%=mytriplist%>" />
+										<c:set var="mytripIt" value="<%=mytripIt%>" />
 										<c:choose>
-											<c:when test="${mytriplist != null }">
+											<c:when test="<%=mytripIt.next() != null %>">
 												<c:forEach var="mytrip" items="<%=mytriplist%>">
 													<div class="card box-shadow frame">
 														<div class="img-wrapper">
@@ -220,9 +225,9 @@
 							<div class="album py-5 bg-light">
 								<div class="container">
 									<div class="col-md-2">
-										<c:set var="myphotolist" value="<%=myphotolist%>" />
+										<c:set var="myphotoIt" value="<%=myphotoIt%>" />
 										<c:choose>
-											<c:when test="${myphotolist != null }">
+											<c:when test="<%=myphotoIt.next() != null %>">
 												<c:forEach var="myphoto" items="<%=myphotolist%>">
 													<div class="card box-shadow frame">
 														<div class="img-wrapper">

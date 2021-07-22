@@ -31,7 +31,7 @@ public class FollowingController
 		String mem_id = (String)session.getAttribute("mem_id");
 		
 		IProfileDAO profileDAO = sqlSession.getMapper(IProfileDAO.class);
-		IFollowDAO followingDAO = sqlSession.getMapper(IFollowDAO.class);
+		IFollowDAO followDAO = sqlSession.getMapper(IFollowDAO.class);
 		
 		// dao에 mem_id 넘겨주고 ProfileDTO 받기
 		ProfileDTO profile = profileDAO.ProfileSelect(mem_id);
@@ -39,9 +39,9 @@ public class FollowingController
 		// 팔로잉 목록 조회하기
 		List<FollowDTO> followingList = null;
 		
-		if (followingDAO.FollowingSelect(mem_id) != null)
+		if (followDAO.FollowingSelect(mem_id) != null)
 		{
-			followingList.add(followingDAO.FollowingSelect(mem_id));
+			followingList.add(followDAO.FollowingSelect(mem_id));
 			model.addAttribute("followingList", followingList);
 		}
 		

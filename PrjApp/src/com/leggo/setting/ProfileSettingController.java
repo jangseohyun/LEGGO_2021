@@ -48,16 +48,14 @@ public class ProfileSettingController
 		
 		dto.setMem_id(mem_id);
 		
-		/*
-		System.out.println("mem_img:"+dto.getMem_img()+"끝");
-		System.out.println(dto.getMem_img() != null || !dto.getMem_img().equals(""));
+		System.out.print("프로필 사진 null: ");
+		System.out.println(dto.getMem_img() != null);
 		
-		if (dto.getMem_img() != null || !dto.getMem_img().equals(""))
+		if (dto.getMem_img() != null)
 		{
 			System.out.println("프로필 사진 변경 완료");
 			dao.ProfileSettingImg(dto);
 		}
-		*/
 		
 		if (dto.getMem_nnm() != null)
 		{

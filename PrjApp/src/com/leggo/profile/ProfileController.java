@@ -17,6 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.leggo.login.IMemberLoginDAO;
 import com.leggo.login.MemberLoginDTO;
+import com.leggo.myphoto.IMyPhotoDAO;
+import com.leggo.myphoto.MyPhotoDTO;
+import com.leggo.myplan.IMyPlanDAO;
+import com.leggo.myplan.MyPlanDTO;
 import com.leggo.mytrip.IMyTripDAO;
 import com.leggo.mytrip.MyTripDTO;
 
@@ -52,10 +56,14 @@ public class ProfileController
 		String mem_id = (String)session.getAttribute("mem_id");
 		
 		ProfileDTO profile = null;
+		List<MyPlanDTO> myplanlist = null;
 		List<MyTripDTO> mytriplist = null;
+		List<MyPhotoDTO> myphotolist = null;
 		
 		IProfileDAO dao = sqlSession.getMapper(IProfileDAO.class);
+		IMyPlanDAO MyPlandao = sqlSession.getMapper(IMyPlanDAO.class);
 		IMyTripDAO MyTripdao = sqlSession.getMapper(IMyTripDAO.class);
+		IMyPhotoDAO MyPhotodao = sqlSession.getMapper(IMyPhotoDAO.class);
 		
 		// dao에 mem_id 넘겨주고 ProfileDTO 받기
 		if (mem_id != null)
@@ -63,13 +71,23 @@ public class ProfileController
 			// 프로필 정보
 			profile = dao.ProfileSelect(mem_id);
 			
+			// 작성한 일정 목록
+			myplanlist = new ArrayList<MyPlanDTO>();
+			myplanlist.add(MyPlandao.MyPlanSelect(mem_id));
+			
 			// 작성한 여행기 목록
 			mytriplist = new ArrayList<MyTripDTO>();
 			mytriplist.add(MyTripdao.MyTripSelect(mem_id));
+			
+			// 작성한 사진 목록
+			myphotolist = new ArrayList<MyPhotoDTO>();
+			myphotolist.add(MyPhotodao.MyPhotoSelect(mem_id));
 		}
 		
 		model.addAttribute("profile", profile);
+		model.addAttribute("myplanlist",myplanlist);
 		model.addAttribute("mytriplist",mytriplist);
+		model.addAttribute("myphotolist",myphotolist);
 		
 		return "/WEB-INF/views/Profile.jsp";
 	}

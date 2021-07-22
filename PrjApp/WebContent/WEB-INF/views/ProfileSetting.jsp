@@ -72,6 +72,12 @@
 		var text = $(obj).val();
 		$('p.introbytes').text(getTextLength(text));
 	}
+	
+	function dataSubmit()
+	{
+		var data = $('form').serialize(); 
+		data.submit();
+	}
 
 </script>
 
@@ -128,6 +134,10 @@
 										<br> <input type="file" id="mem_img"
 											name="mem_img" value="<%=mem_img %>"/></td>
 									</tr>
+								</table>
+						</form>
+						<form action="profilesetting.action" method="POST">
+								<table>
 									<tr>
 										<td>&nbsp;</td>
 									</tr>
@@ -156,7 +166,7 @@
 								<br>
 								<br>
 								<div class="row justify-content-center">
-									<button type="submit" class="btn btn-primary center submit "
+									<button type="submit" class="btn btn-primary center submit" onclick="dataSubmit()"
 										style="width: 45%; font-family: 'Noto Sans KR', sans-serif;">수정</button>
 								</div>
 							</form>

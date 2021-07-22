@@ -1,5 +1,7 @@
 package com.leggo.follow;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -29,9 +31,22 @@ public class FollowerController
 		String mem_id = (String)session.getAttribute("mem_id");
 		
 		IProfileDAO dao = sqlSession.getMapper(IProfileDAO.class);
+		IFollowDAO followDAO = sqlSession.getMapper(IFollowDAO.class);
 		
 		// dao에 mem_id 넘겨주고 ProfileDTO 받기
 		ProfileDTO profile = dao.ProfileSelect(mem_id);
+
+		// 팔로워 목록 조회하기
+		List<FollowDTO> followerList = null;
+		
+		System.out.println("로그인 아이디: "+mem_id);
+		System.out.println(followDAO.FollowerSelect(mem_id) != null);
+		
+		if (followDAO.FollowerSelect(mem_id) != null)
+		{
+			followerList.add(followDAO.FollowerSelect(mem_id));
+			model.addAttribute("followerList", followerList);
+		}
 		
 		// ProfileDTO Profile.jsp로 넘겨주기
 		model.addAttribute("profile", profile);
