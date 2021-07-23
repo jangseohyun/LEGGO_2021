@@ -48,13 +48,14 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 		else
 		{
 			IMemberLoginDAO dao = sqlSession.getMapper(IMemberLoginDAO.class);
-			String SigninAuth = dao.SigninAuthCck(mem_id);
+			//String SigninAuth = dao.SigninAuthCck(mem_id);
 
 			// 프로필 사진 받아오기
 			String mem_img = dao.getMemImg(mem_id);
 			session.setAttribute("mem_img", mem_img);
 			System.out.println("mem_img: "+mem_img);
 			
+			/*
 			// 입력한 아이디가 회원가입 인증이 되지 않았을 경우 → 아직 로그인 불가능
 			if (SigninAuth.equals("필요"))
 			{
@@ -69,6 +70,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter
 				
 				return false;
 			}
+			*/
 
 			System.out.println("로그인 인터셉터 통과");
 			

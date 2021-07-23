@@ -23,10 +23,10 @@ public interface IMemberLoginDAO
 	public void AutoLoginDel(String session_id);
 	
 	// 회원가입 인증필요 여부 확인
-	public String SigninAuthCck(String mem_id);
+	//public String SigninAuthCck(String mem_id);
 	
 	// 회원가입 인증 완료
-	public void SigninAuthUpdate(String mem_id);
+	//public void SigninAuthUpdate(String mem_id);
 	
 	// 프로필 사진 가져오기
 	public String getMemImg(String mem_id);

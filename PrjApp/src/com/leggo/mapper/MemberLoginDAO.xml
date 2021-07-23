@@ -49,6 +49,7 @@
 		WHERE SESSION_ID = #{session_id}
 	</delete>
 	
+	<!--
 	<select id="SigninAuthCck" parameterType="com.leggo.login.MemberLoginDTO" resultType="java.lang.String">
 		SELECT SIGNIN_AUTH
 		FROM MEMBER_DATA
@@ -60,7 +61,8 @@
 		SET SIGNIN_AUTH='완료'
 		WHERE MEM_ID=#{mem_id}
 	</update>
-	
+	 -->
+	 
 	<select id="getMemImg" resultType="java.lang.String">
 		SELECT MEM_IMG
 		FROM MEMBER_DATA

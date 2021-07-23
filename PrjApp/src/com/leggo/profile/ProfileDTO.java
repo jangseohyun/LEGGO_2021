@@ -4,6 +4,7 @@ public class ProfileDTO
 {
 	private String mem_id, mem_nnm, mem_img, mem_intro;	//--아이디, 닉네임, 프로필 사진, 자기소개
 	private String fol_ing_cnt, fol_ed_cnt;		//--팔로잉 수, 팔로워 수
+	private String root;	//--수정할 프로필 파일 저장 루트
 	
 	public String getMem_id()
 	{
@@ -52,5 +53,13 @@ public class ProfileDTO
 	public void setFol_ed_cnt(String fol_ed_cnt)
 	{
 		this.fol_ed_cnt = fol_ed_cnt;
+	}
+	public String getRoot()
+	{
+		return root;
+	}
+	public void setRoot(String root)
+	{
+		this.root = root;
 	}
 }

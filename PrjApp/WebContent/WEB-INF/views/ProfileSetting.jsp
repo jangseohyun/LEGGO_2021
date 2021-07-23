@@ -3,12 +3,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
-	
-	ProfileDTO profile = (ProfileDTO)request.getAttribute("profile");
-	String mem_img = profile.getMem_img();
-	String mem_nnm = profile.getMem_nnm();
-	String mem_intro = profile.getMem_intro();
+String cp = request.getContextPath();
+
+ProfileDTO profile = (ProfileDTO) request.getAttribute("profile");
+String mem_img = profile.getMem_img();
+String mem_nnm = profile.getMem_nnm();
+String mem_intro = profile.getMem_intro();
 %>
 <!DOCTYPE html>
 <head>
@@ -26,10 +26,11 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
-	
+
 <!-- toastr css 라이브러리 -->
-<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
-	
+<link rel="stylesheet" type="text/css"
+	href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
 </head>
 <script type="text/javascript">
 
@@ -72,17 +73,10 @@
 		var text = $(obj).val();
 		$('p.introbytes').text(getTextLength(text));
 	}
-	
-	function dataSubmit()
-	{
-		var data = $('form').serialize(); 
-		data.submit();
-	}
-
 </script>
 
 <body>
-<input type="hidden" value="${param.alert_message }" id="alert_message">
+	<input type="hidden" value="${param.alert_message }" id="alert_message">
 
 	<!-- 헤더 -->
 	<header>
@@ -123,68 +117,72 @@
 						href="quitpage.action">탈퇴하기</a>
 					<div class="album py-5 bg-light">
 						<div class="container">
-						<form action="profilesetting.action" method="POST">
+							<form action="profilesettingimg.action" method="POST"
+								enctype="multipart/form-data" id="form_img">
 								<table>
 									<tr>
 										<th>프로필 사진</th>
-										<td class="mem_thumb_img"><img id="img__wrap" class="rounded-circle"
-											width="170" height="170" style="object-fit: cover;"
-											src="<%=mem_img %>" />
-											<br>
-										<br> <input type="file" id="mem_img"
-											name="mem_img" value="<%=mem_img %>"/></td>
+										<td class="mem_thumb_img"><img id="img__wrap"
+											name="mem_thumb_img" class="rounded-circle" width="170"
+											height="170" style="object-fit: cover;" src="<%=mem_img%>" />
+											<br> <br> <input type="file" id="mem_img"
+											name="mem_img" value="<%=mem_img%>" /></td>
 									</tr>
-								</table>
-						</form>
-						<form action="profilesetting.action" method="POST">
-								<table>
 									<tr>
 										<td>&nbsp;</td>
 									</tr>
 									<tr>
 										<th>별명</th>
 										<td><input type="text" class="form-control" id="mem_nnm"
-											name="mem_nnm" value="<%=mem_nnm %>"></td>
+											name="mem_nnm" value="<%=mem_nnm%>"></td>
 									</tr>
 									<tr style="text-align: right;">
 										<td></td>
-										<td class="textlimit" style="display: inline-block"><p class="nnmbytes" style="display: inline-block">
-										<%=mem_nnm.getBytes().length %></p>/20</td>
+										<td class="textlimit" style="display: inline-block"><p
+												class="nnmbytes" style="display: inline-block">
+												<%=mem_nnm.getBytes().length%></p>/20</td>
 									</tr>
 									<tr>
 										<th>자기소개</th>
 										<td><textarea class="form-control content"
 												style="width: 300px; height: 100px;" id="mem_intro"
-												name="mem_intro"><%=mem_intro %></textarea></td>
+												name="mem_intro"><%=mem_intro%></textarea></td>
 									</tr>
 									<tr style="text-align: right;">
 										<td></td>
-										<td class="textlimit" style="display: inline-block"><p class="introbytes" style="display: inline-block">
-										<%= mem_intro.getBytes().length %></p>/100</td>
+										<td class="textlimit" style="display: inline-block"><p
+												class="introbytes" style="display: inline-block">
+												<%=mem_intro.getBytes().length%></p>/100</td>
 									</tr>
 								</table>
-								<br>
-								<br>
+								<br> <br>
+							</form>
 								<div class="row justify-content-center">
-									<button type="submit" class="btn btn-primary center submit" onclick="dataSubmit()"
+									<button type="button" class="btn btn-primary center submit" onclick="dataSubmit()"
 										style="width: 45%; font-family: 'Noto Sans KR', sans-serif;">수정</button>
 								</div>
-							</form>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- toastr js 라이브러리 -->
-	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+	<script type="text/javascript"
+		src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 	<script type="text/javascript">
 	
 		// url에서 파라미터 삭제
 		history.replaceState({}, null, location.pathname);
-	
+
+		function dataSubmit()
+		{
+			alert("테스트");
+			$("#form_img").submit();
+		}
+		
 		$(document).ready(function()
 		{
 			if ($("#alert_message").val() != "")
@@ -215,9 +213,11 @@
 				reader.readAsDataURL(this.files[0]);
 			}
 		});
+
+
 	</script>
 
-<style type="text/css">
+	<style type="text/css">
 body {
 	margin-top: 20px;
 	color: #1a202c;
