@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.leggo.qna.IQnaDAO">
+
+	<insert id="SendQna">
+		INSERT INTO MEMBER_QUESTION(MEM_QST_CD, MEM_CD, CTG_CD, MEM_QST_CONT, MEM_QST_TT)
+		VALUES('MQ'||'1'
+		       ,(SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID=#{mem_id})
+		       ,(SELECT CTG_CD FROM CATEGORY WHERE CTG_NM=#{qna_type})
+		       ,#{qna_content}
+		       ,#{qna_title})
+	</insert>
+	
+</mapper>

@@ -62,57 +62,21 @@ public class ProfileSettingController
 		String mem_id = (String)session.getAttribute("mem_id");
 		
 		dto.setMem_id(mem_id);
-		String root = dto.getRoot();
 		
-		System.out.print("프로필 사진 null: ");
-		System.out.println(dto.getMem_img() != null);
+		String mem_nnm = request.getParameter("mem_nnm");
+		String mem_intro = request.getParameter("mem_intro");
+		String mem_img = request.getParameter("mem_img");
 		
-		if (root != null)
+		if (mem_img != null)
 		{
-			
-			// 실제 물리적 주소
-			System.out.println(root);
-
-			// 저장되는 위치와 폴더
-			String path = root + "pds" + File.separator + "saveData";
-			
-			// 확인
-			System.out.println(path);
-					
-			// 저장 대상(디렉터리 경로)이 존재하지 않으면 생성
-			File dir = new File(path);
-			if (!dir.exists())
-				dir.mkdirs();
-			
-			String encType = "UTF-8";
-			int maxFileSize = 5 * 1024 * 1024;	//--전송 최대 사이즈 5M
-			
-			try
-			{
-				MultipartRequest req = null;
-				req = new MultipartRequest(request, path, maxFileSize, encType, new DefaultFileRenamePolicy());
-				
-				System.out.println("이름: " + req.getParameter("name") + "<br>");
-				System.out.println("서버에 저장된 파일명: " + req.getFilesystemName("upload") + "<br>");
-				System.out.println("업로드한 파일명: " + req.getOriginalFileName("upload") + "<br>");
-				System.out.println("파일 타입: " + req.getContentType("upload") + "<br>");
-				
-				File file = req.getFile("mem_img");
-				
-				if (file != null)
-					System.out.println("파일 길이: " + file.length() + "<br>");
-			}
-			catch (Exception e)
-			{
-				System.out.println(e.toString());
-			}
-
-			//System.out.println("프로필 사진 변경 완료");
-			//dao.ProfileSettingImg(dto);
+			dto.setMem_img(mem_img);
+			System.out.println("프로필 사진 변경 완료");
+			dao.ProfileSettingImg(dto);
 		}
 		
-		if (dto.getMem_nnm() != null)
+		if (mem_nnm != null)
 		{
+			dto.setMem_nnm(mem_nnm);
 			int count = dao.MemNnmCck(dto);
 			
 			System.out.println("별명 중복 여부: "+count);
@@ -130,8 +94,9 @@ public class ProfileSettingController
 			}
 		}
 		
-		if (dto.getMem_intro() != null)
+		if (mem_intro != null)
 		{
+			dto.setMem_intro(mem_intro);
 			dao.ProfileSettingIntro(dto);
 			System.out.println("자기소개 수정 완료");
 		}

@@ -67,13 +67,16 @@
 						문의</h4>
 					<div class="album py-5 bg-light" id="sendqnaDiv">
 						<div class="container row justify-content-center">
+						<form action="sendqna.action">
 							<table>
 								<tr>
 									<th>문의 유형</th>
-									<td><select class="form-control" style="width: 170px;">
+									<td><select class="form-control" id="qna_type" name="qna_type" style="width: 170px;">
 											<option>선택</option>
 											<option>회원정보 문의</option>
-											<option>사용 방법 문의</option>
+											<option>일정 문의</option>
+											<option>여행기 문의</option>
+											<option>사진 문의</option>
 											<option>서비스 개선 제안</option>
 											<option>시스템 오류 제보</option>
 											<option>불편 신고</option>
@@ -88,14 +91,14 @@
 								</tr>
 								<tr>
 									<th>제목</th>
-									<td><input type="email" class="form-control"></td>
+									<td><input type="text" id="qna_title" name="qna_title" class="form-control"></td>
 								</tr>
 								<tr>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
 									<th style="vertical-align: top;">문의 내용&nbsp;&nbsp;</th>
-									<td><textarea class="form-control"
+									<td><textarea class="form-control" id="qna_content" name="qna_content"
 											style="width: 500px; height: 300px;"></textarea></td>
 								</tr>
 								<tr>
@@ -115,6 +118,7 @@
 									</td>
 								</tr>
 							</table>
+							</form>
 						</div>
 					</div>
 				</div>
