@@ -1,14 +1,17 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.leggo.qna.QnaDTO"%>
 <%@ page contentType="text/html; charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-String cp = request.getContextPath();
+	String cp = request.getContextPath();
+%>
+<%
+	ArrayList<QnaDTO> qnalist = (ArrayList)request.getAttribute("qnalist");
 %>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
-<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-<!--  All snippets are MIT license http://bootdey.com/license -->
 <title>QnA.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -52,11 +55,6 @@ String cp = request.getContextPath();
 
 	});
 </script>
-
-<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
-<% if (session.getAttribute("mem_id") == null) { %>
-      <script>location.href = "loginpage.action"; </script>
-<% }%>
 
 </head>
 <body>
@@ -113,13 +111,20 @@ String cp = request.getContextPath();
 									<th style="width: 80px;">문의 일시</th>
 									<th style="width: 80px;">처리 상태</th>
 								</tr>
+								<c:forEach var="list" items="<%=qnalist%>">
 								<tr>
-									<td class="title">2</td>
-									<td>기타 문의</td>
-									<td class="title_select">그냥 심심해서 문의해봤어요</td>
-									<td>2021-07-01</td>
-									<td><span class="badge badge-secondary"
-										style="font-size: 12px;">미완료</span></td>
+									<td class="title">1</td>
+									<td>${list.qna_type}</td>
+									<td class="title_select">${list.qna_title}</td>
+									<td>${list.qna_date}</td>
+									<td><c:choose>
+											<c:when test="${list.qna_count == 0}">
+												<span class="badge badge-secondary" style="font-size: 12px;">미완료</span></td>
+											</c:when>
+											<c:otherwise>
+												<span class="badge badge-success" style="font-size: 12px;">답변완료</span></td>
+											</c:otherwise>
+										</c:choose>
 								</tr>
 								<tr style="display: none;">
 									<td class="conts"></td>
@@ -127,24 +132,7 @@ String cp = request.getContextPath();
 										다시 생각해보니 제가 말이 심했던 것 같아 사과드립니다. 사이 좋게 지내요~~!<br>
 									<td></td>
 								</tr>
-								<tr>
-									<td class="title">1</td>
-									<td>시스템 오류 제보</td>
-									<td class="title_select">이거 사이트가 만들어지다 말았는데요?</td>
-									<td>2021-06-28</td>
-									<td><span class="badge badge-success"
-										style="font-size: 12px;">답변완료</span></td>
-
-								</tr>
-								<tr style="display: none;">
-									<td class="conts"></td>
-									<td colspan="3" style="text-align: left;"><b>문의 내용</b><br>
-										저기요 이거 사이트를 이용하라는 건가요 말라는 건가요? 어스토리도 아니고 사이트를 이렇게 얼레벌레 만드시면
-										어떡해요 빠른 코딩 부탁드립니다<br> <br> <b>답변 내용</b><br>
-										안녕하십니까 고객님. 저희 LEGGO를 이용하시는 데에 불편함을 끼쳐드려 죄송합니다. 근데 듣자듣자하니까 야 너
-										몇살이야 너 코딩 잘해?!</td>
-									<td></td>
-								</tr>
+								</c:forEach>
 							</table>
 						</div>
 					</div>

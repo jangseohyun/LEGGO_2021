@@ -4,6 +4,7 @@ public class QnaDTO
 {
 	private String qna_type, qna_title, qna_content;
 	private String mem_id;
+	private String qna_date, qna_count;
 
 	public String getQna_type()
 	{
@@ -43,5 +44,25 @@ public class QnaDTO
 	public void setMem_id(String mem_id)
 	{
 		this.mem_id = mem_id;
+	}
+	
+	public String getQna_date()
+	{
+		return qna_date;
+	}
+
+	public void setQna_date(String qna_date)
+	{
+		this.qna_date = qna_date;
+	}
+
+	public String getQna_count()
+	{
+		return qna_count;
+	}
+
+	public void setQna_count(String qna_count)
+	{
+		this.qna_count = qna_count;
 	}
 }

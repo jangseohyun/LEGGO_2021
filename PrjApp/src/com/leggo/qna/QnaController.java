@@ -1,5 +1,8 @@
 package com.leggo.qna;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.leggo.mail.MailSend;
+import com.leggo.myphoto.MyPhotoDTO;
+import com.leggo.myplan.MyPlanDTO;
 import com.leggo.profile.IProfileDAO;
+import com.leggo.profile.ProfileDTO;
 
 @Controller
 public class QnaController
@@ -22,8 +28,22 @@ public class QnaController
 	
 	// 일대일문의 페이지
 	@RequestMapping(value = "/qnapage.action", method = RequestMethod.GET)
-	public String QnaPage()
+	public String QnaPage(ModelMap model, HttpServletRequest request, HttpSession session)
 	{
+		String mem_id = (String)session.getAttribute("mem_id");
+		
+		List<QnaDTO> qnalist = null;
+		
+		IQnaDAO dao = sqlSession.getMapper(IQnaDAO.class);
+		
+		if (mem_id != null)
+		{
+			qnalist = new ArrayList<QnaDTO>();
+			qnalist.add(dao.QnaList(mem_id));
+		}
+		
+		model.addAttribute("qnalist", qnalist);
+		
 		return "/WEB-INF/views/QnA.jsp";
 	}
 
