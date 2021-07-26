@@ -1,5 +1,6 @@
 package com.leggo.qna;
 
+import java.util.ArrayList;
 
 public interface IQnaDAO
 {
@@ -7,5 +8,5 @@ public interface IQnaDAO
 	public int SendQna(QnaDTO dto);
 	  
 	// 작성한 일대일문의 조회
-	public QnaDTO QnaList(String mem_id);
+	public ArrayList<QnaDTO> QnaList(String mem_id);
 }

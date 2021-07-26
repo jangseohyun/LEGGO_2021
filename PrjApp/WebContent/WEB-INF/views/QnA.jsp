@@ -111,9 +111,9 @@
 									<th style="width: 80px;">문의 일시</th>
 									<th style="width: 80px;">처리 상태</th>
 								</tr>
-								<c:forEach var="list" items="<%=qnalist%>">
+								<c:forEach var="list" items="<%=qnalist%>" varStatus="status">
 								<tr>
-									<td class="title">1</td>
+									<td class="title">${status.count}</td>
 									<td>${list.qna_type}</td>
 									<td class="title_select">${list.qna_title}</td>
 									<td>${list.qna_date}</td>
@@ -129,7 +129,7 @@
 								<tr style="display: none;">
 									<td class="conts"></td>
 									<td colspan="3" style="text-align: left;"><b>문의 내용</b><br>
-										다시 생각해보니 제가 말이 심했던 것 같아 사과드립니다. 사이 좋게 지내요~~!<br>
+										${list.qna_content }<br>
 									<td></td>
 								</tr>
 								</c:forEach>

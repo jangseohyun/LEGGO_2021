@@ -32,14 +32,13 @@ public class QnaController
 	{
 		String mem_id = (String)session.getAttribute("mem_id");
 		
-		List<QnaDTO> qnalist = null;
+		ArrayList<QnaDTO> qnalist = null;
 		
 		IQnaDAO dao = sqlSession.getMapper(IQnaDAO.class);
 		
 		if (mem_id != null)
 		{
-			qnalist = new ArrayList<QnaDTO>();
-			qnalist.add(dao.QnaList(mem_id));
+			qnalist = dao.QnaList(mem_id);
 		}
 		
 		model.addAttribute("qnalist", qnalist);
@@ -66,6 +65,6 @@ public class QnaController
 		
 		dao.SendQna(dto);
 		
-		return "/WEB-INF/views/QnA.jsp";
+		return "qnapage.action";
 	}
 }

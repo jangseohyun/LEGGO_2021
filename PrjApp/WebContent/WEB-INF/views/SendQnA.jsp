@@ -2,13 +2,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+String cp = request.getContextPath();
 %>
 <!DOCTYPE html>
 <head>
 <meta charset="utf-8">
-<!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
-<!--  All snippets are MIT license http://bootdey.com/license -->
 <title>QnA.jsp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
@@ -22,12 +20,13 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap"
 	rel="stylesheet">
+<script type="text/javascript">
+	function dataSubmit()
+	{
+		$("form").submit();
+	}
+</script>
 </head>
-
-<!-- 보유한 로그인 세션이 없을 경우 로그인 페이지로 이동 -->
-<% if (session.getAttribute("mem_id") == null) { %>
-      <script>location.href = "loginpage.action"; </script>
-<% }%>
 
 <body>
 
@@ -66,59 +65,56 @@
 					<h4 style="display: inline-block; font-weight: bold; padding: 5px;">일대일
 						문의</h4>
 					<div class="album py-5 bg-light" id="sendqnaDiv">
-						<div class="container row justify-content-center">
-						<form action="sendqna.action">
-							<table>
-								<tr>
-									<th>문의 유형</th>
-									<td><select class="form-control" id="qna_type" name="qna_type" style="width: 170px;">
-											<option>선택</option>
-											<option>회원정보 문의</option>
-											<option>일정 문의</option>
-											<option>여행기 문의</option>
-											<option>사진 문의</option>
-											<option>서비스 개선 제안</option>
-											<option>시스템 오류 제보</option>
-											<option>불편 신고</option>
-											<option>기타 문의</option>
-									</select></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<th>제목</th>
-									<td><input type="text" id="qna_title" name="qna_title" class="form-control"></td>
-								</tr>
-								<tr>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<th style="vertical-align: top;">문의 내용&nbsp;&nbsp;</th>
-									<td><textarea class="form-control" id="qna_content" name="qna_content"
-											style="width: 500px; height: 300px;"></textarea></td>
-								</tr>
-								<tr>
-									<td><br>
-									<br></td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<div class="row justify-content-center">
-											<button type="submit" class="btn btn-primary"
-												style="width: 20%; font-family: 'Noto Sans KR', sans-serif;">제출하기</button>
-											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<button type="submit" class="btn btn-secondary center submit"
-												style="width: 20%; font-family: 'Noto Sans KR', sans-serif;"
-												onclick="location.href='qnapage.action'">취소하기</button>
-										</div>
-									</td>
-								</tr>
-							</table>
+						<div class="container row justify-content-center" >
+							<form action="sendqna.action">
+								<table>
+									<tr>
+										<th>문의 유형</th>
+										<td><select class="form-control" id="qna_type"
+											name="qna_type" style="width: 170px;">
+												<option>선택</option>
+												<option>회원정보 문의</option>
+												<option>일정 문의</option>
+												<option>여행기 문의</option>
+												<option>사진 문의</option>
+												<option>서비스 개선 제안</option>
+												<option>시스템 오류 제보</option>
+												<option>불편 신고</option>
+												<option>기타 문의</option>
+										</select></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th>제목</th>
+										<td><input type="text" id="qna_title" name="qna_title"
+											class="form-control"></td>
+									</tr>
+									<tr>
+										<td>&nbsp;</td>
+									</tr>
+									<tr>
+										<th style="vertical-align: top;">문의 내용&nbsp;&nbsp;</th>
+										<td><textarea class="form-control" id="qna_content"
+												name="qna_content" style="width: 500px; height: 300px;"></textarea></td>
+									</tr>
+								</table>
 							</form>
+						</div>
+						<br><br>
+						<div class="container row justify-content-center"
+							style="display: inline-block; text-align: center;">
+							<button type="button" class="btn btn-primary"
+								onclick="javascript:dataSubmit()"
+								style="width: 20%; font-family: 'Noto Sans KR', sans-serif;">제출하기</button>
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<button type="submit" class="btn btn-secondary center submit"
+								style="width: 20%; font-family: 'Noto Sans KR', sans-serif;"
+								onclick="location.href='qnapage.action'">취소하기</button>
 						</div>
 					</div>
 				</div>
@@ -200,7 +196,6 @@ html, body {
 th {
 	width: 80px;
 }
-
 </style>
 </body>
 </html>
