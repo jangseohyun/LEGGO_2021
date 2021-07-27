@@ -1,5 +1,6 @@
 package com.leggo.follow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,12 +38,20 @@ public class FollowingController
 		ProfileDTO profile = profileDAO.ProfileSelect(mem_id);
 		
 		// 팔로잉 목록 조회하기
-		List<FollowDTO> followingList = null;
+		ArrayList<FollowDTO> followingList = new ArrayList<FollowDTO>();
+		List<FollowPostDTO> followingpostList = new ArrayList<FollowPostDTO>();
 		
 		if (followDAO.FollowingSelect(mem_id) != null)
 		{
 			followingList.add(followDAO.FollowingSelect(mem_id));
 			model.addAttribute("followingList", followingList);
+			
+			for (int i=0; i<followingList.size(); i++)
+			{
+				followingpostList.add(followDAO.FollowingPost(followingList.get(i).getFollow_mem_id()));
+			}
+			
+			model.addAttribute("followingpostList", followingpostList);
 		}
 		
 		// ProfileDTO Profile.jsp로 넘겨주기

@@ -24,7 +24,7 @@ public class QuitController
 	}
 	
 	// 회원 탈퇴
-	@RequestMapping(value = "/quitpage.action", method = RequestMethod.GET)
+	@RequestMapping(value = "/quit.action", method = RequestMethod.GET)
 	public String MemberQuit(ModelMap model, HttpServletRequest request, HttpSession session)
 	{
 		String mem_id = (String)session.getAttribute("mem_id");

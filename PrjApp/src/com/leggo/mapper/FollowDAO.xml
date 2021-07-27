@@ -6,17 +6,23 @@
 <mapper namespace="com.leggo.follow.IFollowDAO">
 
 	<select id="FollowerSelect" resultType="com.leggo.follow.FollowDTO">
-		SELECT MEM_NNM, MEM_IMG
+		SELECT MEM_NNM AS FOLLOW_MEM_NNM, MEM_IMG AS FOLLOW_MEM_IMG, MEM_ID AS FOLLOW_MEM_ID
 		FROM MEMBER_DATA
 		WHERE MEM_CD = (SELECT MEM_ING_CD FROM FOLLOW
 		                WHERE MEM_ED_CD = (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id}))
 	</select>
 	
 	<select id="FollowingSelect" resultType="com.leggo.follow.FollowDTO">
-		SELECT MEM_NNM, MEM_IMG
+		SELECT MEM_NNM AS FOLLOW_MEM_NNM, MEM_IMG AS FOLLOW_MEM_IMG, MEM_ID AS FOLLOW_MEM_ID
 		FROM MEMBER_DATA
 		WHERE MEM_CD = (SELECT MEM_ED_CD FROM FOLLOW
 		                WHERE MEM_ING_CD = (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id}))
+	</select>
+	
+	<select id="FollowingPost" resultType="com.leggo.follow.FollowPostDTO">
+		SELECT POST_CD, POST_TT, POST_IMG
+		FROM VIEWPOST
+		WHERE MEM_CD = (SELECT MEM_CD FROM MEMBER_DATA WHERE MEM_ID = #{mem_id})
 	</select>
 	
 </mapper>

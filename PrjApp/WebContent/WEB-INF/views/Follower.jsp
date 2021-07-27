@@ -105,11 +105,11 @@
 									<tr>
 										<td style="border-top: none;">
 											<div style="padding: 1% 3% 1% 3%;">
-												<img style="display: inline-block;"
-													src="${follower.mem_img }"
+												<img style="display: inline-block; object-fit: cover;"
+													src="${follower.follow_mem_img }"
 													alt="Admin" class="rounded-circle" width="35px"
 													height="35px">
-												<h4 class="follower_name">${follower.mem_nnm }</h4>
+												<h4 class="follower_name">${follower.follow_mem_nnm }</h4>
 												<button class="btn btn-primary">팔로잉</button>
 											</div>
 										</td>

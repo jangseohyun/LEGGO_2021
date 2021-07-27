@@ -80,7 +80,7 @@
 							사진</a></li>
 					<li class="breadcrumb-item"><a href="mycommentpage.action">내
 							댓글</a></li>
-					<li class="breadcrumb-item"><a href="myscrappage.action">스크랩북</a></li>
+					<!-- <li class="breadcrumb-item"><a href="myscrappage.action">스크랩북</a></li> -->
 					<li class="breadcrumb-item"><a href="qnapage.action">일대일
 							문의</a></li>
 				</ol>

@@ -2,23 +2,32 @@ package com.leggo.follow;
 
 public class FollowDTO
 {
-	private String follower_mem_nnm;	//--팔로워 별명
-	private String follower_mem_img;	//--팔로워 프로필 사진
+	private String follow_mem_nnm;	//--팔로우 회원 별명
+	private String follow_mem_img;	//--팔로우 회원 프로필 사진
+	private String follow_mem_id;	//--팔로우 회원 아이디
 	
-	public String getFollower_mem_nnm()
+	public String getFollow_mem_nnm()
 	{
-		return follower_mem_nnm;
+		return follow_mem_nnm;
 	}
-	public void setFollower_mem_nnm(String follower_mem_nnm)
+	public void setFollower_mem_nnm(String follow_mem_nnm)
 	{
-		this.follower_mem_nnm = follower_mem_nnm;
+		this.follow_mem_nnm = follow_mem_nnm;
 	}
-	public String getFollower_mem_img()
+	public String getFollow_mem_img()
 	{
-		return follower_mem_img;
+		return follow_mem_img;
 	}
-	public void setFollower_mem_img(String follower_mem_img)
+	public void setFollow_mem_img(String follow_mem_img)
 	{
-		this.follower_mem_img = follower_mem_img;
+		this.follow_mem_img = follow_mem_img;
+	}
+	public String getFollow_mem_id()
+	{
+		return follow_mem_id;
+	}
+	public void setFollow_mem_id(String follow_mem_id)
+	{
+		this.follow_mem_id = follow_mem_id;
 	}
 }

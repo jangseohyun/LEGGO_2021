@@ -1,5 +1,6 @@
 package com.leggo.follow;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -37,10 +38,10 @@ public class FollowerController
 		ProfileDTO profile = dao.ProfileSelect(mem_id);
 
 		// 팔로워 목록 조회하기
-		List<FollowDTO> followerList = null;
+		List<FollowDTO> followerList = new ArrayList<FollowDTO>();
 		
 		System.out.println("로그인 아이디: "+mem_id);
-		System.out.println(followDAO.FollowerSelect(mem_id) != null);
+		System.out.println("팔로워 여부: "+followDAO.FollowerSelect(mem_id) != null);
 		
 		if (followDAO.FollowerSelect(mem_id) != null)
 		{
