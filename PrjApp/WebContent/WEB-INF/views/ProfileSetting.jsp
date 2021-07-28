@@ -45,6 +45,7 @@ String mem_intro = profile.getMem_intro();
 		});
 	});
 	
+	// 글자수 세기
 	function getTextLength(str)
 	{
 		var len = 0;
@@ -62,17 +63,20 @@ String mem_intro = profile.getMem_intro();
 		return len;
 	}
 	
+	// 별명 입력시 글자 세기
 	function NnmbytesHandler(obj)
 	{
 		var text = $(obj).val();
 		$('p.nnmbytes').text(getTextLength(text));
 	}
 
+	// 자기소개 입력시 글자 세기
 	function IntrobytesHandler(obj)
 	{
 		var text = $(obj).val();
 		$('p.introbytes').text(getTextLength(text));
 	}
+
 </script>
 
 <body>
@@ -134,7 +138,7 @@ String mem_intro = profile.getMem_intro();
 									<tr>
 										<th>별명</th>
 										<td><input type="text" class="form-control" id="mem_nnm"
-											name="mem_nnm" value="<%=mem_nnm%>"></td>
+											name="mem_nnm" value="<%=mem_nnm%>" maxlength="20"></td>
 									</tr>
 									<tr style="text-align: right;">
 										<td></td>
@@ -144,9 +148,9 @@ String mem_intro = profile.getMem_intro();
 									</tr>
 									<tr>
 										<th>자기소개</th>
-										<td><textarea class="form-control content"
+										<td><input type="text" class="form-control content"
 												style="width: 300px; height: 100px;" id="mem_intro"
-												name="mem_intro"><%=mem_intro%></textarea></td>
+												name="mem_intro" maxlength="100"><%=mem_intro%></textarea></td>
 									</tr>
 									<tr style="text-align: right;">
 										<td></td>
@@ -176,10 +180,10 @@ String mem_intro = profile.getMem_intro();
 	
 		// url에서 파라미터 삭제
 		history.replaceState({}, null, location.pathname);
-
+		
 		function dataSubmit()
 		{
-			alert("테스트");
+			//alert("테스트");
 			$("#form_img").submit();
 		}
 		
