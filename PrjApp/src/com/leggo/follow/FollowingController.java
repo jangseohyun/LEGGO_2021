@@ -38,12 +38,12 @@ public class FollowingController
 		ProfileDTO profile = profileDAO.ProfileSelect(mem_id);
 		
 		// 팔로잉 목록 조회하기
-		ArrayList<FollowDTO> followingList = new ArrayList<FollowDTO>();
+		List<FollowDTO> followingList = new ArrayList<FollowDTO>();
 		List<FollowPostDTO> followingpostList = new ArrayList<FollowPostDTO>();
 		
 		if (followDAO.FollowingSelect(mem_id) != null)
 		{
-			followingList.add(followDAO.FollowingSelect(mem_id));
+			followingList = followDAO.FollowingSelect(mem_id);
 			model.addAttribute("followingList", followingList);
 			
 			for (int i=0; i<followingList.size(); i++)

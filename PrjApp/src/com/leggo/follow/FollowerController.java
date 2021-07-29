@@ -45,7 +45,7 @@ public class FollowerController
 		
 		if (followDAO.FollowerSelect(mem_id) != null)
 		{
-			followerList.add(followDAO.FollowerSelect(mem_id));
+			followerList = followDAO.FollowerSelect(mem_id);
 			model.addAttribute("followerList", followerList);
 		}
 		

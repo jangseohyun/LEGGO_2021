@@ -34,7 +34,8 @@
 			<beans:bean class="com.leggo.interceptor.AutoLoginInterceptor"/>
 		</interceptor>
 		<interceptor>
-			<mapping path="/profilepage.action"/>
+			<mapping path="/profile*"/>
+			<mapping path="/follow*"/>
 			<beans:bean class="com.leggo.interceptor.LoginInterceptor"/>
 		</interceptor>
 	</interceptors>
