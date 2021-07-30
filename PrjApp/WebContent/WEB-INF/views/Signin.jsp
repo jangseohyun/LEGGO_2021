@@ -158,7 +158,6 @@ a {
 							<div class="form-group">
 								<input id="mem_nnm" name="mem_nnm" type="text" class="form-control" placeholder="별명"
 									required>
-								<
 							</div>
 							<div class="form-group">
 								<input id="mem_pw" name="mem_pw" type="password" class="form-control"

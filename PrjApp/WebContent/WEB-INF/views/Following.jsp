@@ -104,27 +104,24 @@
 						<div class="card-body">
 							<h4>팔로잉</h4>
 							<div class="album py-5 bg-light">
-									<div class="container">
 							<c:set var="followingList" value="<%=followingList %>" />
 							<c:set var="followingpostList" value="<%=followingpostList %>" />
 							<c:choose>
 								<c:when test="${followingList != null }">
 								<c:forEach var="following" items="<%=followingList %>">
+									<div class="container">
 									<div class="row" style="margin: 1%;">
 										<img style="display: inline-block; object-fit: cover;"
 											src="${following.follow_mem_img }"
 											alt="Admin" class="rounded-circle" width="45px" height="45px">
 													<h4 style="font-size: 22px;">${following.follow_mem_nnm }</h4>
 												</div>
-									</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<p style="margin-left: 20px;">팔로우 중인 유저가 없습니다.</p>
-									</c:otherwise>
-								</c:choose>
-							<c:choose>
-								<c:when test="${followingpostList != null }">
+												</div>
+										<c:choose>
+								<c:when test="${followingpostList.get(0) != null }">
 								<c:forEach var="post" items="<%=followingpostList %>">
+								
+									<div class="container">
 								<div class="col-md-2 wrapper">
 										<div class="card box-shadow frame">
 											<div class="img-wrapper">
@@ -142,12 +139,20 @@
 											</div>
 										</div>
 									</div>
+									</div>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-								<p style="margin-left: 20px;">작성된 게시글이 없습니다.</p>
+								<p style="margin-left: 70px;">작성된 게시글이 없습니다.</p>
 								</c:otherwise>
 							</c:choose>
+									</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<p style="margin-left: 20px;">팔로우 중인 유저가 없습니다.</p>
+									</c:otherwise>
+								</c:choose>
+							
 								</div>
 							</div>
 						</div>

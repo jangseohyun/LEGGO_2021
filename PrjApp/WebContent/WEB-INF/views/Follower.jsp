@@ -5,18 +5,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	request.setCharacterEncoding("UTF-8");
-	String cp = request.getContextPath();
+String cp = request.getContextPath();
 %>
 <%
 	ProfileDTO profile = (ProfileDTO) request.getAttribute("profile");
-	String mem_img = profile.getMem_img();
-	String mem_nnm = profile.getMem_nnm();
-	String mem_intro = profile.getMem_intro();
-	String fol_ing_cnt = profile.getFol_ing_cnt();
-	String fol_ed_cnt = profile.getFol_ed_cnt();
+String mem_img = profile.getMem_img();
+String mem_nnm = profile.getMem_nnm();
+String mem_intro = profile.getMem_intro();
+String fol_ing_cnt = profile.getFol_ing_cnt();
+String fol_ed_cnt = profile.getFol_ed_cnt();
 %>
 <%
-	ArrayList<FollowDTO> followerList = (ArrayList)request.getAttribute("followerList");
+	ArrayList<FollowDTO> followerList = (ArrayList) request.getAttribute("followerList");
 %>
 <!DOCTYPE html>
 <head>
@@ -98,28 +98,41 @@
 							<h4>팔로워</h4>
 							<div class="album py-5 bg-light">
 								<table class="table table-hover">
-							<c:set var="followerList" value="<%=followerList %>" />
-							<c:choose>
-								<c:when test="${followerList != null }">
-								<c:forEach var="follower" items="<%=followerList %>">
-									<tr>
-										<td style="border-top: none;">
-											<div style="padding: 1% 3% 1% 3%;">
-												<img style="display: inline-block; object-fit: cover;"
-													src="${follower.follow_mem_img }"
-													alt="Admin" class="rounded-circle" width="35px"
-													height="35px">
-												<h4 class="follower_name">${follower.follow_mem_nnm }</h4>
-												<button class="btn btn-primary">팔로잉</button>
-											</div>
-										</td>
-									</tr>
-									</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<p style="margin-left: 20px;">팔로우 중인 유저가 없습니다.</p>
-									</c:otherwise>
-								</c:choose>
+									<c:set var="followerList" value="<%=followerList%>" />
+									<c:choose>
+										<c:when test="${followerList != null }">
+											<c:forEach var="follower" items="<%=followerList%>">
+												<tr>
+													<td style="border-top: none;">
+														<div style="padding: 1% 3% 1% 3%;">
+														
+															<form action="follow.action" role="form" id="follow-form" method="POST">
+															<img style="display: inline-block; object-fit: cover;"
+																src="${follower.follow_mem_img }" alt="Admin"
+																class="rounded-circle" width="35px" height="35px">
+															<h4 class="follower_name">${follower.follow_mem_nnm }</h4>
+																<input type="hidden" id="follow_mem_id" name="follow_mem_id"
+																	value="${follower.follow_mem_id }">
+																<c:choose>
+																<c:when test="${follower.count == 1 }">
+																	<button type="button" id="followBtn" class="btn btn-secondary">팔로잉</button>
+																	<input type="hidden" id="follow" value="0">
+																</c:when>
+																<c:otherwise>
+																	<button type="button" id="followBtn" class="btn btn-primary">팔로잉</button>
+																	<input type="hidden" id="follow" value="1">
+																</c:otherwise>
+																</c:choose>
+															</form>
+														</div>
+													</td>
+												</tr>
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<p style="margin-left: 20px;">팔로우 중인 유저가 없습니다.</p>
+										</c:otherwise>
+									</c:choose>
 								</table>
 							</div>
 						</div>
@@ -129,6 +142,23 @@
 		</div>
 	</div>
 
+<script type="text/javascript">
+
+	$("Button").click(function()
+	{
+		if($(this).attr("class") == "btn btn-primary")
+		{
+			$(this).attr("class","btn btn-secondary");
+			$("form").submit();
+		}
+		else
+		{
+			$(this).attr("class","btn btn-primary");
+			$("form").submit();
+		}
+	});
+
+</script>
 
 	<style type="text/css">
 body {
