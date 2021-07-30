@@ -106,15 +106,23 @@ String fol_ed_cnt = profile.getFol_ed_cnt();
 													<td style="border-top: none;">
 														<div style="padding: 1% 3% 1% 3%;">
 														
-															<form action="follow.action" role="form" id="follow-form">
+															<form action="follow.action" role="form" id="follow-form" method="POST">
 															<img style="display: inline-block; object-fit: cover;"
 																src="${follower.follow_mem_img }" alt="Admin"
 																class="rounded-circle" width="35px" height="35px">
 															<h4 class="follower_name">${follower.follow_mem_nnm }</h4>
-																<input type="hidden" id="follow_mem_id"
+																<input type="hidden" id="follow_mem_id" name="follow_mem_id"
 																	value="${follower.follow_mem_id }">
-																<button type="button" id="followBtn" class="btn btn-primary"
-																	onclick="followed()">팔로잉</button>
+																<c:choose>
+																<c:when test="${follower.count == 1 }">
+																	<button type="button" id="followBtn" class="btn btn-secondary">팔로잉</button>
+																	<input type="hidden" id="follow" value="0">
+																</c:when>
+																<c:otherwise>
+																	<button type="button" id="followBtn" class="btn btn-primary">팔로잉</button>
+																	<input type="hidden" id="follow" value="1">
+																</c:otherwise>
+																</c:choose>
 															</form>
 														</div>
 													</td>
@@ -134,12 +142,21 @@ String fol_ed_cnt = profile.getFol_ed_cnt();
 		</div>
 	</div>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 
-	function followed()
+	$("Button").click(function()
 	{
-		document.getElementById("followBtn").className = "btn btn-secondary";
-	}
+		if($(this).attr("class") == "btn btn-primary")
+		{
+			$(this).attr("class","btn btn-secondary");
+			$("form").submit();
+		}
+		else
+		{
+			$(this).attr("class","btn btn-primary");
+			$("form").submit();
+		}
+	});
 
 </script>
 

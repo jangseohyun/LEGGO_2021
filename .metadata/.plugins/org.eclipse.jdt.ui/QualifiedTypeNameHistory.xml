@@ -21,7 +21,6 @@
 <fullyQualifiedTypeName name="java.util.Map"/>
 <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
 <fullyQualifiedTypeName name="java.io.IOException"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="com.leggo.myplan.IMyPlanDAO"/>
 <fullyQualifiedTypeName name="com.leggo.myphoto.IMyPhotoDAO"/>
 <fullyQualifiedTypeName name="com.leggo.myplan.MyPlanDTO"/>
@@ -30,5 +29,7 @@
 <fullyQualifiedTypeName name="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"/>
 <fullyQualifiedTypeName name="javax.servlet.jsp.PageContext"/>
 <fullyQualifiedTypeName name="com.leggo.qna.QnaDTO"/>
+<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.annotations.Param"/>
 </qualifiedTypeNameHistroy>
