@@ -113,14 +113,13 @@ String fol_ed_cnt = profile.getFol_ed_cnt();
 															<h4 class="follower_name">${follower.follow_mem_nnm }</h4>
 																<input type="hidden" id="follow_mem_id" name="follow_mem_id"
 																	value="${follower.follow_mem_id }">
+																	<input type="hidden" id="follow" name="follow" value="0">
 																<c:choose>
 																<c:when test="${follower.count == 1 }">
 																	<button type="button" id="followBtn" class="btn btn-secondary">팔로잉</button>
-																	<input type="hidden" id="follow" value="0">
 																</c:when>
 																<c:otherwise>
 																	<button type="button" id="followBtn" class="btn btn-primary">팔로잉</button>
-																	<input type="hidden" id="follow" value="1">
 																</c:otherwise>
 																</c:choose>
 															</form>

@@ -109,12 +109,18 @@
 							<c:choose>
 								<c:when test="${followingList != null }">
 								<c:forEach var="following" items="<%=followingList %>">
+									
 									<div class="container">
-									<div class="row" style="margin: 1%;">
+									<div class="row" style="margin: 1%; display: inline-block; width:100%">
+									<form action="follow.action" role="form" id="follow-form" method="POST" style="display: inline-block; width: 57%;">
+									<input type="hidden" id="follow_mem_id" name="follow_mem_id" value="${following.follow_mem_id }">
+									<input type="hidden" id="follow" name="follow" value="1">
 										<img style="display: inline-block; object-fit: cover;"
 											src="${following.follow_mem_img }"
 											alt="Admin" class="rounded-circle" width="45px" height="45px">
-													<h4 style="font-size: 22px;">${following.follow_mem_nnm }</h4>
+													<a href="profilepageauto.action" style="color: black; font-size: 22px; display: inline-block;">${following.follow_mem_nnm }</a>
+													<button type="button" id="followBtn" class="btn btn-secondary">팔로잉</button>
+												</form>
 												</div>
 												</div>
 										<c:choose>
@@ -161,14 +167,24 @@
 			</div>
 		</div>
 
+<script type="text/javascript">
 
-		<style type="text/css">
+	$("Button").click(function()
+	{
+		$(this).attr("class","btn btn-primary");
+		$("form").submit();
+	});
+
+</script>
+
+<style type="text/css">
+
 body {
 	margin-top: 20px;
 	color: #1a202c;
 	text-align: left;
 	background-color: #e2e8f0;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif !important;
 }
 
 .main-body {
@@ -294,6 +310,13 @@ h3, h4 {
 	opacity: 1;
 	transform: scale(1);
 	visibility: visible;
+}
+
+.btn {
+	display: inline-block;
+	margin: 7px;
+	margin-left: 20px;
+	float: right;
 }
 </style>
 </body>

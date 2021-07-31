@@ -121,6 +121,11 @@ public class FollowController
 		else
 			followDAO.Unfollow(mem_ing_id, mem_ed_id);
 		
-		return "redirect:followerpage.action";
+		String redirectCck = request.getParameter("follow");
+		
+		if (redirectCck.equals("0"))
+			return "redirect:followerpage.action";
+		else
+			return "redirect:followingpage.action";
 	}
 }
